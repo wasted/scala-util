@@ -1,0 +1,85 @@
+# swap files
+*~
+*#
+*.sw[op]
+._*
+hs*.log
+
+# latex
+scripts/paper/**.{out,log,aux,pdf}
+
+apache-solr-*
+lift_proto*
+
+# sbt
+sbt-launch.jar
+
+project/boot
+project/target
+project/plugins/target
+project/plugins/project
+
+*/project/boot
+*/project/target
+*/project/plugins/target
+*/project/plugins/project
+
+
+# OSX
+.DS_Store
+
+
+# Intellij IDEA
+*.iws
+*.ipr
+*.iml
+.idea*
+
+
+# Eclipse & Netbeans
+.cache
+.project
+.settings
+.classpath
+.scala_dependencies
+
+
+# ensime
+.ensime_port
+.ensime.*
+
+
+# stolen from akka's .gitignore ;)
+activemq-data
+etags
+tags
+TAGS
+akka.tmproj
+reports
+dist
+build
+target
+deploy/*.jar
+data
+out
+logs
+.#*
+.codefellow
+storage
+.codefellow
+_dump
+.manager
+manifest.mf
+semantic.cache
+tm*.log
+tm*.lck
+tm.out
+*.tm.epoch
+multiverse.log
+
+akka/microkernel*
+akka/akka-microkernel*
+
+# remove for production releases
+# or major changes
+#src/main/resources/props/*
