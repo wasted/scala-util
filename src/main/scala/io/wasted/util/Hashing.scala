@@ -1,13 +1,15 @@
 package io.wasted.util
 
 import java.security.MessageDigest
-import java.io.File
-import com.google.common.io.Files
+import java.io.{ File, FileInputStream }
 
+/**
+ * Helper Object for hashing different Strings and Files.
+ */
 object Hashing {
 
   /**
-   * Sign the payload with the given key using the given algo.
+   * Sign the payload with the given key using the given algorythm.
    *
    * @param key Key used for hashing
    * @param payload Big mystery here..
@@ -21,19 +23,36 @@ object Hashing {
     mac.doFinal(payload.toCharArray.map(_.toByte)).map(b => Integer.toString((b & 0xff) + 0x100, 16).substring(1)).mkString
   }
 
-  /** Create an hex encoded SHA hash from a Byte array */
+  /**
+   * Create an hex encoded SHA hash from a Byte array using the given algorythm.
+   *
+   * @param in ByteArray to be encoded
+   * @param alg Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512. Defaults to SHA256.
+   */
   def hexDigest(in: Array[Byte], alg: String = "SHA"): String = {
     val binHash = (MessageDigest.getInstance(alg)).digest(in)
     hexEncode(binHash)
   }
 
-  /** Create an hex encoded SHA hash from a File on disk */
+  /**
+   * Create an hex encoded SHA hash from a File on disk using the given algorythm.
+   *
+   * @param file Path to the file
+   * @param alg Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512. Defaults to SHA256.
+   */
   def hexFileDigest(file: String, alg: String = "SHA"): String = {
-    val binHash = Files.getDigest(new File(file), MessageDigest.getInstance(alg))
-    hexEncode(binHash)
+    val md = MessageDigest.getInstance(alg)
+    val input = new FileInputStream(file)
+    val buffer = new Array[Byte](1024)
+    Stream.continually(input.read(buffer)).takeWhile(_ != -1).foreach(md.update(buffer, 0, _))
+    hexEncode(md.digest)
   }
 
-  /** encode a Byte array as hexadecimal characters */
+  /**
+   * Encode a ByteArray as hexadecimal characters.
+   *
+   * @param in ByteArray to be encoded
+   */
   def hexEncode(in: Array[Byte]): String = {
     val sb = new StringBuilder
     val len = in.length
