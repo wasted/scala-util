@@ -23,7 +23,7 @@ object ExceptionHandler {
       s.startsWith("javax.net.ssl.SSLException") ||
       s.startsWith("java.lang.IllegalArgumentException")) return None
 
-    if (ctx.channel.isOpen) ctx.channel.closeFuture().sync()
+    try { if (ctx.channel.isOpen) ctx.channel.closeFuture().sync() }
     Some(cause)
   }
 }
