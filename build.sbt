@@ -38,7 +38,7 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.12" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
   "com.typesafe" % "config" % "0.6.0",
-  "io.netty" % "netty" % "4.0.0.Alpha6",
+  "io.netty" % "netty" % "4.0.0.Alpha8-SNAPSHOT",
   "org.joda" % "joda-convert" % "1.2",
   "joda-time" % "joda-time" % "2.1"
 )
