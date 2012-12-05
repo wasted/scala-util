@@ -73,7 +73,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], e
   private def prepare(url: java.net.URL) = {
     val srv = new Bootstrap
     srv.group(new NioEventLoopGroup)
-      .channel(new NioSocketChannel getClass)
+      .channel(classOf[NioSocketChannel])
       .remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
       .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
       .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
