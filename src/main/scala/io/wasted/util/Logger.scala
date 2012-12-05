@@ -22,7 +22,7 @@ trait Logger {
   /**
    * Transforms StackTraces into a String using StringWriter.
    */
-  implicit def stackTraceToString(throwable: Throwable): String = {
+  implicit val stackTraceToString = (throwable: Throwable) => {
     val w = new StringWriter
     throwable.printStackTrace(new PrintWriter(w))
     w.toString

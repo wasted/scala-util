@@ -6,11 +6,11 @@ organization := "io.wasted"
 
 version := ("git describe --always"!!).trim
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.10.0-RC3"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2")
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0-RC3")
 
-scalacOptions ++= Seq("-unchecked", "-deprecation")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
 scalariformSettings
 
@@ -35,7 +35,8 @@ resolvers ++= Seq(
 
 
 libraryDependencies ++= Seq(
-  "org.specs2" %% "specs2" % "1.12" % "test",
+  "org.specs2" % "specs2_2.10.0-RC3" % "1.12.3" % "test",
+  //"org.specs2" %% "specs2" % "1.12.3" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
   "com.typesafe" % "config" % "0.6.0",
   "io.netty" % "netty" % "4.0.0.Alpha8",
