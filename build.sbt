@@ -8,7 +8,7 @@ version := ("git describe --always"!!).trim
 
 scalaVersion := "2.10.0-RC3"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0-RC3")
+crossScalaVersions := Seq("2.10.0-RC3")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
@@ -35,13 +35,12 @@ resolvers ++= Seq(
 
 
 libraryDependencies ++= Seq(
-  "org.specs2" % "specs2_2.10.0-RC3" % "1.12.3" % "test",
-  //"org.specs2" %% "specs2" % "1.12.3" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
   "com.typesafe" % "config" % "0.6.0",
   "io.netty" % "netty" % "4.0.0.Alpha8",
   "org.joda" % "joda-convert" % "1.2",
-  "joda-time" % "joda-time" % "2.1"
+  "joda-time" % "joda-time" % "2.1",
+  "org.specs2" %% "specs2" % "1.12.3" % "test" cross CrossVersion.full
 )
 
 
