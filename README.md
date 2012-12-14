@@ -4,6 +4,7 @@ wasted.io Scala Utility Library
 ## Using our repository
 
 ```
+  not done yet ;)
 ```
 
 ## Do-it-yourself
