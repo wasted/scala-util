@@ -41,7 +41,8 @@ trait InetPrefix {
    */
   def contains(addr: InetAddress): Boolean
 
-  override def toString() = s"$prefix/$prefixLen"
+  private def prefixAddr() = prefix.getHostAddress
+  override def toString() = s"$prefixAddr/$prefixLen"
 }
 
 /**
