@@ -43,4 +43,9 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.12.3" % "test" cross CrossVersion.full
 )
 
+site.settings
+
+ghpages.settings
+
+git.remoteRepo := "git@github.com:wasted/scala-util.git"
 
