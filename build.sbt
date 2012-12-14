@@ -45,6 +45,8 @@ libraryDependencies ++= Seq(
 
 site.settings
 
+site.includeScaladoc()
+
 ghpages.settings
 
 git.remoteRepo := "git@github.com:wasted/scala-util.git"
