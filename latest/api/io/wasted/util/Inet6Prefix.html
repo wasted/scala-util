@@ -47,7 +47,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Inet6Prefix object to hold information about an IPv6 Prefix.</p><p>Currently only containment checks are implemented.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a>, <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -65,7 +65,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.Inet6Prefix"><span>Inet6Prefix</span></li><li class="in" name="io.wasted.util.InetPrefix"><span>InetPrefix</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.Inet6Prefix"><span>Inet6Prefix</span></li><li class="in" name="io.wasted.util.InetPrefix"><span>InetPrefix</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -216,6 +216,20 @@
       </h4>
       <p class="shortcomment cmt">Check if the given InetAddress is contained in this IPv6 prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Check if the given InetAddress is contained in this IPv6 prefix.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet6Prefix">Inet6Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
+    </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="debug(msg:String,x:Any*):Unit"></a>
+      <a id="debug(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -242,6 +256,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="error(msg:String,x:Any*):Unit"></a>
+      <a id="error(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on error.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on error.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -284,6 +312,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="info(msg:String,x:Any*):Unit"></a>
+      <a id="info(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on info.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on info.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="io.wasted.util.Inet6Prefix#ipVersion" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ipVersion:Int"></a>
       <a id="ipVersion:Int"></a>
@@ -311,6 +353,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#loggerName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loggerName:String"></a>
+      <a id="loggerName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loggerName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Override this to give your class a custom Logger name.</p><div class="fullcomment"><div class="comment cmt"><p>Override this to give your class a custom Logger name.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -378,6 +434,34 @@
       <p class="shortcomment cmt">Length of this Prefix in CIDR notation
 </p><div class="fullcomment"><div class="comment cmt"><p>Length of this Prefix in CIDR notation
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet6Prefix">Inet6Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
+    </li><li name="io.wasted.util.Logger#stackTraceToString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stackTraceToString:Throwable=&gt;String"></a>
+      <a id="stackTraceToString:(Throwable)⇒String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Transforms StackTraces into a String using StringWriter.</p><div class="fullcomment"><div class="comment cmt"><p>Transforms StackTraces into a String using StringWriter.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
+    </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="submitException(trace:String):Unit"></a>
+      <a id="submitException(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">submitException</span><span class="params">(<span name="trace">trace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implement this method to get your exceptions handled the way you want.</p><div class="fullcomment"><div class="comment cmt"><p>Implement this method to get your exceptions handled the way you want.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -452,6 +536,20 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="warn(msg:String,x:Any*):Unit"></a>
+      <a id="warn(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -463,6 +561,8 @@
         <div id="inheritedMembers">
         <div class="parent" name="io.wasted.util.InetPrefix">
               <h3>Inherited from <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></h3>
+            </div><div class="parent" name="io.wasted.util.Logger">
+              <h3>Inherited from <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
