@@ -19,7 +19,7 @@ object InetPrefix {
 
 }
 
-trait InetPrefix {
+trait InetPrefix extends Logger {
 
   /**
    * Base IP-Address of the Prefix.
@@ -71,8 +71,10 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
    * Check if the given InetAddress is contained in this IPv6 prefix.
    */
   def contains(addr: InetAddress): Boolean = {
-    if (addr.getAddress.length != 16)
-      throw new UnknownHostException("Inet6Prefix cannot check against Inet4Address")
+    if (addr.getAddress.length != 16) {
+      debug("Inet6Prefix cannot check against Inet4Address")
+      return false
+    }
 
     val candidate = addr.getAddress
     for (i <- 0 to netmask.length - 1)
@@ -103,8 +105,10 @@ class Inet4Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
    * @param addr The InetAddr which is to be checked.
    */
   def contains(addr: InetAddress): Boolean = {
-    if (addr.getAddress.length != 4)
-      throw new UnknownHostException("Inet4Prefix cannot check against Inet6Address")
+    if (addr.getAddress.length != 4) {
+      warn("Inet4Prefix cannot check against Inet6Address")
+      return false
+    }
 
     val candidate = InetPrefix.inetAddrToLong(addr)
     candidate >= start && candidate <= stop
