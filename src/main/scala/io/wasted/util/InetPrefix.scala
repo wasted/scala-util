@@ -58,8 +58,8 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
   if (prefixLen < 0 || prefixLen > 128)
     throw new UnknownHostException(s"$prefixLen is not a valid IPv6 Prefix-Length (0-128)")
 
-  private val network: Array[Byte] = prefix.getAddress
-  private val netmask: Array[Byte] = {
+  private lazy val network: Array[Byte] = prefix.getAddress
+  private lazy val netmask: Array[Byte] = {
     var netmask: Array[Byte] = Array.fill(16)(0xff.toByte)
     val maskBytes: Int = prefixLen / 8
     netmask(maskBytes) = (0xff.toByte << 8 - (prefixLen % 8)).toByte
@@ -96,9 +96,9 @@ class Inet4Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
   if (prefixLen < 0 || prefixLen > 32)
     throw new UnknownHostException(s"$prefixLen is not a valid IPv4 Prefix-Length (0-32)")
 
-  private val netmask: Long = (((1L << 32) - 1) << (32 - prefixLen)) & 0xFFFFFFFFL
-  private val start: Long = InetPrefix.inetAddrToLong(prefix) & netmask
-  private val stop: Long = start + (0xFFFFFFFFL >> prefixLen)
+  private lazy val netmask: Long = (((1L << 32) - 1) << (32 - prefixLen)) & 0xFFFFFFFFL
+  private lazy val start: Long = InetPrefix.inetAddrToLong(prefix) & netmask
+  private lazy val stop: Long = start + (0xFFFFFFFFL >> prefixLen)
 
   /**
    * Check if the given InetAddress is contained in this IPv4 prefix.
