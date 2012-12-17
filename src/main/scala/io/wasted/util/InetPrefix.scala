@@ -106,7 +106,7 @@ class Inet4Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
    */
   def contains(addr: InetAddress): Boolean = {
     if (addr.getAddress.length != 4) {
-      warn("Inet4Prefix cannot check against Inet6Address")
+      debug("Inet4Prefix cannot check against Inet6Address")
       return false
     }
 
