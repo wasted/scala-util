@@ -126,7 +126,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], e
    * @param headers
    */
   def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) {
-    val content = Unpooled.copiedBuffer(body.toArray)
+    val content = Unpooled.wrappedBuffer(body.toArray)
     val req = new DefaultHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath)
     req.setHeader(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
     req.setHeader(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
