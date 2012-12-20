@@ -78,25 +78,26 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
  */
 class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], engine: Option[SSLEngine] = None) extends Logger {
 
+  lazy val srv = new Bootstrap
+  lazy val bootstrap = srv.group(new NioEventLoopGroup)
+    .channel(classOf[NioSocketChannel])
+    .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
+    .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
+    .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
+    .option[java.lang.Integer](ChannelOption.SO_LINGER, 0)
+    .handler(new ChannelInitializer[SocketChannel] {
+      override def initChannel(ch: SocketChannel) {
+        val p = ch.pipeline()
+        engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
+        p.addLast("codec", new HttpClientCodec)
+        p.addLast("handler", handler)
+      }
+    })
+
   private def getPort(url: java.net.URL) = if (url.getPort == -1) url.getDefaultPort else url.getPort
 
   private def prepare(url: java.net.URL) = {
-    val srv = new Bootstrap
-    srv.group(new NioEventLoopGroup)
-      .channel(classOf[NioSocketChannel])
-      .remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
-      .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
-      .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
-      .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
-      .option[java.lang.Integer](ChannelOption.SO_LINGER, 0)
-      .handler(new ChannelInitializer[SocketChannel] {
-        override def initChannel(ch: SocketChannel) {
-          val p = ch.pipeline()
-          engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
-          p.addLast("codec", new HttpClientCodec)
-          p.addLast("handler", handler)
-        }
-      })
+    bootstrap.duplicate.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
   }
 
   /**
