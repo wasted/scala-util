@@ -1,6 +1,6 @@
 import scalariform.formatter.preferences._
 
-name := "util"
+name := "wasted-util"
 
 organization := "io.wasted"
 
