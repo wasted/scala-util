@@ -6,9 +6,7 @@ organization := "io.wasted"
 
 version := ("git describe --always"!!).trim
 
-scalaVersion := "2.10.0-RC3"
-
-crossScalaVersions := Seq("2.10.0-RC3")
+scalaVersion := "2.10.0"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
@@ -40,7 +38,7 @@ libraryDependencies ++= Seq(
   "io.netty" % "netty" % "4.0.0.Beta1-SNAPSHOT",
   "org.joda" % "joda-convert" % "1.2",
   "joda-time" % "joda-time" % "2.1",
-  "org.specs2" %% "specs2" % "1.12.3" % "test" cross CrossVersion.full
+  "org.specs2" %% "specs2" % "1.13" % "test"
 )
 
 site.settings
