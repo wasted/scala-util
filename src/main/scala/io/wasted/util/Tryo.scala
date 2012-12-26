@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import scala.util.{ Success, Failure }
+import scala.util.Success
 
 /**
  * This is a simple try/catch wrapped in an Option.

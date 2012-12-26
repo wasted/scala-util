@@ -1,7 +1,7 @@
 package io.wasted.util
 
 import java.security.MessageDigest
-import java.io.{ File, FileInputStream }
+import java.io.FileInputStream
 
 /**
  * Helper Object for hashing different Strings and Files.

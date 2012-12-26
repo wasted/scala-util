@@ -2,21 +2,16 @@ package io.wasted.util.http
 
 import io.wasted.util.Logger
 
-import io.netty.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.group._
 import io.netty.channel.socket._
 import io.netty.channel.socket.nio._
 import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.HttpMethod._
-import io.netty.handler.codec.http.HttpResponseStatus._
 import io.netty.handler.ssl.SslHandler
 
 import javax.net.ssl.SSLEngine
 import java.net.InetSocketAddress
-import java.util.concurrent._
 
 /**
  * Netty HTTP Client Object to create HTTP Request Objects.
