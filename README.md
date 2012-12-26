@@ -1,4 +1,4 @@
-wasted.io Scala Utility Library
+![wasted.io](http://wasted.io/images/soon/wasted.png)
 =======
 
 ## Using our repository
