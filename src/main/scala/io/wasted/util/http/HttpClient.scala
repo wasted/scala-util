@@ -140,5 +140,9 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], e
     val headers = Map("X-Io-Auth" -> auth.toString, "X-Io-Sign" -> io.wasted.util.Hashing.sign(sign.toString, payload))
     post(url, "application/json", payload.map(_.toByte), headers, HttpMethod.PUT)
   }
+
+  def close() {
+    srv.shutdown()
+  }
 }
 
