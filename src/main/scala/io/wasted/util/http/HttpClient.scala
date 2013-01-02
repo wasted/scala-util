@@ -22,9 +22,9 @@ object HttpClient {
    *
    * @param engine Optional SSLEngine
    */
-  def apply(engine: Option[SSLEngine] = None): HttpClient[Object] = {
+  def apply(timeout: Int = 20, engine: Option[SSLEngine] = None): HttpClient[Object] = {
     val doneF = (x: Option[io.netty.handler.codec.http.HttpResponse]) => {}
-    this.apply(new HttpClientResponseAdapter(doneF), engine)
+    this.apply(new HttpClientResponseAdapter(doneF), timeout, engine)
   }
 
   /**
@@ -33,8 +33,8 @@ object HttpClient {
    * @param doneF Function which will handle the result
    * @param engine Optional SSLEngine
    */
-  def apply(doneF: (Option[HttpResponse]) => Unit, engine: Option[SSLEngine]): HttpClient[Object] =
-    this.apply(new HttpClientResponseAdapter(doneF), engine)
+  def apply(doneF: (Option[HttpResponse]) => Unit, timeout: Int, engine: Option[SSLEngine]): HttpClient[Object] =
+    this.apply(new HttpClientResponseAdapter(doneF), timeout, engine)
 
   /**
    * Creates a HTTP Client which implements the given Netty HandlerAdapter.
@@ -42,8 +42,8 @@ object HttpClient {
    * @param handler Implementation of ChannelInboundMessageHandlerAdapter
    * @param engine Optional SSLEngine
    */
-  def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], engine: Option[SSLEngine]): HttpClient[T] =
-    new HttpClient(handler, engine)
+  def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
+    new HttpClient(handler, timeout, engine)
 }
 
 /**
@@ -71,7 +71,7 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
  *
  * @param doneF Function which will handle the result
  */
-class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], engine: Option[SSLEngine] = None) extends Logger {
+class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int = 20, engine: Option[SSLEngine] = None) extends Logger {
 
   lazy val srv = new Bootstrap
   lazy val bootstrap = srv.group(new NioEventLoopGroup)
@@ -80,6 +80,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], e
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
     .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
     .option[java.lang.Integer](ChannelOption.SO_LINGER, 0)
+    .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout * 1000)
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
