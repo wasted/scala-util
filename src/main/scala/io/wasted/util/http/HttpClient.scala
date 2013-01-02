@@ -9,6 +9,7 @@ import io.netty.channel.socket._
 import io.netty.channel.socket.nio._
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
+import io.netty.handler.timeout._
 
 import javax.net.ssl.SSLEngine
 import java.net.InetSocketAddress
@@ -44,6 +45,7 @@ object HttpClient {
    */
   def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
     new HttpClient(handler, timeout, engine)
+
 }
 
 /**
@@ -56,6 +58,7 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     ExceptionHandler(ctx, cause)
     doneF(None)
+    ctx.channel.close
   }
 
   override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
@@ -102,7 +105,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
    * @param url What could this be?
    * @param headers The mysteries keep piling up!
    */
-  def get(url: java.net.URL, headers: Map[String, String] = Map()) {
+  def get(url: java.net.URL, headers: Map[String, String] = Map()) = {
     val req = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
     req.setHeader(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
     req.setHeader(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
@@ -122,7 +125,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
    * @param method HTTP Method to be used
    * @param headers
    */
-  def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) {
+  def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) = {
     val content = Unpooled.wrappedBuffer(body.toArray)
     val req = new DefaultHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath)
     req.setHeader(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
@@ -137,7 +140,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     channel.closeFuture()
   }
 
-  def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String) {
+  def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String) = {
     val headers = Map("X-Io-Auth" -> auth.toString, "X-Io-Sign" -> io.wasted.util.Hashing.sign(sign.toString, payload))
     post(url, "application/json", payload.map(_.toByte), headers, HttpMethod.PUT)
   }
