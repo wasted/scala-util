@@ -23,7 +23,7 @@ object HttpClient {
    *
    * @param engine Optional SSLEngine
    */
-  def apply(timeout: Int = 20, engine: Option[SSLEngine] = None): HttpClient[Object] = {
+  def apply(timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] = {
     val doneF = (x: Option[io.netty.handler.codec.http.HttpResponse]) => {}
     this.apply(new HttpClientResponseAdapter(doneF), timeout, engine)
   }
@@ -74,7 +74,7 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
  *
  * @param doneF Function which will handle the result
  */
-class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int = 20, engine: Option[SSLEngine] = None) extends Logger {
+class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
 
   lazy val srv = new Bootstrap
   lazy val bootstrap = srv.group(new NioEventLoopGroup)
@@ -87,6 +87,11 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
+        p.addLast("timeout", new ReadTimeoutHandler(timeout) {
+          override def readTimedOut(ctx: ChannelHandlerContext) {
+            ctx.channel.close
+          }
+        })
         engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
         p.addLast("codec", new HttpClientCodec)
         p.addLast("handler", handler)
