@@ -1,5 +1,9 @@
 ![wasted.io](http://wasted.io/images/soon/wasted.png)
+
 =======
+
+### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/netflow/blob/master/CONTRIBUTING.md).
+
 
 ## Using our repository
 
