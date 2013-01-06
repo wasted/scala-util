@@ -42,7 +42,7 @@ trait InetPrefix extends Logger {
   def contains(addr: InetAddress): Boolean
 
   private def prefixAddr() = prefix.getHostAddress
-  override def toString() = s"$prefixAddr/$prefixLen"
+  lazy val toString = prefixAddr + "/" + prefixLen
 }
 
 /**
@@ -56,7 +56,7 @@ trait InetPrefix extends Logger {
 class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefix {
   val ipVersion = 6
   if (prefixLen < 0 || prefixLen > 128)
-    throw new UnknownHostException(s"$prefixLen is not a valid IPv6 Prefix-Length (0-128)")
+    throw new UnknownHostException(prefixLen + " is not a valid IPv6 Prefix-Length (0-128)")
 
   private lazy val network: Array[Byte] = prefix.getAddress
   private lazy val netmask: Array[Byte] = {
@@ -94,7 +94,7 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
 class Inet4Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefix {
   val ipVersion = 4
   if (prefixLen < 0 || prefixLen > 32)
-    throw new UnknownHostException(s"$prefixLen is not a valid IPv4 Prefix-Length (0-32)")
+    throw new UnknownHostException(prefixLen + " is not a valid IPv4 Prefix-Length (0-32)")
 
   private lazy val netmask: Long = (((1L << 32) - 1) << (32 - prefixLen)) & 0xFFFFFFFFL
   private lazy val start: Long = InetPrefix.inetAddrToLong(prefix) & netmask
