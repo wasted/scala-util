@@ -42,7 +42,7 @@ trait InetPrefix extends Logger {
   def contains(addr: InetAddress): Boolean
 
   private def prefixAddr() = prefix.getHostAddress
-  lazy val toString = prefixAddr + "/" + prefixLen
+  override val toString = prefixAddr + "/" + prefixLen
 }
 
 /**
