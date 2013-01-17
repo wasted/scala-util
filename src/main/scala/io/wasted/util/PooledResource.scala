@@ -9,8 +9,8 @@ class PooledResource[T <: Any](newFunc: () => T, max: Int, timeout: Int = 5000) 
   private val size = new AtomicInteger(0)
   private val pool = new LinkedTransferQueue[T]
 
-  def get(): Option[T] = Try[T](pool.poll) match {
-    case Success(r) => Some(r)
+  def get(): Option[T] = Tryo(pool.poll) match {
+    case Success(r: T) => Some(r)
     case _ => createOrBlock
   }
 
