@@ -3,14 +3,13 @@ package io.wasted.util
 import java.util.concurrent.LinkedTransferQueue
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.TimeUnit
-import scala.util.{ Try, Success }
 
 class PooledResource[T <: Any](newFunc: () => T, max: Int, timeout: Int = 5000) {
   private val size = new AtomicInteger(0)
   private val pool = new LinkedTransferQueue[T]
 
   def get(): Option[T] = Tryo(pool.poll) match {
-    case Success(r: T) => Some(r)
+    case Some(r: T) => Some(r)
     case _ => createOrBlock
   }
 
