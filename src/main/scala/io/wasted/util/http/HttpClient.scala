@@ -112,9 +112,9 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
    */
   def get(url: java.net.URL, headers: Map[String, String] = Map()) = {
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
-    req.trailingHeaders.add(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
-    req.trailingHeaders.add(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-    headers.foreach(f => req.trailingHeaders.add(f._1, f._2))
+    req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
+    req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
+    headers.foreach(f => req.headers.set(f._1, f._2))
 
     val channel = prepare(url).connect().sync().channel()
     channel.write(req)
@@ -133,11 +133,11 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
   def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) = {
     val content = Unpooled.wrappedBuffer(body.toArray)
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
-    req.trailingHeaders.add(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
-    req.trailingHeaders.add(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-    req.trailingHeaders.add(HttpHeaders.Names.CONTENT_TYPE, mime)
-    req.trailingHeaders.add(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
-    headers.foreach(f => req.trailingHeaders.add(f._1, f._2))
+    req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
+    req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
+    req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
+    req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
+    headers.foreach(f => req.headers.set(f._1, f._2))
 
     val channel = prepare(url).connect().sync().channel()
     channel.write(req)
