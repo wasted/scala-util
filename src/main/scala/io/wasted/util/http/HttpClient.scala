@@ -116,9 +116,14 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
     headers.foreach(f => req.headers.set(f._1, f._2))
 
-    val channel = prepare(url).connect().sync().channel()
-    channel.write(req)
-    channel.closeFuture()
+    val bootstrap = prepare(url)
+    bootstrap.connect().addListener(new ChannelFutureListener() {
+      override def operationComplete(cf: ChannelFuture) {
+        if (!cf.isSuccess) return
+        cf.channel.write(req)
+        cf.channel.closeFuture()
+      }
+    })
   }
 
   /**
@@ -139,9 +144,14 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
     headers.foreach(f => req.headers.set(f._1, f._2))
 
-    val channel = prepare(url).connect().sync().channel()
-    channel.write(req)
-    channel.closeFuture()
+    val bootstrap = prepare(url)
+    bootstrap.connect().addListener(new ChannelFutureListener() {
+      override def operationComplete(cf: ChannelFuture) {
+        if (!cf.isSuccess) return
+        cf.channel.write(req)
+        cf.channel.closeFuture()
+      }
+    })
   }
 
   def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String) = {
