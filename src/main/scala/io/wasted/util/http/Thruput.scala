@@ -48,7 +48,7 @@ class Thruput(from: String, auth: java.util.UUID, sign: java.util.UUID, uri: jav
     val ch = bootstrap.connect().sync().channel()
     adapter.handshakeFuture().sync()
 
-    val body = """{"from":"%s","thruput":true}"""
+    val body = """{"from":"%s","thruput":true}""".format(from)
     ch.write(new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(
       auth.toString, io.wasted.util.Hashing.sign(sign.toString, body), body, session.toString))).sync()
     ch
