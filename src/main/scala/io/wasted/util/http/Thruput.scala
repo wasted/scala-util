@@ -89,10 +89,10 @@ class ThruputResponseAdapter(handshaker: WebSocketClientHandshaker) extends Chan
   override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
     val ch = ctx.channel()
     if (!handshaker.isHandshakeComplete()) {
-        handshaker.finishHandshake(ch, msg.asInstanceOf[FullHttpResponse])
-        warn("WebSocket Client connected!")
-        handshakeFuture.setSuccess()
-        return
+      handshaker.finishHandshake(ch, msg.asInstanceOf[FullHttpResponse])
+      warn("WebSocket Client connected!")
+      handshakeFuture.setSuccess()
+      return
     }
 
     msg match {
