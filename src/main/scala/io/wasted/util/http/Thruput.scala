@@ -129,12 +129,16 @@ class ThruputResponseAdapter(handshaker: WebSocketClientHandshaker, client: Thru
     val ch = ctx.channel()
 
     msg match {
-      case response: FullHttpResponse if !handshaker.isHandshakeComplete =>
+      //  case response: FullHttpResponse if !handshaker.isHandshakeComplete =>
+      //    handshaker.finishHandshake(ch, response)
+      //    info("WebSocket Client connected!")
+      //    handshakeFuture.setSuccess()
+      //  case response: FullHttpResponse =>
+      //    throw new Exception("Unexpected FullHttpResponse (status=" + response.status() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
+      case response: FullHttpResponse =>
         handshaker.finishHandshake(ch, response)
         info("WebSocket Client connected!")
         handshakeFuture.setSuccess()
-      case response: FullHttpResponse =>
-        throw new Exception("Unexpected FullHttpResponse (status=" + response.status() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
       case frame: TextWebSocketFrame =>
         debug("WebSocket Client received message: " + frame.text())
       case frame: PongWebSocketFrame =>
