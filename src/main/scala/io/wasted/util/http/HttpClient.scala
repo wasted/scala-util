@@ -21,6 +21,7 @@ object HttpClient {
   /**
    * Creates a HTTP Client which will call the given method with the returned HttpResponse.
    *
+   * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
   def apply(timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] = {
@@ -32,6 +33,7 @@ object HttpClient {
    * Creates a HTTP Client which will call the given method with the returned HttpResponse.
    *
    * @param doneF Function which will handle the result
+   * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
   def apply(doneF: (Option[HttpResponse]) => Unit, timeout: Int, engine: Option[SSLEngine]): HttpClient[Object] =
@@ -41,6 +43,7 @@ object HttpClient {
    * Creates a HTTP Client which implements the given Netty HandlerAdapter.
    *
    * @param handler Implementation of ChannelInboundMessageHandlerAdapter
+   * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
   def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
@@ -72,12 +75,14 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
 /**
  * Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.
  *
- * @param doneF Function which will handle the result
+ * @param handler Inbound Message Handler Implementation
+ * @param timeout Connect timeout in seconds
  */
 class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
 
-  lazy val srv = new Bootstrap
-  lazy val bootstrap = srv.group(new NioEventLoopGroup)
+  private var disabled = false
+  private lazy val srv = new Bootstrap
+  private lazy val bootstrap = srv.group(new NioEventLoopGroup)
     .channel(classOf[NioSocketChannel])
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
@@ -111,6 +116,8 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
    * @param headers The mysteries keep piling up!
    */
   def get(url: java.net.URL, headers: Map[String, String] = Map()) = {
+    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
+
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
     req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
@@ -132,10 +139,12 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
    * @param url This is getting weird..
    * @param mime The MIME type of the request
    * @param body ByteArray to be send
-   * @param method HTTP Method to be used
    * @param headers
+   * @param method HTTP Method to be used
    */
   def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) = {
+    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
+
     val content = Unpooled.wrappedBuffer(body.toArray)
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
     req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
@@ -154,12 +163,26 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     })
   }
 
+  /**
+   * Send a message to thruput.io endpoint.
+   *
+   * @param url thruput.io Endpoint
+   * @param auth Authentication Key for thruput.io platform
+   * @param sign Signing Key for thruput.io platform
+   * @param payload Payload to be sent
+   */
   def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String) = {
+    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
+
     val headers = Map("X-Io-Auth" -> auth.toString, "X-Io-Sign" -> io.wasted.util.Hashing.sign(sign.toString, payload))
     post(url, "application/json", payload.map(_.toByte), headers, HttpMethod.PUT)
   }
 
-  def close() {
+  /**
+   * Shutdown this client.
+   */
+  def shutdown() {
+    disabled = true
     srv.shutdown()
   }
 }
