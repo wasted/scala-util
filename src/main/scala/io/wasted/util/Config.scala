@@ -2,6 +2,9 @@ package io.wasted.util
 
 import com.typesafe.config.ConfigFactory
 
+/**
+ * Wrapper around Typesafe [[http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html ConfigFactory]].
+ */
 object Config {
   private val conf = ConfigFactory.load()
 

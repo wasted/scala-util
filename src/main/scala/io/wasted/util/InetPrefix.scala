@@ -19,6 +19,9 @@ object InetPrefix {
 
 }
 
+/**
+ * Common Interface for both protocol types.
+ */
 trait InetPrefix extends Logger {
 
   /**
