@@ -1,5 +1,6 @@
 package io.wasted.util
 
+import scala.concurrent.duration.Duration
 import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -91,6 +92,43 @@ object Wactor {
   trait Address {
     def !(msg: Any): Unit
     def !!(msg: Any): Unit = this ! (msg)
+
+    /**
+     * Schedule an event once on this Wactor.
+     *
+     * @param msg Message to be sent to the actor
+     * @param initialDelay Initial delay before first firing
+     */
+    def scheduleOnce(msg: Any, initialDelay: Duration): Schedule.Action =
+      Schedule.once(() => { this ! msg }, initialDelay)
+
+    /**
+     * Schedule an event once on this Wactor for High Priority.
+     *
+     * @param msg Message to be sent to the actor
+     * @param initialDelay Initial delay before first firing
+     */
+    def scheduleOnceHigh(msg: Any, initialDelay: Duration): Schedule.Action =
+      Schedule.once(() => { this !! msg }, initialDelay)
+
+    /**
+     * Schedule an event over and over again on this Wactor for High Priority.
+     *
+     * @param msg Message to be sent to the actor
+     * @param initialDelay Initial delay before first firing
+     * @param delay Delay to be called after the first firing
+     */
+    def scheduleHigh(msg: Any, initialDelay: Duration, delay: Duration): Schedule.Action =
+      Schedule.again(() => { this !! msg }, initialDelay, delay)
+
+    /**
+     * Schedule an event over and over again on this Wactor.
+     *
+     * @param msg Message to be sent to the actor
+     * @param initialDelay Initial delay before first firing
+     * @param delay Delay to be called after the first firing
+     */
+    def schedule(msg: Any, initialDelay: Duration, delay: Duration): Schedule.Action =
+      Schedule.again(() => { this ! msg }, initialDelay, delay)
   }
 }
-

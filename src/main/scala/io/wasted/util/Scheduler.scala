@@ -1,8 +1,8 @@
 package io.wasted.util
 
-import scala.concurrent.duration._
+import scala.concurrent.duration.Duration
 import io.netty.util.{ Timeout, TimerTask }
-import java.util.concurrent.{ ConcurrentHashMap, ConcurrentLinkedQueue, Executor, Executors }
+import java.util.concurrent.{ConcurrentHashMap, ConcurrentLinkedQueue, Executor, Executors}
 
 /**
  * Wasted Scheduler based on Netty's HashedWheelTimer
@@ -21,10 +21,10 @@ object Schedule extends Logger {
   }
 
   private def repeatFunc(id: Long, func: () => Unit, delay: Duration): () => Unit = () => {
-    val to = timer.newTimeout(task(repeatFunc(id, func, delay)), delay.length, delay.unit)
-    repeatTimers.put(id, to)
-    func()
-  }
+      val to = timer.newTimeout(task(repeatFunc(id, func, delay)), delay.length, delay.unit)
+      repeatTimers.put(id, to)
+      func()
+    }
 
   /**
    * Schedule an event.
@@ -80,7 +80,6 @@ object Schedule extends Logger {
    */
   class Action(timeout: Option[Timeout]) {
     lazy val id = scala.util.Random.nextLong
-
     private def getTimeout() = timeout orElse Option(repeatTimers.get(id))
 
     /**
@@ -98,5 +97,4 @@ object Schedule extends Logger {
      */
     def task(): Option[TimerTask] = getTimeout.map(_.task)
   }
-
 }
