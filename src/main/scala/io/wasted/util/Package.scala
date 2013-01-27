@@ -28,5 +28,5 @@ package io.wasted
  * }}}
  *
  */
-package object util
+package object util {}
 
