@@ -1,5 +1,6 @@
 package io.wasted.util
 
+import scala.util.{ Try, Success, Failure }
 import scala.concurrent.duration.Duration
 import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
@@ -47,9 +48,9 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
   // If there's something to process, and we're not already scheduled
   private final def async() {
     if (!(mboxHigh.isEmpty && mboxNormal.isEmpty) && on.compareAndSet(0, 1))
-      scala.util.Try(ec.execute(this)) match {
-        case scala.util.Success(f) =>
-        case scala.util.Failure(e) =>
+      Try(ec.execute(this)) match {
+        case Success(f) =>
+        case Failure(e) =>
           on.set(0)
           throw e
       }
@@ -77,7 +78,11 @@ object Wactor {
   /* Default dispatch Behavior. */
   object Dispatch {
     def apply(pf: PartialFunction[Any, Any]) = (msg: Any) => {
-      pf(msg)
+      Try(pf(msg)) match {
+        case Success(e) =>
+        case Failure(e: scala.MatchError) =>
+        case Failure(e) => e.printStackTrace
+      }
       Stay
     }
   }
