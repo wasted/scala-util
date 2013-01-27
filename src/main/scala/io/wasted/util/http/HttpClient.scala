@@ -11,8 +11,11 @@ import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
 
-import javax.net.ssl.SSLEngine
+import java.security.KeyStore
 import java.net.InetSocketAddress
+import java.io.{ File, FileInputStream }
+import javax.net.ssl.KeyManagerFactory
+import javax.net.ssl.{ SSLEngine, SSLContext }
 
 /**
  * Netty HTTP Client Object to create HTTP Request Objects.
@@ -49,6 +52,35 @@ object HttpClient {
   def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
     new HttpClient(handler, timeout, engine)
 
+  /* Default Client SSLContext. */
+  lazy val defaultClientSSLContext: SSLContext = {
+    val ks = KeyStore.getInstance("JKS")
+    val ts = KeyStore.getInstance("JKS")
+    val passphrase = "defaultClientStorePass".toCharArray
+
+    val keyStoreFile = File.createTempFile("keyStoreFile", ".jks")
+    keyStoreFile.deleteOnExit
+    ks.load(new FileInputStream(keyStoreFile), passphrase)
+
+    val kmf = KeyManagerFactory.getInstance("SunX509")
+    kmf.init(ks, passphrase)
+
+    val sslCtx = SSLContext.getInstance("TLS")
+    sslCtx.init(kmf.getKeyManagers(), null, null)
+    sslCtx
+  }
+
+  /**
+   * Get a SSLEngine for clients for given host and port.
+   *
+   * @param host Hostname
+   * @param port Port
+   */
+  def getSSLClientEngine(host: String, port: Int): SSLEngine = {
+    val ce = defaultClientSSLContext.createSSLEngine(host, port)
+    ce.setUseClientMode(true)
+    ce
+  }
 }
 
 /**
