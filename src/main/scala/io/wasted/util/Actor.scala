@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import java.util.concurrent.{ConcurrentLinkedQueue, Executor, Executors}
+import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -25,16 +25,15 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
 
   // Add a message with normal priority
   final override def !(msg: Any): Unit = behavior match {
-    case dead @ Die.`like` => dead(msg)  // Efficiently bail out if we're _known_ to be dead
-    case _ => mboxNormal.offer(msg); async()   // Enqueue the message onto the mailbox and try to schedule for execution
+    case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
+    case _ => mboxNormal.offer(msg); async() // Enqueue the message onto the mailbox and try to schedule for execution
   }
 
   // Add a message with high priority
   final override def !!(msg: Any): Unit = behavior match {
-    case dead @ Die.`like` => dead(msg)  // Efficiently bail out if we're _known_ to be dead
-    case _ => mboxHigh.offer(msg); async()   // Enqueue the message onto the mailbox and try to schedule for execution
+    case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
+    case _ => mboxHigh.offer(msg); async() // Enqueue the message onto the mailbox and try to schedule for execution
   }
-
 
   final def run(): Unit = try {
     if (on.get == 1) behavior = behavior(if (mboxHigh.isEmpty) mboxNormal.poll else mboxHigh.poll)(behavior)
@@ -47,7 +46,7 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
   // If there's something to process, and we're not already scheduled
   private final def async() {
     if (!(mboxHigh.isEmpty && mboxNormal.isEmpty) && on.compareAndSet(0, 1))
-      scala.util.Try(e.execute(this)) match {
+      scala.util.Try(ec.execute(this)) match {
         case scala.util.Success(f) =>
         case scala.util.Failure(e) =>
           on.set(0)
@@ -61,7 +60,7 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
  */
 object Wactor {
   private[util] val executionContext: Executor = Executors.newCachedThreadPool
-  private[util] type Behavior = Any => Effect
+  private[util]type Behavior = Any => Effect
   private[util] sealed trait Effect extends (Behavior => Behavior)
 
   /* Effect which tells the actor to keep the current behavior. */
@@ -94,4 +93,4 @@ object Wactor {
     def !!(msg: Any): Unit = this ! (msg)
   }
 }
- 
+
