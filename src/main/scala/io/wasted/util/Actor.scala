@@ -15,6 +15,13 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
   override protected def loggerName: String
   protected def receive: PartialFunction[Any, Any]
 
+  /**
+   * Netty-style exceptionCaught method which will get all exceptions caught while running a job.
+   */
+  protected def exceptionCaught(e: Throwable) {
+    e.printStackTrace
+  }
+
   // Our little indicator if this actor is on or not
   val on = new AtomicInteger(0)
 
@@ -23,7 +30,7 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
   private final val mboxNormal = new ConcurrentLinkedQueue[Any]
 
   // Rebindable top of the mailbox, bootstrapped to Dispatch behavior
-  private var behavior: Behavior = Dispatch(receive)
+  private var behavior: Behavior = Dispatch(this, receive)
 
   // Add a message with normal priority
   final override def !(msg: Any): Unit = behavior match {
@@ -77,11 +84,11 @@ object Wactor {
 
   /* Default dispatch Behavior. */
   object Dispatch {
-    def apply(pf: PartialFunction[Any, Any]) = (msg: Any) => {
+    def apply(actor: Wactor, pf: PartialFunction[Any, Any]) = (msg: Any) => {
       Try(pf(msg)) match {
         case Success(e) =>
         case Failure(e: scala.MatchError) =>
-        case Failure(e) => e.printStackTrace
+        case Failure(e) => actor.exceptionCaught(e)
       }
       Stay
     }
