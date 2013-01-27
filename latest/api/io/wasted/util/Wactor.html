@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Inet4Prefix - io.wasted.util.Inet4Prefix</title>
-          <meta name="description" content="Inet4Prefix - io.wasted.util.Inet4Prefix" />
-          <meta name="keywords" content="Inet4Prefix io.wasted.util.Inet4Prefix" />
+          <title>Wactor - io.wasted.util.Wactor</title>
+          <meta name="description" content="Wactor - io.wasted.util.Wactor" />
+          <meta name="keywords" content="Wactor io.wasted.util.Wactor" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'io.wasted.util.Inet4Prefix';
+            var hash = 'io.wasted.util.Wactor';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,25 +29,28 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/class_big.png" />
+        <a href="Wactor$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a>.<a href="package.html" class="extype" name="io.wasted.util">util</a></p>
-        <h1>Inet4Prefix</h1>
+        <h1><a href="Wactor$.html" title="Go to companion">Wactor</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Inet4Prefix</span><span class="result"> extends <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></span>
+        <span class="name">Wactor</span><span class="result"> extends <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a> with <span class="extype" name="java.lang.Runnable">Runnable</span> with <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Inet4Prefix object to hold information about an IPv4 Prefix.</p><p>Currently only containment checks are implemented.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a>, <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="java.lang.Runnable">Runnable</span>, <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="http/Thruput.html" class="extype" name="io.wasted.util.http.Thruput">Thruput</a></div>
         </div></div>
         
 
@@ -65,7 +68,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.Inet4Prefix"><span>Inet4Prefix</span></li><li class="in" name="io.wasted.util.InetPrefix"><span>InetPrefix</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.Wactor"><span>Wactor</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="java.lang.Runnable"><span>Runnable</span></li><li class="in" name="io.wasted.util.Wactor.Address"><span>Address</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -85,30 +88,72 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="io.wasted.util.Inet4Prefix#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(prefix:java.net.InetAddress,prefixLen:Int):io.wasted.util.Inet4Prefix"></a>
-      <a id="&lt;init&gt;:Inet4Prefix"></a>
+              <ol><li name="io.wasted.util.Wactor#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;()(implicitec:java.util.concurrent.Executor):io.wasted.util.Wactor"></a>
+      <a id="&lt;init&gt;:Wactor"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Inet4Prefix</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="java.net.InetAddress">InetAddress</span></span>, <span name="prefixLen">prefixLen: <span class="extype" name="scala.Int">Int</span></span>)</span>
+        <span class="name">Wactor</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="java.util.concurrent.Executor">Executor</span> = <span class="symbol">Wactor.executionContext</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">prefix</dt><dd class="cmt"><p>Base-Address for the Prefix</p></dd><dt class="param">prefixLen</dt><dd class="cmt"><p>Length of this Prefix in CIDR notation
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ec</dt><dd class="cmt"><p>ExecutionContext to be used
 </p></dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="io.wasted.util.Wactor#receive" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="receive:PartialFunction[Any,Any]"></a>
+      <a id="receive:PartialFunction[Any,Any]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">receive</span><span class="result">: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li></ol>
+            </div>
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
-              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="io.wasted.util.Wactor#!" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!(msg:Any):Unit"></a>
+      <a id="!(Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang" class="name">!</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Wactor">Wactor</a> → <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
+    </li><li name="io.wasted.util.Wactor#!!" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!!(msg:Any):Unit"></a>
+      <a id="!!(Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$bang" class="name">!!</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Wactor">Wactor</a> → <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
+    </li><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -202,20 +247,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Inet4Prefix#contains" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="contains(addr:java.net.InetAddress):Boolean"></a>
-      <a id="contains(InetAddress):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">contains</span><span class="params">(<span name="addr">addr: <span class="extype" name="java.net.InetAddress">InetAddress</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Check if the given InetAddress is contained in this IPv4 prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Check if the given InetAddress is contained in this IPv4 prefix.</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>The InetAddr which is to be checked.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet4Prefix">Inet4Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
     </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="debug(msg:String,x:Any*):Unit"></a>
       <a id="debug(String,Any*):Unit"></a>
@@ -326,20 +357,6 @@
       </h4>
       <p class="shortcomment cmt">Prints a message on info.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on info.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.wasted.util.Inet4Prefix#ipVersion" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ipVersion:Int"></a>
-      <a id="ipVersion:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ipVersion</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Either 4 for IPv4 or 6 for IPv6.</p><div class="fullcomment"><div class="comment cmt"><p>Either 4 for IPv4 or 6 for IPv6.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet4Prefix">Inet4Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -406,34 +423,92 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.Inet4Prefix#prefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="prefix:java.net.InetAddress"></a>
-      <a id="prefix:InetAddress"></a>
+    </li><li name="io.wasted.util.Wactor#on" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="on:java.util.concurrent.atomic.AtomicInteger"></a>
+      <a id="on:AtomicInteger"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">prefix</span><span class="result">: <span class="extype" name="java.net.InetAddress">InetAddress</span></span>
+        <span class="name">on</span><span class="result">: <span class="extype" name="java.util.concurrent.atomic.AtomicInteger">AtomicInteger</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Base-Address for the Prefix</p><div class="fullcomment"><div class="comment cmt"><p>Base-Address for the Prefix</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet4Prefix">Inet4Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
-    </li><li name="io.wasted.util.Inet4Prefix#prefixLen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="prefixLen:Int"></a>
-      <a id="prefixLen:Int"></a>
+      
+    </li><li name="io.wasted.util.Wactor#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="run():Unit"></a>
+      <a id="run():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">run</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Wactor">Wactor</a> → Runnable</dd></dl></div>
+    </li><li name="io.wasted.util.Wactor.Address#schedule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="schedule(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
+      <a id="schedule(Any,Duration,Duration):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">prefixLen</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">schedule</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Length of this Prefix in CIDR notation
-</p><div class="fullcomment"><div class="comment cmt"><p>Length of this Prefix in CIDR notation
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.Inet4Prefix">Inet4Prefix</a> → <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></dd></dl></div>
+      <p class="shortcomment cmt">Schedule an event over and over again on this Wactor.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again on this Wactor.
+</p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
+    </li><li name="io.wasted.util.Wactor.Address#scheduleHigh" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scheduleHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleHigh(Any,Duration,Duration):Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scheduleHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Schedule an event over and over again on this Wactor for High Priority.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again on this Wactor for High Priority.
+</p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
+    </li><li name="io.wasted.util.Wactor.Address#scheduleOnce" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scheduleOnce(msg:Any,initialDelay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleOnce(Any,Duration):Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scheduleOnce</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Schedule an event once on this Wactor.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event once on this Wactor.
+</p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
+    </li><li name="io.wasted.util.Wactor.Address#scheduleOnceHigh" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scheduleOnceHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleOnceHigh(Any,Duration):Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scheduleOnceHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Schedule an event once on this Wactor for High Priority.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event once on this Wactor for High Priority.
+</p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></dd></dl></div>
     </li><li name="io.wasted.util.Logger#stackTraceToString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stackTraceToString:Throwable=&gt;String"></a>
       <a id="stackTraceToString:(Throwable)⇒String"></a>
@@ -475,19 +550,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.InetPrefix#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString:String"></a>
-      <a id="toString:String"></a>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -559,10 +634,12 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="io.wasted.util.InetPrefix">
-              <h3>Inherited from <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></h3>
-            </div><div class="parent" name="io.wasted.util.Logger">
+        <div class="parent" name="io.wasted.util.Logger">
               <h3>Inherited from <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
+            </div><div class="parent" name="java.lang.Runnable">
+              <h3>Inherited from <span class="extype" name="java.lang.Runnable">Runnable</span></h3>
+            </div><div class="parent" name="io.wasted.util.Wactor.Address">
+              <h3>Inherited from <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

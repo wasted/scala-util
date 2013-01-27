@@ -253,7 +253,7 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#beginMessageReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#beginMessageReceived" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="beginMessageReceived(x$1:io.netty.channel.ChannelHandlerContext):Boolean"></a>
       <a id="beginMessageReceived(ChannelHandlerContext):Boolean"></a>
       <h4 class="signature">
@@ -265,7 +265,7 @@
         <span class="name">beginMessageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="io.netty.channel">io.netty.channel</span>] </dd><dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -295,6 +295,22 @@
       </span>
       <span class="symbol">
         <span class="name">channelInactive</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="io.netty.channel.ChannelStateHandlerAdapter#channelReadSuspended" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="channelReadSuspended(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="channelReadSuspended(ChannelHandlerContext):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">channelReadSuspended</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
@@ -363,7 +379,7 @@
       </h4>
       <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#endMessageReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#endMessageReceived" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="endMessageReceived(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="endMessageReceived(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
@@ -375,7 +391,7 @@
         <span class="name">endMessageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="io.netty.channel">io.netty.channel</span>] </dd><dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -449,18 +465,34 @@
               
         </dd></dl></div>
     </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#freeInboundBuffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="freeInboundBuffer(x$1:io.netty.channel.ChannelHandlerContext,x$2:io.netty.buffer.ChannelBuf):Unit"></a>
-      <a id="freeInboundBuffer(ChannelHandlerContext,ChannelBuf):Unit"></a>
+      <a id="freeInboundBuffer(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="freeInboundBuffer(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">freeInboundBuffer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="arg1">arg1: <span class="extype" name="io.netty.buffer.ChannelBuf">ChannelBuf</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">freeInboundBuffer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#freeInboundMessage" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="freeInboundMessage(x$1:I):Unit"></a>
+      <a id="freeInboundMessage(AnyRef):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">freeInboundMessage</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="io.netty.channel">io.netty.channel</span>] </dd><dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -502,7 +534,7 @@
         <span class="name">inboundBufferUpdated</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelInboundHandlerAdapter → ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
