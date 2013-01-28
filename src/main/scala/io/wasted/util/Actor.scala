@@ -6,7 +6,7 @@ import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
- * Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor.
+ * Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).
  *
  * @param ec ExecutionContext to be used
  */
