@@ -2,7 +2,7 @@ package io.wasted.util
 
 import scala.util.{ Try, Success, Failure }
 import scala.concurrent.duration.Duration
-import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors }
+import java.util.concurrent.{ ForkJoinPool, ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger
  *
  * @param ec ExecutionContext to be used
  */
-abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends Wactor.Address with Runnable with Logger {
+abstract class Wactor(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.Address with Runnable with Logger {
   import Wactor._
   override protected def loggerName: String
   protected def receive: PartialFunction[Any, Any]
@@ -68,7 +68,8 @@ abstract class Wactor(implicit ec: Executor = Wactor.executionContext) extends W
  * Wasted lightweight Actor companion
  */
 object Wactor {
-  private[util] val executionContext: Executor = Executors.newCachedThreadPool
+  private[util] lazy val ecForkJoin: Executor = new ForkJoinPool
+  private[util] lazy val ecThreadPool: Executor = Executors.newCachedThreadPool
   private[util]type Behavior = Any => Effect
   private[util] sealed trait Effect extends (Behavior => Behavior)
 

@@ -72,7 +72,7 @@ class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, tim
         case _ =>
           Try {
             writeCount.set(0L)
-            val ch = bootstrap.duplicate.connect().sync().channel()
+            val ch = bootstrap.clone.connect().sync().channel()
             handshakeFuture.sync()
 
             val body = from match {
@@ -203,7 +203,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
         info("WebSocket Client connected!")
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
-        throw new Exception("Unexpected FullHttpResponse (status=" + response.status() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
+        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
       case frame: TextWebSocketFrame =>
         debug("WebSocket Client received message: " + frame.text())
       case frame: PongWebSocketFrame =>

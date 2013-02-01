@@ -138,7 +138,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
   private def getPort(url: java.net.URL) = if (url.getPort == -1) url.getDefaultPort else url.getPort
 
   private def prepare(url: java.net.URL) = {
-    bootstrap.duplicate.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
+    bootstrap.clone.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
   }
 
   /**
