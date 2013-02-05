@@ -80,10 +80,11 @@ object Wactor {
 
   /* Default dispatch Behavior. */
   object Dispatch {
+    val fallbackPF: PartialFunction[Any, Any] = { case _ => }
     def apply(actor: Wactor, pf: PartialFunction[Any, Any]) = (msg: Any) => {
-      Try(pf(msg)) match {
+      val newpf: (Any => Any) = pf orElse fallbackPF
+      Try(newpf(msg)) match {
         case Success(e) =>
-        case Failure(e: scala.MatchError) =>
         case Failure(e) => actor.exceptionCaught(e)
       }
       Stay
