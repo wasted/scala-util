@@ -55,12 +55,7 @@ abstract class Wactor(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.
   // If there's something to process, and we're not already scheduled
   private final def async() {
     if (!(mboxHigh.isEmpty && mboxNormal.isEmpty) && on.compareAndSet(0, 1))
-      Try(ec.execute(this)) match {
-        case Success(f) =>
-        case Failure(e) =>
-          on.set(0)
-          throw e
-      }
+      try { ec.execute(this) } catch { case e: Throwable => on.set(0); throw e }
   }
 }
 
