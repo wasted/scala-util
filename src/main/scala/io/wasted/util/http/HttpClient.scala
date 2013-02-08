@@ -5,8 +5,8 @@ import io.wasted.util.Logger
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.socket._
-import io.netty.channel.socket.nio._
+import io.netty.channel.socket.SocketChannel
+import io.netty.channel.nio._
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
@@ -115,7 +115,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
   private var disabled = false
   private lazy val srv = new Bootstrap
   private lazy val bootstrap = srv.group(new NioEventLoopGroup)
-    .channel(classOf[NioSocketChannel])
+    .channel(classOf[SocketChannel])
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
     .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
