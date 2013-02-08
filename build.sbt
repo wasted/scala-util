@@ -4,7 +4,9 @@ name := "wasted-util"
 
 organization := "io.wasted"
 
-version := ("git describe --always"!!).trim
+publishTo := Some(Resolver.file("file",  new File("/data/wasted-ivy-repo")))
+
+//version := ("git describe --always"!!).trim
 
 scalaVersion := "2.10.0"
 
