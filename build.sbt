@@ -4,7 +4,7 @@ name := "wasted-util"
 
 organization := "io.wasted"
 
-version := ("git describe --always"!!).trim
+version := ("git describe --always"!!).trim.replaceAll("^v", "")
 
 scalaVersion := "2.10.0"
 
@@ -29,7 +29,7 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.13" % "test"
 )
 
-publishTo := Some(Resolver.file("file",  new File("/data/maven-repo")))
+publishTo := Some("wasted.io/repo" at "http://repo.wasted.io/mvn")
 
 scalariformSettings
 
