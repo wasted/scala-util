@@ -4,7 +4,7 @@ name := "wasted-util"
 
 organization := "io.wasted"
 
-version := ("git describe --always"!!).trim.replaceAll("^v", "")
+version := scala.io.Source.fromFile("version").mkString.trim
 
 scalaVersion := "2.10.0"
 
