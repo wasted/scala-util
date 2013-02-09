@@ -4,27 +4,14 @@ name := "wasted-util"
 
 organization := "io.wasted"
 
-publishTo := Some(Resolver.file("file",  new File("/data/wasted-ivy-repo")))
-
-//version := ("git describe --always"!!).trim
+version := ("git describe --always"!!).trim
 
 scalaVersion := "2.10.0"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
-scalariformSettings
-
-ScalariformKeys.preferences := FormattingPreferences().setPreference(AlignParameters, true)
-
-buildInfoSettings
-
-sourceGenerators in Compile <+= buildInfo
-
-buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
-
-buildInfoPackage := "io.wasted.util.build"
-
 resolvers ++= Seq(
+  "wasted.io/repo" at "http://repo.wasted.io/mvn",
   "Twitter's Repository" at "http://maven.twttr.com/",
   "Maven Repo" at "http://repo1.maven.org/maven2/",
   "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
@@ -32,7 +19,6 @@ resolvers ++= Seq(
   "Typesafe Maven Repo" at "http://repo.typesafe.com/typesafe/releases/",
   "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 )
-
 
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
@@ -43,7 +29,19 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.13" % "test"
 )
 
-releaseSettings
+publishTo := Some(Resolver.file("file",  new File("/data/maven-repo")))
+
+scalariformSettings
+
+ScalariformKeys.preferences := FormattingPreferences().setPreference(AlignParameters, true)
+
+sourceGenerators in Compile <+= buildInfo
+
+buildInfoSettings
+
+buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
+
+buildInfoPackage := "io.wasted.util.build"
 
 site.settings
 

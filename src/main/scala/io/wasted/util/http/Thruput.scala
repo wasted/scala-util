@@ -5,7 +5,7 @@ import io.wasted.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.nio._
+import io.netty.channel.socket.nio._
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
@@ -44,7 +44,7 @@ class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, tim
 
   private val srv = new Bootstrap()
   private val bootstrap = srv.group(new NioEventLoopGroup)
-    .channel(classOf[SocketChannel])
+    .channel(classOf[NioSocketChannel])
     .remoteAddress(new InetSocketAddress(uri.getHost, uri.getPort))
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, true)
@@ -86,6 +86,7 @@ class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, tim
             case Success(ch) =>
               channel = Some(ch)
             case Failure(e) =>
+              warn("Error while connecting: " + e.toString, e)
               connect()
           }
       }
