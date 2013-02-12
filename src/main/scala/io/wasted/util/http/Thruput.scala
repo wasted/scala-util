@@ -5,7 +5,8 @@ import io.wasted.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.socket.nio._
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
