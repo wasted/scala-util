@@ -40,7 +40,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
     case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
     case _ =>
       // if our queue is considered full, discard the head
-      if (maxQueueSize != -1 && queueSize.incrementAndGet > maxQueueSize) {
+      if (maxQueueSize > 0 && queueSize.incrementAndGet > maxQueueSize) {
         mboxNormal.poll
         queueSize.decrementAndGet
       }
@@ -53,7 +53,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
     case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
     case _ =>
       // if our queue is considered full, discard the head of our **normal inbox**
-      if (maxQueueSize != -1 && queueSize.incrementAndGet > maxQueueSize) {
+      if (maxQueueSize > 0 && queueSize.incrementAndGet > maxQueueSize) {
         mboxNormal.poll
         queueSize.decrementAndGet
       }
