@@ -11,10 +11,11 @@ scalaVersion := "2.10.0"
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
 resolvers ++= Seq(
+  "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
   "wasted.io/repo" at "http://repo.wasted.io/mvn",
+  "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
   "Twitter's Repository" at "http://maven.twttr.com/",
   "Maven Repo" at "http://repo1.maven.org/maven2/",
-  "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
   "Typesafe Ivy Repo" at "http://repo.typesafe.com/typesafe/ivy-releases",
   "Typesafe Maven Repo" at "http://repo.typesafe.com/typesafe/releases/",
   "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"

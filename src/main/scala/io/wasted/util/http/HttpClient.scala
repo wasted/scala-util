@@ -136,7 +136,8 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
       }
     })
 
-  private def getPort(url: java.net.URL) = if (url.getPort == -1) url.getDefaultPort else url.getPort
+  private def getPort(url: java.net.URL): Int = if (url.getPort == -1) url.getDefaultPort else url.getPort
+  private def getPortString(url: java.net.URL): String = if (url.getPort == -1) "" else (":" + url.getPort)
 
   private def prepare(url: java.net.URL) = {
     bootstrap.clone.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
@@ -152,7 +153,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
     if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
 
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
-    req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
+    req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
     headers.foreach(f => req.headers.set(f._1, f._2))
 
@@ -180,7 +181,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
 
     val content = Unpooled.wrappedBuffer(body.toArray)
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
-    req.headers.set(HttpHeaders.Names.HOST, url.getHost + ":" + getPort(url))
+    req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
     req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
     req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)

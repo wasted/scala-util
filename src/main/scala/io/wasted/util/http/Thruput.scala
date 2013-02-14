@@ -30,7 +30,7 @@ import scala.util.{ Try, Success, Failure }
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Wactor {
+class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Wactor(100000) {
   TP =>
 
   override val loggerName = uri.getHost + ":" + auth.toString

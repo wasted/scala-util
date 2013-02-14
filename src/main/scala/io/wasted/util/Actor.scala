@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger
  *
  * @param ec ExecutionContext to be used
  */
-abstract class Wactor(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.Address with Runnable with Logger {
+abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.Address with Runnable with Logger {
   import Wactor._
   override protected def loggerName: String
   protected def receive: PartialFunction[Any, Any]
@@ -25,6 +25,9 @@ abstract class Wactor(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.
   // Our little indicator if this actor is on or not
   val on = new AtomicInteger(0)
 
+  // Queue/LRU management counter
+  private val queueSize = new AtomicInteger(0)
+
   // Our awesome little mailboxes, free of blocking and evil
   private final val mboxHigh = new ConcurrentLinkedQueue[Any]
   private final val mboxNormal = new ConcurrentLinkedQueue[Any]
@@ -35,17 +38,38 @@ abstract class Wactor(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.
   // Add a message with normal priority
   final override def !(msg: Any): Unit = behavior match {
     case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
-    case _ => mboxNormal.offer(msg); async() // Enqueue the message onto the mailbox and try to schedule for execution
+    case _ =>
+      // if our queue is considered full, discard the head
+      if (maxQueueSize != -1 && queueSize.incrementAndGet > maxQueueSize) {
+        mboxNormal.poll
+        queueSize.decrementAndGet
+      }
+      mboxNormal.offer(msg) // Enqueue the message onto the mailbox
+      async() // try to schedule for execution
   }
 
   // Add a message with high priority
   final override def !!(msg: Any): Unit = behavior match {
     case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
-    case _ => mboxHigh.offer(msg); async() // Enqueue the message onto the mailbox and try to schedule for execution
+    case _ =>
+      // if our queue is considered full, discard the head of our **normal inbox**
+      if (maxQueueSize != -1 && queueSize.incrementAndGet > maxQueueSize) {
+        mboxNormal.poll
+        queueSize.decrementAndGet
+      }
+      mboxHigh.offer(msg) // Enqueue the message onto the mailbox
+      async() // try to schedule for execution
   }
 
   final def run(): Unit = try {
-    if (on.get == 1) behavior = behavior(if (mboxHigh.isEmpty) mboxNormal.poll else mboxHigh.poll)(behavior)
+    if (on.get == 1) behavior = behavior({
+      queueSize.decrementAndGet
+      val ret = if (mboxHigh.isEmpty) mboxNormal.poll else mboxHigh.poll
+      if (ret == Die) {
+        mboxNormal.clear
+        mboxHigh.clear
+      }
+    })(behavior)
   } finally {
     // Switch ourselves off, and then see if we should be rescheduled for execution
     on.set(0)
