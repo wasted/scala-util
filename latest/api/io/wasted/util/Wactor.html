@@ -44,7 +44,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="java.lang.Runnable">Runnable</span>, <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -89,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.Wactor#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitec:java.util.concurrent.Executor):io.wasted.util.Wactor"></a>
+      <a id="&lt;init&gt;(maxQueueSize:Int)(implicitec:java.util.concurrent.Executor):io.wasted.util.Wactor"></a>
       <a id="&lt;init&gt;:Wactor"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,7 +97,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Wactor</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="java.util.concurrent.Executor">Executor</span> = <span class="symbol">Wactor.executionContext</span></span>)</span>
+        <span class="name">Wactor</span><span class="params">(<span name="maxQueueSize">maxQueueSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="java.util.concurrent.Executor">Executor</span> = <span class="symbol">Wactor.ecForkJoin</span></span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ec</dt><dd class="cmt"><p>ExecutionContext to be used
@@ -301,6 +301,20 @@
       </h4>
       <p class="shortcomment cmt">Prints a message on error.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on error.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
+    </li><li name="io.wasted.util.Wactor#exceptionCaught" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="exceptionCaught(e:Throwable):Unit"></a>
+      <a id="exceptionCaught(Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">exceptionCaught</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Netty-style exceptionCaught method which will get all exceptions caught while running a job.</p><div class="fullcomment"><div class="comment cmt"><p>Netty-style exceptionCaught method which will get all exceptions caught while running a job.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
