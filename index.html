@@ -36,11 +36,10 @@
 
         <h2>Using our repository</h2>
 
-        <pre><code>  not done yet ;)</code></pre>
-
-        <h2>Do-it-yourself</h2>
-
-        <pre><code>  ./sbt publish-local</code></pre>
+        <pre><code>
+          resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
+          libraryDependencies += "io.wasted" %% "wasted-util" % "0.5.0-SNAPSHOT"
+        </code></pre>
 
         <h1>License</h1>
 
