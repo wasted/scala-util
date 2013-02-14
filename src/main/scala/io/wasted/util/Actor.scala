@@ -39,12 +39,14 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
   final override def !(msg: Any): Unit = behavior match {
     case dead @ Die.`like` => dead(msg) // Efficiently bail out if we're _known_ to be dead
     case _ =>
+      var dontQueueBecauseWeAreNotHighEnough = false // ;)
       // if our queue is considered full, discard the head
       if (maxQueueSize > 0 && queueSize.incrementAndGet > maxQueueSize) {
-        mboxNormal.poll
+        dontQueueBecauseWeAreNotHighEnough = mboxNormal.poll == null
         queueSize.decrementAndGet
       }
-      mboxNormal.offer(msg) // Enqueue the message onto the mailbox
+      // Enqueue the message onto the mailbox only if we are high enough
+      if (!dontQueueBecauseWeAreNotHighEnough) mboxNormal.offer(msg)
       async() // try to schedule for execution
   }
 
@@ -54,7 +56,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
     case _ =>
       // if our queue is considered full, discard the head of our **normal inbox**
       if (maxQueueSize > 0 && queueSize.incrementAndGet > maxQueueSize) {
-        mboxNormal.poll
+        if (mboxNormal.poll == null) mboxHigh.poll
         queueSize.decrementAndGet
       }
       mboxHigh.offer(msg) // Enqueue the message onto the mailbox
