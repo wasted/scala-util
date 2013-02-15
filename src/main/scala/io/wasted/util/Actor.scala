@@ -71,6 +71,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
         mboxNormal.clear
         mboxHigh.clear
       }
+      ret
     })(behavior)
   } finally {
     // Switch ourselves off, and then see if we should be rescheduled for execution
