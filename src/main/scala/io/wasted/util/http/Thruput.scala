@@ -171,6 +171,7 @@ class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, tim
    * Shutdown this client.
    */
   def shutdown() {
+    disconnected = true
     srv.shutdown()
     on.set(0)
   }
