@@ -25,19 +25,33 @@ import scala.util.{ Try, Success, Failure }
  * @param ident Transaction Identifier
  * @param expire Expiry
  */
-case class APNMessage(deviceToken: String, payload: String, ident: Int = scala.util.Random.nextInt, expire: Int = 0) {
+case class APNMessage(deviceToken: String, payload: String, ident: Option[Int] = None, expire: Option[Int] = None) {
   lazy val bytes = {
     val payloadA: Array[Byte] = payload.toArray.map(_.toByte)
     val deviceTokenA: Array[Byte] = deviceToken.grouped(2).map(Integer.valueOf(_, 16).toByte).toArray
-    val buf = Unpooled.buffer(1 + 4 + 4 + 2 + deviceToken.length + 2 + payload.length)
-    buf.writeByte(1.toByte & 0xff) // Command set version 1
-    buf.writeInt(ident & 0xffff) // Transaction Identifier
-    buf.writeInt(expire & 0xffff) // Message Expiry
-    buf.writeShort(deviceTokenA.length)
-    buf.writeBytes(deviceTokenA)
-    buf.writeShort(payloadA.length)
-    buf.writeBytes(payloadA)
-    buf
+
+    // check if we have to use enhanced command set
+    (ident, expire) match {
+      case (None, None) =>
+        val buf = Unpooled.buffer(1 + 2 + deviceTokenA.length + 2 + payload.length)
+        buf.writeByte(0.toByte & 0xff) // Command set version 1
+        buf.writeShort(deviceTokenA.length)
+        buf.writeBytes(deviceTokenA)
+        buf.writeShort(payloadA.length)
+        buf.writeBytes(payloadA)
+        buf
+
+      case _ =>
+        val buf = Unpooled.buffer(1 + 4 + 4 + 2 + deviceTokenA.length + 2 + payload.length)
+        buf.writeByte(1.toByte & 0xff) // Command set version 1
+        buf.writeInt(ident.getOrElse(0) & 0xffff) // Transaction Identifier
+        buf.writeInt(expire.getOrElse(0) & 0xffff) // Message Expiry
+        buf.writeShort(deviceTokenA.length)
+        buf.writeBytes(deviceTokenA)
+        buf.writeShort(payloadA.length)
+        buf.writeBytes(payloadA)
+        buf
+    }
   }
   lazy val size = bytes.capacity
 }
@@ -59,6 +73,7 @@ object APN {
  * @param loggerName Name of this APN instance in Log-lines
  * @param p12 exported .p12 from KeyChain
  * @param secret Password to open the p12 file
+ * @param enhanced Use enhanced APN commands
  * @param sandbox Use sandbox or producation servers
  * @param timeout Connect timeout to servers
  */
@@ -159,8 +174,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
         case Some(ch) =>
           ch.write(msg.bytes).addListener(new ChannelFutureListener() {
             override def operationComplete(cf: ChannelFuture) {
-              if (cf.isDone && cf.isSuccess)
-                writeCount.addAndGet(1L)
+              if (cf.isSuccess) writeCount.addAndGet(1L)
               else thisAPN ! msg
             }
           })
@@ -211,17 +225,14 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
  * Empty Netty Response Adapter which is used for APN high-performance delivery.
  */
 @ChannelHandler.Sharable
-class APNResponseAdapter(client: APN) extends ChannelInboundMessageHandlerAdapter[Object] with Logger {
+class APNResponseAdapter(client: APN) extends ChannelInboundByteHandlerAdapter with Logger {
   override val loggerName = client.loggerName
 
-  override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
+  override def inboundBufferUpdated(ctx: ChannelHandlerContext, buf: ByteBuf) {
     val ch = ctx.channel()
-
-    msg match {
-      case o: Object =>
-        error("Unsupported response type! " + o.toString)
-        ch.close()
-    }
+    buf.release
+    // TODO we should do some error codes (maybe), but who would actually collect them?
+    //ch.close()
   }
 
   override def channelInactive(ctx: ChannelHandlerContext) {
