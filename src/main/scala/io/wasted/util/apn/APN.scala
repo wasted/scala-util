@@ -185,7 +185,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
   }
 
   /**
-   * Reconnect this Thruput Client Socket. (only used by Handler)
+   * Reconnect this APN Client Socket. (only used by Handler)
    */
   def reconnect() {
     if (reconnecting || disconnected || connecting) return
@@ -193,7 +193,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
   }
 
   /**
-   * Connect this Thruput Client Socket.
+   * Connect this APN Client Socket.
    */
   def connect() {
     if (channel != None) return
@@ -201,7 +201,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
   }
 
   /**
-   * Disconnect this Thruput Client Socket.
+   * Disconnect this APN Client Socket.
    */
   def disconnect() {
     this !! Disconnect
