@@ -24,6 +24,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
   "com.typesafe" % "config" % "0.6.0",
+  "commons-codec" % "commons-codec" % "1.7",
   "io.netty" % "netty-all" % "4.0.0.Beta1",
   "org.joda" % "joda-convert" % "1.2",
   "joda-time" % "joda-time" % "2.1",
