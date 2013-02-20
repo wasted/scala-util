@@ -144,6 +144,25 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
   }
 
   /**
+   * Write a Netty HttpRequest directly through to the given URL.
+   *
+   * @param url What could this be?
+   * @param req Netty FullHttpRequest
+   */
+  def write(url: java.net.URL, req: FullHttpRequest) = {
+    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
+
+    val bootstrap = prepare(url)
+    bootstrap.connect().addListener(new ChannelFutureListener() {
+      override def operationComplete(cf: ChannelFuture) {
+        if (!cf.isSuccess) return
+        cf.channel.write(req)
+        cf.channel.closeFuture()
+      }
+    })
+  }
+
+  /**
    * Run a GET-Request on the given URL.
    *
    * @param url What could this be?
