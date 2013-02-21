@@ -101,7 +101,6 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
   }
 
   override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
-    println(msg)
     msg match {
       case a: HttpResponse => doneF(Some(a.retain))
       case _ => doneF(None)
