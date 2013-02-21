@@ -25,33 +25,36 @@ object HttpClient {
   /**
    * Creates a HTTP Client which will call the given method with the returned HttpResponse.
    *
+   * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] = {
+  def apply(chunked: Bollean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] = {
     val doneF = (x: Option[io.netty.handler.codec.http.HttpResponse]) => {}
-    this.apply(new HttpClientResponseAdapter(doneF), timeout, engine)
+    this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
   }
 
   /**
    * Creates a HTTP Client which will call the given method with the returned HttpResponse.
    *
    * @param doneF Function which will handle the result
+   * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(doneF: (Option[HttpResponse]) => Unit, timeout: Int, engine: Option[SSLEngine]): HttpClient[Object] =
-    this.apply(new HttpClientResponseAdapter(doneF), timeout, engine)
+  def apply(doneF: (Option[HttpResponse]) => Unit, chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] =
+    this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
 
   /**
    * Creates a HTTP Client which implements the given Netty HandlerAdapter.
    *
    * @param handler Implementation of ChannelInboundMessageHandlerAdapter
+   * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
-    new HttpClient(handler, timeout, engine)
+  def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[T] =
+    new HttpClient(handler, chunked, timeout, engine)
 
   /* Default Client SSLContext. */
   lazy val defaultClientSSLContext: SSLContext = {
@@ -98,8 +101,9 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
   }
 
   override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
+    println(msg)
     msg match {
-      case a: HttpResponse => doneF(Some(a))
+      case a: HttpResponse => doneF(Some(a.retain))
       case _ => doneF(None)
     }
   }
@@ -109,9 +113,11 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
  * Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.
  *
  * @param handler Inbound Message Handler Implementation
+ * @param chunked Get responses in chunks
  * @param timeout Connect timeout in seconds
+ * @param engine Optional SSLEngine
  */
-class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
+class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -132,6 +138,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], t
         })
         engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
         p.addLast("codec", new HttpClientCodec)
+        if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
         p.addLast("handler", handler)
       }
     })
