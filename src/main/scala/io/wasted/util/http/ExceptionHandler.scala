@@ -19,6 +19,7 @@ object ExceptionHandler {
   def apply(ctx: ChannelHandlerContext, cause: Throwable): Option[Throwable] = {
     val s = cause.toString
     if (s.startsWith("java.nio.channels.ClosedChannelException") ||
+      s.startsWith("io.netty.handler.codec.CorruptedFrameException") ||
       s.startsWith("java.io.IOException") ||
       s.startsWith("javax.net.ssl.SSLException") ||
       s.startsWith("java.lang.IllegalArgumentException")) return None
