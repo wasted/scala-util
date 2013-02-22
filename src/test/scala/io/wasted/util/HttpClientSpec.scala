@@ -23,19 +23,18 @@ class HttpClientSpec extends Specification {
     case x: Object =>
   }
 
-  val client1 = HttpClient(client1func _, 5, None)
-  client1.get(url)
-  Thread.sleep(5000)
-  client1.shutdown
+  val client1 = HttpClient(client1func _, false, 5, None)
+  step(client1.get(url))
 
   "GET Request to http://wasted.io" should {
     "return true" in {
-      result1 must_== true
+      result1 must be_==(true).eventually
     }
     "contain the phrase \"wasted.io\" somewhere" in {
-      content1 must contain("wasted.io")
+      content1 must contain("wasted.io").eventually
     }
   }
 
+  step(client1.shutdown)
 }
 
