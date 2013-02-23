@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger
  * @param ec ExecutionContext to be used
  */
 abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.Address with Runnable with Logger {
-  import Wactor._
   override protected def loggerName: String
   protected def receive: PartialFunction[Any, Any]
 
@@ -31,6 +30,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
   // Our awesome little mailboxes, free of blocking and evil
   private final val mboxHigh = new ConcurrentLinkedQueue[Any]
   private final val mboxNormal = new ConcurrentLinkedQueue[Any]
+  import Wactor._
 
   // Rebindable top of the mailbox, bootstrapped to Dispatch behavior
   private var behavior: Behavior = Dispatch(this, receive)

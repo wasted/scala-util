@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util._
+import io.wasted.util.Base64
 
 import org.specs2.mutable._
 
@@ -22,8 +22,8 @@ class Base64Spec extends Specification {
     }
   }
 
-  "Precalculated sign (" + ourB64Array + ")" should {
-    "be the same as the calculated (" + theirB64Array + ")" in {
+  "Precalculated Base64 Array (" + ourB64Array.mkString(", ") + ")" should {
+    "be the same as the calculated (" + theirB64Array.mkString(", ") + ")" in {
       ourB64Array must_== theirB64Array
     }
   }

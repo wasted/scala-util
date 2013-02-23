@@ -2,7 +2,7 @@ package io.wasted.util
 
 import scala.concurrent.duration.Duration
 import io.netty.util.{ Timeout, TimerTask }
-import java.util.concurrent.{ ConcurrentHashMap, ConcurrentLinkedQueue, Executor, Executors }
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Wasted Scheduler based on Netty's HashedWheelTimer

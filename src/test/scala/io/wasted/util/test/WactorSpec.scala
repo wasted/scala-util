@@ -1,10 +1,10 @@
 package io.wasted.util.test
 
-import io.wasted.util._
+import io.wasted.util.Wactor
 
 import org.specs2.mutable._
 
-class ActorSpec extends Specification {
+class WactorSpec extends Specification {
 
   "Specification for Wactor.".title
 
@@ -17,7 +17,7 @@ class ActorSpec extends Specification {
       case x: Int => result2 = x
     }
     override val loggerName = "TestWactor"
-    override def exceptionCaught(e: Throwable) { e.printStackTrace }
+    override def exceptionCaught(e: Throwable) { e.printStackTrace() }
   }
   val actor = new TestWactor
 

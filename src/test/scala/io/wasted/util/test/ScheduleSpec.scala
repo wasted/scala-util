@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util._
+import io.wasted.util.Schedule
 
 import scala.concurrent.duration._
 import org.specs2.mutable._

@@ -10,13 +10,10 @@ import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
-import io.netty.handler.ssl.SslHandler
-import io.netty.handler.timeout._
 import io.netty.util.CharsetUtil
 
 import java.net.URI
 import java.util.UUID
-import java.util.concurrent.Executor
 import javax.net.ssl.SSLEngine
 import java.net.InetSocketAddress
 import scala.util.{ Try, Success, Failure }

@@ -1,11 +1,10 @@
 package io.wasted.util.test
 
-import io.wasted.util.http._
+import io.wasted.util.http.HttpClient
 
-import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.HttpResponseStatus._
+import io.netty.handler.codec.http.HttpResponse
+import io.netty.handler.codec.http.HttpResponseStatus.OK
 import org.specs2.mutable._
-import scala.collection.JavaConverters._
 
 class HttpClientSpec extends Specification {
 
@@ -19,7 +18,7 @@ class HttpClientSpec extends Specification {
   def client1func(x: Option[HttpResponse]): Unit = x match {
     case Some(rsp) if rsp.getStatus == OK =>
       result1 = true
-      content1 = rsp.toString()
+      content1 = rsp.toString
     case x: Object =>
   }
 
@@ -35,6 +34,6 @@ class HttpClientSpec extends Specification {
     }
   }
 
-  step(client1.shutdown)
+  step(client1.shutdown())
 }
 

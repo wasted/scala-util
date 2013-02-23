@@ -5,9 +5,9 @@ root=$(
 	pwd
 )
 
-sbtver=0.12.2-RC2
+sbtver=0.12.2
 sbtjar=sbt-launch.jar
-sbtsum=db591e4ab57657591ae3ccc666f77b77
+sbtsum=d523ab71b5d2bcaead80d21d0af79361
 
 function download() {
 	echo "downloading ${sbtjar}" 1>&2
@@ -49,6 +49,6 @@ java -ea -server $SBT_OPTS $JAVA_OPTS			\
 	-XX:+CMSIncrementalMode         		\
 	-Dio.netty.epollBugWorkaround=true		\
 	-Xms128M					\
-	-Xmx512M					\
+	-Xmx1G						\
 	-jar $sbtjar "$@"
 

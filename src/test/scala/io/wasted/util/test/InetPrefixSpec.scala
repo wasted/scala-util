@@ -1,13 +1,13 @@
 package io.wasted.util.test
 
-import io.wasted.util._
+import io.wasted.util.InetPrefix
 import java.net.InetAddress
 
 import org.specs2.mutable._
 
-class IPv4InetPrefixSpec extends Specification {
+class InetPrefixSpec extends Specification {
 
-  "Specification for Inet IPv4 calculations.".title
+  "Specification for Inet IPv4 and IPv6 calculations.".title
 
   val ipv4network = InetPrefix(InetAddress.getByName("172.16.176.0"), 20)
   val ipv4first = InetAddress.getByName("172.16.176.0")
@@ -29,11 +29,6 @@ class IPv4InetPrefixSpec extends Specification {
       ipv4network.contains(ipv4invalid2) must_== false
     }
   }
-}
-
-class IPv6InetPrefixSpec extends Specification {
-
-  "Specification for Inet IPv6 calculations.".title
 
   val ipv6network = InetPrefix(InetAddress.getByName("2013:4ce8::"), 32)
   val ipv6first = InetAddress.getByName("2013:4ce8::")

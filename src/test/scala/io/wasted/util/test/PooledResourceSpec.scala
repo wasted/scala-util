@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util._
+import io.wasted.util.PooledResource
 
 import org.specs2.mutable._
 

@@ -9,12 +9,9 @@ import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.ssl.SslHandler
-import io.netty.util.CharsetUtil
 
-import java.util.concurrent.Executor
 import java.security.KeyStore
-import javax.net.ssl.{ SSLEngine, KeyManagerFactory, TrustManagerFactory, SSLContext }
-import java.net.InetSocketAddress
+import javax.net.ssl.{ KeyManagerFactory, SSLContext }
 import scala.util.{ Try, Success, Failure }
 
 /**
