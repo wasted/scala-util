@@ -27,10 +27,18 @@ import scala.util.{ Try, Success, Failure }
  * @param uri Endpoint URI for the Thruput Client
  * @param auth Authentication Key for the Thruput platform
  * @param sign Signing Key for the Thruput platform
+ * @param callback Callback for every non-connection WebSocketFrame (Binary and Text)
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class Thruput(uri: URI, auth: UUID, sign: UUID, from: Option[String] = None, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Wactor(100000) {
+class Thruput(
+  uri: URI,
+  auth: UUID,
+  sign: UUID,
+  from: Option[String] = None,
+  val callback: (ByteBufHolder) => Any = (x) => x.release,
+  timeout: Int = 5,
+  engine: Option[SSLEngine] = None) extends Wactor(100000) {
   TP =>
 
   override val loggerName = uri.getHost + ":" + auth.toString
@@ -207,8 +215,12 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
         throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
+      case frame: BinaryWebSocketFrame =>
+        debug("WebSocket BinaryFrame received message")
+        client.callback(frame.retain)
       case frame: TextWebSocketFrame =>
-        debug("WebSocket Client received message: " + frame.text())
+        debug("WebSocket TextFrame received message: " + frame.text())
+        client.callback(frame.retain)
       case frame: PongWebSocketFrame =>
         debug("WebSocket Client received pong")
       case frame: CloseWebSocketFrame =>
