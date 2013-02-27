@@ -67,6 +67,19 @@ class Thruput(
       }
     })
 
+  // This method is used to send WebSocketFrames async
+  private def writeToChannel(channel: Channel, wsf: WebSocketFrame) {
+    wsf.retain
+    val eventLoop = channel.eventLoop()
+    eventLoop.inEventLoop match {
+      case true => channel.write(wsf)
+      case false =>
+        eventLoop.execute(new Runnable() {
+          override def run(): Unit = channel.write(wsf)
+        })
+    }
+  }
+
   private sealed trait Action { def run(): Unit }
 
   private final case object Connect extends Action {
@@ -85,8 +98,8 @@ class Thruput(
               case Some(from) => """{"from":"%s","thruput":true}""".format(from)
               case None => """{"thruput":true}"""
             }
-            ch.write(new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(
-              auth.toString, io.wasted.util.Hashing.sign(sign.toString, body), body, session.toString))).sync()
+            writeToChannel(ch, new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(
+              auth.toString, io.wasted.util.Hashing.sign(sign.toString, body), body, session.toString)))
             ch
           } match {
             case Success(ch) =>
@@ -107,7 +120,7 @@ class Thruput(
       channel match {
         case Some(ch) =>
           ch.flush
-          ch.write(new CloseWebSocketFrame())
+          writeToChannel(ch, new CloseWebSocketFrame())
 
           // WebSocketClientHandler will close the connection when the server
           // responds to the CloseWebSocketFrame.
@@ -133,7 +146,7 @@ class Thruput(
       if (reconnecting || disconnected || connecting) TP ! msg
       else channel match {
         case Some(ch) =>
-          Try(ch.write(new TextWebSocketFrame(msg))) match {
+          Try(writeToChannel(ch, new TextWebSocketFrame(msg))) match {
             case Success(f) =>
               if (writeCount.addAndGet(1L) % 10 == 0) ch.flush()
             case Failure(e) =>
