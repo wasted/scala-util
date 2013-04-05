@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "0.6.0",
   "commons-codec" % "commons-codec" % "1.7",
   "com.jcraft" % "jzlib" % "1.1.2",
-  "io.netty" % "netty-all" % "4.0.0.Beta3-SNAPSHOT",
+  "io.netty" % "netty-all" % "4.0.0.CR1",
   "org.joda" % "joda-convert" % "1.2",
   "joda-time" % "joda-time" % "2.1",
   "org.specs2" %% "specs2" % "1.13" % "test"
