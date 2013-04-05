@@ -86,7 +86,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.http.HttpClient#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(handler:io.netty.channel.ChannelInboundMessageHandlerAdapter[T],timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[T]"></a>
+      <a id="&lt;init&gt;(handler:io.netty.channel.ChannelInboundMessageHandlerAdapter[T],chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[T]"></a>
       <a id="&lt;init&gt;:HttpClient[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -94,10 +94,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">scala.None</span></span>)</span>
+        <span class="name">HttpClient</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>, <span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">scala.None</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Inbound Message Handler Implementation</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Inbound Message Handler Implementation</p></dd><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -552,6 +552,21 @@
       </h4>
       <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpClient#write" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="write(url:java.net.URL,req:io.netty.handler.codec.http.FullHttpRequest):io.netty.channel.ChannelFuture"></a>
+      <a id="write(URL,FullHttpRequest):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="req">req: <span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span></span>)</span><span class="result">: <span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Write a Netty HttpRequest directly through to the given URL.</p><div class="fullcomment"><div class="comment cmt"><p>Write a Netty HttpRequest directly through to the given URL.
+</p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>What could this be?</p></dd><dt class="param">req</dt><dd class="cmt"><p>Netty FullHttpRequest
+</p></dd></dl></div>
     </li></ol>
             </div>
 
