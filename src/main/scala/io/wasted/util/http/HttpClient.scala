@@ -1,11 +1,10 @@
 package io.wasted.util.http
 
-import io.wasted.util.Logger
+import io.wasted.util._
 
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
@@ -120,7 +119,7 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], c
 
   private var disabled = false
   private lazy val srv = new Bootstrap
-  private lazy val bootstrap = srv.group(new NioEventLoopGroup)
+  private lazy val bootstrap = srv.group(Netty.eventLoop)
     .channel(classOf[NioSocketChannel])
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
@@ -242,7 +241,6 @@ class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], c
    */
   def shutdown() {
     disabled = true
-    srv.shutdown()
   }
 }
 

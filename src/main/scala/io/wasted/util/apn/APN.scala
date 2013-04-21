@@ -5,7 +5,6 @@ import io.wasted.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.ssl.SslHandler
@@ -84,7 +83,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
 
   private val writeCount = new java.util.concurrent.atomic.AtomicLong(0L)
   private val srv = new Bootstrap()
-  private val bootstrap = srv.group(new NioEventLoopGroup)
+  private val bootstrap = srv.group(Netty.eventLoop)
     .channel(classOf[NioSocketChannel])
     .remoteAddress(if (sandbox) APN.sandboxHost else APN.productionHost)
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
@@ -213,7 +212,6 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
    */
   def shutdown() {
     disconnected = true
-    srv.shutdown()
     on.set(0)
   }
 }

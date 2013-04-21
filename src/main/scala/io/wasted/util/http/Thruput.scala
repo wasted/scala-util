@@ -5,7 +5,6 @@ import io.wasted.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
@@ -49,7 +48,7 @@ class Thruput(
   private val writeCount = new java.util.concurrent.atomic.AtomicLong(0L)
 
   private val srv = new Bootstrap()
-  private val bootstrap = srv.group(new NioEventLoopGroup)
+  private val bootstrap = srv.group(Netty.eventLoop)
     .channel(classOf[NioSocketChannel])
     .remoteAddress(new InetSocketAddress(uri.getHost, uri.getPort))
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
@@ -190,7 +189,6 @@ class Thruput(
    */
   def shutdown() {
     disconnected = true
-    srv.shutdown()
     on.set(0)
   }
 }
@@ -202,7 +200,7 @@ class Thruput(
 class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMessageHandlerAdapter[Object] with Logger {
   private val handshaker = WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, false, new DefaultHttpHeaders())
 
-  override def beforeAdd(ctx: ChannelHandlerContext) {
+  override def handlerAdded(ctx: ChannelHandlerContext) {
     client.handshakeFuture = ctx.newPromise()
   }
 
