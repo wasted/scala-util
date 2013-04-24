@@ -28,6 +28,7 @@ libraryDependencies ++= Seq(
   "com.jcraft" % "jzlib" % "1.1.2",
   "io.netty" % "netty-all" % "4.0.0.CR2-SNAPSHOT",
   "org.joda" % "joda-convert" % "1.2",
+  "org.javassist" % "javassist" % "3.17.1-GA",
   "joda-time" % "joda-time" % "2.1",
   "org.specs2" %% "specs2" % "1.13" % "test"
 )
