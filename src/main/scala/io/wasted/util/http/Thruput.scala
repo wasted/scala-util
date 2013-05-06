@@ -222,7 +222,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
         info("WebSocket Client connected!")
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
-        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus() + ", content=" + response.data().toString(CharsetUtil.UTF_8) + ")")
+        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus() + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
       case frame: BinaryWebSocketFrame =>
         debug("WebSocket BinaryFrame received message")
         client.callback(frame.retain)
