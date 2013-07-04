@@ -52,7 +52,7 @@ object HttpClient {
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
+  def apply[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
     new HttpClient(handler, chunked, timeout, engine)
 
   /* Default Client SSLContext. */
@@ -92,7 +92,7 @@ object HttpClient {
  * @param doneF Function which will handle the result
  */
 @ChannelHandler.Sharable
-class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends ChannelInboundMessageHandlerAdapter[Object] with Logger {
+class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends SimpleChannelInboundHandler[Object] with Logger {
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     ExceptionHandler(ctx, cause)
     doneF(None)
@@ -115,7 +115,7 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends C
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class HttpClient[T <: Object](handler: ChannelInboundMessageHandlerAdapter[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
+class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
 
   private var disabled = false
   private lazy val srv = new Bootstrap

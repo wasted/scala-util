@@ -116,7 +116,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
 
   private sealed trait Action { def run(): Unit }
 
-  private final case object Connect extends Action {
+  private case object Connect extends Action {
     def run() {
       connecting = true
       channel match {
@@ -137,12 +137,12 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
     }
   }
 
-  private final case object Disconnect extends Action {
+  private case object Disconnect extends Action {
     def run() {
       disconnected = true
       channel match {
         case Some(ch) =>
-          ch.flush
+          //ch.flush
           ch.close
         case _ => debug("Connection not established")
       }
@@ -150,7 +150,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
     }
   }
 
-  private final case object Reconnect extends Action {
+  private case object Reconnect extends Action {
     def run() {
       reconnecting = true
       Disconnect.run()
@@ -220,10 +220,10 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
  * Empty Netty Response Adapter which is used for APN high-performance delivery.
  */
 @ChannelHandler.Sharable
-class APNResponseAdapter(client: APN) extends ChannelInboundByteHandlerAdapter with Logger {
+class APNResponseAdapter(client: APN) extends SimpleChannelInboundHandler[ByteBuf] with Logger {
   override val loggerName = client.loggerName
 
-  override def inboundBufferUpdated(ctx: ChannelHandlerContext, buf: ByteBuf) {
+  override def messageReceived(ctx: ChannelHandlerContext, buf: ByteBuf) {
     val ch = ctx.channel()
     buf.release
     // TODO we should do some error codes (maybe), but who would actually collect them?
@@ -232,7 +232,7 @@ class APNResponseAdapter(client: APN) extends ChannelInboundByteHandlerAdapter w
 
   override def channelInactive(ctx: ChannelHandlerContext) {
     info("APN disconnected!")
-    client.reconnect
+    client.reconnect()
   }
 
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {

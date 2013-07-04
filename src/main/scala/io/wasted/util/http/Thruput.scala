@@ -81,7 +81,7 @@ class Thruput(
 
   private sealed trait Action { def run(): Unit }
 
-  private final case object Connect extends Action {
+  private case object Connect extends Action {
     def run() {
       connecting = true
       channel match {
@@ -113,12 +113,12 @@ class Thruput(
     }
   }
 
-  private final case object Disconnect extends Action {
+  private case object Disconnect extends Action {
     def run() {
       disconnected = true
       channel match {
         case Some(ch) =>
-          ch.flush
+          //ch.flush
           writeToChannel(ch, new CloseWebSocketFrame())
 
           // WebSocketClientHandler will close the connection when the server
@@ -130,7 +130,7 @@ class Thruput(
     }
   }
 
-  private final case object Reconnect extends Action {
+  private case object Reconnect extends Action {
     def run() {
       reconnecting = true
       Disconnect.run()
@@ -147,7 +147,7 @@ class Thruput(
         case Some(ch) =>
           Try(writeToChannel(ch, new TextWebSocketFrame(msg))) match {
             case Success(f) =>
-              if (writeCount.addAndGet(1L) % 10 == 0) ch.flush()
+            //if (writeCount.addAndGet(1L) % 10 == 0) ch.flush(null)
             case Failure(e) =>
               TP ! msg
           }
@@ -197,7 +197,7 @@ class Thruput(
  * Empty Netty Response Adapter which is used for Thruput high-performance delivery.
  */
 @ChannelHandler.Sharable
-class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMessageHandlerAdapter[Object] with Logger {
+class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInboundHandler[Object] with Logger {
   private val handshaker = WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, false, new DefaultHttpHeaders())
 
   override def handlerAdded(ctx: ChannelHandlerContext) {
@@ -210,7 +210,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
 
   override def channelInactive(ctx: ChannelHandlerContext) {
     info("WebSocket Client disconnected!")
-    client.reconnect
+    client.reconnect()
   }
 
   override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
@@ -222,7 +222,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
         info("WebSocket Client connected!")
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
-        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus() + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
+        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
       case frame: BinaryWebSocketFrame =>
         debug("WebSocket BinaryFrame received message")
         client.callback(frame.retain)
@@ -241,10 +241,10 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends ChannelInboundMe
   }
 
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-    if (!client.handshakeFuture.isDone()) client.handshakeFuture.setFailure(cause)
+    if (!client.handshakeFuture.isDone) client.handshakeFuture.setFailure(cause)
     ExceptionHandler(ctx, cause) match {
-      case Some(e) => e.printStackTrace
-      case _ => client.reconnect
+      case Some(e) => e.printStackTrace()
+      case _ => client.reconnect()
     }
     ctx.close()
   }

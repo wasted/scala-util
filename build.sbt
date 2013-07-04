@@ -6,7 +6,7 @@ organization := "io.wasted"
 
 version := scala.io.Source.fromFile("version").mkString.trim
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
   "commons-codec" % "commons-codec" % "1.7",
   "commons-collections" % "commons-collections" % "3.2.1",
   "com.jcraft" % "jzlib" % "1.1.2",
-  "io.netty" % "netty-all" % "4.0.0.CR2",
+  "io.netty" % "netty-all" % "4.0.0.CR7",
   "org.joda" % "joda-convert" % "1.2",
   "org.javassist" % "javassist" % "3.17.1-GA",
   "joda-time" % "joda-time" % "2.1",
