@@ -20,15 +20,6 @@ trait Logger {
   protected def submitException(trace: String): Unit = {}
 
   /**
-   * Transforms StackTraces into a String using StringWriter.
-   */
-  implicit val stackTraceToString = (throwable: Throwable) => {
-    val w = new StringWriter
-    throwable.printStackTrace(new PrintWriter(w))
-    w.toString
-  }
-
-  /**
    * Prints a message on debug.
    */
   def debug(msg: String, x: Any*) {
