@@ -141,9 +141,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
     def run() {
       disconnected = true
       channel match {
-        case Some(ch) =>
-          //ch.flush
-          ch.close
+        case Some(ch) => ch.close
         case _ => debug("Connection not established")
       }
       channel = None

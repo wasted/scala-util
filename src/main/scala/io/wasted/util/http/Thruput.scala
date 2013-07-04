@@ -68,6 +68,7 @@ class Thruput(
 
   // This method is used to send WebSocketFrames async
   private def writeToChannel(channel: Channel, wsf: WebSocketFrame) {
+    msgs.add(wsf)
     wsf.retain
     val eventLoop = channel.eventLoop()
     eventLoop.inEventLoop match {
@@ -139,6 +140,8 @@ class Thruput(
     }
   }
 
+  private var msgs = MessageList.newInstance[WebSocketFrame]()
+
   def receive = {
     case action: Action => action.run()
     case msg: String =>
@@ -147,7 +150,10 @@ class Thruput(
         case Some(ch) =>
           Try(writeToChannel(ch, new TextWebSocketFrame(msg))) match {
             case Success(f) =>
-            //if (writeCount.addAndGet(1L) % 10 == 0) ch.flush(null)
+              if (writeCount.addAndGet(1L) % 10 == 0) {
+                ch.write(msgs)
+                msgs = MessageList.newInstance[WebSocketFrame]()
+              }
             case Failure(e) =>
               TP ! msg
           }
