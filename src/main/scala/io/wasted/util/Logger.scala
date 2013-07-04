@@ -7,6 +7,7 @@ import java.io.{ StringWriter, PrintWriter }
  * This trait enables classes to do easy logging.
  */
 trait Logger {
+
   /**
    * Override this to give your class a custom Logger name.
    */

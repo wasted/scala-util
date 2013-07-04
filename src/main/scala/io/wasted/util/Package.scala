@@ -10,11 +10,13 @@ package object util {
   /**
    * Transforms StackTraces into a String using StringWriter.
    */
-  implicit val stackTraceToString = (throwable: Throwable) => {
+  def stackTraceToString(throwable: Throwable) = {
     val w = new StringWriter
     throwable.printStackTrace(new PrintWriter(w))
     w.toString
   }
+
+  implicit val implicitStackTraceToString = stackTraceToString _
 
 }
 
