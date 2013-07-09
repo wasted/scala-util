@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Crypto - io.wasted.util.Crypto</title>
-          <meta name="description" content="Crypto - io.wasted.util.Crypto" />
-          <meta name="keywords" content="Crypto io.wasted.util.Crypto" />
+          <title>HexingAlgo - io.wasted.util.HexingAlgo</title>
+          <meta name="description" content="HexingAlgo - io.wasted.util.HexingAlgo" />
+          <meta name="keywords" content="HexingAlgo io.wasted.util.HexingAlgo" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'io.wasted.util.Crypto$';
+            var hash = 'io.wasted.util.HexingAlgo';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,27 +22,26 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img src="../../../lib/object_big.png" />
+        <img src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a>.<a href="package.html" class="extype" name="io.wasted.util">util</a></p>
-        <h1>Crypto</h1>
+        <h1>HexingAlgo</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Crypto</span>
+        <span class="name">HexingAlgo</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper methods for en-/decrypting strings.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -60,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.Crypto"><span>Crypto</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.HexingAlgo"><span>HexingAlgo</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -78,7 +77,23 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="io.wasted.util.HexingAlgo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(name:String):io.wasted.util.HexingAlgo"></a>
+      <a id="&lt;init&gt;:HexingAlgo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">HexingAlgo</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -183,118 +198,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#decryptBinary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decryptBinary(salt:String,payload:String)(implicitcipher:io.wasted.util.CryptoCipher):Array[Byte]"></a>
-      <a id="decryptBinary(String,String)(CryptoCipher):Array[Byte]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">decryptBinary</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Decrypt the given String using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt the given String using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to decrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be decrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>Byte-Array of the decrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#decryptBinary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decryptBinary(salt:String,payload:Array[Byte])(implicitcipher:io.wasted.util.CryptoCipher):Array[Byte]"></a>
-      <a id="decryptBinary(String,Array[Byte])(CryptoCipher):Array[Byte]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">decryptBinary</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Decrypt the given Payload using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt the given Payload using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to decrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be decrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>Byte-Array of the decrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#decryptString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decryptString(salt:String,payload:String)(implicitcipher:io.wasted.util.CryptoCipher):String"></a>
-      <a id="decryptString(String,String)(CryptoCipher):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">decryptString</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Decrypt the given String using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt the given String using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to decrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be decrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>String of the decrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#decryptString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decryptString(salt:String,payload:Array[Byte])(implicitcipher:io.wasted.util.CryptoCipher):String"></a>
-      <a id="decryptString(String,Array[Byte])(CryptoCipher):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">decryptString</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Decrypt the given Payload using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt the given Payload using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to decrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be decrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>String of the decrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#encryptBinary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encryptBinary(salt:String,payload:Array[Byte])(implicitcipher:io.wasted.util.CryptoCipher):Array[Byte]"></a>
-      <a id="encryptBinary(String,Array[Byte])(CryptoCipher):Array[Byte]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">encryptBinary</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Encrypt the given Payload using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt the given Payload using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to encrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be encrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>Byte-Array of the encrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#encryptBinary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encryptBinary(salt:String,payload:String)(implicitcipher:io.wasted.util.CryptoCipher):Array[Byte]"></a>
-      <a id="encryptBinary(String,String)(CryptoCipher):Array[Byte]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">encryptBinary</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Encrypt the given String using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt the given String using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to encrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be encrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding..</p></dd><dt>returns</dt><dd class="cmt"><p>Byte-Array of the encrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#encryptString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encryptString(salt:String,payload:Array[Byte])(implicitcipher:io.wasted.util.CryptoCipher):String"></a>
-      <a id="encryptString(String,Array[Byte])(CryptoCipher):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">encryptString</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Encrypt the given Payload using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt the given Payload using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to encrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be encrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>Base64-String of the encrypted data
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.Crypto#encryptString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encryptString(salt:String,payload:String)(implicitcipher:io.wasted.util.CryptoCipher):String"></a>
-      <a id="encryptString(String,String)(CryptoCipher):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">encryptString</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cipher">cipher: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Encrypt the given String using the given Cipher and the supplied salt.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt the given String using the given Cipher and the supplied salt.</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>Secret to encrypt with</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be encrypted</p></dd><dt class="param">cipher</dt><dd class="cmt"><p>Cipher to be used. Possible choices are AES, ECB, PKCS5Padding.</p></dd><dt>returns</dt><dd class="cmt"><p>Base64-String of the encrypted data
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -308,19 +211,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -353,19 +243,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -379,6 +256,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.wasted.util.HexingAlgo#name" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="name:String"></a>
+      <a id="name:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">name</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -431,19 +321,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -510,7 +387,15 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

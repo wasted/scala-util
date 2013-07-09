@@ -255,19 +255,19 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.wasted.util.Hashing#hexDigest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hexDigest(in:Array[Byte],alg:String):String"></a>
-      <a id="hexDigest(Array[Byte],String):String"></a>
+      <a id="hexDigest(in:Array[Byte])(implicitalg:io.wasted.util.HexingAlgo):String"></a>
+      <a id="hexDigest(Array[Byte])(HexingAlgo):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hexDigest</span><span class="params">(<span name="in">in: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="alg">alg: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">hexDigest</span><span class="params">(<span name="in">in: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="alg">alg: <a href="HexingAlgo.html" class="extype" name="io.wasted.util.HexingAlgo">HexingAlgo</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create an hex encoded SHA hash from a Byte array using the given algorythm.</p><div class="fullcomment"><div class="comment cmt"><p>Create an hex encoded SHA hash from a Byte array using the given algorythm.
-</p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>ByteArray to be encoded</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512. Defaults to SHA256.
+      <p class="shortcomment cmt">Create an hex encoded SHA hash from a Byte array using the given algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Create an hex encoded SHA hash from a Byte array using the given algorithm.
+</p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>ByteArray to be encoded</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512.
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Hashing#hexEncode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hexEncode(in:Array[Byte]):String"></a>
@@ -285,19 +285,19 @@
 </p></div><dl class="paramcmts block"><dt class="param">in</dt><dd class="cmt"><p>ByteArray to be encoded
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Hashing#hexFileDigest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hexFileDigest(file:String,alg:String):String"></a>
-      <a id="hexFileDigest(String,String):String"></a>
+      <a id="hexFileDigest(file:String)(implicitalg:io.wasted.util.HexingAlgo):String"></a>
+      <a id="hexFileDigest(String)(HexingAlgo):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hexFileDigest</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alg">alg: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">hexFileDigest</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="alg">alg: <a href="HexingAlgo.html" class="extype" name="io.wasted.util.HexingAlgo">HexingAlgo</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create an hex encoded SHA hash from a File on disk using the given algorythm.</p><div class="fullcomment"><div class="comment cmt"><p>Create an hex encoded SHA hash from a File on disk using the given algorythm.
-</p></div><dl class="paramcmts block"><dt class="param">file</dt><dd class="cmt"><p>Path to the file</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512. Defaults to SHA256.
+      <p class="shortcomment cmt">Create an hex encoded SHA hash from a File on disk using the given algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Create an hex encoded SHA hash from a File on disk using the given algorithm.
+</p></div><dl class="paramcmts block"><dt class="param">file</dt><dd class="cmt"><p>Path to the file</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512.
 </p></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -352,19 +352,19 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.wasted.util.Hashing#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(key:String,payload:String,alg:String):String"></a>
-      <a id="sign(String,String,String):String"></a>
+      <a id="sign(key:String,payload:String)(implicitalg:io.wasted.util.HashingAlgo):String"></a>
+      <a id="sign(String,String)(HashingAlgo):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alg">alg: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;HmacSHA256&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">sign</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="alg">alg: <a href="HashingAlgo.html" class="extype" name="io.wasted.util.HashingAlgo">HashingAlgo</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Sign the payload with the given key using the given algorythm.</p><div class="fullcomment"><div class="comment cmt"><p>Sign the payload with the given key using the given algorythm.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Key used for hashing</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Big mystery here..</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512. Defaults to SHA256.
+      <p class="shortcomment cmt">Sign the payload with the given key using the given algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Sign the payload with the given key using the given algorithm.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Key used for hashing</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Big mystery here..</p></dd><dt class="param">alg</dt><dd class="cmt"><p>Algorithm to be used. Possible choices are HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384 and HmacSHA512.
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
