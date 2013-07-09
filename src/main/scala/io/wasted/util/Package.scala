@@ -7,6 +7,10 @@ import java.io.{ StringWriter, PrintWriter }
  */
 package object util {
 
+  implicit val hashingAlgo = HashingAlgo()
+  implicit val hexingAlgo = HexingAlgo()
+  implicit val cryptoCipher = CryptoCipher()
+
   /**
    * Transforms StackTraces into a String using StringWriter.
    */

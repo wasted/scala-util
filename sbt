@@ -48,6 +48,7 @@ java -ea -server $SBT_OPTS $JAVA_OPTS			\
 	-XX:+CMSClassUnloadingEnabled   		\
 	-XX:+CMSIncrementalMode         		\
 	-Dio.netty.epollBugWorkaround=true		\
+	-XX:MaxPermSize=512M				\
 	-Xms128M					\
 	-Xmx1G						\
 	-jar $sbtjar "$@"

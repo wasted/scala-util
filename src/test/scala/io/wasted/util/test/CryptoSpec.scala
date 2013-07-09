@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util.{ Base64, Crypto }
+import io.wasted.util.{ Base64, CryptoCipher, Crypto }
 
 import org.specs2.mutable._
 
@@ -8,24 +8,25 @@ class CryptoSpec extends Specification {
 
   "Specification for Crypto functions.".title
 
+  implicit val cipher = CryptoCipher("AES")
+
   val ourString = "this must work!!"
   val ourSalt = "1111111111111111"
-  val ourEncryption = Array[Byte](56, -75, -77, -114, 46, -127, 123, -95, 52, -7, -120, -26, 72, 35, -55, -122, -13, 12, 105, -60, -7, 69, -26, 84, -21, -44, -77, -120, -79, -56, -9, -112)
-  val ourEncryptionString = Base64.encodeString(new String(ourEncryption))
 
-  val theirDecryptionString = Base64.decodeString(ourEncryptionString)
-  val theirDecryption = Crypto.encrypt(ourSalt, ourString)
-  val theirString = new String(Crypto.decrypt(ourSalt, theirDecryption))
+  val encrypted: Array[Byte] = Crypto.encryptBinary(ourSalt, ourString)
+  val base64Encoded: String = Base64.encodeString(encrypted)
+  val base64Decoded: Array[Byte] = Base64.decodeBinary(base64Encoded)
+  val theirString = Crypto.decryptString(ourSalt, Base64.decodeBinary(base64Encoded))
 
-  "Pregenerated string (" + ourString + ")" should {
+  "Pregenerated Base64 (" + ourString + ")" should {
     "be the same as the decrypted (" + theirString + ")" in {
       ourString must_== theirString
     }
   }
 
-  "Precalculated encrypted bytes (" + ourEncryption.toList.toString + ")" should {
-    "be the same as the calculated (" + theirDecryption.toList.toString + ")" in {
-      ourEncryption must_== theirDecryption
+  "Encoded Array (" + encrypted.toList.toString + ")" should {
+    "be the same as the decoded (" + base64Decoded.toList.toString + ")" in {
+      encrypted must_== base64Decoded
     }
   }
 

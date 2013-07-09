@@ -1,7 +1,6 @@
 package io.wasted.util
 
 import org.slf4j.LoggerFactory
-import java.io.{ StringWriter, PrintWriter }
 
 /**
  * This trait enables classes to do easy logging.

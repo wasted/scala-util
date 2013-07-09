@@ -21,6 +21,7 @@ import javax.net.ssl.{ SSLEngine, SSLContext }
  * Netty HTTP Client Object to create HTTP Request Objects.
  */
 object HttpClient {
+
   /**
    * Creates a HTTP Client which will call the given method with the returned HttpResponse.
    *

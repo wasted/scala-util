@@ -1,12 +1,15 @@
 package io.wasted.util.test
 
-import io.wasted.util.Hashing
+import io.wasted.util.{ HexingAlgo, HashingAlgo, Hashing }
 
 import org.specs2.mutable._
 
 class HashingSpec extends Specification {
 
   "Specification for Hashing functions.".title
+
+  implicit val hashingAlgo = HashingAlgo("HmacSHA256")
+  implicit val hexingAlgo = HexingAlgo("SHA")
 
   val ourString = "this must work!!"
   val ourHexDigest = "c2bf26e94cab462fa275a3dc41f04cf3e67d470a"
