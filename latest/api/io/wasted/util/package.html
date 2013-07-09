@@ -9,11 +9,6 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -44,13 +39,37 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"></div>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helpers
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
         
 
       <div id="mbrsel">
         <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
-        
-        
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="io.wasted.util"><span>util</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
             <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
@@ -103,7 +122,7 @@
       </h4>
       <p class="comment cmt">Common Interface for both protocol types.</p>
     </li><li name="io.wasted.util.Logger" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="LoggerextendsObject"></a>
+      <a id="LoggerextendsAnyRef"></a>
       <a id="Logger:Logger"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -115,8 +134,21 @@
       </span>
       </h4>
       <p class="comment cmt">This trait enables classes to do easy logging.</p>
+    </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LruMap[K,V]extendscollection.convert.Wrappers.JMapWrapper[K,V]"></a>
+      <a id="LruMap[K,V]:LruMap[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LruMap.html"><span class="name">LruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.collection.convert.Wrappers.JMapWrapper">scala.collection.convert.Wrappers.JMapWrapper</span>[<span class="extype" name="io.wasted.util.LruMap.K">K</span>, <span class="extype" name="io.wasted.util.LruMap.V">V</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.PooledResource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PooledResource[T]extendsObject"></a>
+      <a id="PooledResource[T]extendsAnyRef"></a>
       <a id="PooledResource[T]:PooledResource[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -129,6 +161,19 @@
       </h4>
       <p class="comment cmt">Resource Pooling Class
 </p>
+    </li><li name="io.wasted.util.SynchronizedLruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SynchronizedLruMap[K,V]extendsLruMap[K,V]withSynchronizedMap[K,V]"></a>
+      <a id="SynchronizedLruMap[K,V]:SynchronizedLruMap[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SynchronizedLruMap.html"><span class="name">SynchronizedLruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="LruMap.html" class="extype" name="io.wasted.util.LruMap">LruMap</a>[<span class="extype" name="io.wasted.util.SynchronizedLruMap.K">K</span>, <span class="extype" name="io.wasted.util.SynchronizedLruMap.V">V</span>] with <span class="extype" name="scala.collection.mutable.SynchronizedMap">SynchronizedMap</span>[<span class="extype" name="io.wasted.util.SynchronizedLruMap.K">K</span>, <span class="extype" name="io.wasted.util.SynchronizedLruMap.V">V</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.Wactor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="WactorextendsWactor.AddresswithRunnablewithLogger"></a>
       <a id="Wactor:Wactor"></a>
@@ -175,6 +220,19 @@
       </span>
       </h4>
       <p class="comment cmt">Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.</p>
+    </li><li name="io.wasted.util.Crypto" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Crypto"></a>
+      <a id="Crypto:Crypto"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Crypto$.html"><span class="name">Crypto</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Helper methods for en-/decrypting strings.</p>
     </li><li name="io.wasted.util.Hashing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Hashing"></a>
       <a id="Hashing:Hashing"></a>
@@ -201,6 +259,19 @@
       </span>
       </h4>
       <p class="comment cmt">Helper Object for creating InetPrefix-objects.</p>
+    </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LruMap"></a>
+      <a id="LruMap:LruMap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LruMap$.html"><span class="name">LruMap</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.Schedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Schedule"></a>
       <a id="Schedule:Schedule"></a>
@@ -281,6 +352,32 @@
       </span>
       </h4>
       
+    </li><li name="io.wasted.util.package#implicitStackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="implicitStackTraceToString:Throwable=&gt;String"></a>
+      <a id="implicitStackTraceToString:(Throwable)⇒String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">implicitStackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="io.wasted.util.package#stackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="stackTraceToString(throwable:Throwable):String"></a>
+      <a id="stackTraceToString(Throwable):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stackTraceToString</span><span class="params">(<span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Transforms StackTraces into a String using StringWriter.</p>
     </li></ol>
             </div>
 
@@ -290,7 +387,11 @@
         </div>
 
         <div id="inheritedMembers">
-        
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
         
         </div>
 
@@ -306,7 +407,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
     </body>
       </html>

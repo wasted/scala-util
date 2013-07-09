@@ -9,11 +9,6 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -40,7 +35,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">ThruputResponseAdapter</span><span class="result"> extends <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <span class="name">ThruputResponseAdapter</span><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
       
@@ -50,7 +45,7 @@
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>], <span class="extype" name="io.netty.channel.ChannelHandlerUtil.SingleInboundMessageHandler">SingleInboundMessageHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>], <span class="extype" name="io.netty.channel.ChannelInboundMessageHandler">ChannelInboundMessageHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelStateHandlerAdapter">ChannelStateHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelStateHandler">ChannelStateHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -68,7 +63,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.http.ThruputResponseAdapter"><span>ThruputResponseAdapter</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="io.netty.channel.ChannelInboundMessageHandlerAdapter"><span>ChannelInboundMessageHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelHandlerUtil.SingleInboundMessageHandler"><span>SingleInboundMessageHandler</span></li><li class="in" name="io.netty.channel.ChannelInboundMessageHandler"><span>ChannelInboundMessageHandler</span></li><li class="in" name="io.netty.channel.ChannelInboundHandler"><span>ChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelStateHandlerAdapter"><span>ChannelStateHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelStateHandler"><span>ChannelStateHandler</span></li><li class="in" name="io.netty.channel.ChannelHandlerAdapter"><span>ChannelHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelHandler"><span>ChannelHandler</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.http.ThruputResponseAdapter"><span>ThruputResponseAdapter</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="io.netty.channel.SimpleChannelInboundHandler"><span>SimpleChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelInboundHandlerAdapter"><span>ChannelInboundHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelInboundHandler"><span>ChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelHandlerAdapter"><span>ChannelHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelHandler"><span>ChannelHandler</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -175,7 +170,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#acceptInboundMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.SimpleChannelInboundHandler#acceptInboundMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="acceptInboundMessage(x$1:Any):Boolean"></a>
       <a id="acceptInboundMessage(Any):Boolean"></a>
       <h4 class="signature">
@@ -187,40 +182,11 @@
         <span class="name">acceptInboundMessage</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → SingleInboundMessageHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelHandlerAdapter#afterAdd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="afterAdd(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="afterAdd(ChannelHandlerContext):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">afterAdd</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelHandlerAdapter → ChannelHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelHandlerAdapter#afterRemove" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="afterRemove(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="afterRemove(ChannelHandlerContext):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">afterRemove</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelHandlerAdapter → ChannelHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SimpleChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -236,49 +202,23 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.http.ThruputResponseAdapter#beforeAdd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beforeAdd(ctx:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="beforeAdd(ChannelHandlerContext):Unit"></a>
+    </li><li name="io.netty.channel.SimpleChannelInboundHandler#beginMessageReceived" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="beginMessageReceived(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="beginMessageReceived(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">beforeAdd</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">beginMessageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelHandlerAdapter → ChannelHandler</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelHandlerAdapter#beforeRemove" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beforeRemove(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="beforeRemove(ChannelHandlerContext):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">beforeRemove</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelHandlerAdapter → ChannelHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#beginMessageReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beginMessageReceived(x$1:io.netty.channel.ChannelHandlerContext):Boolean"></a>
-      <a id="beginMessageReceived(ChannelHandlerContext):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">beginMessageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → SingleInboundMessageHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../netty$channel.html" class="extype" name="io.netty.channel">io.netty.channel</a>] </dd><dt>Definition Classes</dt><dd>SimpleChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="io.wasted.util.http.ThruputResponseAdapter#channelActive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -293,7 +233,7 @@
         <span class="name">channelActive</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelStateHandlerAdapter → ChannelStateHandler</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd></dl></div>
     </li><li name="io.wasted.util.http.ThruputResponseAdapter#channelInactive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelInactive(ctx:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelInactive(ChannelHandlerContext):Unit"></a>
@@ -306,8 +246,8 @@
         <span class="name">channelInactive</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelStateHandlerAdapter → ChannelStateHandler</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelStateHandlerAdapter#channelReadSuspended" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd></dl></div>
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelReadSuspended" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelReadSuspended(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelReadSuspended(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
@@ -319,11 +259,14 @@
         <span class="name">channelReadSuspended</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelStateHandlerAdapter#channelRegistered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelRegistered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelRegistered(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelRegistered(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
@@ -335,11 +278,14 @@
         <span class="name">channelRegistered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelStateHandlerAdapter#channelUnregistered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelUnregistered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelUnregistered(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelUnregistered(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
@@ -351,8 +297,30 @@
         <span class="name">channelUnregistered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelWritabilityChanged" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="channelWritabilityChanged(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="channelWritabilityChanged(ChannelHandlerContext):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">channelWritabilityChanged</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -367,8 +335,11 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -385,7 +356,7 @@
       </h4>
       <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#endMessageReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.SimpleChannelInboundHandler#endMessageReceived" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="endMessageReceived(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="endMessageReceived(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
@@ -397,8 +368,11 @@
         <span class="name">endMessageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → SingleInboundMessageHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../netty$channel.html" class="extype" name="io.netty.channel">io.netty.channel</a>] </dd><dt>Definition Classes</dt><dd>SimpleChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -466,24 +440,11 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#freeInboundBuffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="freeInboundBuffer(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="freeInboundBuffer(ChannelHandlerContext):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">freeInboundBuffer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -499,6 +460,38 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.http.ThruputResponseAdapter#handlerAdded" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handlerAdded(ctx:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="handlerAdded(ChannelHandlerContext):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handlerAdded</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → ChannelHandlerAdapter → ChannelHandler</dd></dl></div>
+    </li><li name="io.netty.channel.ChannelHandlerAdapter#handlerRemoved" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handlerRemoved(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <a id="handlerRemoved(ChannelHandlerContext):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handlerRemoved</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelHandlerAdapter → ChannelHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -512,22 +505,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#inboundBufferUpdated" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="inboundBufferUpdated(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
-      <a id="inboundBufferUpdated(ChannelHandlerContext):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">inboundBufferUpdated</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="info(msg:String,x:Any*):Unit"></a>
       <a id="info(String,Any*):Unit"></a>
@@ -581,7 +558,26 @@
         <span class="name">messageReceived</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="msg">msg: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → SingleInboundMessageHandler</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.ThruputResponseAdapter">ThruputResponseAdapter</a> → SimpleChannelInboundHandler</dd></dl></div>
+    </li><li name="io.netty.channel.SimpleChannelInboundHandler#messageReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="messageReceived(x$1:io.netty.channel.ChannelHandlerContext,x$2:io.netty.channel.MessageList[Object]):Unit"></a>
+      <a id="messageReceived(ChannelHandlerContext,MessageList[AnyRef]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">messageReceived</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="arg1">arg1: <span class="extype" name="io.netty.channel.MessageList">MessageList</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SimpleChannelInboundHandler → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -595,22 +591,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelInboundMessageHandlerAdapter#newInboundBuffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="newInboundBuffer(x$1:io.netty.channel.ChannelHandlerContext):io.netty.buffer.MessageBuf[I]"></a>
-      <a id="newInboundBuffer(ChannelHandlerContext):MessageBuf[AnyRef]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">newInboundBuffer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="io.netty.buffer.MessageBuf">MessageBuf</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundMessageHandlerAdapter → ChannelInboundMessageHandler → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -637,20 +617,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#stackTraceToString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stackTraceToString:Throwable=&gt;String"></a>
-      <a id="stackTraceToString:(Throwable)⇒String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">stackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Transforms StackTraces into a String using StringWriter.</p><div class="fullcomment"><div class="comment cmt"><p>Transforms StackTraces into a String using StringWriter.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="submitException(trace:String):Unit"></a>
       <a id="submitException(String):Unit"></a>
@@ -691,7 +657,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.netty.channel.ChannelStateHandlerAdapter#userEventTriggered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#userEventTriggered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="userEventTriggered(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit"></a>
       <a id="userEventTriggered(ChannelHandlerContext,Any):Unit"></a>
       <h4 class="signature">
@@ -703,8 +669,11 @@
         <span class="name">userEventTriggered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelStateHandlerAdapter → ChannelStateHandler</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -720,7 +689,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -736,7 +708,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -752,7 +727,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -780,18 +758,12 @@
         <div id="inheritedMembers">
         <div class="parent" name="io.wasted.util.Logger">
               <h3>Inherited from <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
-            </div><div class="parent" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</h3>
-            </div><div class="parent" name="io.netty.channel.ChannelHandlerUtil.SingleInboundMessageHandler">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelHandlerUtil.SingleInboundMessageHandler">SingleInboundMessageHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</h3>
-            </div><div class="parent" name="io.netty.channel.ChannelInboundMessageHandler">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundMessageHandler">ChannelInboundMessageHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</h3>
+            </div><div class="parent" name="io.netty.channel.SimpleChannelInboundHandler">
+              <h3>Inherited from <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</h3>
+            </div><div class="parent" name="io.netty.channel.ChannelInboundHandlerAdapter">
+              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span></h3>
             </div><div class="parent" name="io.netty.channel.ChannelInboundHandler">
               <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span></h3>
-            </div><div class="parent" name="io.netty.channel.ChannelStateHandlerAdapter">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelStateHandlerAdapter">ChannelStateHandlerAdapter</span></h3>
-            </div><div class="parent" name="io.netty.channel.ChannelStateHandler">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelStateHandler">ChannelStateHandler</span></h3>
             </div><div class="parent" name="io.netty.channel.ChannelHandlerAdapter">
               <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span></h3>
             </div><div class="parent" name="io.netty.channel.ChannelHandler">
@@ -816,7 +788,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>

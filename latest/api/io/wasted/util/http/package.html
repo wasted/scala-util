@@ -9,11 +9,6 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -77,7 +72,7 @@
       </h4>
       <p class="comment cmt">Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.</p>
     </li><li name="io.wasted.util.http.HttpClientResponseAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="HttpClientResponseAdapterextendsChannelInboundMessageHandlerAdapter[Object]withLogger"></a>
+      <a id="HttpClientResponseAdapterextendsSimpleChannelInboundHandler[Object]withLogger"></a>
       <a id="HttpClientResponseAdapter:HttpClientResponseAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -85,7 +80,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="HttpClientResponseAdapter.html"><span class="name">HttpClientResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="HttpClientResponseAdapter.html"><span class="name">HttpClientResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
       <p class="comment cmt">Netty Response Adapter which is used for the doneF-Approach in HttpClient Object.</p>
@@ -103,7 +98,7 @@
       </h4>
       <p class="comment cmt">Thruput WebSocket Client class which will handle all delivery.</p>
     </li><li name="io.wasted.util.http.ThruputResponseAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ThruputResponseAdapterextendsChannelInboundMessageHandlerAdapter[Object]withLogger"></a>
+      <a id="ThruputResponseAdapterextendsSimpleChannelInboundHandler[Object]withLogger"></a>
       <a id="ThruputResponseAdapter:ThruputResponseAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -111,7 +106,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ThruputResponseAdapter.html"><span class="name">ThruputResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.ChannelInboundMessageHandlerAdapter">ChannelInboundMessageHandlerAdapter</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="ThruputResponseAdapter.html"><span class="name">ThruputResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
       <p class="comment cmt">Empty Netty Response Adapter which is used for Thruput high-performance delivery.</p>
@@ -173,7 +168,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>
