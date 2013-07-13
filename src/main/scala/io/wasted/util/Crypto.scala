@@ -62,7 +62,7 @@ object Crypto {
    * @return Byte-Array of the decrypted data
    */
   def decryptBinary(salt: String, payload: Array[Byte])(implicit cipher: CryptoCipher): Array[Byte] = {
-    val key = new SecretKeySpec(salt.getBytes("UTF-8"), "AES")
+    val key = new SecretKeySpec(salt.getBytes("UTF-8"), cipher.name)
     val cipherI = Cipher.getInstance(cipher.name, "SunJCE")
     cipherI.init(Cipher.DECRYPT_MODE, key)
     cipherI.doFinal(payload)
