@@ -50,5 +50,38 @@ class ConfigSpec extends Specification {
     }
   }
 
+  "Non-existing config-lookups" should {
+    "for Integers be the None if no default-value was given" in {
+      Config.getInt("foo") must_== None
+    }
+    "for Integers be Some(5) if a default-value of 5 was given" in {
+      Config.getInt("foo", 5) must_== 5
+    }
+    "for Boolean be the None if no default-value was given" in {
+      Config.getBool("foo") must_== None
+    }
+    "for Boolean be Some(true) if a default-value of true was given" in {
+      Config.getBool("foo", true) must_== true
+    }
+    "for String be the None if no default-value was given" in {
+      Config.getString("foo") must_== None
+    }
+    "for String be Some(bar) if a default-value of bar was given" in {
+      Config.getString("foo", "bar") must_== "bar"
+    }
+    "for String-List be the None if no default-value was given" in {
+      Config.getStringList("foo") must_== None
+    }
+    "for String-List be Some(List(\"bar\", \"baz\")) if a default-value was given" in {
+      Config.getStringList("foo", List("bar", "baz")) must_== List("bar", "baz")
+    }
+    "for InetSocketAddress-List be the None if no default-value was given" in {
+      Config.getInetAddrList("foo") must_== None
+    }
+    "for InetSocketAddress-List be Some(InetSocketAddress(\"1.2.3.4\", 80)) if a default-value was given" in {
+      Config.getInetAddrList("foo", List("1.2.3.4:80")) must_== List(new java.net.InetSocketAddress("1.2.3.4", 80))
+    }
+  }
+
 }
 

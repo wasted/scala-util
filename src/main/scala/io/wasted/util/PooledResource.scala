@@ -17,7 +17,7 @@ class PooledResource[T <: Any](newFunc: () => T, max: Int, timeout: Int = 5000) 
 
   /* Get an object from the pool. */
   def get(): Option[T] = Tryo(pool.poll) match {
-    case Some(r: T) => Some(r)
+    case Some(r: T @unchecked) => Some(r)
     case _ => createOrBlock
   }
 

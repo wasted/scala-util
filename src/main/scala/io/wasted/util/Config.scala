@@ -30,8 +30,8 @@ object Config {
    * @param name Name of the configuration directive
    * @return Seq of Strings
    */
-  def getStringList(name: String): Option[Seq[String]] = conf.getStringList(name).asScala.toList match {
-    case l: List[String] @unchecked if l.length > 0 => Some(l)
+  def getStringList(name: String): Option[Seq[String]] = Tryo(conf.getStringList(name).asScala.toList) match {
+    case Some(l: List[String] @unchecked) if l.length > 0 => Some(l)
     case _ => None
   }
 
@@ -59,7 +59,7 @@ object Config {
    * @return Seq of InetSocketAddresses to be used
    */
   def getInetAddrList(name: String): Option[Seq[InetSocketAddress]] = {
-    val valid = conf.getStringList(name).asScala.flatMap(InetPrefix.stringToInetAddr)
+    val valid = Tryo(conf.getStringList(name).asScala.toList) getOrElse List() flatMap InetPrefix.stringToInetAddr
     if (valid.length > 0) Some(valid) else None
   }
 
