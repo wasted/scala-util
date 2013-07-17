@@ -69,7 +69,6 @@ object APN {
  * @param loggerName Name of this APN instance in Log-lines
  * @param p12 exported .p12 from KeyChain
  * @param secret Password to open the p12 file
- * @param enhanced Use enhanced APN commands
  * @param sandbox Use sandbox or producation servers
  * @param timeout Connect timeout to servers
  */
@@ -172,6 +171,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
               else thisAPN ! msg
             }
           })
+          ch.flush()
         case _ =>
           connect()
           this ! msg
@@ -221,7 +221,7 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
 class APNResponseAdapter(client: APN) extends SimpleChannelInboundHandler[ByteBuf] with Logger {
   override val loggerName = client.loggerName
 
-  override def messageReceived(ctx: ChannelHandlerContext, buf: ByteBuf) {
+  override def channelRead0(ctx: ChannelHandlerContext, buf: ByteBuf) {
     val ch = ctx.channel()
     buf.release
     // TODO we should do some error codes (maybe), but who would actually collect them?
@@ -235,8 +235,8 @@ class APNResponseAdapter(client: APN) extends SimpleChannelInboundHandler[ByteBu
 
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     http.ExceptionHandler(ctx, cause) match {
-      case Some(e) => e.printStackTrace
-      case _ if !client.disconnected => client.reconnect
+      case Some(e) => e.printStackTrace()
+      case _ if !client.disconnected => client.reconnect()
       case _ =>
     }
     ctx.close()

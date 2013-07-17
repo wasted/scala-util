@@ -23,26 +23,26 @@ import javax.net.ssl.{ SSLEngine, SSLContext }
 object HttpClient {
 
   /**
-   * Creates a HTTP Client which will call the given method with the returned HttpResponse.
+   * Creates a HTTP Client which will call the given method with the returned HttpObject.
    *
    * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[Object] = {
-    val doneF = (x: Option[io.netty.handler.codec.http.HttpResponse]) => {}
+  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[HttpObject] = {
+    val doneF = (x: Option[HttpObject]) => {}
     this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
   }
 
   /**
-   * Creates a HTTP Client which will call the given method with the returned HttpResponse.
+   * Creates a HTTP Client which will call the given method with the returned HttpObject.
    *
    * @param doneF Function which will handle the result
    * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(doneF: (Option[HttpResponse]) => Unit, chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[Object] =
+  def apply(doneF: (Option[HttpObject]) => Unit, chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[HttpObject] =
     this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
 
   /**
@@ -63,14 +63,14 @@ object HttpClient {
     val passphrase = "defaultClientStorePass".toCharArray
 
     val keyStoreFile = File.createTempFile("keyStoreFile", ".jks")
-    keyStoreFile.deleteOnExit
+    keyStoreFile.deleteOnExit()
     ks.load(new FileInputStream(keyStoreFile), passphrase)
 
     val kmf = KeyManagerFactory.getInstance("SunX509")
     kmf.init(ks, passphrase)
 
     val sslCtx = SSLContext.getInstance("TLS")
-    sslCtx.init(kmf.getKeyManagers(), null, null)
+    sslCtx.init(kmf.getKeyManagers, null, null)
     sslCtx
   }
 
@@ -93,16 +93,16 @@ object HttpClient {
  * @param doneF Function which will handle the result
  */
 @ChannelHandler.Sharable
-class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends SimpleChannelInboundHandler[Object] with Logger {
+class HttpClientResponseAdapter(doneF: (Option[HttpObject]) => Unit) extends SimpleChannelInboundHandler[HttpObject] {
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     ExceptionHandler(ctx, cause)
     doneF(None)
     ctx.channel.close
   }
 
-  override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
+  def channelRead0(ctx: ChannelHandlerContext, msg: HttpObject) {
     msg match {
-      case a: HttpResponse => doneF(Some(a))
+      case a: HttpObject => doneF(Some(a))
       case _ => doneF(None)
     }
   }
@@ -116,7 +116,7 @@ class HttpClientResponseAdapter(doneF: (Option[HttpResponse]) => Unit) extends S
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) extends Logger {
+class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -163,6 +163,7 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
       override def operationComplete(cf: ChannelFuture) {
         if (!cf.isSuccess) return
         cf.channel.write(req)
+        cf.channel.flush()
         cf.channel.closeFuture()
       }
     })
@@ -187,6 +188,7 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
       override def operationComplete(cf: ChannelFuture) {
         if (!cf.isSuccess) return
         cf.channel.write(req)
+        cf.channel.flush()
         cf.channel.closeFuture()
       }
     })
@@ -198,7 +200,7 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
    * @param url This is getting weird..
    * @param mime The MIME type of the request
    * @param body ByteArray to be send
-   * @param headers
+   * @param headers I don't like to explain trivial stuff
    * @param method HTTP Method to be used
    */
   def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) = {
@@ -217,6 +219,7 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
       override def operationComplete(cf: ChannelFuture) {
         if (!cf.isSuccess) return
         cf.channel.write(req)
+        cf.channel.flush()
         cf.channel.closeFuture()
       }
     })

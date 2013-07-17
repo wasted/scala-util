@@ -118,7 +118,7 @@ class Thruput(
       disconnected = true
       channel match {
         case Some(ch) =>
-          //ch.flush
+          ch.flush
           writeToChannel(ch, new CloseWebSocketFrame())
 
           // WebSocketClientHandler will close the connection when the server
@@ -147,6 +147,7 @@ class Thruput(
         case Some(ch) =>
           Try(writeToChannel(ch, new TextWebSocketFrame(msg))) match {
             case Success(f) =>
+              if (writeCount.addAndGet(1L) % 3 == 0) ch.flush()
             case Failure(e) =>
               TP ! msg
           }
@@ -212,7 +213,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInb
     client.reconnect()
   }
 
-  override def messageReceived(ctx: ChannelHandlerContext, msg: Object) {
+  override def channelRead0(ctx: ChannelHandlerContext, msg: Object) {
     val ch = ctx.channel()
 
     msg match {

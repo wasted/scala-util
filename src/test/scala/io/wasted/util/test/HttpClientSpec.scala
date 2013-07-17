@@ -1,12 +1,15 @@
 package io.wasted.util.test
 
 import io.wasted.util.http.HttpClient
+import io.wasted.util.Logger
 
-import io.netty.handler.codec.http.HttpResponse
-import io.netty.handler.codec.http.HttpResponseStatus.OK
 import org.specs2.mutable._
 
-class HttpClientSpec extends Specification {
+import io.netty.handler.codec.http.{ HttpObject, FullHttpResponse }
+import io.netty.handler.codec.http.HttpResponseStatus.{ OK, MOVED_PERMANENTLY }
+import io.netty.util.CharsetUtil
+
+class HttpClientSpec extends Specification with Logger {
 
   "Specification for HttpClient.".title
 
@@ -15,10 +18,10 @@ class HttpClientSpec extends Specification {
   var result1 = false
   var content1 = "failed"
 
-  def client1func(x: Option[HttpResponse]): Unit = x match {
-    case Some(rsp) if rsp.getStatus == OK =>
+  def client1func(x: Option[HttpObject]): Unit = x match {
+    case Some(rsp: FullHttpResponse) if rsp.getStatus == OK || rsp.getStatus == MOVED_PERMANENTLY =>
       result1 = true
-      content1 = rsp.toString
+      content1 = rsp.content().toString(CharsetUtil.UTF_8)
     case x: Object =>
   }
 
@@ -29,8 +32,8 @@ class HttpClientSpec extends Specification {
     "return true" in {
       result1 must be_==(true).eventually
     }
-    "contain the phrase \"wasted.io\" somewhere" in {
-      content1 must contain("wasted.io").eventually
+    "contain the phrase \"wasted\" somewhere" in {
+      content1 must contain("wasted").eventually
     }
   }
 
