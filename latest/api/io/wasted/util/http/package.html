@@ -59,7 +59,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="io.wasted.util.http.HttpClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="HttpClient[T&lt;:Object]extendsLogger"></a>
+      <a id="HttpClient[T&lt;:Object]extendsAnyRef"></a>
       <a id="HttpClient[T&lt;:AnyRef]:HttpClient[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -67,12 +67,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="HttpClient.html"><span class="name">HttpClient</span></a><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>]</span><span class="result"> extends <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="HttpClient.html"><span class="name">HttpClient</span></a><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.</p>
     </li><li name="io.wasted.util.http.HttpClientResponseAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="HttpClientResponseAdapterextendsSimpleChannelInboundHandler[Object]withLogger"></a>
+      <a id="HttpClientResponseAdapterextendsSimpleChannelInboundHandler[io.netty.handler.codec.http.HttpObject]"></a>
       <a id="HttpClientResponseAdapter:HttpClientResponseAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,7 +80,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="HttpClientResponseAdapter.html"><span class="name">HttpClientResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="HttpClientResponseAdapter.html"><span class="name">HttpClientResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Netty Response Adapter which is used for the doneF-Approach in HttpClient Object.</p>

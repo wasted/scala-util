@@ -40,6 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.
+Cache results in vals as i expect most of these operations to be expensive at some point or another.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -183,6 +184,19 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.Config#conf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="conf:com.typesafe.config.Config"></a>
+      <a id="conf:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">conf</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -241,6 +255,19 @@
       </span>
       </h4>
       
+    </li><li name="io.wasted.util.Config#getBool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getBool(name:String):Option[Boolean]"></a>
+      <a id="getBool(String):Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBool</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -254,6 +281,40 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Config#getInetAddrList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getInetAddrList(name:String,fallback:Seq[String]):Seq[java.net.InetSocketAddress]"></a>
+      <a id="getInetAddrList(String,Seq[String]):Seq[InetSocketAddress]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getInetAddrList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a list of InetSocketAddresses back where you configured multiple IPs in your configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Get a list of InetSocketAddresses back where you configured multiple IPs in your configuration.</p><p>Example:
+In your configuration you have a key
+listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Name of the configuration directive</p></dd><dt class="param">fallback</dt><dd class="cmt"><p>Fallback value if nothing is found</p></dd><dt>returns</dt><dd class="cmt"><p>Seq of InetSocketAddresses to be used
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getInetAddrList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getInetAddrList(name:String):Option[Seq[java.net.InetSocketAddress]]"></a>
+      <a id="getInetAddrList(String):Option[Seq[InetSocketAddress]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getInetAddrList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a list of InetSocketAddresses back where you configured multiple IPs in your configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Get a list of InetSocketAddresses back where you configured multiple IPs in your configuration.</p><p>Example:
+In your configuration you have a key
+listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Name of the configuration directive</p></dd><dt>returns</dt><dd class="cmt"><p>Seq of InetSocketAddresses to be used
+</p></dd></dl></div>
     </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getInt(name:String,fallback:Int):Int"></a>
       <a id="getInt(String,Int):Int"></a>
@@ -267,55 +328,16 @@
       </span>
       </h4>
       
-    </li><li name="io.wasted.util.Config#getOptionBool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getOptionBool(name:String):Option[Boolean]"></a>
-      <a id="getOptionBool(String):Option[Boolean]"></a>
+    </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getInt(name:String):Option[Int]"></a>
+      <a id="getInt(String):Option[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getOptionBool</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="io.wasted.util.Config#getOptionInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getOptionInt(name:String):Option[Int]"></a>
-      <a id="getOptionInt(String):Option[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getOptionInt</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="io.wasted.util.Config#getOptionString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getOptionString(name:String):Option[String]"></a>
-      <a id="getOptionString(String):Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getOptionString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.String">String</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="io.wasted.util.Config#getOptionStringList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getOptionStringList(name:String,sep:String):Option[List[String]]"></a>
-      <a id="getOptionStringList(String,String):Option[List[String]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getOptionStringList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sep">sep: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;,&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+        <span class="name">getInt</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
       
@@ -328,23 +350,57 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">getString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
-    </li><li name="io.wasted.util.Config#getStringList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getStringList(name:String,fallback:List[String]):List[String]"></a>
-      <a id="getStringList(String,List[String]):List[String]"></a>
+    </li><li name="io.wasted.util.Config#getString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getString(name:String):Option[String]"></a>
+      <a id="getString(String):Option[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getStringList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">getString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       
+    </li><li name="io.wasted.util.Config#getStringList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStringList(name:String,fallback:Seq[String]):Seq[String]"></a>
+      <a id="getStringList(String,Seq[String]):Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStringList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a list of Strings out of your configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Get a list of Strings out of your configuration.</p><p>Example:
+In your configuration you have a key
+listen.on=[&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Name of the configuration directive</p></dd><dt class="param">fallback</dt><dd class="cmt"><p>Fallback value if nothing is found</p></dd><dt>returns</dt><dd class="cmt"><p>Seq of Strings
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getStringList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStringList(name:String):Option[Seq[String]]"></a>
+      <a id="getStringList(String):Option[Seq[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStringList</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a list of Strings out of your configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Get a list of Strings out of your configuration.</p><p>Example:
+In your configuration you have a key
+listen.on=[&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Name of the configuration directive</p></dd><dt>returns</dt><dd class="cmt"><p>Seq of Strings
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>

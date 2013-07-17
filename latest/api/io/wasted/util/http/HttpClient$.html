@@ -167,33 +167,33 @@
 </p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Implementation of ChannelInboundMessageHandlerAdapter</p></dd><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
 </p></dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(doneF:Option[io.netty.handler.codec.http.HttpResponse]=&gt;Unit,chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[Object]"></a>
-      <a id="apply((Option[HttpResponse])⇒Unit,Boolean,Int,Option[SSLEngine]):HttpClient[AnyRef]"></a>
+      <a id="apply(doneF:Option[io.netty.handler.codec.http.HttpObject]=&gt;Unit,chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[io.netty.handler.codec.http.HttpObject]"></a>
+      <a id="apply((Option[HttpObject])⇒Unit,Boolean,Int,Option[SSLEngine]):HttpClient[HttpObject]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="doneF">doneF: (<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>]</span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">apply</span><span class="params">(<span name="doneF">doneF: (<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>]</span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpResponse.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpResponse.
+      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpObject.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpObject.
 </p></div><dl class="paramcmts block"><dt class="param">doneF</dt><dd class="cmt"><p>Function which will handle the result</p></dd><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
 </p></dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[Object]"></a>
-      <a id="apply(Boolean,Int,Option[SSLEngine]):HttpClient[AnyRef]"></a>
+      <a id="apply(chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[io.netty.handler.codec.http.HttpObject]"></a>
+      <a id="apply(Boolean,Int,Option[SSLEngine]):HttpClient[HttpObject]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">apply</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpResponse.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpResponse.
+      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpObject.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpObject.
 </p></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
 </p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
