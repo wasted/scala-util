@@ -16,6 +16,7 @@ resolvers ++= Seq(
   "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
   "Twitter's Repository" at "http://maven.twttr.com/",
   "Maven Repo" at "http://repo1.maven.org/maven2/",
+  "Kungfuters" at "http://maven.kungfuters.org/content/groups/public/",
   "Typesafe Ivy Repo" at "http://repo.typesafe.com/typesafe/ivy-releases",
   "Typesafe Maven Repo" at "http://repo.typesafe.com/typesafe/releases/",
   "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
@@ -27,7 +28,7 @@ libraryDependencies ++= Seq(
   "commons-codec" % "commons-codec" % "1.7",
   "commons-collections" % "commons-collections" % "3.2.1",
   "com.jcraft" % "jzlib" % "1.1.2",
-  "io.netty" % "netty-all" % "4.0.3.Final",
+  "io.netty" % "netty-all" % "4.0.4.Final",
   "org.joda" % "joda-convert" % "1.2",
   "org.javassist" % "javassist" % "3.17.1-GA",
   "joda-time" % "joda-time" % "2.1",
