@@ -2,13 +2,15 @@ package io.wasted.util
 
 import scala.concurrent.duration.Duration
 import io.netty.util.{ Timeout, TimerTask }
-import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.{ TimeUnit, ConcurrentHashMap }
 
 /**
  * Wasted Scheduler based on Netty's HashedWheelTimer
  */
 object Schedule extends Logger {
-  private[util] val timer = new io.netty.util.HashedWheelTimer()
+  private[util] val timerMillis = Config.getInt("wheel.tickMillis", 100)
+  private[util] val wheelSize = Config.getInt("wheel.size", 512)
+  private[util] val timer = new io.netty.util.HashedWheelTimer(timerMillis.toLong, TimeUnit.MILLISECONDS, wheelSize)
   private val repeatTimers = new ConcurrentHashMap[Long, Timeout]()
 
   /**
