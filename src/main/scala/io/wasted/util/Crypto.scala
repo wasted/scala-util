@@ -3,7 +3,7 @@ package io.wasted.util
 import javax.crypto.spec.SecretKeySpec
 import javax.crypto.Cipher
 
-case class CryptoCipher(name: String = "AES")
+case class CryptoCipher(name: String = "AES", jce: Boolean = true)
 
 /**
  * Helper methods for en-/decrypting strings.
@@ -29,7 +29,7 @@ object Crypto {
    */
   def encryptBinary(salt: String, payload: Array[Byte])(implicit cipher: CryptoCipher): Array[Byte] = {
     val key = new SecretKeySpec(salt.getBytes("UTF-8"), "AES")
-    val cipherI = Cipher.getInstance(cipher.name, "SunJCE")
+    val cipherI = if (cipher.jce) Cipher.getInstance(cipher.name, "SunJCE") else Cipher.getInstance(cipher.name)
     cipherI.init(Cipher.ENCRYPT_MODE, key)
     cipherI.doFinal(payload)
   }
@@ -63,7 +63,7 @@ object Crypto {
    */
   def decryptBinary(salt: String, payload: Array[Byte])(implicit cipher: CryptoCipher): Array[Byte] = {
     val key = new SecretKeySpec(salt.getBytes("UTF-8"), cipher.name)
-    val cipherI = Cipher.getInstance(cipher.name, "SunJCE")
+    val cipherI = if (cipher.jce) Cipher.getInstance(cipher.name, "SunJCE") else Cipher.getInstance(cipher.name)
     cipherI.init(Cipher.DECRYPT_MODE, key)
     cipherI.doFinal(payload)
   }
