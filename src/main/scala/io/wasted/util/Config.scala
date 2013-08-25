@@ -2,6 +2,7 @@ package io.wasted.util
 
 import com.typesafe.config.ConfigFactory
 import java.net.InetSocketAddress
+import scala.concurrent.duration._
 import scala.collection.JavaConverters._
 
 /**
@@ -11,13 +12,94 @@ import scala.collection.JavaConverters._
 object Config {
   val conf = ConfigFactory.load()
 
+  /**
+   * Gets the Bytes from Config
+   * @param name Config directive
+   * @return Option for a Long
+   */
+  def getBytes(name: String): Option[Long] = Tryo(conf.getBytes(name))
+
+  /**
+   * Gets the Bytes from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a Long
+   */
+  def getBytes(name: String, fallback: Long): Long = getBytes(name) getOrElse fallback
+
+  /**
+   * Gets the Duration from Config
+   * @param name Config directive
+   * @return Option for a Duration
+   */
+  def getDuration(name: String): Option[Duration] = Tryo(conf.getMilliseconds(name).toInt.millis)
+
+  /**
+   * Gets the Duration from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a Duration
+   */
+  def getDuration(name: String, fallback: Duration): Duration = getDuration(name) getOrElse fallback
+
+  /**
+   * Gets the Int from Config
+   * @param name Config directive
+   * @return Option for an Integer
+   */
   def getInt(name: String): Option[Int] = Tryo(conf.getInt(name))
+
+  /**
+   * Gets the Int from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a Integer
+   */
   def getInt(name: String, fallback: Int): Int = getInt(name) getOrElse fallback
 
+  /**
+   * Gets the Boolean from Config
+   * @param name Config directive
+   * @return Option for a Boolean
+   */
   def getBool(name: String): Option[Boolean] = Tryo(conf.getBoolean(name))
+
+  /**
+   * Gets the Bool from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a Bool
+   */
   def getBool(name: String, fallback: Boolean): Boolean = getBool(name) getOrElse fallback
 
+  /**
+   * Gets the String from Config
+   * @param name Config directive
+   * @return Option for a String
+   */
+  def get(name: String): Option[String] = Tryo(conf.getString(name))
+
+  /**
+   * Gets the String from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a String
+   */
+  def get(name: String, fallback: String): String = getString(name) getOrElse fallback
+
+  /**
+   * Gets the String from Config
+   * @param name Config directive
+   * @return Option for aString
+   */
   def getString(name: String): Option[String] = Tryo(conf.getString(name))
+
+  /**
+   * Gets the String from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a String
+   */
   def getString(name: String, fallback: String): String = getString(name) getOrElse fallback
 
   /**
