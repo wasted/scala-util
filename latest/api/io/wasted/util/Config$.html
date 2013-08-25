@@ -242,7 +242,35 @@ Cache results in vals as i expect most of these operations to be expensive at so
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Config#getBool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.Config#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get(name:String,fallback:String):String"></a>
+      <a id="get(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the String from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the String from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a String
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get(name:String):Option[String]"></a>
+      <a id="get(String):Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the String from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the String from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for a String
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getBool" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBool(name:String,fallback:Boolean):Boolean"></a>
       <a id="getBool(String,Boolean):Boolean"></a>
       <h4 class="signature">
@@ -254,8 +282,9 @@ Cache results in vals as i expect most of these operations to be expensive at so
         <span class="name">getBool</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      
-    </li><li name="io.wasted.util.Config#getBool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the Bool from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Bool from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a Bool
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getBool" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBool(name:String):Option[Boolean]"></a>
       <a id="getBool(String):Option[Boolean]"></a>
       <h4 class="signature">
@@ -267,7 +296,36 @@ Cache results in vals as i expect most of these operations to be expensive at so
         <span class="name">getBool</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Gets the Boolean from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Boolean from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for a Boolean
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getBytes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBytes(name:String,fallback:Long):Long"></a>
+      <a id="getBytes(String,Long):Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBytes</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the Bytes from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Bytes from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a Long
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getBytes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBytes(name:String):Option[Long]"></a>
+      <a id="getBytes(String):Option[Long]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBytes</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the Bytes from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Bytes from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for a Long
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -281,6 +339,34 @@ Cache results in vals as i expect most of these operations to be expensive at so
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Config#getDuration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDuration(name:String,fallback:scala.concurrent.duration.Duration):scala.concurrent.duration.Duration"></a>
+      <a id="getDuration(String,Duration):Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDuration</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the Duration from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Duration from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a Duration
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getDuration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDuration(name:String):Option[scala.concurrent.duration.Duration]"></a>
+      <a id="getDuration(String):Option[Duration]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDuration</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Gets the Duration from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Duration from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for a Duration
+</p></dd></dl></div>
     </li><li name="io.wasted.util.Config#getInetAddrList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInetAddrList(name:String,fallback:Seq[String]):Seq[java.net.InetSocketAddress]"></a>
       <a id="getInetAddrList(String,Seq[String]):Seq[InetSocketAddress]"></a>
@@ -315,7 +401,7 @@ In your configuration you have a key
 listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
 </p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Name of the configuration directive</p></dd><dt>returns</dt><dd class="cmt"><p>Seq of InetSocketAddresses to be used
 </p></dd></dl></div>
-    </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInt(name:String,fallback:Int):Int"></a>
       <a id="getInt(String,Int):Int"></a>
       <h4 class="signature">
@@ -327,8 +413,9 @@ listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
         <span class="name">getInt</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      
-    </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the Int from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Int from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a Integer
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInt(name:String):Option[Int]"></a>
       <a id="getInt(String):Option[Int]"></a>
       <h4 class="signature">
@@ -340,8 +427,9 @@ listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
         <span class="name">getInt</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      
-    </li><li name="io.wasted.util.Config#getString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the Int from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the Int from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for an Integer
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getString(name:String,fallback:String):String"></a>
       <a id="getString(String,String):String"></a>
       <h4 class="signature">
@@ -353,8 +441,9 @@ listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
         <span class="name">getString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fallback">fallback: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      
-    </li><li name="io.wasted.util.Config#getString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the String from Config and uses a fallback</p><div class="fullcomment"><div class="comment cmt"><p>Gets the String from Config and uses a fallback</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt class="param">fallback</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Option for a String
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Config#getString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getString(name:String):Option[String]"></a>
       <a id="getString(String):Option[String]"></a>
       <h4 class="signature">
@@ -366,7 +455,8 @@ listen.on=[&quot;127.0.0.1:8080&quot; ,&quot;[2002:123::123]:5&quot;, ..]
         <span class="name">getString</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Gets the String from Config</p><div class="fullcomment"><div class="comment cmt"><p>Gets the String from Config</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Config directive</p></dd><dt>returns</dt><dd class="cmt"><p>Option for aString
+</p></dd></dl></div>
     </li><li name="io.wasted.util.Config#getStringList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getStringList(name:String,fallback:Seq[String]):Seq[String]"></a>
       <a id="getStringList(String,Seq[String]):Seq[String]"></a>
