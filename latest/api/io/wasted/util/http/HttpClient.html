@@ -35,7 +35,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">HttpClient</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -81,18 +81,18 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.http.HttpClient#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(handler:io.netty.channel.SimpleChannelInboundHandler[T],chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="&lt;init&gt;:HttpClient[T]"></a>
+      <a id="&lt;init&gt;(chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient"></a>
+      <a id="&lt;init&gt;:HttpClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>, <span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">scala.None</span></span>)</span>
+        <span class="name">HttpClient</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">scala.None</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Inbound Message Handler Implementation</p></dd><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -246,15 +246,15 @@
               
         </dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="get(url:java.net.URL,headers:Map[String,String]):io.netty.channel.ChannelFuture"></a>
-      <a id="get(URL,Map[String,String]):ChannelFuture"></a>
+      <a id="get(url:java.net.URL,headers:Map[String,String]):scala.concurrent.Future[io.netty.handler.codec.http.FullHttpResponse]"></a>
+      <a id="get(URL,Map[String,String]):Future[FullHttpResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">get</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">get</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Run a GET-Request on the given URL.</p><div class="fullcomment"><div class="comment cmt"><p>Run a GET-Request on the given URL.
@@ -339,15 +339,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#post" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="post(url:java.net.URL,mime:String,body:Seq[Byte],headers:Map[String,String],method:io.netty.handler.codec.http.HttpMethod):io.netty.channel.ChannelFuture"></a>
-      <a id="post(URL,String,Seq[Byte],Map[String,String],HttpMethod):ChannelFuture"></a>
+      <a id="post(url:java.net.URL,mime:String,body:Seq[Byte],headers:Map[String,String],method:io.netty.handler.codec.http.HttpMethod):scala.concurrent.Future[io.netty.handler.codec.http.FullHttpResponse]"></a>
+      <a id="post(URL,String,Seq[Byte],Map[String,String],HttpMethod):Future[FullHttpResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">post</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="mime">mime: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="body">body: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Byte">Byte</span>] = <span class="symbol">Seq()</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>, <span name="method">method: <span class="extype" name="io.netty.handler.codec.http.HttpMethod">HttpMethod</span></span>)</span><span class="result">: <span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">post</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="mime">mime: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="body">body: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Byte">Byte</span>] = <span class="symbol">Seq()</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>, <span name="method">method: <span class="extype" name="io.netty.handler.codec.http.HttpMethod">HttpMethod</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Send a PUT/POST-Request on the given URL with body.</p><div class="fullcomment"><div class="comment cmt"><p>Send a PUT/POST-Request on the given URL with body.
@@ -380,15 +380,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#thruput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="thruput(url:java.net.URL,auth:java.util.UUID,sign:java.util.UUID,payload:String):io.netty.channel.ChannelFuture"></a>
-      <a id="thruput(URL,UUID,UUID,String):ChannelFuture"></a>
+      <a id="thruput(url:java.net.URL,auth:java.util.UUID,sign:java.util.UUID,payload:String):scala.concurrent.Future[io.netty.handler.codec.http.FullHttpResponse]"></a>
+      <a id="thruput(URL,UUID,UUID,String):Future[FullHttpResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">thruput</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="auth">auth: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="sign">sign: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">thruput</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="auth">auth: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="sign">sign: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Send a message to thruput.</p><div class="fullcomment"><div class="comment cmt"><p>Send a message to thruput.io endpoint.
@@ -465,15 +465,15 @@
               
         </dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClient#write" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="write(url:java.net.URL,req:io.netty.handler.codec.http.FullHttpRequest):io.netty.channel.ChannelFuture"></a>
-      <a id="write(URL,FullHttpRequest):ChannelFuture"></a>
+      <a id="write(url:java.net.URL,req:()=&gt;io.netty.handler.codec.http.FullHttpRequest):scala.concurrent.Future[io.netty.handler.codec.http.FullHttpResponse]"></a>
+      <a id="write(URL,()⇒FullHttpRequest):Future[FullHttpResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">write</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="req">req: <span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span></span>)</span><span class="result">: <span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">write</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>, <span name="req">req: () ⇒ <span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Write a Netty HttpRequest directly through to the given URL.</p><div class="fullcomment"><div class="comment cmt"><p>Write a Netty HttpRequest directly through to the given URL.

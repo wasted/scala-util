@@ -35,17 +35,14 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClientResponseAdapter</span><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]</span>
+        <span class="name">HttpClientResponseAdapter</span><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Netty Response Adapter which is used for the doneF-Approach in HttpClient Object.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Sharable</span><span class="args">()</span>
-              
-        </dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Netty Response Adapter which uses scala Futures.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -84,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.http.HttpClientResponseAdapter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(doneF:Option[io.netty.handler.codec.http.HttpObject]=&gt;Unit):io.wasted.util.http.HttpClientResponseAdapter"></a>
+      <a id="&lt;init&gt;(promise:scala.concurrent.Promise[io.netty.handler.codec.http.FullHttpResponse]):io.wasted.util.http.HttpClientResponseAdapter"></a>
       <a id="&lt;init&gt;:HttpClientResponseAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +89,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClientResponseAdapter</span><span class="params">(<span name="doneF">doneF: (<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span>
+        <span class="name">HttpClientResponseAdapter</span><span class="params">(<span name="promise">promise: <span class="extype" name="scala.concurrent.Promise">Promise</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">doneF</dt><dd class="cmt"><p>Function which will handle the result
-</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">promise</dt><dd class="cmt"><p>Promise for type T object</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -261,15 +257,15 @@
               
         </dd></dl></div>
     </li><li name="io.wasted.util.http.HttpClientResponseAdapter#channelRead0" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="channelRead0(ctx:io.netty.channel.ChannelHandlerContext,msg:io.netty.handler.codec.http.HttpObject):Unit"></a>
-      <a id="channelRead0(ChannelHandlerContext,HttpObject):Unit"></a>
+      <a id="channelRead0(ctx:io.netty.channel.ChannelHandlerContext,msg:io.netty.handler.codec.http.FullHttpResponse):Unit"></a>
+      <a id="channelRead0(ChannelHandlerContext,FullHttpResponse):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">channelRead0</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="msg">msg: <span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">channelRead0</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="msg">msg: <span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpClientResponseAdapter">HttpClientResponseAdapter</a> → SimpleChannelInboundHandler</dd></dl></div>
@@ -667,7 +663,7 @@
 
         <div id="inheritedMembers">
         <div class="parent" name="io.netty.channel.SimpleChannelInboundHandler">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span>]</h3>
+              <h3>Inherited from <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpResponse">FullHttpResponse</span>]</h3>
             </div><div class="parent" name="io.netty.channel.ChannelInboundHandlerAdapter">
               <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span></h3>
             </div><div class="parent" name="io.netty.channel.ChannelInboundHandler">
