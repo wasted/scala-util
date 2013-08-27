@@ -16,6 +16,9 @@ import java.net.InetSocketAddress
 import java.io.{ File, FileInputStream }
 import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.{ SSLEngine, SSLContext }
+import scala.concurrent._
+import scala.util.Success
+import io.netty.util.ReferenceCounted
 
 /**
  * Netty HTTP Client Object to create HTTP Request Objects.
@@ -29,32 +32,9 @@ object HttpClient {
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient[HttpObject] = {
-    val doneF = (x: Option[HttpObject]) => {}
-    this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
+  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient = {
+    new HttpClient(chunked, timeout, engine)
   }
-
-  /**
-   * Creates a HTTP Client which will call the given method with the returned HttpObject.
-   *
-   * @param doneF Function which will handle the result
-   * @param chunked Get responses in chunks
-   * @param timeout Connect timeout in seconds
-   * @param engine Optional SSLEngine
-   */
-  def apply(doneF: (Option[HttpObject]) => Unit, chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[HttpObject] =
-    this.apply(new HttpClientResponseAdapter(doneF), chunked, timeout, engine)
-
-  /**
-   * Creates a HTTP Client which implements the given Netty HandlerAdapter.
-   *
-   * @param handler Implementation of ChannelInboundMessageHandlerAdapter
-   * @param chunked Get responses in chunks
-   * @param timeout Connect timeout in seconds
-   * @param engine Optional SSLEngine
-   */
-  def apply[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean, timeout: Int, engine: Option[SSLEngine]): HttpClient[T] =
-    new HttpClient(handler, chunked, timeout, engine)
 
   /* Default Client SSLContext. */
   lazy val defaultClientSSLContext: SSLContext = {
@@ -88,35 +68,32 @@ object HttpClient {
 }
 
 /**
- * Netty Response Adapter which is used for the doneF-Approach in HttpClient Object.
+ * Netty Response Adapter which uses scala Futures.
  *
- * @param doneF Function which will handle the result
+ * @param promise Promise for type T object
+ * @param T Type of the expected Netty Result
  */
-@ChannelHandler.Sharable
-class HttpClientResponseAdapter(doneF: (Option[HttpObject]) => Unit) extends SimpleChannelInboundHandler[HttpObject] {
+class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends SimpleChannelInboundHandler[FullHttpResponse] {
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     ExceptionHandler(ctx, cause)
-    doneF(None)
+    promise.failure(cause)
     ctx.channel.close
   }
 
-  def channelRead0(ctx: ChannelHandlerContext, msg: HttpObject) {
-    msg match {
-      case a: HttpObject => doneF(Some(a))
-      case _ => doneF(None)
-    }
+  def channelRead0(ctx: ChannelHandlerContext, msg: FullHttpResponse) {
+    msg.content.retain()
+    promise.complete(Success(msg))
   }
 }
 
 /**
  * Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.
  *
- * @param handler Inbound Message Handler Implementation
  * @param chunked Get responses in chunks
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) {
+class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -138,12 +115,11 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
         engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
         p.addLast("codec", new HttpClientCodec)
         if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
-        p.addLast("handler", handler)
       }
     })
 
   private def getPort(url: java.net.URL): Int = if (url.getPort == -1) url.getDefaultPort else url.getPort
-  private def getPortString(url: java.net.URL): String = if (url.getPort == -1) "" else (":" + url.getPort)
+  private def getPortString(url: java.net.URL): String = if (url.getPort == -1) "" else ":" + url.getPort
 
   private def prepare(url: java.net.URL) = {
     bootstrap.clone.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
@@ -155,18 +131,25 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
    * @param url What could this be?
    * @param req Netty FullHttpRequest
    */
-  def write(url: java.net.URL, req: FullHttpRequest) = {
-    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
-
-    val bootstrap = prepare(url)
-    bootstrap.connect().addListener(new ChannelFutureListener() {
-      override def operationComplete(cf: ChannelFuture) {
-        if (!cf.isSuccess) return
-        cf.channel.write(req)
-        cf.channel.flush()
-        cf.channel.closeFuture()
-      }
-    })
+  def write(url: java.net.URL, req: () => FullHttpRequest): Future[FullHttpResponse] = {
+    val promise = Promise[FullHttpResponse]()
+    if (disabled) {
+      promise.failure(new IllegalStateException("HttpClient is already shutdown."))
+    } else {
+      val bootstrap = prepare(url)
+      bootstrap.connect().addListener(new ChannelFutureListener() {
+        override def operationComplete(cf: ChannelFuture) {
+          if (!cf.isSuccess) promise.failure(cf.cause())
+          else {
+            cf.channel.pipeline.addLast("handler", new HttpClientResponseAdapter(promise))
+            cf.channel.write(req())
+            cf.channel.flush()
+            cf.channel.closeFuture()
+          }
+        }
+      })
+    }
+    promise.future
   }
 
   /**
@@ -175,23 +158,12 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
    * @param url What could this be?
    * @param headers The mysteries keep piling up!
    */
-  def get(url: java.net.URL, headers: Map[String, String] = Map()) = {
-    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
-
+  def get(url: java.net.URL, headers: Map[String, String] = Map()): Future[FullHttpResponse] = {
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
     req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
     headers.foreach(f => req.headers.set(f._1, f._2))
-
-    val bootstrap = prepare(url)
-    bootstrap.connect().addListener(new ChannelFutureListener() {
-      override def operationComplete(cf: ChannelFuture) {
-        if (!cf.isSuccess) return
-        cf.channel.write(req)
-        cf.channel.flush()
-        cf.channel.closeFuture()
-      }
-    })
+    write(url, () => req)
   }
 
   /**
@@ -203,25 +175,16 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
    * @param headers I don't like to explain trivial stuff
    * @param method HTTP Method to be used
    */
-  def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod) = {
-    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
-
-    val content = Unpooled.wrappedBuffer(body.toArray)
-    val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
-    req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
-    req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-    req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
-    req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
-    headers.foreach(f => req.headers.set(f._1, f._2))
-
-    val bootstrap = prepare(url)
-    bootstrap.connect().addListener(new ChannelFutureListener() {
-      override def operationComplete(cf: ChannelFuture) {
-        if (!cf.isSuccess) return
-        cf.channel.write(req)
-        cf.channel.flush()
-        cf.channel.closeFuture()
-      }
+  def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod): Future[FullHttpResponse] = {
+    write(url, () => {
+      val content = Unpooled.wrappedBuffer(body.toArray)
+      val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
+      req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
+      req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
+      req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
+      req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
+      headers.foreach(f => req.headers.set(f._1, f._2))
+      req
     })
   }
 
@@ -233,9 +196,7 @@ class HttpClient[T <: Object](handler: SimpleChannelInboundHandler[T], chunked: 
    * @param sign Signing Key for thruput.io platform
    * @param payload Payload to be sent
    */
-  def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String) = {
-    if (disabled) throw new IllegalStateException("HttpClient is already shutdown.")
-
+  def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String): Future[FullHttpResponse] = {
     val headers = Map("X-Io-Auth" -> auth.toString, "X-Io-Sign" -> io.wasted.util.Hashing.sign(sign.toString, payload))
     post(url, "application/json", payload.map(_.toByte), headers, HttpMethod.PUT)
   }

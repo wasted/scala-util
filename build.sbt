@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
   "commons-codec" % "commons-codec" % "1.7",
   "commons-collections" % "commons-collections" % "3.2.1",
   "com.jcraft" % "jzlib" % "1.1.2",
-  "io.netty" % "netty-all" % "4.0.7.Final",
+  "io.netty" % "netty-all" % "4.0.8.Final",
   "org.joda" % "joda-convert" % "1.2",
   "org.javassist" % "javassist" % "3.17.1-GA",
   "joda-time" % "joda-time" % "2.1",

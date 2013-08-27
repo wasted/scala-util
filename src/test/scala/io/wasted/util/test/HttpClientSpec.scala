@@ -5,9 +5,10 @@ import io.wasted.util.Logger
 
 import org.specs2.mutable._
 
-import io.netty.handler.codec.http.{ HttpObject, FullHttpResponse }
-import io.netty.handler.codec.http.HttpResponseStatus.{ OK, MOVED_PERMANENTLY }
+import io.netty.handler.codec.http.FullHttpResponse
 import io.netty.util.CharsetUtil
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.Success
 
 class HttpClientSpec extends Specification with Logger {
 
@@ -18,15 +19,15 @@ class HttpClientSpec extends Specification with Logger {
   var result1 = false
   var content1 = "failed"
 
-  def client1func(x: Option[HttpObject]): Unit = x match {
-    case Some(rsp: FullHttpResponse) if rsp.getStatus == OK || rsp.getStatus == MOVED_PERMANENTLY =>
+  val client1 = HttpClient(false, 5, None)
+  val future = client1.get(url)
+  future onComplete {
+    case Success(resp: FullHttpResponse) =>
       result1 = true
-      content1 = rsp.content().toString(CharsetUtil.UTF_8)
-    case x: Object =>
+      content1 = resp.content.toString(CharsetUtil.UTF_8)
+      resp.content.release()
+    case _ =>
   }
-
-  val client1 = HttpClient(client1func _, false, 5, None)
-  step(client1.get(url))
 
   "GET Request to http://wasted.io" should {
     "return true" in {
