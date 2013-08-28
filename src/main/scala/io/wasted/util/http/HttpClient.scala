@@ -38,20 +38,9 @@ object HttpClient {
 
   /* Default Client SSLContext. */
   lazy val defaultClientSSLContext: SSLContext = {
-    val ks = KeyStore.getInstance("JKS")
-    val ts = KeyStore.getInstance("JKS")
-    val passphrase = "defaultClientStorePass".toCharArray
-
-    val keyStoreFile = File.createTempFile("keyStoreFile", ".jks")
-    keyStoreFile.deleteOnExit()
-    ks.load(new FileInputStream(keyStoreFile), passphrase)
-
-    val kmf = KeyManagerFactory.getInstance("SunX509")
-    kmf.init(ks, passphrase)
-
-    val sslCtx = SSLContext.getInstance("TLS")
-    sslCtx.init(kmf.getKeyManagers, null, null)
-    sslCtx
+    val ctx = SSLContext.getInstance("TLS")
+    ctx.init(null, null, null)
+    ctx
   }
 
   /**
