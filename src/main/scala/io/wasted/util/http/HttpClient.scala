@@ -32,7 +32,7 @@ object HttpClient {
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None): HttpClient = {
+  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None): HttpClient = {
     new HttpClient(chunked, timeout, engine)
   }
 
@@ -82,7 +82,7 @@ class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends Simp
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
-class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEngine] = None) {
+class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -101,7 +101,7 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[SSLEn
             ctx.channel.close
           }
         })
-        engine.foreach(e => p.addLast("ssl", new SslHandler(e)))
+        engine.foreach(e => p.addLast("ssl", new SslHandler(e())))
         p.addLast("codec", new HttpClientCodec)
         if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
       }
