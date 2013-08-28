@@ -81,8 +81,9 @@ class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends Simp
  * @param chunked Get responses in chunks
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
+ * @param persistent Optional Host Address we're directing all requests to, regardless of their DNS lookup
  */
-class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None) {
+class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None, persistent: Option[(String, Int)] = None) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -96,11 +97,6 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        p.addLast("timeout", new ReadTimeoutHandler(timeout) {
-          override def readTimedOut(ctx: ChannelHandlerContext) {
-            ctx.channel.close
-          }
-        })
         engine.foreach(e => p.addLast("ssl", new SslHandler(e())))
         p.addLast("codec", new HttpClientCodec)
         if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
@@ -109,10 +105,6 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
 
   private def getPort(url: java.net.URL): Int = if (url.getPort == -1) url.getDefaultPort else url.getPort
   private def getPortString(url: java.net.URL): String = if (url.getPort == -1) "" else ":" + url.getPort
-
-  private def prepare(url: java.net.URL) = {
-    bootstrap.clone.remoteAddress(new InetSocketAddress(url.getHost, getPort(url)))
-  }
 
   /**
    * Write a Netty HttpRequest directly through to the given URL.
@@ -125,15 +117,22 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
     if (disabled) {
       promise.failure(new IllegalStateException("HttpClient is already shutdown."))
     } else {
-      val bootstrap = prepare(url)
-      bootstrap.connect().addListener(new ChannelFutureListener() {
+      val connected = persistent match {
+        case Some((host, port)) => bootstrap.connect(host, port)
+        case _ => bootstrap.clone().connect(url.getHost, getPort(url))
+      }
+      connected.addListener(new ChannelFutureListener() {
         override def operationComplete(cf: ChannelFuture) {
           if (!cf.isSuccess) promise.failure(cf.cause())
           else {
+            cf.channel.pipeline.addFirst("timeout", new ReadTimeoutHandler(timeout) {
+              override def readTimedOut(ctx: ChannelHandlerContext) {
+                ctx.channel.close
+                promise.failure(new IllegalStateException("Did not get response in time"))
+              }
+            })
             cf.channel.pipeline.addLast("handler", new HttpClientResponseAdapter(promise))
-            cf.channel.write(req())
-            cf.channel.flush()
-            cf.channel.closeFuture()
+            cf.channel.writeAndFlush(req())
           }
         }
       })
@@ -148,7 +147,8 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
    * @param headers The mysteries keep piling up!
    */
   def get(url: java.net.URL, headers: Map[String, String] = Map()): Future[FullHttpResponse] = {
-    val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url.getPath)
+    val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
+    val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, path)
     req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
     req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
     headers.foreach(f => req.headers.set(f._1, f._2))
@@ -167,7 +167,8 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
   def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod): Future[FullHttpResponse] = {
     write(url, () => {
       val content = Unpooled.wrappedBuffer(body.toArray)
-      val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, url.getPath, content)
+      val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
+      val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, path, content)
       req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
       req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
       req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
