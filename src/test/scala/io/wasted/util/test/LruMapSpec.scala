@@ -8,7 +8,7 @@ class LruMapSpec extends Specification {
 
   "Specification for LruMap with size of 10.".title
 
-  val lru = new LruMap[Int, Int](10)
+  val lru = LruMap[Int, Int](10)
 
   "Pre-loaded LruMap with Ints (0 to 10)" should {
     for (i <- 0 to 10) lru.put(i, i)

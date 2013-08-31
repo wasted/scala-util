@@ -26,12 +26,9 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
   "com.typesafe" % "config" % "0.6.0",
   "commons-codec" % "commons-codec" % "1.7",
-  "commons-collections" % "commons-collections" % "3.2.1",
-  "com.jcraft" % "jzlib" % "1.1.2",
+  "com.google.guava" % "guava" % "12.0",
   "io.netty" % "netty-all" % "4.0.8.Final",
-  "org.joda" % "joda-convert" % "1.2",
   "org.javassist" % "javassist" % "3.17.1-GA",
-  "joda-time" % "joda-time" % "2.1",
   "org.specs2" %% "specs2" % "1.13" % "test"
 )
 
