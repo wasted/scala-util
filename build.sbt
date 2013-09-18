@@ -23,8 +23,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile",
-  "com.typesafe" % "config" % "0.6.0",
+  "ch.qos.logback" % "logback-classic" % "1.0.13",
+  "com.typesafe" % "config" % "1.0.2",
   "commons-codec" % "commons-codec" % "1.7",
   "com.google.guava" % "guava" % "12.0",
   "io.netty" % "netty-all" % "4.0.8.Final",
