@@ -7,6 +7,17 @@ import io.netty.channel.ChannelHandlerContext
  */
 object ExceptionHandler {
   /**
+   * Precompiled Patterns for performance reasons.
+   * Filters unimportant/low level exceptions.
+   */
+  private val unimportant = List(
+    "java.nio.channels.ClosedChannelException.*".r,
+    "io.netty.handler.codec.CorruptedFrameException.*".r,
+    "java.io.IOException.*".r,
+    "javax.net.ssl.SSLException.*".r,
+    "java.lang.IllegalArgumentException.*".r)
+
+  /**
    * Bad client = closed connection, malformed requests, etc.
    *
    * Do nothing if the exception is one of the following:
@@ -18,14 +29,10 @@ object ExceptionHandler {
    */
   def apply(ctx: ChannelHandlerContext, cause: Throwable): Option[Throwable] = {
     val s = cause.toString
-    if (s.startsWith("java.nio.channels.ClosedChannelException") ||
-      s.startsWith("io.netty.handler.codec.CorruptedFrameException") ||
-      s.startsWith("java.io.IOException") ||
-      s.startsWith("javax.net.ssl.SSLException") ||
-      s.startsWith("java.lang.IllegalArgumentException")) return None
-
-    if (ctx.channel.isOpen) ctx.channel.closeFuture()
-    Some(cause)
+    if (unimportant.exists(_.findFirstIn(s).isDefined)) None
+    else {
+      if (ctx.channel.isOpen) ctx.channel.close()
+      Some(cause)
+    }
   }
 }
-
