@@ -58,6 +58,21 @@ object Config {
   def getInt(name: String, fallback: Int): Int = getInt(name) getOrElse fallback
 
   /**
+   * Gets the Double from Config
+   * @param name Config directive
+   * @return Option for an Double
+   */
+  def getDouble(name: String): Option[Double] = Tryo(conf.getDouble(name))
+
+  /**
+   * Gets the Double from Config and uses a fallback
+   * @param name Config directive
+   * @param fallback
+   * @return Option for a Double
+   */
+  def getDouble(name: String, fallback: Double): Double = getDouble(name) getOrElse fallback
+
+  /**
    * Gets the Boolean from Config
    * @param name Config directive
    * @return Option for a Boolean
