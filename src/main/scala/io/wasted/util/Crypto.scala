@@ -3,7 +3,7 @@ package io.wasted.util
 import javax.crypto.spec.SecretKeySpec
 import javax.crypto.Cipher
 
-case class CryptoCipher(name: String = "AES/ECB/PKCS5", jce: Boolean = true)
+case class CryptoCipher(name: String = "AES", jce: Boolean = true)
 
 /**
  * Helper methods for en-/decrypting strings.
