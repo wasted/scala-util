@@ -3,7 +3,7 @@ package io.wasted.util
 import javax.crypto.spec.SecretKeySpec
 import javax.crypto.Cipher
 
-case class CryptoCipher(name: String = "AES", jce: Boolean = true)
+case class CryptoCipher(name: String = "AES/ECB/PKCS5", jce: Boolean = true)
 
 /**
  * Helper methods for en-/decrypting strings.
@@ -42,7 +42,7 @@ object Crypto {
    * @return Base64-String of the encrypted data
    */
   def encryptString(salt: String, payload: String)(implicit cipher: CryptoCipher): String =
-    new String(encryptBinary(salt, payload.getBytes("UTF-8"))(cipher))
+    new String(encryptBinary(salt, payload.getBytes("UTF-8"))(cipher), "UTF-8")
 
   /**
    * Encrypt the given Payload using the given Cipher and the supplied salt.
@@ -52,7 +52,7 @@ object Crypto {
    * @return Base64-String of the encrypted data
    */
   def encryptString(salt: String, payload: Array[Byte])(implicit cipher: CryptoCipher): String =
-    new String(encryptBinary(salt, payload)(cipher))
+    new String(encryptBinary(salt, payload)(cipher), "UTF-8")
 
   /**
    * Decrypt the given Payload using the given Cipher and the supplied salt.
@@ -87,7 +87,7 @@ object Crypto {
    * @return String of the decrypted data
    */
   def decryptString(salt: String, payload: Array[Byte])(implicit cipher: CryptoCipher): String = {
-    new String(decryptBinary(salt, payload)(cipher))
+    new String(decryptBinary(salt, payload)(cipher), "UTF-8")
   }
 
   /**

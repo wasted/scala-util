@@ -74,4 +74,45 @@ object Hashing {
     addDigit(in, 0, len, sb)
     sb.toString()
   }
+
+  /**
+   * Decode a ByteArray from hex.
+   *
+   * @param in String to be decoded
+   */
+  def hexDecode(str: String): Array[Byte] = {
+    val max = str.length / 2
+    val ret = new Array[Byte](max)
+    var pos = 0
+
+    def byteOf(in: Char): Int = in match {
+      case '0' => 0
+      case '1' => 1
+      case '2' => 2
+      case '3' => 3
+      case '4' => 4
+      case '5' => 5
+      case '6' => 6
+      case '7' => 7
+      case '8' => 8
+      case '9' => 9
+      case 'a' | 'A' => 10
+      case 'b' | 'B' => 11
+      case 'c' | 'C' => 12
+      case 'd' | 'D' => 13
+      case 'e' | 'E' => 14
+      case 'f' | 'F' => 15
+      case _ => 0
+    }
+
+    while (pos < max) {
+      val two = pos * 2
+      val ch: Char = str.charAt(two)
+      val cl: Char = str.charAt(two + 1)
+      ret(pos) = (byteOf(ch) * 16 + byteOf(cl)).toByte
+      pos += 1
+    }
+
+    ret
+  }
 }
