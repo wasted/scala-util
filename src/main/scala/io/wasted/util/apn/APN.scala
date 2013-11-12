@@ -56,9 +56,6 @@ case class APNMessage(deviceToken: String, payload: String, ident: Option[Int] =
  * Apple Push Notification Client companion object.
  */
 object APN {
-  final val keyAlgorithm = "sunx509"
-  final val keystoreType = "PKCS12"
-  final val contextEnc = "TLS"
   final val productionHost = new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.push.apple.com"), 2195)
   final val sandboxHost = new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.sandbox.push.apple.com"), 2195)
 }
@@ -93,25 +90,12 @@ class APN(override val loggerName: String, p12: java.io.InputStream, secret: Str
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        val engine = sslManager.createSSLEngine()
-        engine.setUseClientMode(true)
-        p.addLast("ssl", new SslHandler(engine))
+        p.addLast("ssl", new SslHandler(sslManager.self))
         p.addLast("handler", new APNResponseAdapter(thisAPN))
       }
     })
 
-  private val sslManager = {
-    val secretArray = secret.toCharArray()
-    val ks = KeyStore.getInstance(APN.keystoreType)
-    ks.load(p12, secretArray)
-
-    val kmf = KeyManagerFactory.getInstance(APN.keyAlgorithm)
-    kmf.init(ks, secretArray)
-
-    val sslc = SSLContext.getInstance(APN.contextEnc)
-    sslc.init(kmf.getKeyManagers(), null, null)
-    sslc
-  }
+  private val sslManager = ssl.Ssl.server(p12, secret, ssl.KeyStoreType.P12)
 
   private sealed trait Action { def run(): Unit }
 

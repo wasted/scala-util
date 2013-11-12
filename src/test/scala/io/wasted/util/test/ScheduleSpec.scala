@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util.Schedule
+import io.wasted.util.{ WheelTimer, Schedule }
 
 import scala.concurrent.duration._
 import org.specs2.mutable._
@@ -8,6 +8,8 @@ import org.specs2.mutable._
 class ScheduleSpec extends Specification {
 
   "Specification for Schedule.".title
+
+  implicit val wheel = WheelTimer()
 
   var result1 = false
   var testfunc1 = () => result1 = true

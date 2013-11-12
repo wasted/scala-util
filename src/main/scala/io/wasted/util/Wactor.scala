@@ -135,7 +135,7 @@ object Wactor {
      * @param msg Message to be sent to the actor
      * @param initialDelay Initial delay before first firing
      */
-    def scheduleOnce(msg: Any, initialDelay: Duration): Schedule.Action =
+    def scheduleOnce(msg: Any, initialDelay: Duration)(implicit timer: WheelTimer): Schedule.Action =
       Schedule.once(() => { this ! msg }, initialDelay)
 
     /**
@@ -144,7 +144,7 @@ object Wactor {
      * @param msg Message to be sent to the actor
      * @param initialDelay Initial delay before first firing
      */
-    def scheduleOnceHigh(msg: Any, initialDelay: Duration): Schedule.Action =
+    def scheduleOnceHigh(msg: Any, initialDelay: Duration)(implicit timer: WheelTimer): Schedule.Action =
       Schedule.once(() => { this !! msg }, initialDelay)
 
     /**
@@ -154,7 +154,7 @@ object Wactor {
      * @param initialDelay Initial delay before first firing
      * @param delay Delay to be called after the first firing
      */
-    def scheduleHigh(msg: Any, initialDelay: Duration, delay: Duration): Schedule.Action =
+    def scheduleHigh(msg: Any, initialDelay: Duration, delay: Duration)(implicit timer: WheelTimer): Schedule.Action =
       Schedule.again(() => { this !! msg }, initialDelay, delay)
 
     /**
@@ -164,7 +164,7 @@ object Wactor {
      * @param initialDelay Initial delay before first firing
      * @param delay Delay to be called after the first firing
      */
-    def schedule(msg: Any, initialDelay: Duration, delay: Duration): Schedule.Action =
+    def schedule(msg: Any, initialDelay: Duration, delay: Duration)(implicit timer: WheelTimer): Schedule.Action =
       Schedule.again(() => { this ! msg }, initialDelay, delay)
   }
 }

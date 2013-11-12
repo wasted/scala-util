@@ -1,7 +1,6 @@
 package io.wasted.util.http
 
 import io.wasted.util._
-
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
@@ -10,12 +9,7 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
-
-import java.security.KeyStore
 import java.net.InetSocketAddress
-import java.io.{ File, FileInputStream }
-import javax.net.ssl.KeyManagerFactory
-import javax.net.ssl.{ SSLEngine, SSLContext }
 import scala.concurrent._
 import scala.util.Success
 import io.netty.util.ReferenceCounted
@@ -32,27 +26,8 @@ object HttpClient {
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
    */
-  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None): HttpClient = {
+  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => ssl.Engine] = None): HttpClient = {
     new HttpClient(chunked, timeout, engine)
-  }
-
-  /* Default Client SSLContext. */
-  lazy val defaultClientSSLContext: SSLContext = {
-    val ctx = SSLContext.getInstance("TLS")
-    ctx.init(null, null, null)
-    ctx
-  }
-
-  /**
-   * Get a SSLEngine for clients for given host and port.
-   *
-   * @param host Hostname
-   * @param port Port
-   */
-  def getSSLClientEngine(host: String, port: Int): SSLEngine = {
-    val ce = defaultClientSSLContext.createSSLEngine(host, port)
-    ce.setUseClientMode(true)
-    ce
   }
 }
 
@@ -83,7 +58,7 @@ class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends Simp
  * @param engine Optional SSLEngine
  * @param persistent Optional Host Address we're directing all requests to, regardless of their DNS lookup
  */
-class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => SSLEngine] = None, persistent: Option[(String, Int)] = None) {
+class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => ssl.Engine] = None, persistent: Option[(String, Int)] = None) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
@@ -97,7 +72,7 @@ class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() =>
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        engine.foreach(e => p.addLast("ssl", new SslHandler(e())))
+        engine.foreach(e => p.addLast("ssl", new SslHandler(e().self)))
         p.addLast("codec", new HttpClientCodec)
         if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
       }
