@@ -36,8 +36,7 @@ class Thruput(
   timeout: Int = 5,
   engine: Option[SSLEngine] = None) extends Wactor(100000) {
   TP =>
-
-  override val loggerName = uri.getHost + ":" + auth.toString
+  override val loggerName = "ThruputClient"
   private def session = UUID.randomUUID
   private var channel: Option[Channel] = None
   private[http] var handshakeFuture: ChannelPromise = null.asInstanceOf[ChannelPromise]
