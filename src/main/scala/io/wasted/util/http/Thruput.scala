@@ -103,7 +103,6 @@ class Thruput(
             case Success(ch) =>
               channel = Some(ch)
             case Failure(e) =>
-              warn("Error while connecting: " + e.toString)
               connect()
           }
       }
@@ -197,6 +196,7 @@ class Thruput(
  */
 @ChannelHandler.Sharable
 class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInboundHandler[Object] with Logger {
+  override val loggerName = "ThruputClient"
   private val handshaker = WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, false, new DefaultHttpHeaders())
 
   override def handlerAdded(ctx: ChannelHandlerContext) {
@@ -242,7 +242,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInb
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     if (!client.handshakeFuture.isDone) client.handshakeFuture.setFailure(cause)
     ExceptionHandler(ctx, cause) match {
-      case Some(e) => e.printStackTrace()
+      case Some(e) =>
       case _ => client.reconnect()
     }
     ctx.close()

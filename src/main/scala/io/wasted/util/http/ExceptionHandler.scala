@@ -11,6 +11,7 @@ object ExceptionHandler {
    * Filters unimportant/low level exceptions.
    */
   private val unimportant = List(
+    "java.net.ConnectException.*".r,
     "java.nio.channels.ClosedChannelException.*".r,
     "io.netty.handler.codec.CorruptedFrameException.*".r,
     "java.io.IOException.*".r,
