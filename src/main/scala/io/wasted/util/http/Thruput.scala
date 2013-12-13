@@ -103,7 +103,7 @@ class Thruput(
             case Success(ch) =>
               channel = Some(ch)
             case Failure(e) =>
-              warn("Error while connecting: " + e.toString, e)
+              warn("Error while connecting: " + e.toString)
               connect()
           }
       }
