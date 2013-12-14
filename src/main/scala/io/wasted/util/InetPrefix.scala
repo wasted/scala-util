@@ -80,7 +80,7 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
   private lazy val netmask: Array[Byte] = {
     var netmask: Array[Byte] = Array.fill(16)(0xff.toByte)
     val maskBytes: Int = prefixLen / 8
-    netmask(maskBytes) = (0xff.toByte << 8 - (prefixLen % 8)).toByte
+    if (maskBytes < 16) netmask(maskBytes) = (0xff.toByte << 8 - (prefixLen % 8)).toByte
     for (i <- maskBytes + 1 to (128 / 8) - 1) netmask(i) = 0
     netmask
   }

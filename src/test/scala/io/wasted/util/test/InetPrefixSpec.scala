@@ -30,8 +30,8 @@ class InetPrefixSpec extends Specification {
     }
   }
 
-  val ipv6network = InetPrefix(InetAddress.getByName("2013:4ce8::"), 32)
   val ipv6first = InetAddress.getByName("2013:4ce8::")
+  val ipv6network = InetPrefix(ipv6first, 32)
   val ipv6last = InetAddress.getByName("2013:4ce8:ffff:ffff:ffff:ffff:ffff:ffff")
   val ipv6invalid1 = InetAddress.getByName("2015:1234::")
   val ipv6invalid2 = InetAddress.getByName("aaaa:bbb::")
@@ -48,6 +48,20 @@ class InetPrefixSpec extends Specification {
     }
     "not contain aaaa:bbb::" in {
       ipv6network.contains(ipv6invalid2) must_== false
+    }
+  }
+
+  val ipv62addr = InetAddress.getByName("0::1")
+  val ipv62network = InetPrefix(ipv62addr, 128)
+  "IPv6 Network 0::1/128" should {
+    "contain itself" in {
+      ipv62network.contains(ipv62addr) must_== true
+    }
+    "not contain 2015:1234::" in {
+      ipv62network.contains(ipv6invalid1) must_== false
+    }
+    "not contain aaaa:bbb::" in {
+      ipv62network.contains(ipv6invalid2) must_== false
     }
   }
 }
