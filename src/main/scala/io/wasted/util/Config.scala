@@ -22,7 +22,7 @@ object Config {
   /**
    * Gets the Bytes from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a Long
    */
   def getBytes(name: String, fallback: Long): Long = getBytes(name) getOrElse fallback
@@ -37,7 +37,7 @@ object Config {
   /**
    * Gets the Duration from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a Duration
    */
   def getDuration(name: String, fallback: Duration): Duration = getDuration(name) getOrElse fallback
@@ -52,7 +52,7 @@ object Config {
   /**
    * Gets the Int from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a Integer
    */
   def getInt(name: String, fallback: Int): Int = getInt(name) getOrElse fallback
@@ -67,7 +67,7 @@ object Config {
   /**
    * Gets the Double from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a Double
    */
   def getDouble(name: String, fallback: Double): Double = getDouble(name) getOrElse fallback
@@ -82,7 +82,7 @@ object Config {
   /**
    * Gets the Bool from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a Bool
    */
   def getBool(name: String, fallback: Boolean): Boolean = getBool(name) getOrElse fallback
@@ -97,7 +97,7 @@ object Config {
   /**
    * Gets the String from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a String
    */
   def get(name: String, fallback: String): String = getString(name) getOrElse fallback
@@ -112,7 +112,7 @@ object Config {
   /**
    * Gets the String from Config and uses a fallback
    * @param name Config directive
-   * @param fallback
+   * @param fallback Fallback value if nothing is found
    * @return Option for a String
    */
   def getString(name: String, fallback: String): String = getString(name) getOrElse fallback

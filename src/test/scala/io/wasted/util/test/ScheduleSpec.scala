@@ -7,7 +7,7 @@ import org.specs2.mutable._
 
 class ScheduleSpec extends Specification {
 
-  "Specification for Schedule.".title
+  "Schedule".title
 
   implicit val wheel = WheelTimer()
 

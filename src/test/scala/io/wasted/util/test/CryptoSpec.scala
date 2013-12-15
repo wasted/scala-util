@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class CryptoSpec extends Specification {
 
-  "Specification for Crypto functions.".title
+  "Crypto functions".title
 
   implicit val cipher = CryptoCipher("AES")
 

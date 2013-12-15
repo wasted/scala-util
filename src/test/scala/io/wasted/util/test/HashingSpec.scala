@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class HashingSpec extends Specification {
 
-  "Specification for Hashing functions.".title
+  "Hashing functions".title
 
   implicit val hashingAlgo = HashingAlgo("HmacSHA256")
   implicit val hexingAlgo = HexingAlgo("SHA")

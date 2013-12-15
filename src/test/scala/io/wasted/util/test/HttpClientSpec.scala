@@ -12,7 +12,7 @@ import scala.util.Success
 
 class HttpClientSpec extends Specification with Logger {
 
-  "Specification for HttpClient.".title
+  "HttpClient".title
 
   val url = new java.net.URL("http://wasted.io/")
 

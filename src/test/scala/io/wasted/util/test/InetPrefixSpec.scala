@@ -7,7 +7,7 @@ import org.specs2.mutable._
 
 class InetPrefixSpec extends Specification {
 
-  "Specification for Inet IPv4 and IPv6 calculations.".title
+  "Inet IPv4 and IPv6 calculations".title
 
   val ipv4network = InetPrefix(InetAddress.getByName("172.16.176.0"), 20)
   val ipv4first = InetAddress.getByName("172.16.176.0")

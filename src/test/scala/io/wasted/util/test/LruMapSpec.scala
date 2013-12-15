@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class LruMapSpec extends Specification {
 
-  "Specification for LruMap with size of 10.".title
+  "LruMap with size of 10".title
 
   val lru = LruMap[Int, Int](10)
 

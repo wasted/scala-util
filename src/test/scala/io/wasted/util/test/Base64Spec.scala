@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class Base64Spec extends Specification {
 
-  "Specification for Base64 functions.".title
+  "Base64 functions".title
 
   val ourString = "it works!"
   val ourB64 = "aXQgd29ya3Mh"

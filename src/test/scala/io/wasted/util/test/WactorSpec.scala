@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class WactorSpec extends Specification {
 
-  "Specification for Wactor.".title
+  "Wactor".title
 
   var result1 = ""
   var result2 = 0

@@ -7,7 +7,7 @@ import java.net.InetSocketAddress
 
 class ConfigSpec extends Specification {
 
-  "Specification for Config functions.".title
+  "Config functions".title
 
   val ourInt = 5
   val ourBool = true

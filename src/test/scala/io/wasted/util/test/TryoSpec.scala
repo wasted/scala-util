@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class TryoSpec extends Specification {
 
-  "Specification for Tryo Try/Failure/succes wrapper.".title
+  "Tryo Try/Failure/Success wrapper".title
 
   val tryoSuccess = Tryo("success!")
   val tryoFailure = Tryo(throw new IllegalArgumentException)

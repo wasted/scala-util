@@ -6,7 +6,7 @@ import org.specs2.mutable._
 
 class PooledResourceSpec extends Specification {
 
-  "Specification for PooledResource.".title
+  "PooledResource".title
 
   case class TestMeHard(msg: String)
 
