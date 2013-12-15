@@ -82,7 +82,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="io.wasted.util.CryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CWDextendsProductwithSerializable"></a>
+      <a id="CWD:CWD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CWD.html"><span class="name">CWD</span></a><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="io.wasted.util.CryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CryptoCipherextendsProductwithSerializable"></a>
       <a id="CryptoCipher:CryptoCipher"></a>
       <h4 class="signature">
@@ -174,7 +187,7 @@
       </h4>
       <p class="comment cmt">This trait enables classes to do easy logging.</p>
     </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LruMap[K,V]extendscollection.convert.Wrappers.JMapWrapper[K,V]"></a>
+      <a id="LruMap[K,V]extendsAnyRef"></a>
       <a id="LruMap[K,V]:LruMap[K,V]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -182,10 +195,11 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="LruMap.html"><span class="name">LruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.collection.convert.Wrappers.JMapWrapper">scala.collection.convert.Wrappers.JMapWrapper</span>[<span class="extype" name="io.wasted.util.LruMap.K">K</span>, <span class="extype" name="io.wasted.util.LruMap.V">V</span>]</span>
+        <a href="LruMap.html"><span class="name">LruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt">LruMap Wrapper for Guava's Cache
+</p>
     </li><li name="io.wasted.util.PooledResource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PooledResource[T]extendsAnyRef"></a>
       <a id="PooledResource[T]:PooledResource[T]"></a>
@@ -200,16 +214,16 @@
       </h4>
       <p class="comment cmt">Resource Pooling Class
 </p>
-    </li><li name="io.wasted.util.SynchronizedLruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SynchronizedLruMap[K,V]extendsLruMap[K,V]withSynchronizedMap[K,V]"></a>
-      <a id="SynchronizedLruMap[K,V]:SynchronizedLruMap[K,V]"></a>
+    </li><li name="io.wasted.util.ShellOperation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ShellOperationextendsProductwithSerializable"></a>
+      <a id="ShellOperation:ShellOperation"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SynchronizedLruMap.html"><span class="name">SynchronizedLruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <a href="LruMap.html" class="extype" name="io.wasted.util.LruMap">LruMap</a>[<span class="extype" name="io.wasted.util.SynchronizedLruMap.K">K</span>, <span class="extype" name="io.wasted.util.SynchronizedLruMap.V">V</span>] with <span class="extype" name="scala.collection.mutable.SynchronizedMap">SynchronizedMap</span>[<span class="extype" name="io.wasted.util.SynchronizedLruMap.K">K</span>, <span class="extype" name="io.wasted.util.SynchronizedLruMap.V">V</span>]</span>
+        <a href="ShellOperation.html"><span class="name">ShellOperation</span></a><span class="params">(<span name="lines">lines: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="exitValue">exitValue: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -226,6 +240,19 @@
       </span>
       </h4>
       <p class="comment cmt">Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.</p>
+    </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WheelTimerextendsHashedWheelTimer"></a>
+      <a id="WheelTimer:WheelTimer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="WheelTimer.html"><span class="name">WheelTimer</span></a><span class="result"> extends <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></span>
+      </span>
+      </h4>
+      
     </li></ol>
             </div>
 
@@ -243,6 +270,19 @@
       </span>
       <span class="symbol">
         <a href="Base64$.html"><span class="name">Base64</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CWD"></a>
+      <a id="CWD:CWD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CWD$.html"><span class="name">CWD</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -285,6 +325,19 @@
       </span>
       </h4>
       <p class="comment cmt">Helper Object for hashing different Strings and Files.</p>
+    </li><li name="io.wasted.util.HostInformation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HostInformation"></a>
+      <a id="HostInformation:HostInformation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HostInformation$.html"><span class="name">HostInformation</span></a>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="InetPrefix"></a>
       <a id="InetPrefix:InetPrefix"></a>
@@ -307,10 +360,11 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="LruMap$.html"><span class="name">LruMap</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="LruMap$.html"><span class="name">LruMap</span></a>
       </span>
       </h4>
-      
+      <p class="comment cmt">LruMap Companion to make creation easier
+</p>
     </li><li name="io.wasted.util.Schedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Schedule"></a>
       <a id="Schedule:Schedule"></a>
@@ -325,6 +379,19 @@
       </h4>
       <p class="comment cmt">Wasted Scheduler based on Netty's HashedWheelTimer
 </p>
+    </li><li name="io.wasted.util.Shell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Shell"></a>
+      <a id="Shell:Shell"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Shell$.html"><span class="name">Shell</span></a>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.Tryo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Tryo"></a>
       <a id="Tryo:Tryo"></a>
@@ -352,6 +419,19 @@
       </h4>
       <p class="comment cmt">Wasted lightweight Actor companion
 </p>
+    </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WheelTimer"></a>
+      <a id="WheelTimer:WheelTimer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WheelTimer$.html"><span class="name">WheelTimer</span></a>
+      </span>
+      </h4>
+      
     </li><li name="io.wasted.util.apn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="apn"></a>
       <a id="apn:apn"></a>
@@ -440,6 +520,19 @@
       </span>
       <span class="symbol">
         <span class="name">implicitStackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="io.wasted.util.ssl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ssl"></a>
+      <a id="ssl:ssl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="ssl/package.html"><span class="name">ssl</span></a>
       </span>
       </h4>
       

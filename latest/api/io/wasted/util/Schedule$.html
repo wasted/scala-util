@@ -168,45 +168,45 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="io.wasted.util.Schedule#again" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="again(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="again(()⇒Unit,Duration,Duration):Action"></a>
+      <a id="again(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="again(()⇒Unit,Duration,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">again</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">again</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event over and over again.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again.
 </p></div><dl class="paramcmts block"><dt class="param">func</dt><dd class="cmt"><p>Function to be scheduled</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Schedule#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="apply(()⇒Unit,Duration,Duration):Action"></a>
+      <a id="apply(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="apply(()⇒Unit,Duration,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">apply</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event over and over again saving timeout reference.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again saving timeout reference.
 </p></div><dl class="paramcmts block"><dt class="param">func</dt><dd class="cmt"><p>Function to be scheduled</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Schedule#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:Option[scala.concurrent.duration.Duration]):io.wasted.util.Schedule.Action"></a>
-      <a id="apply(()⇒Unit,Duration,Option[Duration]):Action"></a>
+      <a id="apply(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration,delay:Option[scala.concurrent.duration.Duration])(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="apply(()⇒Unit,Duration,Option[Duration])(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.Duration">Duration</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">apply</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.Duration">Duration</span>] = <span class="symbol">None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event.
@@ -424,15 +424,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.wasted.util.Schedule#once" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="once(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="once(()⇒Unit,Duration):Action"></a>
+      <a id="once(func:()=&gt;Unit,initialDelay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="once(()⇒Unit,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">once</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">once</span><span class="params">(<span name="func">func: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event once.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event once.

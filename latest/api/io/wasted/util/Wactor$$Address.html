@@ -338,60 +338,60 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.wasted.util.Wactor.Address#schedule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="schedule(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="schedule(Any,Duration,Duration):Action"></a>
+      <a id="schedule(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="schedule(Any,Duration,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">schedule</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">schedule</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event over and over again on this Wactor.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again on this Wactor.
 </p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Wactor.Address#scheduleHigh" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scheduleHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="scheduleHigh(Any,Duration,Duration):Action"></a>
+      <a id="scheduleHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration,delay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleHigh(Any,Duration,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">scheduleHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">scheduleHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event over and over again on this Wactor for High Priority.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event over and over again on this Wactor for High Priority.
 </p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing</p></dd><dt class="param">delay</dt><dd class="cmt"><p>Delay to be called after the first firing
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Wactor.Address#scheduleOnce" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scheduleOnce(msg:Any,initialDelay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="scheduleOnce(Any,Duration):Action"></a>
+      <a id="scheduleOnce(msg:Any,initialDelay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleOnce(Any,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">scheduleOnce</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">scheduleOnce</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event once on this Wactor.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event once on this Wactor.
 </p></div><dl class="paramcmts block"><dt class="param">msg</dt><dd class="cmt"><p>Message to be sent to the actor</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>Initial delay before first firing
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Wactor.Address#scheduleOnceHigh" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scheduleOnceHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration):io.wasted.util.Schedule.Action"></a>
-      <a id="scheduleOnceHigh(Any,Duration):Action"></a>
+      <a id="scheduleOnceHigh(msg:Any,initialDelay:scala.concurrent.duration.Duration)(implicittimer:io.wasted.util.WheelTimer):io.wasted.util.Schedule.Action"></a>
+      <a id="scheduleOnceHigh(Any,Duration)(WheelTimer):Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">scheduleOnceHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
+        <span class="name">scheduleOnceHigh</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Any">Any</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timer">timer: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result">: <a href="Schedule$$Action.html" class="extype" name="io.wasted.util.Schedule.Action">Action</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Schedule an event once on this Wactor for High Priority.</p><div class="fullcomment"><div class="comment cmt"><p>Schedule an event once on this Wactor for High Priority.

@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.http.HttpClient#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(chunked:Boolean,timeout:Int,engine:Option[javax.net.ssl.SSLEngine]):io.wasted.util.http.HttpClient"></a>
+      <a id="&lt;init&gt;(chunked:Boolean,timeout:Int,engine:Option[()=&gt;io.wasted.util.ssl.Engine],persistent:Option[(String,Int)]):io.wasted.util.http.HttpClient"></a>
       <a id="&lt;init&gt;:HttpClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,10 +89,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span>] = <span class="symbol">scala.None</span></span>)</span>
+        <span class="name">HttpClient</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[() ⇒ <a href="../ssl/Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a>] = <span class="symbol">scala.None</span></span>, <span name="persistent">persistent: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>)] = <span class="symbol">scala.None</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine</p></dd><dt class="param">persistent</dt><dd class="cmt"><p>Optional Host Address we're directing all requests to, regardless of their DNS lookup
 </p></dd></dl></div>
     </li></ol>
             </div>

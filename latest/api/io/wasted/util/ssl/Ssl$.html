@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>HttpClient - io.wasted.util.http.HttpClient</title>
-          <meta name="description" content="HttpClient - io.wasted.util.http.HttpClient" />
-          <meta name="keywords" content="HttpClient io.wasted.util.http.HttpClient" />
+          <title>Ssl - io.wasted.util.ssl.Ssl</title>
+          <meta name="description" content="Ssl - io.wasted.util.ssl.Ssl" />
+          <meta name="keywords" content="Ssl io.wasted.util.ssl.Ssl" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
-            var hash = 'io.wasted.util.http.HttpClient$';
+            var hash = 'io.wasted.util.ssl.Ssl$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="value">
       <div id="definition">
-        <a href="HttpClient.html" title="Go to companion"><img src="../../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.http">http</a></p>
-        <h1><a href="HttpClient.html" title="Go to companion">HttpClient</a></h1>
+        <img src="../../../../lib/object_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.ssl">ssl</a></p>
+        <h1>Ssl</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,14 +35,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span>
+        <span class="name">Ssl</span><span class="result"> extends <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Netty HTTP Client Object to create HTTP Request Objects.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -60,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.http.HttpClient"><span>HttpClient</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.ssl.Ssl"><span>Ssl</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -151,21 +150,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(chunked:Boolean,timeout:Int,engine:Option[()=&gt;io.wasted.util.ssl.Engine]):io.wasted.util.http.HttpClient"></a>
-      <a id="apply(Boolean,Int,Option[()⇒Engine]):HttpClient"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[() ⇒ <a href="../ssl/Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpObject.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpObject.
-</p></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
-</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -179,6 +163,63 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#client" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="client(host:String,port:Int):io.wasted.util.ssl.Engine"></a>
+      <a id="client(String,Int):Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">client</span><span class="params">(<span name="host">host: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a SSLEngine for clients for given host and port.</p><div class="fullcomment"><div class="comment cmt"><p>Get a SSLEngine for clients for given host and port.
+</p></div><dl class="paramcmts block"><dt class="param">host</dt><dd class="cmt"><p>Hostname</p></dd><dt class="param">port</dt><dd class="cmt"><p>Port
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#client" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="client(sslContext:javax.net.ssl.SSLContext):io.wasted.util.ssl.Engine"></a>
+      <a id="client(SSLContext):Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">client</span><span class="params">(<span name="sslContext">sslContext: <span class="extype" name="javax.net.ssl.SSLContext">SSLContext</span></span>)</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a client engine, from the given context
+</p>
+    </li><li name="io.wasted.util.ssl.Ssl#client" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="client():io.wasted.util.ssl.Engine"></a>
+      <a id="client():Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">client</span><span class="params">()</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a client engine
+</p>
+    </li><li name="io.wasted.util.ssl.Ssl#clientWithoutCertificateValidation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="clientWithoutCertificateValidation():io.wasted.util.ssl.Engine"></a>
+      <a id="clientWithoutCertificateValidation():Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clientWithoutCertificateValidation</span><span class="params">()</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a client engine that doesn't check the validity of certificates
+</p>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -198,6 +239,33 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="debug(msg:String,x:Any*):Unit"></a>
+      <a id="debug(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#defaultClientSSLContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultClientSSLContext:javax.net.ssl.SSLContext"></a>
+      <a id="defaultClientSSLContext:SSLContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultClientSSLContext</span><span class="result">: <span class="extype" name="javax.net.ssl.SSLContext">SSLContext</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -224,6 +292,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="error(msg:String,x:Any*):Unit"></a>
+      <a id="error(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on error.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on error.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -269,6 +351,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="info(msg:String,x:Any*):Unit"></a>
+      <a id="info(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on info.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on info.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -282,6 +378,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.wasted.util.Logger#loggerName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loggerName:String"></a>
+      <a id="loggerName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loggerName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Override this to give your class a custom Logger name.</p><div class="fullcomment"><div class="comment cmt"><p>Override this to give your class a custom Logger name.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -321,6 +431,52 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#server" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="server(certificatePath:String,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value,ciphers:Option[String],nextProtos:Option[String],cacheContexts:Boolean):io.wasted.util.ssl.Engine"></a>
+      <a id="server(String,String,KeyStoreType.Value,Option[String],Option[String],Boolean):Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">server</span><span class="params">(<span name="certificatePath">certificatePath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keyStoreType">keyStoreType: <a href="KeyStoreType$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.ssl.KeyStoreType.Value">KeyStoreType.Value</a></span>, <span name="ciphers">ciphers: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="nextProtos">nextProtos: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="cacheContexts">cacheContexts: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a server engine, using the native OpenSSL provider if available
+</p><div class="fullcomment"><div class="comment cmt"><p>Get a server engine, using the native OpenSSL provider if available
+</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>The path to the certificate file</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt class="param">ciphers</dt><dd class="cmt"><p>[OpenSSL] The ciphers</p></dd><dt class="param">nextProtos</dt><dd class="cmt"><p>[OpenSSL] The nextProtos available</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">RuntimeException<p>if no provider could be initialized</p></span></dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#server" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="server(certificate:java.io.InputStream,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):io.wasted.util.ssl.Engine"></a>
+      <a id="server(InputStream,String,KeyStoreType.Value):Engine"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">server</span><span class="params">(<span name="certificate">certificate: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keyStoreType">keyStoreType: <a href="KeyStoreType$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.ssl.KeyStoreType.Value">KeyStoreType.Value</a></span>)</span><span class="result">: <a href="Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get a server engine using native JavaSSL
+</p><div class="fullcomment"><div class="comment cmt"><p>Get a server engine using native JavaSSL
+</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="submitException(trace:String):Unit"></a>
+      <a id="submitException(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">submitException</span><span class="params">(<span name="trace">trace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implement this method to get your exceptions handled the way you want.</p><div class="fullcomment"><div class="comment cmt"><p>Implement this method to get your exceptions handled the way you want.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -404,6 +560,20 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="warn(msg:String,x:Any*):Unit"></a>
+      <a id="warn(String,Any*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -413,7 +583,9 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="io.wasted.util.Logger">
+              <h3>Inherited from <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

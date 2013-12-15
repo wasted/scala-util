@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>HttpClient - io.wasted.util.http.HttpClient</title>
-          <meta name="description" content="HttpClient - io.wasted.util.http.HttpClient" />
-          <meta name="keywords" content="HttpClient io.wasted.util.http.HttpClient" />
+          <title>KeyManager - io.wasted.util.ssl.KeyManager</title>
+          <meta name="description" content="KeyManager - io.wasted.util.ssl.KeyManager" />
+          <meta name="keywords" content="KeyManager io.wasted.util.ssl.KeyManager" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
-            var hash = 'io.wasted.util.http.HttpClient$';
+            var hash = 'io.wasted.util.ssl.KeyManager$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="value">
       <div id="definition">
-        <a href="HttpClient.html" title="Go to companion"><img src="../../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.http">http</a></p>
-        <h1><a href="HttpClient.html" title="Go to companion">HttpClient</a></h1>
+        <img src="../../../../lib/object_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.ssl">ssl</a></p>
+        <h1>KeyManager</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,11 +35,11 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span>
+        <span class="name">KeyManager</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Netty HTTP Client Object to create HTTP Request Objects.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helps us creating KeyManagers from certificates
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -60,7 +60,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.http.HttpClient"><span>HttpClient</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.ssl.KeyManager"><span>KeyManager</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -151,20 +151,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(chunked:Boolean,timeout:Int,engine:Option[()=&gt;io.wasted.util.ssl.Engine]):io.wasted.util.http.HttpClient"></a>
-      <a id="apply(Boolean,Int,Option[()⇒Engine]):HttpClient"></a>
+    </li><li name="io.wasted.util.ssl.KeyManager#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(certificatePath:String,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):Array[javax.net.ssl.KeyManager]"></a>
+      <a id="apply(String,String,KeyStoreType.Value):Array[KeyManager]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="chunked">chunked: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="engine">engine: <span class="extype" name="scala.Option">Option</span>[() ⇒ <a href="../ssl/Engine.html" class="extype" name="io.wasted.util.ssl.Engine">Engine</a>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a></span>
+        <span class="name">apply</span><span class="params">(<span name="certificatePath">certificatePath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keyStoreType">keyStoreType: <a href="KeyStoreType$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.ssl.KeyStoreType.Value">KeyStoreType.Value</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="javax.net.ssl.KeyManager">KeyManager</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a HTTP Client which will call the given method with the returned HttpObject.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a HTTP Client which will call the given method with the returned HttpObject.
-</p></div><dl class="paramcmts block"><dt class="param">chunked</dt><dd class="cmt"><p>Get responses in chunks</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>Connect timeout in seconds</p></dd><dt class="param">engine</dt><dd class="cmt"><p>Optional SSLEngine
+      <p class="shortcomment cmt">Create a KeyManager from a given File
+</p><div class="fullcomment"><div class="comment cmt"><p>Create a KeyManager from a given File
+</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>Path where to find the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File
 </p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
