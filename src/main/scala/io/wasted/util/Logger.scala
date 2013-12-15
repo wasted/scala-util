@@ -10,7 +10,7 @@ trait Logger {
   /**
    * Override this to give your class a custom Logger name.
    */
-  protected def loggerName = this.getClass.getName.toString.split("\\.").last
+  protected def loggerName = this.getClass.getName.toString.split("\\.").last.replaceAll("\\$$", "")
 
   private[this] lazy val logger = LoggerFactory.getLogger(loggerName)
 
