@@ -98,7 +98,7 @@ class Thruput(
             val body = (from, room) match {
               case (Some(from), _) => """{"from":"%s","thruput":true}""".format(from)
               case (_, Some(room)) => """{"room":"%s","thruput":true}""".format(from)
-              case None => """{"thruput":true}"""
+              case _ => """{"thruput":true}"""
             }
             writeToChannel(ch, new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(
               auth.toString, io.wasted.util.Hashing.sign(sign.toString, body), body, session.toString)))
