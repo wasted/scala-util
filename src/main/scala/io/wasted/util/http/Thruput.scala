@@ -143,11 +143,11 @@ class Thruput(
 
   def receive = {
     case action: Action => action.run()
-    case msg: String =>
+    case msg: WebSocketFrame =>
       if (reconnecting || disconnected || connecting) TP ! msg
       else channel match {
         case Some(ch) =>
-          Try(writeToChannel(ch, new TextWebSocketFrame(msg))) match {
+          Try(writeToChannel(ch, msg)) match {
             case Success(f) =>
               if (writeCount.addAndGet(1L) % 3 == 0) ch.flush()
             case Failure(e) =>
@@ -182,8 +182,12 @@ class Thruput(
     TP !! Disconnect
   }
 
+  def write(wsf: WebSocketFrame) {
+    TP ! wsf
+  }
+
   def write(string: String) {
-    TP ! string
+    TP ! new TextWebSocketFrame(string)
   }
 
   /**
