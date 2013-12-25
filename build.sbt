@@ -29,7 +29,7 @@ libraryDependencies ++= Seq(
   "com.google.guava" % "guava" % "12.0",
   "io.netty" % "netty-all" % "4.0.14.Final",
   "org.javassist" % "javassist" % "3.17.1-GA",
-  "org.specs2" %% "specs2" % "1.13" % "test"
+  "org.specs2" %% "specs2" % "2.3.6" % "test"
 )
 
 publishTo := Some("wasted.io/repo" at "http://repo.wasted.io/mvn")
