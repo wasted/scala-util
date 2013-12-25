@@ -23,6 +23,8 @@ import scala.util.{ Try, Success, Failure }
  * @param uri Endpoint URI for the Thruput Client
  * @param auth Authentication Key for the Thruput platform
  * @param sign Signing Key for the Thruput platform
+ * @param from Username to use (optional)
+ * @param room Room to use (optional)
  * @param callback Callback for every non-connection WebSocketFrame (Binary and Text)
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
@@ -32,6 +34,7 @@ class Thruput(
   auth: UUID,
   sign: UUID,
   from: Option[String] = None,
+  room: Option[String] = None,
   val callback: (ByteBufHolder) => Any = (x) => x.release,
   timeout: Int = 5,
   engine: Option[SSLEngine] = None) extends Wactor(100000) {
@@ -92,8 +95,9 @@ class Thruput(
             val ch = bootstrap.clone.connect().sync().channel()
             handshakeFuture.sync()
 
-            val body = from match {
-              case Some(from) => """{"from":"%s","thruput":true}""".format(from)
+            val body = (from, room) match {
+              case (Some(from), _) => """{"from":"%s","thruput":true}""".format(from)
+              case (_, Some(room)) => """{"room":"%s","thruput":true}""".format(from)
               case None => """{"thruput":true}"""
             }
             writeToChannel(ch, new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(
