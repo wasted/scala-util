@@ -27,7 +27,8 @@ class PooledResource[T <: Any](newFunc: () => T, max: Int, timeout: Int = 5000) 
   }
 
   private def create: Option[T] = size.incrementAndGet match {
-    case s: Int if s > max => size.decrementAndGet; get()
+    case s: Int if s > max =>
+      size.decrementAndGet; get()
     case s: Int => Tryo(newFunc())
   }
 

@@ -203,8 +203,7 @@ class Thruput(
  * Empty Netty Response Adapter which is used for Thruput high-performance delivery.
  */
 @ChannelHandler.Sharable
-class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInboundHandler[Object] with Logger {
-  override val loggerName = "ThruputClient"
+class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInboundHandler[Object] {
   private val handshaker = WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, false, new DefaultHttpHeaders())
 
   override def handlerAdded(ctx: ChannelHandlerContext) {
@@ -216,7 +215,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInb
   }
 
   override def channelInactive(ctx: ChannelHandlerContext) {
-    info("WebSocket Client disconnected!")
+    client.info("WebSocket Client disconnected!")
     client.reconnect()
   }
 
@@ -226,23 +225,23 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInb
     msg match {
       case response: FullHttpResponse if !handshaker.isHandshakeComplete =>
         handshaker.finishHandshake(ch, response)
-        info("WebSocket Client connected!")
+        client.info("WebSocket Client connected!")
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
         throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
       case frame: BinaryWebSocketFrame =>
-        debug("WebSocket BinaryFrame received message")
+        client.debug("WebSocket BinaryFrame received message")
         client.callback(frame.retain)
       case frame: TextWebSocketFrame =>
-        debug("WebSocket TextFrame received message: " + frame.text())
+        client.debug("WebSocket TextFrame received message: " + frame.text())
         client.callback(frame.retain)
       case frame: PongWebSocketFrame =>
-        debug("WebSocket Client received pong")
+        client.debug("WebSocket Client received pong")
       case frame: CloseWebSocketFrame =>
-        debug("WebSocket Client received closing")
+        client.debug("WebSocket Client received closing")
         ch.close()
       case o: Object =>
-        error("Unsupported response type! " + o.toString)
+        client.error("Unsupported response type! " + o.toString)
         ch.close()
     }
   }
