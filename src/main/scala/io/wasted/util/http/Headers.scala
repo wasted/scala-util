@@ -8,7 +8,7 @@ import scala.collection.JavaConversions._
  * Parser HTTP Request headers and give back a nice map
  * @param corsOrigin Origin for CORS Request if we want to add them onto a HTTP Request
  */
-class HttpHeaders(corsOrigin: String = "*") {
+class Headers(corsOrigin: String = "*") {
   trait Headers {
     def get(key: String): Option[String] = getAll(key).headOption
     def apply(key: String): String = get(key).getOrElse(scala.sys.error("Header doesn't exist"))
