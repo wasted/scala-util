@@ -10,7 +10,7 @@ trait Logger {
   /**
    * Override this to give your class a custom Logger name.
    */
-  protected def loggerName = this.getClass.getName.toString.split("\\.").last.replaceAll("\\$$", "")
+  protected def loggerName = this.getClass.getSimpleName
 
   private[this] lazy val logger = LoggerFactory.getLogger(loggerName)
 
@@ -23,8 +23,8 @@ trait Logger {
    * Prints a message on debug.
    */
   def debug(msg: String, x: Any*) {
-    if (!logger.isDebugEnabled()) return
-    x.foreach(_ match { case msg: Throwable => submitException(msg) case _ => })
+    if (!logger.isDebugEnabled) return
+    x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.debug(msg.format(x: _*))
   }
 
@@ -32,8 +32,8 @@ trait Logger {
    * Prints a message on info.
    */
   def info(msg: String, x: Any*) {
-    if (!logger.isInfoEnabled()) return
-    x.foreach(_ match { case msg: Throwable => submitException(msg) case _ => })
+    if (!logger.isInfoEnabled) return
+    x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.info(msg.format(x: _*))
   }
 
@@ -41,8 +41,8 @@ trait Logger {
    * Prints a message on warn.
    */
   def warn(msg: String, x: Any*) {
-    if (!logger.isWarnEnabled()) return
-    x.foreach(_ match { case msg: Throwable => submitException(msg) case _ => })
+    if (!logger.isWarnEnabled) return
+    x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.warn(msg.format(x: _*))
   }
 
@@ -50,9 +50,21 @@ trait Logger {
    * Prints a message on error.
    */
   def error(msg: String, x: Any*) {
-    if (!logger.isErrorEnabled()) return
-    x.foreach(_ match { case msg: Throwable => submitException(msg) case _ => })
+    if (!logger.isErrorEnabled) return
+    x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.error(msg.format(x: _*))
   }
 }
 
+/**
+ * Helper to create stand-alone loggers with fixed names.
+ */
+object Logger {
+  def apply[T](clazz: Class[T]): Logger = new Logger {
+    override val loggerName = clazz.getSimpleName
+  }
+
+  def apply(name: String): Logger = new Logger {
+    override val loggerName = name
+  }
+}
