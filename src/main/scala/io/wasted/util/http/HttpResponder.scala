@@ -25,7 +25,7 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
         val content = pooledBuffer match {
           case true =>
             val pooledBuf = heapBuffer match {
-              case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length).silce()
+              case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length).slice()
               case flase => PooledByteBufAllocator.DEFAULT.directBuffer(bytes.length, bytes.length).slice()
             }
             pooledBuf.setBytes(0, bytes)
