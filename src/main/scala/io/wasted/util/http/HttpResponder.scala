@@ -25,12 +25,12 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
         val content = pooledBuffer match {
           case true =>
             val pooledBuf = heapBuffer match {
-              case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length)
-              case flase => PooledByteBufAllocator.DEFAULT.directBuffer(bytes.length, bytes.length)
+              case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length).silce()
+              case flase => PooledByteBufAllocator.DEFAULT.directBuffer(bytes.length, bytes.length).slice()
             }
             pooledBuf.setBytes(0, bytes)
             pooledBuf
-          case false => Unpooled.wrappedBuffer(bytes)
+          case false => Unpooled.wrappedBuffer(bytes).slice()
         }
         val res = new DefaultFullHttpResponse(HTTP_1_1, status, content)
         setContentLength(res, content.readableBytes())
