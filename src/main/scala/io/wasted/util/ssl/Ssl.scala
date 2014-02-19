@@ -17,11 +17,25 @@ object Ssl extends Logger {
    * @param certificate InputStream of the certificate
    * @param secret Secret key to open the file
    * @param keyStoreType Type of the File
-   * @return an SSLEngine
+   * @return a SSLEngine
    */
   def server(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Engine = {
     val jsseInstance = JavaSSL.server(certificate, secret, keyStoreType)
     require(jsseInstance.isDefined, "Could not create an SSLEngine")
+    jsseInstance.get
+  }
+
+  /**
+   * Get an SSL context via JavaSSL
+   *
+   * @param certificate InputStream of the certificate
+   * @param secret Secret to open the certificate
+   * @param keyStoreType Type of the File
+   * @return a SSLContext
+   */
+  def context(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): SSLContext = {
+    val jsseInstance = JavaSSL.context(certificate, secret, keyStoreType)
+    require(jsseInstance.isDefined, "Could not create an SSLContext")
     jsseInstance.get
   }
 
@@ -34,7 +48,7 @@ object Ssl extends Logger {
    * @param ciphers [OpenSSL] The ciphers
    * @param nextProtos [OpenSSL] The nextProtos available
    * @throws RuntimeException if no provider could be initialized
-   * @return an SSLEngine
+   * @return a SSLEngine
    */
   def server(
     certificatePath: String,

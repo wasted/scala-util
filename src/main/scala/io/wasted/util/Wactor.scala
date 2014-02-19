@@ -18,7 +18,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
    * Netty-style exceptionCaught method which will get all exceptions caught while running a job.
    */
   protected def exceptionCaught(e: Throwable) {
-    e.printStackTrace
+    e.printStackTrace()
   }
 
   // Our little indicator if this actor is on or not

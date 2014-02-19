@@ -29,4 +29,3 @@ object Base64 {
   /** Decodes the given Base64-ByteArray into a ByteArray. **/
   def decodeBinary(in: Array[Byte]): Array[Byte] = (new B64).decode(in)
 }
-

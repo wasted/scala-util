@@ -27,9 +27,22 @@ object JavaSSL extends Logger {
    * @param secret Secret to open the certificate
    * @param keyStoreType Type of the File
    * @param useCache Use a cache of SSL contexts, keyed on certificatePath
-   * @return an SSLEngine
+   * @return a SSLEngine
    */
-  def server(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[Engine] = Tryo {
+  def server(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[Engine] = {
+    context(certificate, secret, keyStoreType).map(x => new Engine(x.createSSLEngine()))
+  }
+
+  /**
+   * Get an SSL context via JavaSSL
+   *
+   * @param certificate InputStream of the certificate
+   * @param secret Secret to open the certificate
+   * @param keyStoreType Type of the File
+   * @param useCache Use a cache of SSL contexts, keyed on certificatePath
+   * @return a SSLContext
+   */
+  def context(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[SSLContext] = Tryo {
     val secretArray = secret.toCharArray()
 
     val ks = KeyStore.getInstance(keyStoreType.toString)
@@ -41,7 +54,7 @@ object JavaSSL extends Logger {
 
     val context = SSLContext.getInstance(protocol)
     context.init(kmf.getKeyManagers(), null, null)
-    new Engine(context.createSSLEngine())
+    context
   }
 
   /**
@@ -51,7 +64,7 @@ object JavaSSL extends Logger {
    * @param secret Secret to open the certificate
    * @param keyStoreType Type of the File
    * @param useCache Use a cache of SSL contexts, keyed on certificatePath
-   * @return an SSLEngine
+   * @return a SSLEngine
    */
   def server(certificatePath: String, secret: String, keyStoreType: KeyStoreType.Value, useCache: Boolean = true): Option[Engine] = Tryo {
     def makeContext: SSLContext = {
