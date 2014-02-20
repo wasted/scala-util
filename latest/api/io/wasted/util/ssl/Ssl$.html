@@ -239,6 +239,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.ssl.Ssl#context" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="context(certificate:java.io.InputStream,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):javax.net.ssl.SSLContext"></a>
+      <a id="context(InputStream,String,KeyStoreType.Value):SSLContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">context</span><span class="params">(<span name="certificate">certificate: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keyStoreType">keyStoreType: <a href="KeyStoreType$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.ssl.KeyStoreType.Value">KeyStoreType.Value</a></span>)</span><span class="result">: <span class="extype" name="javax.net.ssl.SSLContext">SSLContext</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get an SSL context via JavaSSL
+</p><div class="fullcomment"><div class="comment cmt"><p>Get an SSL context via JavaSSL
+</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLContext
+</p></dd></dl></div>
     </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="debug(msg:String,x:Any*):Unit"></a>
       <a id="debug(String,Any*):Unit"></a>
@@ -445,7 +461,7 @@
       </h4>
       <p class="shortcomment cmt">Get a server engine, using the native OpenSSL provider if available
 </p><div class="fullcomment"><div class="comment cmt"><p>Get a server engine, using the native OpenSSL provider if available
-</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>The path to the certificate file</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt class="param">ciphers</dt><dd class="cmt"><p>[OpenSSL] The ciphers</p></dd><dt class="param">nextProtos</dt><dd class="cmt"><p>[OpenSSL] The nextProtos available</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>The path to the certificate file</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt class="param">ciphers</dt><dd class="cmt"><p>[OpenSSL] The ciphers</p></dd><dt class="param">nextProtos</dt><dd class="cmt"><p>[OpenSSL] The nextProtos available</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLEngine
 </p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">RuntimeException<p>if no provider could be initialized</p></span></dd></dl></div>
     </li><li name="io.wasted.util.ssl.Ssl#server" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="server(certificate:java.io.InputStream,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):io.wasted.util.ssl.Engine"></a>
@@ -461,7 +477,7 @@
       </h4>
       <p class="shortcomment cmt">Get a server engine using native JavaSSL
 </p><div class="fullcomment"><div class="comment cmt"><p>Get a server engine using native JavaSSL
-</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret key to open the file</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLEngine
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="submitException(trace:String):Unit"></a>

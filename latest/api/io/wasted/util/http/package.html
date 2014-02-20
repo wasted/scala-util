@@ -58,7 +58,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="io.wasted.util.http.HttpClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="io.wasted.util.http.Headers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HeadersextendsAnyRef"></a>
+      <a id="Headers:Headers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Headers.html"><span class="name">Headers</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Parser HTTP Request headers and give back a nice map</p>
+    </li><li name="io.wasted.util.http.HttpClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HttpClientextendsAnyRef"></a>
       <a id="HttpClient:HttpClient"></a>
       <h4 class="signature">
@@ -84,6 +97,32 @@
       </span>
       </h4>
       <p class="comment cmt">Netty Response Adapter which uses scala Futures.</p>
+    </li><li name="io.wasted.util.http.HttpHeaders" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HttpHeadersextendsAnyRef"></a>
+      <a id="HttpHeaders:HttpHeaders"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HttpHeaders.html"><span class="name">HttpHeaders</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="io.wasted.util.http.HttpResponder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HttpResponderextendsAnyRef"></a>
+      <a id="HttpResponder:HttpResponder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="HttpResponder.html"><span class="name">HttpResponder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Responder class used in our server applications</p>
     </li><li name="io.wasted.util.http.Thruput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ThruputextendsWactor"></a>
       <a id="Thruput:Thruput"></a>
@@ -98,7 +137,7 @@
       </h4>
       <p class="comment cmt">Thruput WebSocket Client class which will handle all delivery.</p>
     </li><li name="io.wasted.util.http.ThruputResponseAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ThruputResponseAdapterextendsSimpleChannelInboundHandler[Object]withLogger"></a>
+      <a id="ThruputResponseAdapterextendsSimpleChannelInboundHandler[Object]"></a>
       <a id="ThruputResponseAdapter:ThruputResponseAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -106,7 +145,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ThruputResponseAdapter.html"><span class="name">ThruputResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="ThruputResponseAdapter.html"><span class="name">ThruputResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Empty Netty Response Adapter which is used for Thruput high-performance delivery.</p>

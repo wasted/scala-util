@@ -239,6 +239,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.wasted.util.ssl.JavaSSL#context" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="context(certificate:java.io.InputStream,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):Option[javax.net.ssl.SSLContext]"></a>
+      <a id="context(InputStream,String,KeyStoreType.Value):Option[SSLContext]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">context</span><span class="params">(<span name="certificate">certificate: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keyStoreType">keyStoreType: <a href="KeyStoreType$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.ssl.KeyStoreType.Value">KeyStoreType.Value</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="javax.net.ssl.SSLContext">SSLContext</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get an SSL context via JavaSSL
+</p><div class="fullcomment"><div class="comment cmt"><p>Get an SSL context via JavaSSL
+</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLContext
+</p></dd></dl></div>
     </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="debug(msg:String,x:Any*):Unit"></a>
       <a id="debug(String,Any*):Unit"></a>
@@ -432,7 +448,7 @@
       </h4>
       <p class="shortcomment cmt">Get an SSL server via JavaSSL
 </p><div class="fullcomment"><div class="comment cmt"><p>Get an SSL server via JavaSSL
-</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>The path to the certificate file</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt class="param">useCache</dt><dd class="cmt"><p>Use a cache of SSL contexts, keyed on certificatePath</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></div><dl class="paramcmts block"><dt class="param">certificatePath</dt><dd class="cmt"><p>The path to the certificate file</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt class="param">useCache</dt><dd class="cmt"><p>Use a cache of SSL contexts, keyed on certificatePath</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLEngine
 </p></dd></dl></div>
     </li><li name="io.wasted.util.ssl.JavaSSL#server" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="server(certificate:java.io.InputStream,secret:String,keyStoreType:io.wasted.util.ssl.KeyStoreType.Value):Option[io.wasted.util.ssl.Engine]"></a>
@@ -448,7 +464,7 @@
       </h4>
       <p class="shortcomment cmt">Get an SSL server via JavaSSL
 </p><div class="fullcomment"><div class="comment cmt"><p>Get an SSL server via JavaSSL
-</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>an SSLEngine
+</p></div><dl class="paramcmts block"><dt class="param">certificate</dt><dd class="cmt"><p>InputStream of the certificate</p></dd><dt class="param">secret</dt><dd class="cmt"><p>Secret to open the certificate</p></dd><dt class="param">keyStoreType</dt><dd class="cmt"><p>Type of the File</p></dd><dt>returns</dt><dd class="cmt"><p>a SSLEngine
 </p></dd></dl></div>
     </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="submitException(trace:String):Unit"></a>

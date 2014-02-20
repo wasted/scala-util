@@ -58,45 +58,72 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="io.wasted.util.apn.APN" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="APNextendsWactor"></a>
-      <a id="APN:APN"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="APN.html"><span class="name">APN</span></a><span class="result"> extends <a href="../Wactor.html" class="extype" name="io.wasted.util.Wactor">Wactor</a></span>
-      </span>
-      </h4>
-      <p class="comment cmt">Apple Push Notification Client class which will handle all delivery.</p>
-    </li><li name="io.wasted.util.apn.APNMessage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="APNMessageextendsProductwithSerializable"></a>
-      <a id="APNMessage:APNMessage"></a>
+              <ol><li name="io.wasted.util.apn.Feedback" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FeedbackextendsProductwithSerializable"></a>
+      <a id="Feedback:Feedback"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="APNMessage.html"><span class="name">APNMessage</span></a><span class="params">(<span name="deviceToken">deviceToken: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ident">ident: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="expire">expire: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Feedback.html"><span class="name">Feedback</span></a><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="expired">expired: <span class="extype" name="java.util.Date">Date</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      <p class="comment cmt">Apple Push Notification Client message.</p>
-    </li><li name="io.wasted.util.apn.APNResponseAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="APNResponseAdapterextendsSimpleChannelInboundHandler[io.netty.buffer.ByteBuf]withLogger"></a>
-      <a id="APNResponseAdapter:APNResponseAdapter"></a>
+      <p class="comment cmt">Feedback Service response</p>
+    </li><li name="io.wasted.util.apn.FeedbackService" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FeedbackServiceextendsSimpleChannelInboundHandler[io.netty.buffer.ByteBuf]withLogger"></a>
+      <a id="FeedbackService:FeedbackService"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="APNResponseAdapter.html"><span class="name">APNResponseAdapter</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="FeedbackService.html"><span class="name">FeedbackService</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4>
-      <p class="comment cmt">Empty Netty Response Adapter which is used for APN high-performance delivery.</p>
+      <p class="comment cmt">Apple Push Notification Push class which will handle all delivery.</p>
+    </li><li name="io.wasted.util.apn.Message" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MessageextendsProductwithSerializable"></a>
+      <a id="Message:Message"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Message.html"><span class="name">Message</span></a><span class="params">(<span name="deviceToken">deviceToken: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prio">prio: <span class="extype" name="scala.Int">Int</span></span>, <span name="ident">ident: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="expire">expire: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.Date">Date</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Apple Push Notification Message.</p>
+    </li><li name="io.wasted.util.apn.Params" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ParamsextendsProductwithSerializable"></a>
+      <a id="Params:Params"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Params.html"><span class="name">Params</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="p12">p12: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sandbox">sandbox: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="timeout">timeout: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Apple Push Notification connection parameters</p>
+    </li><li name="io.wasted.util.apn.PushService" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PushServiceextendsSimpleChannelInboundHandler[io.netty.buffer.ByteBuf]withLogger"></a>
+      <a id="PushService:PushService"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PushService.html"><span class="name">PushService</span></a><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Apple Push Notification Push class which will handle all delivery
+</p>
     </li></ol>
             </div>
 
@@ -104,19 +131,20 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="io.wasted.util.apn.APN" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="APN"></a>
-      <a id="APN:APN"></a>
+              <ol><li name="io.wasted.util.apn.ConnectionState" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConnectionState"></a>
+      <a id="ConnectionState:ConnectionState"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="APN$.html"><span class="name">APN</span></a>
+        <a href="ConnectionState$.html"><span class="name">ConnectionState</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
       </span>
       </h4>
-      <p class="comment cmt">Apple Push Notification Client companion object.</p>
+      <p class="comment cmt">Declares the different connection states
+</p>
     </li></ol>
             </div>
 

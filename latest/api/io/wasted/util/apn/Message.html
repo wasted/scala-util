@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Logger - io.wasted.util.Logger</title>
-          <meta name="description" content="Logger - io.wasted.util.Logger" />
-          <meta name="keywords" content="Logger io.wasted.util.Logger" />
+          <title>Message - io.wasted.util.apn.Message</title>
+          <meta name="description" content="Message - io.wasted.util.apn.Message" />
+          <meta name="keywords" content="Message io.wasted.util.apn.Message" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../index.html';
-            var hash = 'io.wasted.util.Logger';
+            var url = '../../../../index.html';
+            var hash = 'io.wasted.util.apn.Message';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,28 +24,26 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Logger$.html" title="Go to companion"><img src="../../../lib/trait_to_object_big.png" /></a>
-        <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a>.<a href="package.html" class="extype" name="io.wasted.util">util</a></p>
-        <h1><a href="Logger$.html" title="Go to companion">Logger</a></h1>
+        <img src="../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.apn">apn</a></p>
+        <h1>Message</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Logger</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Message</span><span class="params">(<span name="deviceToken">deviceToken: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prio">prio: <span class="extype" name="scala.Int">Int</span></span>, <span name="ident">ident: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="expire">expire: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.Date">Date</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait enables classes to do easy logging.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Apple Push Notification Message.
+</p></div><dl class="paramcmts block"><dt class="param">deviceToken</dt><dd class="cmt"><p>Apple Device Token as Hex-String</p></dd><dt class="param">payload</dt><dd class="cmt"><p>APN Payload</p></dd><dt class="param">ident</dt><dd class="cmt"><p>Transaction Identifier</p></dd><dt class="param">expire</dt><dd class="cmt"><p>Expiry
+</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="apn/FeedbackService.html" class="extype" name="io.wasted.util.apn.FeedbackService">FeedbackService</a>, <a href="Inet4Prefix.html" class="extype" name="io.wasted.util.Inet4Prefix">Inet4Prefix</a>, <a href="Inet6Prefix.html" class="extype" name="io.wasted.util.Inet6Prefix">Inet6Prefix</a>, <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a>, <a href="ssl/JavaSSL$.html" class="extype" name="io.wasted.util.ssl.JavaSSL">JavaSSL</a>, <a href="ssl/OpenSSL$.html" class="extype" name="io.wasted.util.ssl.OpenSSL">OpenSSL</a>, <a href="apn/PushService.html" class="extype" name="io.wasted.util.apn.PushService">PushService</a>, <a href="Schedule$.html" class="extype" name="io.wasted.util.Schedule">Schedule</a>, <a href="ssl/Ssl$.html" class="extype" name="io.wasted.util.ssl.Ssl">Ssl</a>, <a href="http/Thruput.html" class="extype" name="io.wasted.util.http.Thruput">Thruput</a>, <a href="Wactor.html" class="extype" name="io.wasted.util.Wactor">Wactor</a></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +61,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.apn.Message"><span>Message</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -81,7 +79,24 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="io.wasted.util.apn.Message#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(deviceToken:String,payload:String,prio:Int,ident:Int,expire:Option[java.util.Date]):io.wasted.util.apn.Message"></a>
+      <a id="&lt;init&gt;:Message"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Message</span><span class="params">(<span name="deviceToken">deviceToken: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prio">prio: <span class="extype" name="scala.Int">Int</span></span>, <span name="ident">ident: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="expire">expire: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.Date">Date</span>] = <span class="symbol">scala.None</span></span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">deviceToken</dt><dd class="cmt"><p>Apple Device Token as Hex-String</p></dd><dt class="param">payload</dt><dd class="cmt"><p>APN Payload</p></dd><dt class="param">ident</dt><dd class="cmt"><p>Transaction Identifier</p></dd><dt class="param">expire</dt><dd class="cmt"><p>Expiry
+</p></dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
@@ -167,6 +182,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.wasted.util.apn.Message#bytes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bytes:io.netty.buffer.ByteBuf"></a>
+      <a id="bytes:ByteBuf"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bytes</span><span class="result">: <span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -179,26 +207,26 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="debug(msg:String,x:Any*):Unit"></a>
-      <a id="debug(String,Any*):Unit"></a>
+    </li><li name="io.wasted.util.apn.Message#deviceToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="deviceToken:String"></a>
+      <a id="deviceToken:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">deviceToken</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Prints a message on debug.</p>
+      <p class="shortcomment cmt">Apple Device Token as Hex-String</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -212,32 +240,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
+    </li><li name="io.wasted.util.apn.Message#expire" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="expire:Option[java.util.Date]"></a>
+      <a id="expire:Option[Date]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">expire</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.Date">Date</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#error" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="error(msg:String,x:Any*):Unit"></a>
-      <a id="error(String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints a message on error.</p>
+      <p class="shortcomment cmt">Expiry
+</p>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -250,7 +266,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -270,32 +286,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
+    </li><li name="io.wasted.util.apn.Message#ident" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ident:Int"></a>
+      <a id="ident:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">ident</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="info(msg:String,x:Any*):Unit"></a>
-      <a id="info(String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints a message on info.</p>
+      <p class="shortcomment cmt">Transaction Identifier</p>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -309,20 +312,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#loggerName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="loggerName:String"></a>
-      <a id="loggerName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">loggerName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Override this to give your class a custom Logger name.</p><div class="fullcomment"><div class="comment cmt"><p>Override this to give your class a custom Logger name.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -362,20 +351,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="submitException(trace:String):Unit"></a>
-      <a id="submitException(String):Unit"></a>
+    </li><li name="io.wasted.util.apn.Message#payload" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="payload:String"></a>
+      <a id="payload:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">submitException</span><span class="params">(<span name="trace">trace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">payload</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Implement this method to get your exceptions handled the way you want.</p><div class="fullcomment"><div class="comment cmt"><p>Implement this method to get your exceptions handled the way you want.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+      <p class="shortcomment cmt">APN Payload</p>
+    </li><li name="io.wasted.util.apn.Message#prio" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="prio:Int"></a>
+      <a id="prio:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prio</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -389,19 +390,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -459,19 +447,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="warn(msg:String,x:Any*):Unit"></a>
-      <a id="warn(String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints a message on warn.</p>
     </li></ol>
             </div>
 
@@ -481,7 +456,15 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -501,6 +484,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>
