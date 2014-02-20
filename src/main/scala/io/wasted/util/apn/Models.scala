@@ -6,47 +6,51 @@ import io.wasted.util.ssl.{ KeyStoreType, Ssl }
 import java.nio.ByteOrder
 
 /**
- * Apple Push Notification Item.
+ * Apple Push Notification Message.
  *
  * @param deviceToken Apple Device Token as Hex-String
  * @param payload APN Payload
  * @param ident Transaction Identifier
  * @param expire Expiry
  */
-case class Item(deviceToken: String, payload: String, prio: Int, ident: Int, expire: Option[java.util.Date] = None) {
-  def bytes(position: Int): ByteBuf = {
+case class Message(deviceToken: String, payload: String, prio: Int, ident: Int = 10, expire: Option[java.util.Date] = None) {
+  lazy val bytes: ByteBuf = {
     val payloadBuf = Unpooled.copiedBuffer(payload, CharsetUtil.UTF_8)
     val deviceTokenA: Array[Byte] = deviceToken.grouped(2).map(Integer.valueOf(_, 16).toByte).toArray
 
-    val itemData = Unpooled.buffer(32 + 256 + 4 + 4 + 1).order(ByteOrder.BIG_ENDIAN)
-    itemData.writeBytes(deviceTokenA)
-    itemData.writeBytes(payloadBuf)
-    itemData.writeInt(ident)
-    itemData.writeInt(expire.map(_.getTime / 1000).getOrElse(0L).toInt) // expiration
-    itemData.writeByte(prio.toByte) // prio
+    // take 5 times the max-message length
+    val bufData = Unpooled.buffer(5 * (3 + 32 + 256 + 4 + 4 + 1)).order(ByteOrder.BIG_ENDIAN)
 
-    val itemHeader = Unpooled.buffer(1 + 2).order(ByteOrder.BIG_ENDIAN)
-    itemHeader.writeByte(position.toByte) // Item 0, since we don't queue
-    itemHeader.writeShort(itemData.readableBytes.toShort)
+    // frame data
+    bufData.writeByte(1.toByte)
+    bufData.writeShort(deviceTokenA.length)
+    bufData.writeBytes(deviceTokenA)
 
-    Unpooled.copiedBuffer(itemHeader, itemData.slice())
-  }
-}
+    bufData.writeByte(2.toByte)
+    bufData.writeShort(payloadBuf.readableBytes)
+    bufData.writeBytes(payloadBuf)
 
-/**
- * Apple Push Notification Push message.
- *
- * @param items List of Push Items to send
- */
-case class Message(items: List[Item]) {
-  lazy val bytes = {
-    val tailBuffers = items.zipWithIndex.toList.map(x => x._1.bytes(x._2))
-    val size = tailBuffers.map(_.readableBytes).sum
-    val buf = Unpooled.buffer(1 + 4).order(ByteOrder.BIG_ENDIAN)
-    buf.writeByte(2.toByte) // Command set version 2
-    buf.writeInt(size)
-    val buffers = List(buf) ++ tailBuffers
-    Unpooled.copiedBuffer(buffers: _*)
+    bufData.writeByte(3.toByte)
+    bufData.writeShort(4)
+    bufData.writeInt(ident)
+
+    bufData.writeByte(4.toByte)
+    bufData.writeShort(4)
+    bufData.writeInt(expire.map(_.getTime / 1000).getOrElse(0L).toInt) // expiration
+
+    bufData.writeByte(5.toByte)
+    bufData.writeShort(1)
+    bufData.writeByte(prio.toByte) // prio
+
+    // 5 bytes for the header
+    val bufHeader = Unpooled.buffer(55).order(ByteOrder.BIG_ENDIAN)
+    bufHeader.writeByte(2.toByte) // Command set version 2
+    bufHeader.writeInt(bufData.readableBytes)
+
+    val buf = Unpooled.copiedBuffer(bufHeader, bufData)
+    bufData.release
+    bufHeader.release
+    buf
   }
 }
 

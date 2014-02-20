@@ -8,15 +8,18 @@ import io.netty.channel._
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.ssl.SslHandler
+import io.netty.channel.ChannelHandler.Sharable
 
-import scala.concurrent.duration._
+import java.nio.ByteOrder
 import java.net.InetSocketAddress
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicReference
+
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 import scala.collection.JavaConverters._
 import scala.annotation.tailrec
-import io.netty.channel.ChannelHandler.Sharable
-import java.nio.ByteOrder
 
 /**
  * Declares the different connection states
@@ -57,27 +60,29 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
       }
     })
 
-  /* statistical tracking */
-  private val writtenMessages = new java.util.concurrent.atomic.AtomicLong(0L)
-  def sentMessages = writtenMessages.get
+  /* separate state for flushing */
+  private val flushing = new java.util.concurrent.atomic.AtomicBoolean(false)
 
-  private val writtenItems = new java.util.concurrent.atomic.AtomicLong(0L)
-  def sentItems = writtenItems.get
+  /* statistical tracking */
+  private val written = new java.util.concurrent.atomic.AtomicLong(0L)
+  def sentMessages = written.get
 
   private final def sentFuture(msg: Message) = new ChannelFutureListener() {
     override def operationComplete(cf: ChannelFuture) {
-      if (cf.isSuccess) {
-        writtenMessages.addAndGet(1L)
-        writtenItems.addAndGet(msg.items.length)
-      } else queuedMessages.add(msg)
+      if (cf.isSuccess) written.addAndGet(1L)
+      else queued.add(msg)
     }
   }
 
   /* queues for our data */
-  private val queuedItems = new ConcurrentLinkedQueue[Item]()
-  private val queuedMessages = new ConcurrentLinkedQueue[Message]()
-  def send(item: Item) = queuedItems.add(item)
-  def send(message: Message) = queuedMessages.add(message)
+  private val queued = new ConcurrentLinkedQueue[Message]()
+  def send(message: Message): Boolean = channel.get match {
+    case Some(chan) if state.get == ConnectionState.connected =>
+      chan.writeAndFlush(message.bytes.retain).addListener(sentFuture(message))
+      if (!queued.isEmpty && !flushing.get) deliverQueued
+      true
+    case _ => queued.add(message)
+  }
 
   /* reference to channel and state */
   private val channel = new AtomicReference[Option[Channel]](None)
@@ -120,22 +125,19 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
   /**
    * Delivery messages to Apple Push Servers.
    */
-  def deliver() {
-    if (state.get == ConnectionState.fresh) connect()
-    if (!queuedItems.isEmpty) synchronized {
-      val msg = Message(queuedItems.asScala.toList)
-      queuedMessages.add(msg)
-      queuedItems.clear()
+  private def deliverQueued(): Unit = Future {
+    if (!flushing.compareAndSet(false, true) && state.get == ConnectionState.connected && !queued.isEmpty) {
+      channel.get.map(write)
+      flushing.set(false)
     }
-    if (state.get == ConnectionState.connected && !queuedMessages.isEmpty) channel.get.map(write)
   }
 
   @tailrec
   private def write(channel: Channel): Unit = {
-    val msg = queuedMessages.poll()
+    val msg = queued.poll()
     info("outbound: %s", msg.bytes.array.toList)
     channel.writeAndFlush(msg.bytes.retain).addListener(sentFuture(msg))
-    if (!queuedMessages.isEmpty) write(channel)
+    if (!queued.isEmpty) write(channel)
   }
 
   override def channelRead0(ctx: ChannelHandlerContext, buffer: ByteBuf) {
