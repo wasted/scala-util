@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import java.io.{ File, PrintWriter, BufferedReader, InputStreamReader }
+import java.io.{ File, BufferedReader, InputStreamReader }
 
 case class CWD(file: File)
 object CWD {

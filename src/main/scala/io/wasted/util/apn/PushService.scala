@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicReference
 import scala.collection.JavaConverters._
 import scala.annotation.tailrec
 import io.netty.channel.ChannelHandler.Sharable
+import java.nio.ByteOrder
 
 /**
  * Declares the different connection states
@@ -137,12 +138,13 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
     if (!queuedMessages.isEmpty) write(channel)
   }
 
-  override def channelRead0(ctx: ChannelHandlerContext, buf: ByteBuf) {
+  override def channelRead0(ctx: ChannelHandlerContext, buffer: ByteBuf) {
+    val buf = buffer.order(ByteOrder.BIG_ENDIAN)
     val readable = buf.readableBytes
-    val cmd = buf.readByte.toInt
+    val cmd = buf.getByte(0).toInt
     if (readable == 6 && cmd == 8) {
-      val errorCode = buf.readByte.toInt
-      val id = buf.readInt
+      val errorCode = buf.getByte(1).toInt
+      val id = buf.getInt(2)
       errorCode match {
         case 0 => // "No errors encountered"
         case 1 => error("Processing error on %s", id)

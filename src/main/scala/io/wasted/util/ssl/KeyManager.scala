@@ -2,7 +2,6 @@ package io.wasted.util.ssl
 
 import java.io._
 import java.security.KeyStore
-import java.util.Random
 import javax.net.ssl._
 
 /**

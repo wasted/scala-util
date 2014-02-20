@@ -9,10 +9,8 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
-import java.net.InetSocketAddress
 import scala.concurrent._
 import scala.util.Success
-import io.netty.util.ReferenceCounted
 
 /**
  * Netty HTTP Client Object to create HTTP Request Objects.
