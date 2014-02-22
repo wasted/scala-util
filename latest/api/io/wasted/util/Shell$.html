@@ -39,7 +39,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Shell companion object
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -208,19 +209,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Shell#exec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="exec(cmds:Seq[String],lineFunc:String=&gt;Any)(implicitcwd:io.wasted.util.CWD):io.wasted.util.ShellOperation"></a>
-      <a id="exec(Seq[String],(String)⇒Any)(CWD):ShellOperation"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">exec</span><span class="params">(<span name="cmds">cmds: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="lineFunc">lineFunc: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -318,7 +306,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.Shell#run" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.Shell#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run(cmds:Seq[String],lineFunc:String=&gt;Any)(implicitcwd:io.wasted.util.CWD):io.wasted.util.ShellOperation"></a>
       <a id="run(Seq[String],(String)⇒Any)(CWD):ShellOperation"></a>
       <h4 class="signature">
@@ -327,23 +315,39 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="cmds">cmds: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="lineFunc">lineFunc: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
+        <span class="name">run</span><span class="params">(<span name="cmds">cmds: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="lineFunc">lineFunc: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Any">Any</span> = <span class="symbol">dummyLineFunc</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
       </span>
       </h4>
-      
-    </li><li name="io.wasted.util.Shell#run" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="run(cmds:String*)(implicitcwd:io.wasted.util.CWD):io.wasted.util.ShellOperation"></a>
-      <a id="run(String*)(CWD):ShellOperation"></a>
+      <p class="shortcomment cmt">Run the given cmd with a Line-Function</p><div class="fullcomment"><div class="comment cmt"><p>Run the given cmd with a Line-Function</p></div><dl class="paramcmts block"><dt class="param">cmds</dt><dd class="cmt"><p>Command-Sequence</p></dd><dt class="param">lineFunc</dt><dd class="cmt"><p>Function to be used on every output-line</p></dd><dt class="param">cwd</dt><dd class="cmt"><p>Current Working Directory</p></dd><dt>returns</dt><dd class="cmt"><p>Shell Operation
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Shell#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="run(cmd:String,params:String*)(implicitcwd:io.wasted.util.CWD):io.wasted.util.ShellOperation"></a>
+      <a id="run(String,String*)(CWD):ShellOperation"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="cmds">cmds: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
+        <span class="name">run</span><span class="params">(<span name="cmd">cmd: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="params">params: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Run the given cmd with params</p><div class="fullcomment"><div class="comment cmt"><p>Run the given cmd with params</p></div><dl class="paramcmts block"><dt class="param">cmd</dt><dd class="cmt"><p>Command</p></dd><dt class="param">params</dt><dd class="cmt"><p>Command Line Parameters</p></dd><dt class="param">cwd</dt><dd class="cmt"><p>Current Working Directory</p></dd><dt>returns</dt><dd class="cmt"><p>Shell Operation
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.Shell#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="run(cmd:String)(implicitcwd:io.wasted.util.CWD):io.wasted.util.ShellOperation"></a>
+      <a id="run(String)(CWD):ShellOperation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">run</span><span class="params">(<span name="cmd">cmd: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="cwd">cwd: <a href="CWD.html" class="extype" name="io.wasted.util.CWD">CWD</a></span>)</span><span class="result">: <a href="ShellOperation.html" class="extype" name="io.wasted.util.ShellOperation">ShellOperation</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Run the given cmd</p><div class="fullcomment"><div class="comment cmt"><p>Run the given cmd</p></div><dl class="paramcmts block"><dt class="param">cmd</dt><dd class="cmt"><p>Command</p></dd><dt class="param">cwd</dt><dd class="cmt"><p>Current Working Directory</p></dd><dt>returns</dt><dd class="cmt"><p>Shell Operation
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
