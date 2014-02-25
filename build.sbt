@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.0.2",
   "commons-codec" % "commons-codec" % "1.7",
   "com.google.guava" % "guava" % "12.0",
-  "io.netty" % "netty-all" % "4.0.15.Final",
+  "io.netty" % "netty-all" % "4.0.17.Final",
   "org.javassist" % "javassist" % "3.17.1-GA",
   "org.specs2" %% "specs2" % "2.3.6" % "test"
 )
