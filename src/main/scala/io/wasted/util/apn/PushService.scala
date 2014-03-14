@@ -55,8 +55,12 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        p.addLast("ssl", new SslHandler(params.createSSLEngine(addr.getAddress.getHostAddress, addr.getPort)))
-        p.addLast("handler", thisService)
+        Tryo(new SslHandler(params.createSSLEngine(addr.getAddress.getHostAddress, addr.getPort))) match {
+          case Some(handler) => p.addLast("ssl", handler)
+          case _ =>
+            error("Unable to create SSL Context")
+            ch.close()
+        }
       }
     })
 
