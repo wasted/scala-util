@@ -109,7 +109,6 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
    * Disconnects from the Apple Push Server
    */
   def disconnect(): Unit = synchronized {
-    if (state.get != ConnectionState.connected && state.get != ConnectionState.reconnecting) return
     channel.get.foreach(_.closeFuture())
     channel.set(None)
     state.set(ConnectionState.disconnected)
