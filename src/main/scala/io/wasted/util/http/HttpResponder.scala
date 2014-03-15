@@ -17,7 +17,7 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
     status: HttpResponseStatus,
     body: Option[String] = None,
     mime: Option[String] = None,
-    close: Boolean = true,
+    keepAlive: Boolean = true,
     headers: Map[String, String] = Map()): FullHttpResponse = {
     val res = body match {
       case Some(body) =>
@@ -45,7 +45,7 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
     res.headers.set(SERVER, token)
     headers.foreach { h => res.headers.set(h._1, h._2) }
 
-    res.headers.set(CONNECTION, if (close) Values.CLOSE else Values.KEEP_ALIVE)
+    res.headers.set(CONNECTION, if (!keepAlive) Values.CLOSE else Values.KEEP_ALIVE)
     res
   }
 }
