@@ -38,10 +38,14 @@ object ConnectionState extends Enumeration {
 class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
   extends SimpleChannelInboundHandler[ByteBuf] with Logger { thisService =>
   override val loggerName = params.name
+  def addr: InetSocketAddress = if (params.sandbox) sandbox else production
 
-  private final val production = new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.push.apple.com"), 2195)
-  private final val sandbox = new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.sandbox.push.apple.com"), 2195)
-  val addr: InetSocketAddress = if (params.sandbox) sandbox else production
+  private final val production = {
+    new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.push.apple.com"), 2195)
+  }
+  private final val sandbox = {
+    new java.net.InetSocketAddress(java.net.InetAddress.getByName("gateway.sandbox.push.apple.com"), 2195)
+  }
 
   private val srv = new Bootstrap()
   private val bootstrap = srv.group(Netty.eventLoop)
@@ -83,7 +87,7 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
   def send(message: Message): Boolean = channel.get match {
     case Some(chan) if state.get == ConnectionState.connected =>
       chan.writeAndFlush(message.bytes.retain).addListener(sentFuture(message))
-      if (!queued.isEmpty && !flushing.get) deliverQueued
+      if (!queued.isEmpty && !flushing.get) deliverQueued()
       true
     case _ => queued.add(message)
   }
@@ -109,6 +113,7 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
    * Disconnects from the Apple Push Server
    */
   def disconnect(): Unit = synchronized {
+    if (state.get != ConnectionState.connected && state.get != ConnectionState.reconnecting) return
     channel.get.foreach(_.close())
     channel.set(None)
     state.set(ConnectionState.disconnected)
@@ -138,7 +143,6 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
   @tailrec
   private def write(channel: Channel): Unit = {
     val msg = queued.poll()
-    info("outbound: %s", msg.bytes.array.toList)
     channel.writeAndFlush(msg.bytes.retain).addListener(sentFuture(msg))
     if (!queued.isEmpty) write(channel)
   }
