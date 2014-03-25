@@ -9,7 +9,7 @@
 
 ```
   resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
-  libraryDependencies += "io.wasted" %% "wasted-util" % "0.7.6"
+  libraryDependencies += "io.wasted" %% "wasted-util" % "0.8.0"
 ```
 
 ## License
