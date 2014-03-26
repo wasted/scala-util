@@ -20,7 +20,7 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
     keepAlive: Boolean = true,
     headers: Map[String, String] = Map()): FullHttpResponse = {
     val res = body match {
-      case Some(body) if body.length > 0 =>
+      case Some(body) =>
         val bytes = body.getBytes("UTF-8").toArray
         val content = pooledBuffer match {
           case true =>
@@ -28,14 +28,13 @@ class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
               case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length)
               case flase => PooledByteBufAllocator.DEFAULT.directBuffer(bytes.length, bytes.length)
             }
-            pooledBuf.setBytes(0, bytes)
-            pooledBuf.slice()
+            pooledBuf.writeBytes(bytes).slice()
           case false => Unpooled.wrappedBuffer(bytes).slice()
         }
         val res = new DefaultFullHttpResponse(HTTP_1_1, status, content)
         setContentLength(res, content.readableBytes())
         res
-      case None =>
+      case _ =>
         val res = new DefaultFullHttpResponse(HTTP_1_1, status)
         setContentLength(res, 0)
         res
