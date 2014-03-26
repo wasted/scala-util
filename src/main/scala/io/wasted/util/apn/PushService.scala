@@ -32,10 +32,11 @@ object ConnectionState extends Enumeration {
  * Apple Push Notification Push class which will handle all delivery
  *
  * @param params Connection Parameters
+ * @param eventLoop Optional custom event loop for proxy applications
  * @param wheelTimer WheelTimer for scheduling
  */
 @Sharable
-class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
+class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(implicit val wheelTimer: WheelTimer)
   extends SimpleChannelInboundHandler[ByteBuf] with Logger { thisService =>
   override val loggerName = params.name
   def addr: InetSocketAddress = if (params.sandbox) sandbox else production
@@ -48,7 +49,7 @@ class PushService(params: Params)(implicit val wheelTimer: WheelTimer)
   }
 
   private val srv = new Bootstrap()
-  private val bootstrap = srv.group(Netty.eventLoop)
+  private val bootstrap = srv.group(eventLoop)
     .channel(classOf[NioSocketChannel])
     .remoteAddress(addr)
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)

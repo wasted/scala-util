@@ -23,9 +23,13 @@ object HttpClient {
    * @param chunked Get responses in chunks
    * @param timeout Connect timeout in seconds
    * @param engine Optional SSLEngine
+   * @param eventLoop Optional custom event loop for proxy applications
    */
-  def apply(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => ssl.Engine] = None): HttpClient = {
-    new HttpClient(chunked, timeout, engine)
+  def apply(chunked: Boolean = true,
+            timeout: Int = 5,
+            engine: Option[() => ssl.Engine] = None,
+            eventLoop: EventLoopGroup = Netty.eventLoop): HttpClient = {
+    new HttpClient(chunked, timeout, engine, eventLoop = eventLoop)
   }
 }
 
@@ -33,7 +37,6 @@ object HttpClient {
  * Netty Response Adapter which uses scala Futures.
  *
  * @param promise Promise for type T object
- * @param T Type of the expected Netty Result
  */
 class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends SimpleChannelInboundHandler[FullHttpResponse] {
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
@@ -55,12 +58,17 @@ class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends Simp
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  * @param persistent Optional Host Address we're directing all requests to, regardless of their DNS lookup
+ * @param eventLoop Optional custom event loop for proxy applications
  */
-class HttpClient(chunked: Boolean = true, timeout: Int = 5, engine: Option[() => ssl.Engine] = None, persistent: Option[(String, Int)] = None) {
+class HttpClient(chunked: Boolean = true,
+                 timeout: Int = 5,
+                 engine: Option[() => ssl.Engine] = None,
+                 persistent: Option[(String, Int)] = None,
+                 eventLoop: EventLoopGroup = Netty.eventLoop) {
 
   private var disabled = false
   private lazy val srv = new Bootstrap
-  private lazy val bootstrap = srv.group(Netty.eventLoop)
+  private lazy val bootstrap = srv.group(eventLoop)
     .channel(classOf[NioSocketChannel])
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
     .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
