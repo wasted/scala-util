@@ -124,7 +124,6 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
    * Reconnect to Apple Push Servers
    */
   private def reconnect(): Unit = synchronized {
-    if (state.get != ConnectionState.disconnected) return
     state.set(ConnectionState.reconnecting)
     disconnect()
     info("Reconnecting..")
@@ -178,15 +177,12 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
 
   override def channelInactive(ctx: ChannelHandlerContext) {
     info("APN disconnected!")
-    // don't override reconnecting if it's late
-    state.compareAndSet(ConnectionState.connected, ConnectionState.disconnected)
     reconnect()
   }
 
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
     http.ExceptionHandler(ctx, cause) match {
       case Some(e) => e.printStackTrace()
-      case _ if connectionState != ConnectionState.disconnected => reconnect()
       case _ =>
     }
     ctx.close()
