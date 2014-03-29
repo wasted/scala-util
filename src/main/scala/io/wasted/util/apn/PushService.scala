@@ -25,7 +25,7 @@ import scala.annotation.tailrec
  * Declares the different connection states
  */
 object ConnectionState extends Enumeration {
-  val fresh, connected, reconnecting, disconnected = Value
+  val fresh, connected, disconnected = Value
 }
 
 /**
@@ -94,6 +94,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
   }
 
   /* reference to channel and state */
+  private val ping = new AtomicReference[Option[Schedule.Action]](None)
   private val channel = new AtomicReference[Option[Channel]](None)
   private val state = new AtomicReference[ConnectionState.Value](ConnectionState.fresh)
   def connectionState = state.get
@@ -102,21 +103,25 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
    * Connects to the Apple Push Servers
    */
   def connect(): Unit = synchronized {
-    if (state.get == ConnectionState.connected || state.get == ConnectionState.reconnecting) return
+    if (state.get == ConnectionState.connected) return
     channel.set(Tryo(bootstrap.clone.connect().sync().channel()))
     if (channel.get.isEmpty) {
       state.set(ConnectionState.disconnected)
       Schedule.once(() => connect(), 5.seconds)
-    } else state.set(ConnectionState.connected)
+    } else {
+      state.set(ConnectionState.connected)
+      ping.set(Some(Schedule.again(() => channel.get.map { case chan if !chan.isActive => reconnect() case _ => }, 5.seconds, 5.seconds)))
+    }
   }
 
   /**
    * Disconnects from the Apple Push Server
    */
   def disconnect(): Unit = synchronized {
-    if (state.get != ConnectionState.connected && state.get != ConnectionState.reconnecting) return
     channel.get.foreach(_.close())
     channel.set(None)
+    ping.get.map(_.cancel())
+    ping.set(None)
     state.set(ConnectionState.disconnected)
   }
 
@@ -124,7 +129,6 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
    * Reconnect to Apple Push Servers
    */
   private def reconnect(): Unit = synchronized {
-    state.set(ConnectionState.reconnecting)
     disconnect()
     info("Reconnecting..")
     connect()
