@@ -6,7 +6,7 @@ import org.scalatest._
 import org.scalatest.concurrent.AsyncAssertions
 import org.scalatest.time.SpanSugar._
 
-class WactorSpec extends WordSpec with AsyncAssertions {
+class WactorSpec extends WordSpec with AsyncAssertions with BeforeAndAfter {
   val w = new Waiter
   val testInt = 5
   val testString = "wohooo!"
@@ -23,7 +23,8 @@ class WactorSpec extends WordSpec with AsyncAssertions {
   }
 
   val actor = new TestWactor
-  actor ! true // wakeup call
+
+  before(actor ! true) // wakeup
 
   "TestWactor" should {
     "have a message with \"" + testString + "\"" in {
@@ -35,8 +36,8 @@ class WactorSpec extends WordSpec with AsyncAssertions {
       actor ! testInt
       w.await(timeout(1 second))
     }
-
-    actor ! Wactor.Die
   }
+
+  after(actor ! Wactor.Die)
 }
 

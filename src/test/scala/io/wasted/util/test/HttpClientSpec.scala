@@ -9,7 +9,7 @@ import org.scalatest.time.SpanSugar._
 import io.netty.util.CharsetUtil
 import scala.concurrent.Await
 
-class HttpClientSpec extends WordSpec with ScalaFutures with AsyncAssertions {
+class HttpClientSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter {
   val url = new java.net.URL("http://wasted.io/")
 
   val client1 = HttpClient(false, 5, None)
@@ -20,7 +20,8 @@ class HttpClientSpec extends WordSpec with ScalaFutures with AsyncAssertions {
       assert(resp.content.toString(CharsetUtil.UTF_8).contains("wasted"))
       resp.content.release()
     }
-    client1.shutdown()
   }
+
+  after(client1.shutdown())
 }
 
