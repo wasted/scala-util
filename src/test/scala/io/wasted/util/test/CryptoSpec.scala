@@ -1,12 +1,9 @@
 package io.wasted.util.test
 
 import io.wasted.util.{ Base64, CryptoCipher, Crypto }
+import org.scalatest._
 
-import org.specs2.mutable._
-
-class CryptoSpec extends Specification {
-
-  "Crypto functions".title
+class CryptoSpec extends WordSpec {
 
   implicit val cipher = CryptoCipher("AES")
 
@@ -20,13 +17,13 @@ class CryptoSpec extends Specification {
 
   "Pregenerated Base64 (" + ourString + ")" should {
     "be the same as the decrypted (" + theirString + ")" in {
-      ourString must_== theirString
+      assert(ourString == theirString)
     }
   }
 
   "Encoded Array (" + encrypted.toList.toString + ")" should {
     "be the same as the decoded (" + base64Decoded.toList.toString + ")" in {
-      encrypted must_== base64Decoded
+      assert(encrypted.deep == base64Decoded.deep)
     }
   }
 

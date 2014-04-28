@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger
  * @param ec ExecutionContext to be used
  */
 abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecForkJoin) extends Wactor.Address with Runnable with Logger {
-  override protected def loggerName: String
   protected def receive: PartialFunction[Any, Any]
 
   /**

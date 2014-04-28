@@ -2,12 +2,9 @@ package io.wasted.util.test
 
 import io.wasted.util.{ HexingAlgo, HashingAlgo, Hashing }
 
-import org.specs2.mutable._
+import org.scalatest._
 
-class HashingSpec extends Specification {
-
-  "Hashing functions".title
-
+class HashingSpec extends WordSpec {
   implicit val hashingAlgo = HashingAlgo("HmacSHA256")
   implicit val hexingAlgo = HexingAlgo("SHA")
 
@@ -22,19 +19,19 @@ class HashingSpec extends Specification {
 
   "Precalculated hex-digest (" + ourHexDigest + ")" should {
     "be the same as the calculated (" + theirHexDigest + ")" in {
-      ourHexDigest must_== theirHexDigest
+      assert(ourHexDigest == theirHexDigest)
     }
   }
 
   "Precalculated hex-encoded (" + ourHexSignature + ")" should {
     "be the same as the calculated (" + theirHexSignature + ")" in {
-      ourHexSignature must_== new String(Hashing.hexDecode(theirHexSignature), "UTF-8")
+      assert(ourHexSignature == new String(Hashing.hexDecode(theirHexSignature), "UTF-8"))
     }
   }
 
   "Precalculated sign (" + ourSignature + ")" should {
     "be the same as the calculated (" + theirSignature + ")" in {
-      ourSignature must_== theirSignature
+      assert(ourSignature == theirSignature)
     }
   }
 }

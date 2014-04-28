@@ -5,11 +5,9 @@
 ### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/netflow/blob/master/CONTRIBUTING.md).
 
 
-## Scala 2.10 (only - crossbuilds for 2.11 are planned)
-
 ```
   resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
-  libraryDependencies += "io.wasted" %% "wasted-util" % "0.8.0"
+  libraryDependencies += "io.wasted" %% "wasted-util" % "0.9.0"
 ```
 
 ## License

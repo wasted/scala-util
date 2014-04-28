@@ -22,7 +22,7 @@ trait Logger {
   /**
    * Prints a message on debug.
    */
-  def debug(msg: String, x: Any*) {
+  def debug(msg: => String, x: Any*) {
     if (!logger.isDebugEnabled) return
     x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.debug(msg.format(x: _*))
@@ -31,7 +31,7 @@ trait Logger {
   /**
    * Prints a message on info.
    */
-  def info(msg: String, x: Any*) {
+  def info(msg: => String, x: Any*) {
     if (!logger.isInfoEnabled) return
     x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.info(msg.format(x: _*))
@@ -40,7 +40,7 @@ trait Logger {
   /**
    * Prints a message on warn.
    */
-  def warn(msg: String, x: Any*) {
+  def warn(msg: => String, x: Any*) {
     if (!logger.isWarnEnabled) return
     x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.warn(msg.format(x: _*))
@@ -49,7 +49,7 @@ trait Logger {
   /**
    * Prints a message on error.
    */
-  def error(msg: String, x: Any*) {
+  def error(msg: => String, x: Any*) {
     if (!logger.isErrorEnabled) return
     x.foreach { case msg: Throwable => submitException(msg) case _ => }
     logger.error(msg.format(x: _*))

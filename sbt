@@ -41,16 +41,16 @@ fi
 test -f ~/.sbtconfig && . ~/.sbtconfig
 
 java -ea -server $SBT_OPTS $JAVA_OPTS			\
-	-XX:+AggressiveOpts             		\
-	-XX:+OptimizeStringConcat			\
+	-XX:+AggressiveOpts             		    \
+	-XX:+OptimizeStringConcat			        \
 	-XX:+UseConcMarkSweepGC               		\
-	-XX:+CMSParallelRemarkEnabled   		\
-	-XX:+CMSClassUnloadingEnabled   		\
-	-XX:+CMSIncrementalMode         		\
-	-Dio.netty.epollBugWorkaround=true		\
-	-Dio.netty.leakDetectionLevel=simple            \
-	-XX:MaxPermSize=512M				\
-	-Xms128M					\
-	-Xmx1G						\
+	-XX:+CMSParallelRemarkEnabled   		    \
+	-XX:+CMSClassUnloadingEnabled   		    \
+	-XX:+CMSIncrementalMode         		    \
+	-Dio.netty.epollBugWorkaround=true		    \
+	-Dio.netty.leakDetectionLevel=simple        \
+	-XX:MaxPermSize=512M				        \
+	-Xms128M					                \
+	-Xmx1G						                \
 	-jar $sbtjar "$@"
 

@@ -2,30 +2,38 @@ package io.wasted.util.test
 
 import io.wasted.util.{ WheelTimer, Schedule }
 
-import scala.concurrent.duration._
-import org.specs2.mutable._
+import org.scalatest._
+import org.scalatest.concurrent.AsyncAssertions
+import org.scalatest.time.SpanSugar._
 
-class ScheduleSpec extends Specification {
-
-  "Schedule".title
-
+class ScheduleSpec extends WordSpec with AsyncAssertions {
+  val w = new Waiter
   implicit val wheel = WheelTimer()
-
-  var result1 = false
-  var testfunc1 = () => result1 = true
-  Schedule.once(testfunc1, DurationInt(5).millis)
 
   var result2 = false
   var result3 = false
-  var testfunc2 = () => if (result2) result3 = true else result2 = true
-  val cancelAgain = Schedule.again(testfunc2, DurationInt(5).millis, DurationInt(5).millis)
+  var testfunc2 = () => if (result2) {
+    result3 = true
+    w.dismiss()
+  } else {
+    result2 = true
+    w.dismiss()
+  }
+  val cancelAgain = Schedule.again(testfunc2, scala.concurrent.duration.DurationInt(5).millis, scala.concurrent.duration.DurationInt(5).millis)
 
   "Schedule should have done 3 tests where results" should {
-    "be true for Schedule.once" in { result1 must be_==(true).eventually }
-    "be true for Schedule.again (first run)" in { result2 must be_==(true).eventually }
-    "be true for Schedule.again (second run)" in { result3 must be_==(true).eventually }
+    "be true for Schedule.once" in {
+      Schedule.once(() => w.dismiss(), scala.concurrent.duration.DurationInt(5).millis)
+      w.await(timeout(500 millis), dismissals(2))
+    }
+    "be true for Schedule.again (first run)" in {
+      Schedule.once(testfunc2, scala.concurrent.duration.DurationInt(5).millis)
+      w.await(timeout(500 millis), dismissals(2))
+    }
+    "be true for Schedule.again (second run)" in {
+      Schedule.once(testfunc2, scala.concurrent.duration.DurationInt(5).millis)
+      w.await(timeout(500 millis), dismissals(2))
+    }
   }
-
-  step(cancelAgain.cancel)
 }
 

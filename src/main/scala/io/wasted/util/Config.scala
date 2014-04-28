@@ -4,6 +4,7 @@ import com.typesafe.config.ConfigFactory
 import java.net.InetSocketAddress
 import scala.concurrent.duration._
 import scala.collection.JavaConverters._
+import java.util.concurrent.TimeUnit
 
 /**
  * Wrapper around Typesafe [[http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html ConfigFactory]].
@@ -32,7 +33,7 @@ object Config {
    * @param name Config directive
    * @return Option for a Duration
    */
-  def getDuration(name: String): Option[Duration] = Tryo(conf.getMilliseconds(name).toInt.millis)
+  def getDuration(name: String): Option[Duration] = Tryo(conf.getDuration(name, TimeUnit.MILLISECONDS).millis)
 
   /**
    * Gets the Duration from Config and uses a fallback

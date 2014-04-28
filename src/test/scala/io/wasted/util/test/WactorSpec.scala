@@ -2,37 +2,41 @@ package io.wasted.util.test
 
 import io.wasted.util.Wactor
 
-import org.specs2.mutable._
+import org.scalatest._
+import org.scalatest.concurrent.AsyncAssertions
+import org.scalatest.time.SpanSugar._
 
-class WactorSpec extends Specification {
-
-  "Wactor".title
-
-  var result1 = ""
-  var result2 = 0
+class WactorSpec extends WordSpec with AsyncAssertions {
+  val w = new Waiter
+  val testInt = 5
+  val testString = "wohooo!"
 
   class TestWactor extends Wactor(5) {
     def receive = {
-      case x: String => result1 = x
-      case x: Int => result2 = x
+      case a: String =>
+        assert(a == testString); w.dismiss()
+      case a: Int => assert(a == testInt); w.dismiss()
     }
+
     override val loggerName = "TestWactor"
     override def exceptionCaught(e: Throwable) { e.printStackTrace() }
   }
-  val actor = new TestWactor
 
-  step(actor ! "wohooo!")
-  step(actor ! 5)
+  val actor = new TestWactor
+  actor ! true // wakeup call
 
   "TestWactor" should {
-    "have set result1 to \"wohooo!\"" in {
-      result1 must be_==("wohooo!").eventually
+    "have a message with \"" + testString + "\"" in {
+      actor ! testString
+      w.await(timeout(1 second))
     }
-    "have set result2 to \"5\"" in {
-      result2 must be_==(5).eventually
-    }
-  }
 
-  step(actor ! Wactor.Die)
+    "have a message with Integer " + testInt in {
+      actor ! testInt
+      w.await(timeout(1 second))
+    }
+
+    actor ! Wactor.Die
+  }
 }
 
