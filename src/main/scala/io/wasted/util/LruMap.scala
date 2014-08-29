@@ -70,5 +70,11 @@ class LruMap[K, V](val maxSize: Int, load: Option[(K) => V], expire: Option[(K, 
    * @param key Key to get the Value for
    */
   def get(key: K): Option[V] = Option(cache.getIfPresent(KeyHolder(key))).map(_.value)
+
+  /**
+   * Remove a value by key
+   * @param key Key to be removed
+   */
+  def remove(key: K): Unit = cache.invalidate(key)
 }
 
