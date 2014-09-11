@@ -28,8 +28,12 @@ object LruMap {
  * @param maxSize Maximum size of this cache
  * @param load Function to load objects
  * @param expire Function to be called on expired objects
+ * @param builderConf Function to extend the CacheBuilder
  */
-class LruMap[K, V](val maxSize: Int, load: Option[(K) => V], expire: Option[(K, V) => Any]) { lru =>
+class LruMap[K, V](val maxSize: Int,
+                   load: Option[(K) => V],
+                   expire: Option[(K, V) => Any],
+                   builderConf: Option[CacheBuilder[AnyRef, AnyRef] => CacheBuilder[AnyRef, AnyRef]] = None) { lru =>
   private[this] val loader = lru.load.map { loadFunc =>
     new CacheLoader[KeyHolder[K], ValueHolder[V]] {
       def load(key: KeyHolder[K]): ValueHolder[V] = ValueHolder(loadFunc(key.key))
@@ -48,6 +52,7 @@ class LruMap[K, V](val maxSize: Int, load: Option[(K) => V], expire: Option[(K, 
    */
   val cache: Cache[KeyHolder[K], ValueHolder[V]] = {
     val builder = CacheBuilder.newBuilder().maximumSize(maxSize)
+    builderConf.map(_(builder))
     (loader, removal) match {
       case (Some(loaderO), Some(removalO)) => builder.removalListener(removalO).build(loaderO)
       case (Some(loaderO), None) => builder.build(loaderO)
@@ -78,6 +83,6 @@ class LruMap[K, V](val maxSize: Int, load: Option[(K) => V], expire: Option[(K, 
    * Remove a value by key
    * @param key Key to be removed
    */
-  def remove(key: K): Unit = cache.invalidate(key)
+  def remove(key: K): Unit = cache.invalidate(KeyHolder(key))
 }
 
