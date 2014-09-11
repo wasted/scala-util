@@ -1,5 +1,7 @@
 package io.wasted.util
 
+import java.util.concurrent.Callable
+
 import com.google.common.cache._
 
 private[util] case class KeyHolder[K](key: K)
@@ -74,10 +76,25 @@ class LruMap[K, V](val maxSize: Int,
   def put(key: K, value: V): Unit = cache.put(KeyHolder(key), ValueHolder(value))
 
   /**
-   * Gets a value
+   * Gets a value associated with the given key.
    * @param key Key to get the Value for
    */
+
   def get(key: K): Option[V] = Option(cache.getIfPresent(KeyHolder(key))).map(_.value)
+
+  /**
+   * Get the value associated with the given key. If no value is already associated, then associate the given value
+   * with the key and use it as the return value.
+   *
+   * @param key Key to put the Value for
+   * @param value Value to put for the Key
+   * @return
+   */
+  def getOrElseUpdate(key: K, value: => V): V = {
+    cache.get(KeyHolder(key), new Callable[ValueHolder[V]] {
+      def call(): ValueHolder[V] = ValueHolder(value)
+    }).value
+  }
 
   /**
    * Remove a value by key
