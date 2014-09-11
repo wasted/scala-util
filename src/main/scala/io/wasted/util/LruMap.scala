@@ -43,7 +43,10 @@ class LruMap[K, V](val maxSize: Int, load: Option[(K) => V], expire: Option[(K, 
     }
   }
 
-  private[this] val cache: Cache[KeyHolder[K], ValueHolder[V]] = {
+  /**
+   * Underlying Guava Cache
+   */
+  val cache: Cache[KeyHolder[K], ValueHolder[V]] = {
     val builder = CacheBuilder.newBuilder().maximumSize(maxSize)
     (loader, removal) match {
       case (Some(loaderO), Some(removalO)) => builder.removalListener(removalO).build(loaderO)
