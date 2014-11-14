@@ -23,5 +23,16 @@ class LruMapSpec extends WordSpec {
     "contain element 10" in { assert(lru.get(10) == Some(10)) }
   }
 
+  "Deleting Lru-Entries" should {
+    "delete element 5 and verify" in {
+      lru.remove(5)
+      assert(lru.get(5) == None)
+    }
+    "push element 0 and verify that 1 is still in" in {
+      lru.put(0, 0)
+      assert(lru.get(1) == Some(1))
+    }
+  }
+
 }
 
