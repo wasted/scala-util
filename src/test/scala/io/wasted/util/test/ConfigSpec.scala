@@ -1,7 +1,8 @@
 package io.wasted.util.test
 
-import io.wasted.util.Config
 import java.net.InetSocketAddress
+
+import io.wasted.util.Config
 import org.scalatest._
 
 class ConfigSpec extends WordSpec {

@@ -1,21 +1,20 @@
 package io.wasted.util.http
 
-import io.wasted.util._
+import java.net.{ InetSocketAddress, URI }
+import java.util.UUID
+import javax.net.ssl.SSLEngine
 
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
 import io.netty.util.CharsetUtil
+import io.wasted.util._
 
-import java.net.URI
-import java.util.UUID
-import javax.net.ssl.SSLEngine
-import java.net.InetSocketAddress
-import scala.util.{ Try, Success, Failure }
+import scala.util.{ Failure, Success, Try }
 
 /**
  * Thruput WebSocket Client class which will handle all delivery.

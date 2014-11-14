@@ -1,7 +1,6 @@
 package io.wasted.util.test
 
 import io.wasted.util.Wactor
-
 import org.scalatest._
 import org.scalatest.concurrent.AsyncAssertions
 import org.scalatest.time.SpanSugar._

@@ -1,8 +1,8 @@
 package io.wasted.util.test
 
-import io.wasted.util.InetPrefix
 import java.net.InetAddress
 
+import io.wasted.util.InetPrefix
 import org.scalatest._
 
 class InetPrefixSpec extends WordSpec {

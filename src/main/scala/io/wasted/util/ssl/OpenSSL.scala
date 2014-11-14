@@ -1,11 +1,11 @@
 package io.wasted.util.ssl
 
-import io.wasted.util.Logger
-
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.net.ssl._
 
-import collection.mutable.{ Map => MutableMap }
+import io.wasted.util.Logger
+
+import scala.collection.mutable.{ Map => MutableMap }
 
 /*
  * Creates APR/OpenSSL SSLEngines on behalf of the Ssl singleton

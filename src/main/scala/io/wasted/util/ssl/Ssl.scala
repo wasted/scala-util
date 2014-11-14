@@ -1,8 +1,9 @@
 package io.wasted.util.ssl
 
-import io.wasted.util.Logger
-import javax.net.ssl._
 import java.io.InputStream
+import javax.net.ssl._
+
+import io.wasted.util.Logger
 
 case class Engine(self: SSLEngine, handlesRenegotiation: Boolean = false, certId: String = "<unknown>")
 

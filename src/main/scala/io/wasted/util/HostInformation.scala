@@ -1,6 +1,7 @@
 package io.wasted.util
 
-import java.net.{ NetworkInterface, InetAddress }
+import java.net.{ InetAddress, NetworkInterface }
+
 import scala.collection.JavaConversions._
 
 object HostInformation {

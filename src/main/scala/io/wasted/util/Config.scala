@@ -1,10 +1,12 @@
 package io.wasted.util
 
-import com.typesafe.config.ConfigFactory
 import java.net.InetSocketAddress
-import scala.concurrent.duration._
-import scala.collection.JavaConverters._
 import java.util.concurrent.TimeUnit
+
+import com.typesafe.config.ConfigFactory
+
+import scala.collection.JavaConverters._
+import scala.concurrent.duration._
 
 /**
  * Wrapper around Typesafe [[http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html ConfigFactory]].

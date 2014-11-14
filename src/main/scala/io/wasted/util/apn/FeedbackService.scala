@@ -1,15 +1,15 @@
 package io.wasted.util.apn
 
-import io.wasted.util._
+import java.net.InetSocketAddress
 
 import io.netty.bootstrap._
 import io.netty.buffer._
-import io.netty.channel._
-import io.netty.channel.socket.nio.NioSocketChannel
-import io.netty.channel.socket.SocketChannel
-import io.netty.handler.ssl.SslHandler
-import java.net.InetSocketAddress
 import io.netty.channel.ChannelHandler.Sharable
+import io.netty.channel._
+import io.netty.channel.socket.SocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
+import io.netty.handler.ssl.SslHandler
+import io.wasted.util._
 
 /**
  * Feedback Service response

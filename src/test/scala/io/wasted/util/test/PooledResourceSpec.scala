@@ -1,7 +1,6 @@
 package io.wasted.util.test
 
 import io.wasted.util.PooledResource
-
 import org.scalatest._
 
 class PooledResourceSpec extends WordSpec {

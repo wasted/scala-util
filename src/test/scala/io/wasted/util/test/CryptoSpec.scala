@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util.{ Base64, CryptoCipher, Crypto }
+import io.wasted.util.{ Base64, Crypto, CryptoCipher }
 import org.scalatest._
 
 class CryptoSpec extends WordSpec {

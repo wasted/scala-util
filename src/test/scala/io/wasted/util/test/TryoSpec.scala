@@ -1,7 +1,6 @@
 package io.wasted.util.test
 
 import io.wasted.util.Tryo
-
 import org.scalatest._
 
 class TryoSpec extends WordSpec {

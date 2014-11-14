@@ -1,8 +1,10 @@
 package io.wasted.util
 
-import scala.concurrent.duration.Duration
+import java.util.concurrent.{ ConcurrentHashMap, TimeUnit }
+
 import io.netty.util.{ Timeout, TimerTask }
-import java.util.concurrent.{ TimeUnit, ConcurrentHashMap }
+
+import scala.concurrent.duration.Duration
 
 class WheelTimer(timerMillis: Int = 100, wheelSize: Int = 512) extends io.netty.util.HashedWheelTimer(timerMillis.toLong, TimeUnit.MILLISECONDS, wheelSize)
 

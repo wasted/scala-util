@@ -1,9 +1,10 @@
 package io.wasted.util
 
-import scala.util.{ Try, Success, Failure }
-import scala.concurrent.duration.Duration
-import java.util.concurrent.{ ForkJoinPool, ConcurrentLinkedQueue, Executor, Executors }
 import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors, ForkJoinPool }
+
+import scala.concurrent.duration.Duration
+import scala.util.{ Failure, Success, Try }
 
 /**
  * Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).
@@ -29,7 +30,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
   // Our awesome little mailboxes, free of blocking and evil
   private final val mboxHigh = new ConcurrentLinkedQueue[Any]
   private final val mboxNormal = new ConcurrentLinkedQueue[Any]
-  import Wactor._
+  import io.wasted.util.Wactor._
 
   // Rebindable top of the mailbox, bootstrapped to Dispatch behavior
   private var behavior: Behavior = Dispatch(this, receive)

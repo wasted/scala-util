@@ -1,10 +1,10 @@
 package io.wasted.util.http
 
 import io.netty.buffer._
-import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.HttpHeaders._
 import io.netty.handler.codec.http.HttpHeaders.Names._
+import io.netty.handler.codec.http.HttpHeaders._
 import io.netty.handler.codec.http.HttpVersion._
+import io.netty.handler.codec.http._
 
 /**
  * Responder class used in our server applications

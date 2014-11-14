@@ -1,8 +1,7 @@
 package io.wasted.util
 
-import java.util.concurrent.LinkedTransferQueue
+import java.util.concurrent.{ LinkedTransferQueue, TimeUnit }
 import java.util.concurrent.atomic.AtomicInteger
-import java.util.concurrent.TimeUnit
 
 /**
  * Resource Pooling Class

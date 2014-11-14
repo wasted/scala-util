@@ -1,6 +1,6 @@
 package io.wasted
 
-import java.io.{ StringWriter, PrintWriter }
+import java.io.{ PrintWriter, StringWriter }
 
 /**
  * Helpers

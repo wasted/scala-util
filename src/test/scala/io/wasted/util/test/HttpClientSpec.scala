@@ -1,12 +1,11 @@
 package io.wasted.util.test
 
+import io.netty.util.CharsetUtil
 import io.wasted.util.http.HttpClient
-
 import org.scalatest._
 import org.scalatest.concurrent._
 import org.scalatest.time.SpanSugar._
 
-import io.netty.util.CharsetUtil
 import scala.concurrent.Await
 
 class HttpClientSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter {

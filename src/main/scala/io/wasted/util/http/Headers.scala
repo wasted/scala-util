@@ -2,6 +2,7 @@ package io.wasted.util.http
 
 import io.netty.handler.codec.http.HttpHeaders.Names._
 import io.netty.handler.codec.http.HttpRequest
+
 import scala.collection.JavaConversions._
 
 trait HttpHeaders {

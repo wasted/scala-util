@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import java.io.{ File, BufferedReader, InputStreamReader }
+import java.io.{ BufferedReader, File, InputStreamReader }
 
 /**
  * Current working directory

@@ -4,8 +4,8 @@ import java.util.concurrent.Callable
 
 import com.google.common.cache._
 
-private[util] case class KeyHolder[K](key: K)
-private[util] case class ValueHolder[V](value: V)
+case class KeyHolder[K](key: K)
+case class ValueHolder[V](value: V)
 
 /**
  * LruMap Companion to make creation easier
@@ -36,13 +36,13 @@ class LruMap[K, V](val maxSize: Int,
                    load: Option[(K) => V],
                    expire: Option[(K, V) => Any],
                    builderConf: Option[CacheBuilder[AnyRef, AnyRef] => CacheBuilder[AnyRef, AnyRef]] = None) { lru =>
-  private[this] val loader = lru.load.map { loadFunc =>
+  private[this] val loader: Option[CacheLoader[KeyHolder[K], ValueHolder[V]]] = lru.load.map { loadFunc =>
     new CacheLoader[KeyHolder[K], ValueHolder[V]] {
       def load(key: KeyHolder[K]): ValueHolder[V] = ValueHolder(loadFunc(key.key))
     }
   }
 
-  private[this] val removal = lru.expire.map { expireFunc =>
+  private[this] val removal: Option[RemovalListener[KeyHolder[K], ValueHolder[V]]] = lru.expire.map { expireFunc =>
     new RemovalListener[KeyHolder[K], ValueHolder[V]] {
       def onRemoval(removal: RemovalNotification[KeyHolder[K], ValueHolder[V]]): Unit =
         expireFunc(removal.getKey.key, removal.getValue.value)

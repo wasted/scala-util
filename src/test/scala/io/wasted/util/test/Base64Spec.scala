@@ -1,7 +1,6 @@
 package io.wasted.util.test
 
 import io.wasted.util.Base64
-
 import org.scalatest._
 
 class Base64Spec extends WordSpec {

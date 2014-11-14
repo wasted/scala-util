@@ -1,7 +1,7 @@
 package io.wasted.util
 
-import java.security.MessageDigest
 import java.io.FileInputStream
+import java.security.MessageDigest
 import javax.crypto.spec.SecretKeySpec
 
 case class HashingAlgo(name: String = "HmacSHA256")

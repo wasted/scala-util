@@ -1,11 +1,13 @@
 package io.wasted.util.ssl
 
-import io.wasted.util._
-import java.security.cert.X509Certificate
-import java.security.KeyStore
-import javax.net.ssl._
 import java.io.InputStream
-import collection.mutable.{ Map => MutableMap }
+import java.security.KeyStore
+import java.security.cert.X509Certificate
+import javax.net.ssl._
+
+import io.wasted.util._
+
+import scala.collection.mutable.{ Map => MutableMap }
 
 /*
  * Creates JavaSSL Engines on behalf of the Ssl singleton

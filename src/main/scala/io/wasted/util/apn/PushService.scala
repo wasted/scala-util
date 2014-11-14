@@ -1,25 +1,23 @@
 package io.wasted.util.apn
 
-import io.wasted.util._
-
-import io.netty.bootstrap._
-import io.netty.buffer._
-import io.netty.channel._
-import io.netty.channel.socket.nio.NioSocketChannel
-import io.netty.channel.socket.SocketChannel
-import io.netty.handler.ssl.SslHandler
-import io.netty.channel.ChannelHandler.Sharable
-
-import java.nio.ByteOrder
 import java.net.InetSocketAddress
+import java.nio.ByteOrder
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicReference
 
-import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
-import scala.collection.JavaConverters._
+import io.netty.bootstrap._
+import io.netty.buffer._
+import io.netty.channel.ChannelHandler.Sharable
+import io.netty.channel._
+import io.netty.channel.socket.SocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
+import io.netty.handler.ssl.SslHandler
+import io.wasted.util._
+
 import scala.annotation.tailrec
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.concurrent.duration._
 
 /**
  * Declares the different connection states

@@ -1,9 +1,10 @@
 package io.wasted.util.apn
 
+import java.nio.ByteOrder
+
 import io.netty.buffer._
 import io.netty.util.CharsetUtil
 import io.wasted.util.ssl.{ KeyStoreType, Ssl }
-import java.nio.ByteOrder
 
 /**
  * Apple Push Notification Message.

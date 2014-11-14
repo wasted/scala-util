@@ -1,14 +1,15 @@
 package io.wasted.util.http
 
-import io.wasted.util._
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.socket.SocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
+import io.wasted.util._
+
 import scala.concurrent._
 import scala.util.Success
 

@@ -1,7 +1,6 @@
 package io.wasted.util.test
 
 import io.wasted.util.LruMap
-
 import org.scalatest._
 
 class LruMapSpec extends WordSpec {

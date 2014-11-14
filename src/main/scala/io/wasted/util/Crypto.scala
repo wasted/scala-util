@@ -1,7 +1,7 @@
 package io.wasted.util
 
-import javax.crypto.spec.SecretKeySpec
 import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
 case class CryptoCipher(name: String = "AES", jce: Boolean = true)
 
