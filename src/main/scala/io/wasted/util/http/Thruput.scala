@@ -11,6 +11,7 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
+import io.netty.handler.ssl.SslHandler
 import io.netty.util.CharsetUtil
 import io.wasted.util._
 
@@ -41,15 +42,12 @@ class Thruput(
   override val loggerName = "ThruputClient"
   private def session = UUID.randomUUID
   private var channel: Option[Channel] = None
-  private[http] var handshakeFuture: ChannelPromise = null.asInstanceOf[ChannelPromise]
+  private[http] var handshakeFuture: ChannelPromise = _
   private var disconnected = false
   private var connecting = false
   private var reconnecting = false
 
-  private val writeCount = new java.util.concurrent.atomic.AtomicLong(0L)
-
-  private val srv = new Bootstrap()
-  private val bootstrap = srv.group(Netty.eventLoop)
+  private val bootstrap = new Bootstrap().group(Netty.eventLoop)
     .channel(classOf[NioSocketChannel])
     .remoteAddress(new InetSocketAddress(uri.getHost, uri.getPort))
     .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
@@ -60,6 +58,7 @@ class Thruput(
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
+        engine.map(e => p.addLast("ssl", new SslHandler(e)))
         p.addLast("decoder", new HttpResponseDecoder)
         p.addLast("encoder", new HttpRequestEncoder)
         p.addLast("aggregator", new HttpObjectAggregator(8192))
@@ -70,12 +69,16 @@ class Thruput(
   // This method is used to send WebSocketFrames async
   private def writeToChannel(channel: Channel, wsf: WebSocketFrame) {
     wsf.retain
+    wsf match {
+      case a: TextWebSocketFrame => debug("Sending: " + a.text())
+      case other => debug("Sending: " + other.getClass.getSimpleName)
+    }
     val eventLoop = channel.eventLoop()
     eventLoop.inEventLoop match {
-      case true => channel.write(wsf)
+      case true => channel.writeAndFlush(wsf)
       case false =>
         eventLoop.execute(new Runnable() {
-          override def run(): Unit = channel.write(wsf)
+          override def run(): Unit = channel.writeAndFlush(wsf)
         })
     }
   }
@@ -90,12 +93,11 @@ class Thruput(
           debug("Connection already established")
         case _ =>
           Try {
-            writeCount.set(0L)
             val ch = bootstrap.clone.connect().sync().channel()
             handshakeFuture.sync()
 
             val body = (room, from) match {
-              case (Some(room), _) => """{"room":"%s","thruput":true,"from":"%s"}""".format(room, from)
+              case (Some(room), Some(from)) => """{"room":"%s","thruput":true,"from":"%s"}""".format(room, from)
               case (_, Some(from)) => """{"from":"%s","thruput":true}""".format(from)
               case _ => """{"thruput":true}"""
             }
@@ -119,7 +121,6 @@ class Thruput(
       disconnected = true
       channel match {
         case Some(ch) =>
-          ch.flush
           writeToChannel(ch, new CloseWebSocketFrame())
 
           // WebSocketClientHandler will close the connection when the server
@@ -148,7 +149,6 @@ class Thruput(
         case Some(ch) =>
           Try(writeToChannel(ch, msg)) match {
             case Success(f) =>
-              if (writeCount.addAndGet(1L) % 3 == 0) ch.flush()
             case Failure(e) =>
               TP ! msg
           }
@@ -201,7 +201,6 @@ class Thruput(
 /**
  * Empty Netty Response Adapter which is used for Thruput high-performance delivery.
  */
-@ChannelHandler.Sharable
 class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInboundHandler[Object] {
   private val handshaker = WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, false, new DefaultHttpHeaders())
 
