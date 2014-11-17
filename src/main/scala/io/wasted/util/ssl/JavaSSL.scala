@@ -28,7 +28,6 @@ object JavaSSL extends Logger {
    * @param certificate InputStream of the certificate
    * @param secret Secret to open the certificate
    * @param keyStoreType Type of the File
-   * @param useCache Use a cache of SSL contexts, keyed on certificatePath
    * @return a SSLEngine
    */
   def server(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[Engine] = {
@@ -41,7 +40,6 @@ object JavaSSL extends Logger {
    * @param certificate InputStream of the certificate
    * @param secret Secret to open the certificate
    * @param keyStoreType Type of the File
-   * @param useCache Use a cache of SSL contexts, keyed on certificatePath
    * @return a SSLContext
    */
   def context(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[SSLContext] = Tryo {

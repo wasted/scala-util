@@ -2,6 +2,7 @@ package io.wasted.util.http
 
 import java.net.{ InetSocketAddress, URI }
 import java.util.UUID
+import java.util.concurrent.atomic.AtomicReference
 import javax.net.ssl.SSLEngine
 
 import io.netty.bootstrap._
@@ -17,6 +18,12 @@ import io.wasted.util._
 
 import scala.util.{ Failure, Success, Try }
 
+object Thruput {
+  object State extends Enumeration {
+    val Connecting, Connected, Reconnecting, Disconnected = Value
+  }
+}
+
 /**
  * Thruput WebSocket Client class which will handle all delivery.
  *
@@ -26,6 +33,7 @@ import scala.util.{ Failure, Success, Try }
  * @param from Username to use (optional)
  * @param room Room to use (optional)
  * @param callback Callback for every non-connection WebSocketFrame (Binary and Text)
+ * @param states Callback for connection state changes
  * @param timeout Connect timeout in seconds
  * @param engine Optional SSLEngine
  */
@@ -36,6 +44,7 @@ class Thruput(
   from: Option[String] = None,
   room: Option[String] = None,
   val callback: (ByteBufHolder) => Any = (x) => x.release,
+  states: (Thruput.State.Value) => Any = (x) => x,
   timeout: Int = 5,
   engine: Option[SSLEngine] = None) extends Wactor(100000) {
   TP =>
@@ -46,6 +55,13 @@ class Thruput(
   private var disconnected = false
   private var connecting = false
   private var reconnecting = false
+  private val _state = new AtomicReference[Thruput.State.Value](Thruput.State.Disconnected)
+  def state = _state.get()
+
+  private def setState(state: Thruput.State.Value): Unit = {
+    this._state.set(state)
+    states(state)
+  }
 
   private val bootstrap = new Bootstrap().group(Netty.eventLoop)
     .channel(classOf[NioSocketChannel])
@@ -107,8 +123,10 @@ class Thruput(
           } match {
             case Success(ch) =>
               channel = Some(ch)
+              setState(Thruput.State.Connected)
             case Failure(e) =>
               connect()
+              setState(Thruput.State.Connecting)
           }
       }
       connecting = false
@@ -126,6 +144,7 @@ class Thruput(
           // WebSocketClientHandler will close the connection when the server
           // responds to the CloseWebSocketFrame.
           ch.closeFuture().sync()
+          setState(Thruput.State.Disconnected)
         case _ => debug("Connection not established")
       }
       channel = None
@@ -135,6 +154,7 @@ class Thruput(
   private case object Reconnect extends Action {
     def run() {
       reconnecting = true
+      setState(Thruput.State.Reconnecting)
       Disconnect.run()
       Connect.run()
       reconnecting = false
@@ -193,6 +213,7 @@ class Thruput(
    * Shutdown this client.
    */
   def shutdown() {
+    disconnect()
     disconnected = true
     on.set(0)
   }
