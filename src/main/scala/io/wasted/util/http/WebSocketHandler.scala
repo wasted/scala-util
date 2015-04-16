@@ -10,7 +10,7 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
                                                 handshakerHeaders: Map[String, String] = Map.empty,
                                                 connect: (Channel) => Unit = (p) => (),
                                                 disconnect: (Channel) => Unit = (p) => (),
-                                                httpHandler: Option[(Channel, Future[Req]) => Future[FullHttpResponse]] = None,
+                                                httpHandler: Option[(Channel, Future[Req]) => Future[HttpResponse]] = None,
                                                 handle: Option[(Channel, Future[WebSocketFrame]) => Option[Future[WebSocketFrame]]] = None)
   extends SimpleChannelInboundHandler[WebSocketFrame] { channelHandler =>
 
@@ -18,7 +18,7 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
   def onConnect(connect: (Channel) => Unit) = copy(connect = connect)
   def onDisconnect(disconnect: (Channel) => Unit) = copy(disconnect = disconnect)
   def handler(handle: (Channel, Future[WebSocketFrame]) => Option[Future[WebSocketFrame]]) = copy(handle = Some(handle))
-  def withHttpHandler(httpHandler: (Channel, Future[FullHttpRequest]) => Future[FullHttpResponse]) = copy(httpHandler = Some(httpHandler))
+  def withHttpHandler(httpHandler: (Channel, Future[FullHttpRequest]) => Future[HttpResponse]) = copy(httpHandler = Some(httpHandler))
 
   lazy val headerParser = new Headers(corsOrigin)
   lazy val wsHandshakerHeaders: HttpHeaders = if (handshakerHeaders.isEmpty) null else {
@@ -41,7 +41,7 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
     }.getOrElse(msg.release())
   }
 
-  def dispatch(channel: Channel, freq: Future[Req]): Future[FullHttpResponse] = freq.flatMap { req =>
+  def dispatch(channel: Channel, freq: Future[Req]): Future[HttpResponse] = freq.flatMap { req =>
     val headers = headerParser.get(req)
     // WebSocket Handshake needed?
     if (headers.get(HttpHeaders.Names.UPGRADE).exists(_.toLowerCase == HttpHeaders.Values.WEBSOCKET.toLowerCase)) {
@@ -64,13 +64,13 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
       }
     } else if (req.getMethod == HttpMethod.OPTIONS) {
       // Handles WebSocket and CORS OPTIONS requests
-      val resp = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
+      val resp = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
       headers.cors.foreach {
         case (name, value) => resp.headers().set(name, value)
       }
       Future.value(resp)
     } else httpHandler.map(_(channel, freq)) getOrElse {
-      Future.value(new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_FOUND))
+      Future.value(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_FOUND))
     }
   }
 
