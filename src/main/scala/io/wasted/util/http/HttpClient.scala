@@ -1,5 +1,7 @@
 package io.wasted.util.http
 
+import com.twitter.conversions.time._
+import com.twitter.util.{ Duration, Future, Promise }
 import io.netty.bootstrap._
 import io.netty.buffer._
 import io.netty.channel._
@@ -10,125 +12,143 @@ import io.netty.handler.ssl.SslHandler
 import io.netty.handler.timeout._
 import io.wasted.util._
 
-import scala.concurrent._
-import scala.util.Success
-
-/**
- * Netty HTTP Client Object to create HTTP Request Objects.
- */
 object HttpClient {
 
   /**
-   * Creates a HTTP Client which will call the given method with the returned HttpObject.
-   *
-   * @param chunked Get responses in chunks
-   * @param timeout Connect timeout in seconds
-   * @param engine Optional SSLEngine
-   * @param eventLoop Optional custom event loop for proxy applications
+   * These can be used to modify the pipeline afterwards without having to guess their names
    */
-  def apply(chunked: Boolean = true,
-            timeout: Int = 5,
-            engine: Option[() => ssl.Engine] = None,
-            eventLoop: EventLoopGroup = Netty.eventLoop): HttpClient = {
-    new HttpClient(chunked, timeout, engine, eventLoop = eventLoop)
+  object Handlers {
+    val ssl = "ssl"
+    val codec = "codec"
+    val aggregator = "aggregator"
+    val decompressor = "decompressor"
+    val timeout = "timeout"
+    val handler = "handler"
   }
 }
 
 /**
- * Netty Response Adapter which uses scala Futures.
- *
- * @param promise Promise for type T object
+ * wasted.io Scala Http Client
+ * @param codec Http Codec
+ * @param remote Remote Host and Port
+ * @param tcpConnectTimeout TCP Connect Timeout
+ * @param tcpKeepAlive TCP KeepAlive
+ * @param reuseAddr Reuse-Address
+ * @param tcpNoDelay TCP No-Delay
+ * @param soLinger soLinger
+ * @param eventLoop Netty Event-Loop
  */
-class HttpClientResponseAdapter(promise: Promise[FullHttpResponse]) extends SimpleChannelInboundHandler[FullHttpResponse] {
-  override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-    ExceptionHandler(ctx, cause)
-    promise.failure(cause)
-    ctx.channel.close
-  }
+final case class HttpClient[T <: HttpObject](codec: HttpCodec[T] = HttpCodec[T](),
+                                             remote: Option[(String, Int)] = None,
+                                             tcpConnectTimeout: Duration = 5.seconds,
+                                             tcpKeepAlive: Boolean = false,
+                                             reuseAddr: Boolean = true,
+                                             tcpNoDelay: Boolean = true,
+                                             soLinger: Int = 0,
+                                             eventLoop: EventLoopGroup = Netty.eventLoop) {
+  def withSpecifics(codec: HttpCodec[T]) = copy[T](codec = codec)
+  def withSoLinger(soLinger: Int) = copy[T](soLinger = soLinger)
+  def withTcpNoDelay(tcpNoDelay: Boolean) = copy[T](tcpNoDelay = tcpNoDelay)
+  def withTcpKeepAlive(tcpKeepAlive: Boolean) = copy[T](tcpKeepAlive = tcpKeepAlive)
+  def withReuseAddr(reuseAddr: Boolean) = copy[T](reuseAddr = reuseAddr)
+  def withTcpConnectTimeout(tcpConnectTimeout: Duration) = copy[T](tcpConnectTimeout = tcpConnectTimeout)
 
-  def channelRead0(ctx: ChannelHandlerContext, msg: FullHttpResponse) {
-    msg.content.retain()
-    promise.complete(Success(msg))
-  }
-}
+  def withEventLoop(eventLoop: EventLoopGroup) = copy[T](eventLoop = eventLoop)
+  def connectTo(host: String, port: Int) = copy[T](remote = Some(host, port))
 
-/**
- * Netty Http Client class which will do all of the Setup needed to make simple HTTP Requests.
- *
- * @param chunked Get responses in chunks
- * @param timeout Connect timeout in seconds
- * @param engine Optional SSLEngine
- * @param persistent Optional Host Address we're directing all requests to, regardless of their DNS lookup
- * @param eventLoop Optional custom event loop for proxy applications
- */
-class HttpClient(chunked: Boolean = true,
-                 timeout: Int = 5,
-                 engine: Option[() => ssl.Engine] = None,
-                 persistent: Option[(String, Int)] = None,
-                 eventLoop: EventLoopGroup = Netty.eventLoop) {
-
-  private var disabled = false
   private lazy val srv = new Bootstrap
-  private lazy val bootstrap = srv.group(eventLoop)
-    .channel(classOf[NioSocketChannel])
-    .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
-    .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false)
-    .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
-    .option[java.lang.Integer](ChannelOption.SO_LINGER, 0)
-    .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout * 1000)
-    .handler(new ChannelInitializer[SocketChannel] {
+  private lazy val bootstrap = {
+    val handler = new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        engine.foreach(e => p.addLast("ssl", new SslHandler(e().self)))
-        p.addLast("codec", new HttpClientCodec)
-        if (!chunked) p.addLast("aggregator", new HttpObjectAggregator(1024 * 1024))
+        codec.engine.foreach(e => p.addLast(HttpClient.Handlers.ssl, new SslHandler(e().self)))
+        val maxInitialBytes = codec.maxInitialLineLength.inBytes.toInt
+        val maxHeaderBytes = codec.maxHeaderSize.inBytes.toInt
+        val maxChunkSize = codec.maxChunkSize.inBytes.toInt
+        p.addLast(HttpClient.Handlers.codec, new HttpClientCodec(maxInitialBytes, maxHeaderBytes, maxChunkSize))
+        if (codec.chunking && !codec.chunked) {
+          p.addLast(HttpClient.Handlers.aggregator, new HttpObjectAggregator(codec.maxChunkSize.inBytes.toInt))
+        }
+        if (codec.decompression) {
+          p.addLast(HttpClient.Handlers.decompressor, new HttpContentDecompressor())
+        }
       }
-    })
+    }
+    srv.group(eventLoop)
+      .channel(classOf[NioSocketChannel])
+      .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, tcpNoDelay)
+      .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, tcpKeepAlive)
+      .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, reuseAddr)
+      .option[java.lang.Integer](ChannelOption.SO_LINGER, soLinger)
+      .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, tcpConnectTimeout.inMillis.toInt)
+      .handler(handler)
+  }
 
-  private def getPort(url: java.net.URL): Int = if (url.getPort == -1) url.getDefaultPort else url.getPort
-  private def getPortString(url: java.net.URL): String = if (url.getPort == -1) "" else ":" + url.getPort
+  private def getPortString(url: java.net.URI): String = if (url.getPort == -1) "" else ":" + url.getPort
+  private def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else url.getScheme match {
+    case "http" => 80
+    case "https" => 443
+  }
 
   /**
-   * Write a Netty HttpRequest directly through to the given URL.
+   * Write a Netty HttpRequest directly through to the given URI.
+   * The request to generate the response should be used to prepare
+   * the request only once the connection is established.
+   * This reduces the context-switching for allocation/deallocation
+   * on failed connects.
    *
    * @param url What could this be?
    * @param req Netty FullHttpRequest
    */
-  def write(url: java.net.URL, req: () => FullHttpRequest): Future[FullHttpResponse] = {
-    val promise = Promise[FullHttpResponse]()
-    if (disabled) {
-      promise.failure(new IllegalStateException("HttpClient is already shutdown."))
-    } else {
-      val connected = persistent match {
-        case Some((host, port)) => bootstrap.connect(host, port)
-        case _ => bootstrap.clone().connect(url.getHost, getPort(url))
-      }
-      connected.addListener(new ChannelFutureListener() {
-        override def operationComplete(cf: ChannelFuture) {
-          if (!cf.isSuccess) promise.failure(cf.cause())
-          else {
-            cf.channel.pipeline.addFirst("timeout", new ReadTimeoutHandler(timeout) {
-              override def readTimedOut(ctx: ChannelHandlerContext) {
-                ctx.channel.close
-                promise.failure(new IllegalStateException("Did not get response in time"))
-              }
-            })
-            cf.channel.pipeline.addLast("handler", new HttpClientResponseAdapter(promise))
-            cf.channel.writeAndFlush(req())
-          }
-        }
-      })
+  def write(url: java.net.URI, req: () => HttpRequest): Future[T] = {
+    val promise = Promise[T]()
+
+    val connected = remote match {
+      case Some((host, port)) => bootstrap.connect(host, port)
+      case _ => bootstrap.clone().connect(url.getHost, getPort(url))
     }
-    promise.future
+    connected.addListener { cf: ChannelFuture =>
+      if (!cf.isSuccess) promise.setException(cf.cause())
+      else {
+        cf.channel.pipeline.addFirst(HttpClient.Handlers.timeout, new ReadTimeoutHandler(codec.readTimeout.inMillis.toInt) {
+          override def readTimedOut(ctx: ChannelHandlerContext) {
+            ctx.channel.close
+            promise.setException(new IllegalStateException("Read timed out"))
+          }
+        })
+        cf.channel.pipeline.addLast(HttpClient.Handlers.handler, new SimpleChannelInboundHandler[T] {
+          override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
+            ExceptionHandler(ctx, cause)
+            promise.setException(cause)
+            ctx.channel.close
+          }
+
+          def channelRead0(ctx: ChannelHandlerContext, msg: T) {
+            msg match {
+              case msg: ByteBufHolder => msg.content.retain()
+              case _ =>
+            }
+            promise.setValue(msg)
+          }
+        })
+
+        val request = req()
+        val ka = if (tcpKeepAlive) HttpHeaders.Values.KEEP_ALIVE else HttpHeaders.Values.CLOSE
+        request.headers().set(HttpHeaders.Names.CONNECTION, ka)
+
+        cf.channel.writeAndFlush(request)
+      }
+    }
+    promise
   }
 
   /**
-   * Run a GET-Request on the given URL.
+   * Run a GET-Request on the given URI.
    *
    * @param url What could this be?
    * @param headers The mysteries keep piling up!
    */
-  def get(url: java.net.URL, headers: Map[String, String] = Map()): Future[FullHttpResponse] = {
+  def get(url: java.net.URI, headers: Map[String, String] = Map()): Future[T] = {
     val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, path)
     req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
@@ -138,7 +158,7 @@ class HttpClient(chunked: Boolean = true,
   }
 
   /**
-   * Send a PUT/POST-Request on the given URL with body.
+   * Send a PUT/POST-Request on the given URI with body.
    *
    * @param url This is getting weird..
    * @param mime The MIME type of the request
@@ -146,7 +166,7 @@ class HttpClient(chunked: Boolean = true,
    * @param headers I don't like to explain trivial stuff
    * @param method HTTP Method to be used
    */
-  def post(url: java.net.URL, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod): Future[FullHttpResponse] = {
+  def post(url: java.net.URI, mime: String, body: Seq[Byte] = Seq(), headers: Map[String, String] = Map(), method: HttpMethod): Future[T] = {
     write(url, () => {
       val content = Unpooled.wrappedBuffer(body.toArray)
       val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
@@ -168,16 +188,9 @@ class HttpClient(chunked: Boolean = true,
    * @param sign Signing Key for thruput.io platform
    * @param payload Payload to be sent
    */
-  def thruput(url: java.net.URL, auth: java.util.UUID, sign: java.util.UUID, payload: String): Future[FullHttpResponse] = {
+  def thruput(url: java.net.URI, auth: java.util.UUID, sign: java.util.UUID, payload: String): Future[T] = {
     val headers = Map("X-Io-Auth" -> auth.toString, "X-Io-Sign" -> io.wasted.util.Hashing.sign(sign.toString, payload))
     post(url, "application/json", payload.map(_.toByte), headers, HttpMethod.PUT)
-  }
-
-  /**
-   * Shutdown this client.
-   */
-  def shutdown() {
-    disabled = true
   }
 }
 

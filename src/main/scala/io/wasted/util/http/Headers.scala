@@ -5,7 +5,7 @@ import io.netty.handler.codec.http.HttpRequest
 
 import scala.collection.JavaConversions._
 
-trait HttpHeaders {
+trait WastedHttpHeaders {
   def get(key: String): Option[String] = getAll(key).headOption
   def apply(key: String): String = get(key).getOrElse(scala.sys.error("Header doesn't exist"))
   def getAll(key: String): Iterable[String]
@@ -27,11 +27,11 @@ trait HttpHeaders {
  * @param corsOrigin Origin for CORS Request if we want to add them onto a HTTP Request
  */
 class Headers(corsOrigin: String = "*") {
-  def get(request: HttpRequest): HttpHeaders = {
+  def get(request: HttpRequest): WastedHttpHeaders = {
     val headers: Map[String, Seq[String]] = request.headers.names.map(key =>
       key.toLowerCase -> Seq(request.headers.get(key))).toMap
 
-    new HttpHeaders {
+    new WastedHttpHeaders {
       def getAll(key: String): Iterable[String] = headers.get(key.toLowerCase) getOrElse Seq()
       override def toString = headers.toString()
       override lazy val length = headers.size

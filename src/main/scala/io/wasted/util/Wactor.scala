@@ -89,7 +89,7 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
 /**
  * Wasted lightweight Actor companion
  */
-object Wactor {
+object Wactor extends Logger {
   private[util] lazy val ecForkJoin: Executor = new ForkJoinPool
   private[util] lazy val ecThreadPool: Executor = Executors.newCachedThreadPool
   private[util]type Behavior = Any => Effect
@@ -120,7 +120,7 @@ object Wactor {
 
   /* Behavior to tell the actor he's dead. */
   final val Die = Become(msg => {
-    println("Dropping msg [" + msg + "] due to severe case of death.")
+    error("Dropping msg [" + msg + "] due to severe case of death.")
     Stay
   })
 

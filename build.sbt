@@ -6,18 +6,19 @@ organization := "io.wasted"
 
 version := scala.io.Source.fromFile("version").mkString.trim
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.6"
 
-crossScalaVersions := Seq("2.10.4", "2.11.4")
+crossScalaVersions := Seq("2.10.5", "2.11.6")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-language:postfixOps", "-language:implicitConversions")
 
 libraryDependencies ++= Seq(
+  "com.twitter" %% "util-core" % "6.23.0",
   "ch.qos.logback" % "logback-classic" % "1.1.2",
   "com.typesafe" % "config" % "1.2.1",
   "commons-codec" % "commons-codec" % "1.10",
   "com.google.guava" % "guava" % "18.0",
-  "io.netty" % "netty-all" % "4.0.24.Final",
+  "io.netty" % "netty-all" % "4.0.27.Final",
   "org.javassist" % "javassist" % "3.18.2-GA",
   "com.google.code.findbugs" % "jsr305" % "1.3.+",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value

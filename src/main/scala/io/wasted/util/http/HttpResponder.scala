@@ -5,39 +5,31 @@ import io.netty.handler.codec.http.HttpHeaders.Names._
 import io.netty.handler.codec.http.HttpHeaders._
 import io.netty.handler.codec.http.HttpVersion._
 import io.netty.handler.codec.http._
+import io.netty.util.CharsetUtil
 
 /**
  * Responder class used in our server applications
  * @param token HTTP Server token
- * @param pooledBuffer If we use pooled netty buffers
- * @param heapBuffer or heap buffers (pooled wins over this)
+ * @param allocator ByteBuf Allocator
  */
-class HttpResponder(token: String, pooledBuffer: Boolean, heapBuffer: Boolean) {
+class HttpResponder(token: String, allocator: ByteBufAllocator = UnpooledByteBufAllocator.DEFAULT) {
   def apply(
     status: HttpResponseStatus,
     body: Option[String] = None,
     mime: Option[String] = None,
     keepAlive: Boolean = true,
     headers: Map[String, String] = Map()): FullHttpResponse = {
-    val res = body match {
-      case Some(body) =>
-        val bytes = body.getBytes("UTF-8").toArray
-        val content = pooledBuffer match {
-          case true =>
-            val pooledBuf = heapBuffer match {
-              case true => PooledByteBufAllocator.DEFAULT.heapBuffer(bytes.length, bytes.length)
-              case flase => PooledByteBufAllocator.DEFAULT.directBuffer(bytes.length, bytes.length)
-            }
-            pooledBuf.writeBytes(bytes).slice()
-          case false => Unpooled.wrappedBuffer(bytes).slice()
-        }
-        val res = new DefaultFullHttpResponse(HTTP_1_1, status, content)
-        setContentLength(res, content.readableBytes())
-        res
-      case _ =>
-        val res = new DefaultFullHttpResponse(HTTP_1_1, status)
-        setContentLength(res, 0)
-        res
+    val res = body.map { body =>
+      val bytes = body.getBytes(CharsetUtil.UTF_8).toArray
+      val content = allocator.ioBuffer(bytes.length, bytes.length)
+      content.writeBytes(bytes).slice()
+      val res = new DefaultFullHttpResponse(HTTP_1_1, status, content)
+      setContentLength(res, content.readableBytes())
+      res
+    } getOrElse {
+      val res = new DefaultFullHttpResponse(HTTP_1_1, status)
+      setContentLength(res, 0)
+      res
     }
 
     mime.map(res.headers.set(CONTENT_TYPE, _))
