@@ -10,7 +10,7 @@ import io.wasted.util.http._
 import org.scalatest._
 import org.scalatest.concurrent._
 
-class HttpClientSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter {
+class HttpSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter {
 
   val responder = new HttpResponder("wasted-http")
   val server1 = HttpServer().withSpecifics(HttpCodec[FullHttpRequest]()).handler {

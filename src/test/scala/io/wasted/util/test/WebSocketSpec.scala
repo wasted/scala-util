@@ -6,7 +6,7 @@ import com.twitter.conversions.time._
 import com.twitter.util.Await
 import io.netty.buffer.Unpooled
 import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
-import io.netty.handler.codec.http.{ FullHttpRequest, HttpHeaders }
+import io.netty.handler.codec.http.{ HttpResponseStatus, FullHttpResponse, FullHttpRequest, HttpHeaders }
 import io.netty.util.CharsetUtil
 import io.wasted.util.WheelTimer
 import io.wasted.util.http._
@@ -23,6 +23,12 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
     println("client disconnected")
   }.handler {
     case (ctx, f) => println(f); Some(f.map(_.retain()))
+  }.withHttpHandler {
+    case (ctx, req) =>
+      req.map { req =>
+        val resp = if (req.getUri == "/bad_gw") HttpResponseStatus.BAD_GATEWAY else HttpResponseStatus.ACCEPTED
+        responder(resp)
+      }
   }
   val server1 = HttpServer().withSpecifics(HttpCodec[FullHttpRequest]())
     .handler(socket1.dispatch).bind(new InetSocketAddress(8889))
@@ -51,6 +57,21 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
     }
     "returns the same string as sent in bytes" in {
       assert(bytes equals stringT)
+    }
+  }
+
+  val client2 = HttpClient[FullHttpResponse]().withSpecifics(HttpCodec()).withTcpKeepAlive(true)
+  val resp2: FullHttpResponse = Await.result(client2.get(new java.net.URI("http://localhost:8889/")), 5.seconds)
+  val resp3: FullHttpResponse = Await.result(client2.get(new java.net.URI("http://localhost:8889/bad_gw")), 5.seconds)
+
+  "GET Request to embedded Http Server" should {
+    "returns status code ACCEPTED" in {
+      assert(resp2.getStatus equals HttpResponseStatus.ACCEPTED)
+      resp2.content.release()
+    }
+    "returns status code BAD_GATEWAY" in {
+      assert(resp3.getStatus equals HttpResponseStatus.BAD_GATEWAY)
+      resp3.content.release()
     }
   }
 
