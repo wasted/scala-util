@@ -101,6 +101,8 @@ final case class HttpServer[Req <: HttpMessage](codec: HttpCodec[Req] = HttpCode
 
         p.addLast(HttpServer.Handlers.handler, new SimpleChannelInboundHandler[Req] {
           override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
+            error(cause.getMessage)
+            debug(cause)
             handle(ctx.channel(), Future.exception(cause))
           }
 
@@ -111,6 +113,8 @@ final case class HttpServer[Req <: HttpMessage](codec: HttpCodec[Req] = HttpCode
             }
             handle(ctx.channel(), Future.value(req)).rescue {
               case t =>
+                error(t.getMessage)
+                debug(t)
                 val resp = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.INTERNAL_SERVER_ERROR)
                 Future.value(resp)
             }.map {

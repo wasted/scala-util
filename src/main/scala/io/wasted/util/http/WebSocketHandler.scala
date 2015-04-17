@@ -2,10 +2,12 @@ package io.wasted.util
 package http
 
 import com.twitter.util.Future
+import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
 
+@Sharable
 case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
                                                 handshakerHeaders: Map[String, String] = Map.empty,
                                                 connect: (Channel) => Unit = (p) => (),
