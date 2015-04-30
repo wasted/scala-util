@@ -92,7 +92,7 @@ object Schedule extends Logger {
     /**
      * Cancel the scheduled event.
      */
-    def cancel(): Unit = getTimeout() match {
+    def cancel(): Unit = getTimeout match {
       case Some(t) =>
         t.cancel
         repeatTimers.remove(id)
@@ -102,6 +102,6 @@ object Schedule extends Logger {
     /**
      * Get the according TimerTask.
      */
-    def task(): Option[TimerTask] = getTimeout().map(_.task)
+    def task(): Option[TimerTask] = getTimeout.map(_.task)
   }
 }
