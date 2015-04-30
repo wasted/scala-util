@@ -86,13 +86,13 @@ object Schedule extends Logger {
    * @param timeout Optional Timeout parameter only provided by Schedule.once
    */
   class Action(timeout: Option[Timeout]) {
-    lazy val id = scala.util.Random.nextLong
-    private def getTimeout() = timeout orElse Option(repeatTimers.get(id))
+    lazy val id = scala.util.Random.nextLong()
+    private def getTimeout = timeout orElse Option(repeatTimers.get(id))
 
     /**
      * Cancel the scheduled event.
      */
-    def cancel(): Unit = getTimeout match {
+    def cancel(): Unit = getTimeout() match {
       case Some(t) =>
         t.cancel
         repeatTimers.remove(id)
@@ -102,6 +102,6 @@ object Schedule extends Logger {
     /**
      * Get the according TimerTask.
      */
-    def task(): Option[TimerTask] = getTimeout.map(_.task)
+    def task(): Option[TimerTask] = getTimeout().map(_.task)
   }
 }

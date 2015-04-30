@@ -43,7 +43,7 @@ object JavaSSL extends Logger {
    * @return a SSLContext
    */
   def context(certificate: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Option[SSLContext] = Tryo {
-    val secretArray = secret.toCharArray()
+    val secretArray = secret.toCharArray
 
     val ks = KeyStore.getInstance(keyStoreType.toString)
     ks.load(certificate, secretArray)
@@ -53,7 +53,7 @@ object JavaSSL extends Logger {
     info("JavaSSL context instantiated for Byte-Array certificate")
 
     val context = SSLContext.getInstance(protocol)
-    context.init(kmf.getKeyManagers(), null, null)
+    context.init(kmf.getKeyManagers, null, null)
     context
   }
 
@@ -133,7 +133,7 @@ object JavaSSL extends Logger {
    * A trust manager that does not validate anything
    */
   private[this] class IgnorantTrustManager extends X509TrustManager {
-    def getAcceptedIssuers(): Array[X509Certificate] = new Array[X509Certificate](0)
+    def getAcceptedIssuers: Array[X509Certificate] = new Array[X509Certificate](0)
 
     def checkClientTrusted(certs: Array[X509Certificate], authType: String) {
       // Do nothing.

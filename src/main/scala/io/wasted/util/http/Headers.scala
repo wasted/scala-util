@@ -32,7 +32,7 @@ class Headers(corsOrigin: String = "*") {
       key.toLowerCase -> Seq(request.headers.get(key))).toMap
 
     new WastedHttpHeaders {
-      def getAll(key: String): Iterable[String] = headers.get(key.toLowerCase) getOrElse Seq()
+      def getAll(key: String): Iterable[String] = headers.getOrElse(key.toLowerCase, Seq())
       override def toString = headers.toString()
       override lazy val length = headers.size
     }

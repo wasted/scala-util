@@ -54,11 +54,11 @@ object OpenSSL extends Logger {
     if (initializedLibrary.compareAndSet(false, true)) {
       aprInitMethod.invoke(aprClass, null)
       sslInitMethod.invoke(sslClass, null)
-      mallocPool = poolCreateMethod.invoke(poolClass, 0L.asInstanceOf[AnyRef]).asInstanceOf[AnyRef]
+      mallocPool = poolCreateMethod.invoke(poolClass, 0L.asInstanceOf[AnyRef])
 
       // We need to know how many workers might need buffers simultaneously, and to allocate a large
       // enough pool.
-      val capacity = Runtime.getRuntime().availableProcessors() * 2
+      val capacity = Runtime.getRuntime.availableProcessors() * 2
       bufferPool = bufferPoolCtor.newInstance(capacity.asInstanceOf[AnyRef]).asInstanceOf[AnyRef]
     }
   }
@@ -82,7 +82,7 @@ object OpenSSL extends Logger {
     } catch {
       case e: Exception =>
         // This is a warning rather than a Throwable because we fall back to JSSE
-        error("APR/OpenSSL could not be loaded: " + e.getClass().getName() + ": " + e.getMessage())
+        error("APR/OpenSSL could not be loaded: " + e.getClass.getName + ": " + e.getMessage)
         return None
     }
 

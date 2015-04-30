@@ -108,7 +108,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
       Schedule.once(() => connect(), 5.seconds)
     } else {
       state.set(ConnectionState.connected)
-      ping.set(Some(Schedule.again(() => channel.get.map { case chan if !chan.isActive => reconnect() case _ => }, 5.seconds, 5.seconds)))
+      ping.set(Some(Schedule.again(() => channel.get.foreach { case chan if !chan.isActive => reconnect() case _ => }, 5.seconds, 5.seconds)))
     }
   }
 
@@ -118,7 +118,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
   def disconnect(): Unit = synchronized {
     channel.get.foreach(_.close())
     channel.set(None)
-    ping.get.map(_.cancel())
+    ping.get.foreach(_.cancel())
     ping.set(None)
     state.set(ConnectionState.disconnected)
   }
@@ -137,7 +137,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
    */
   private def deliverQueued(): Unit = Future {
     if (!flushing.compareAndSet(false, true) && state.get == ConnectionState.connected && !queued.isEmpty) {
-      channel.get.map(write)
+      channel.get.foreach(write)
       flushing.set(false)
     }
   }

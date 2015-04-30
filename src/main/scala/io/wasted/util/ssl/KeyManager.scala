@@ -32,7 +32,7 @@ object KeyManager {
   }
 
   private[this] def makeKeystore(store: InputStream, secret: String, keyStoreType: KeyStoreType.Value): Array[KeyManager] = {
-    val secretArray = secret.toCharArray()
+    val secretArray = secret.toCharArray
     val ks = KeyStore.getInstance(keyStoreType.toString)
     ks.load(store, secretArray)
 

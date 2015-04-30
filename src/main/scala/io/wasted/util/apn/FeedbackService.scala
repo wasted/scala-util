@@ -64,7 +64,7 @@ class FeedbackService(params: Params, function: Feedback => AnyVal)
   }
 
   override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-    http.ExceptionHandler(ctx, cause).map(_.printStackTrace())
+    http.ExceptionHandler(ctx, cause).foreach(_.printStackTrace())
     ctx.close()
   }
 }

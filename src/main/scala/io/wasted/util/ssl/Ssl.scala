@@ -65,7 +65,7 @@ object Ssl extends Logger {
     }
 
     keyStoreType match {
-      case KeyStoreType.JKS => jks
+      case KeyStoreType.JKS => jks()
       case KeyStoreType.P12 =>
         val nativeInstance = OpenSSL.server(certificatePath, secret, ciphers, nextProtos, cacheContexts)
         nativeInstance.getOrElse {

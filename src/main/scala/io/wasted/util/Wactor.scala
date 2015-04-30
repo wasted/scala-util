@@ -68,8 +68,8 @@ abstract class Wactor(maxQueueSize: Int = -1)(implicit ec: Executor = Wactor.ecF
       queueSize.decrementAndGet
       val ret = if (mboxHigh.isEmpty) mboxNormal.poll else mboxHigh.poll
       if (ret == Die) {
-        mboxNormal.clear
-        mboxHigh.clear
+        mboxNormal.clear()
+        mboxHigh.clear()
       }
       ret
     })(behavior)
@@ -127,7 +127,7 @@ object Wactor extends Logger {
   /* The notion of an Address to where you can post messages to. */
   trait Address {
     def !(msg: Any): Unit
-    def !!(msg: Any): Unit = this ! (msg)
+    def !!(msg: Any): Unit = this ! msg
 
     /**
      * Schedule an event once on this Wactor.

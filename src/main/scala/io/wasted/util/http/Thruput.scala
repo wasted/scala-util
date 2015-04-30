@@ -113,8 +113,8 @@ class Thruput(
             handshakeFuture.sync()
 
             val body = (room, from) match {
-              case (Some(room), Some(from)) => """{"room":"%s","thruput":true,"from":"%s"}""".format(room, from)
-              case (_, Some(from)) => """{"from":"%s","thruput":true}""".format(from)
+              case (Some(`room`), Some(`from`)) => """{"room":"%s","thruput":true,"from":"%s"}""".format(room, from)
+              case (_, Some(`from`)) => """{"from":"%s","thruput":true}""".format(from)
               case _ => """{"thruput":true}"""
             }
             writeToChannel(ch, new TextWebSocketFrame("""{"auth":"%s","sign":"%s","body":%s,"session":"%s"}""".format(

@@ -20,7 +20,7 @@ class HttpResponder(token: String, allocator: ByteBufAllocator = UnpooledByteBuf
     keepAlive: Boolean = true,
     headers: Map[String, String] = Map()): FullHttpResponse = {
     val res = body.map { body =>
-      val bytes = body.getBytes(CharsetUtil.UTF_8).toArray
+      val bytes = body.getBytes(CharsetUtil.UTF_8)
       val content = allocator.ioBuffer(bytes.length, bytes.length)
       content.writeBytes(bytes).slice()
       val res = new DefaultFullHttpResponse(HTTP_1_1, status, content)

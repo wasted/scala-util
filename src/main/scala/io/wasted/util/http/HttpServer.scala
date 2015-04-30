@@ -169,7 +169,7 @@ final case class HttpServer[Req <: HttpMessage](codec: HttpCodec[Req] = HttpCode
    * @return this HttpServer for chained calling
    */
   def unbind(addr: InetSocketAddress): HttpServer[Req] = synchronized {
-    listeners.get(addr).map { cf =>
+    listeners.get(addr).foreach { cf =>
       cf.await()
       cf.channel().close()
       cf.channel().closeFuture().await()

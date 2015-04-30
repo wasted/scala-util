@@ -78,7 +78,7 @@ object Hashing {
   /**
    * Decode a ByteArray from hex.
    *
-   * @param in String to be decoded
+   * @param str String to be decoded
    */
   def hexDecode(str: String): Array[Byte] = {
     val max = str.length / 2
