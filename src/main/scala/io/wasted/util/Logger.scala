@@ -10,7 +10,7 @@ trait Logger {
   /**
    * Override this to give your class a custom Logger name.
    */
-  protected def loggerName = this.getClass.getSimpleName
+  protected def loggerName = this.getClass.getCanonicalName
 
   private[this] lazy val logger = LoggerFactory.getLogger(loggerName)
 
@@ -61,7 +61,7 @@ trait Logger {
  */
 object Logger {
   def apply[T](clazz: Class[T]): Logger = new Logger {
-    override val loggerName = clazz.getSimpleName
+    override val loggerName = clazz.getCanonicalName
   }
 
   def apply(name: String): Logger = new Logger {

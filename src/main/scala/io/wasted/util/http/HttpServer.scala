@@ -10,7 +10,6 @@ import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.handler.codec.http._
-import io.netty.handler.ssl.SslHandler
 import io.wasted.util._
 
 object HttpServer {
@@ -20,7 +19,7 @@ object HttpServer {
 
   val closeListener = new ChannelFutureListener {
     override def operationComplete(f: ChannelFuture): Unit = {
-      f.channel().close()
+      f.channel().disconnect()
     }
   }
 
@@ -87,7 +86,7 @@ final case class HttpServer[Req <: HttpMessage](codec: HttpCodec[Req] = HttpCode
     val pipelineFactory = new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        codec.engine.foreach(e => p.addLast(HttpServer.Handlers.ssl, new SslHandler(e().self)))
+        codec.sslCtx.foreach(e => p.addLast(HttpServer.Handlers.ssl, e.newHandler(ch.alloc())))
         val maxInitialBytes = codec.maxInitialLineLength.inBytes.toInt
         val maxHeaderBytes = codec.maxHeaderSize.inBytes.toInt
         val maxChunkSize = codec.maxChunkSize.inBytes.toInt
@@ -120,7 +119,7 @@ final case class HttpServer[Req <: HttpMessage](codec: HttpCodec[Req] = HttpCode
             }.map {
               case resp: HttpResponse =>
                 val ka = {
-                  if (HttpHeaders.isKeepAlive(resp)) HttpHeaders.Values.KEEP_ALIVE
+                  if (HttpHeaders.isKeepAlive(req)) HttpHeaders.Values.KEEP_ALIVE
                   else HttpHeaders.Values.CLOSE
                 }
                 resp.headers().set(HttpHeaders.Names.CONNECTION, ka)

@@ -11,7 +11,6 @@ import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
-import io.netty.handler.ssl.SslHandler
 import io.wasted.util._
 
 import scala.annotation.tailrec
@@ -36,7 +35,7 @@ object ConnectionState extends Enumeration {
 @Sharable
 class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(implicit val wheelTimer: WheelTimer)
   extends SimpleChannelInboundHandler[ByteBuf] with Logger { thisService =>
-  override val loggerName = params.name
+  override val loggerName = getClass.getCanonicalName + ":" + params.name
   def addr: InetSocketAddress = if (params.sandbox) sandbox else production
 
   private final val production = {
@@ -58,7 +57,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        Tryo(new SslHandler(params.createSSLEngine(addr.getAddress.getHostAddress, addr.getPort))) match {
+        Tryo(params.sslCtx.newHandler(ch.alloc())) match {
           case Some(handler) => p.addLast("ssl", handler)
           case _ =>
             error("Unable to create SSL Context")

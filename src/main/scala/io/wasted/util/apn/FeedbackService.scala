@@ -8,7 +8,6 @@ import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
-import io.netty.handler.ssl.SslHandler
 import io.wasted.util._
 
 /**
@@ -26,7 +25,7 @@ case class Feedback(token: String, expired: java.util.Date)
 @Sharable
 class FeedbackService(params: Params, function: Feedback => AnyVal)
   extends SimpleChannelInboundHandler[ByteBuf] with Logger { thisService =>
-  override val loggerName = params.name
+  override val loggerName = getClass.getCanonicalName + ":" + params.name
 
   private final val production = new InetSocketAddress(java.net.InetAddress.getByName("feedback.push.apple.com"), 2196)
   private final val sandbox = new InetSocketAddress(java.net.InetAddress.getByName("feedback.sandbox.push.apple.com"), 2196)
@@ -44,7 +43,7 @@ class FeedbackService(params: Params, function: Feedback => AnyVal)
     .handler(new ChannelInitializer[SocketChannel] {
       override def initChannel(ch: SocketChannel) {
         val p = ch.pipeline()
-        p.addLast("ssl", new SslHandler(params.createSSLEngine(addr.getAddress.getHostAddress, addr.getPort)))
+        p.addLast("ssl", params.sslCtx.newHandler(ch.alloc()))
         p.addLast("handler", thisService)
       }
     })

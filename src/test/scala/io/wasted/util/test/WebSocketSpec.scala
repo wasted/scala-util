@@ -6,7 +6,7 @@ import com.twitter.conversions.time._
 import com.twitter.util.Await
 import io.netty.buffer.Unpooled
 import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
-import io.netty.handler.codec.http.{ HttpResponseStatus, FullHttpResponse, FullHttpRequest, HttpHeaders }
+import io.netty.handler.codec.http.{ FullHttpRequest, FullHttpResponse, HttpHeaders, HttpResponseStatus }
 import io.netty.util.CharsetUtil
 import io.wasted.util.WheelTimer
 import io.wasted.util.http._

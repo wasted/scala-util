@@ -9,7 +9,6 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
-import io.netty.handler.ssl.SslHandler
 import io.wasted.util._
 
 /**
@@ -74,7 +73,7 @@ final case class WebSocketClient(codec: HttpCodec[FullHttpRequest] = HttpCodec()
       bootstrap.handler(new ChannelInitializer[SocketChannel] {
         override def initChannel(ch: SocketChannel) {
           val p = ch.pipeline()
-          codec.engine.foreach(e => p.addLast(HttpClient.Handlers.ssl, new SslHandler(e().self)))
+          codec.sslCtx.foreach(e => p.addLast(HttpServer.Handlers.ssl, e.newHandler(ch.alloc())))
           val maxInitialBytes = codec.maxInitialLineLength.inBytes.toInt
           val maxHeaderBytes = codec.maxHeaderSize.inBytes.toInt
           val maxChunkSize = codec.maxChunkSize.inBytes.toInt

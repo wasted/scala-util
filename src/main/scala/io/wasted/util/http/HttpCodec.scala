@@ -5,6 +5,8 @@ import com.twitter.conversions.storage._
 import com.twitter.conversions.time._
 import com.twitter.util.{ Duration, StorageUnit }
 import io.netty.handler.codec.http._
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory
+import io.netty.handler.ssl.{ SslContext, SslContextBuilder }
 
 /**
  * wasted.io Scala Http Codec
@@ -29,7 +31,7 @@ final case class HttpCodec[T <: HttpObject](compressionLevel: Int = -1,
                                             maxResponseSize: StorageUnit = 5.megabytes,
                                             maxInitialLineLength: StorageUnit = 4096.bytes,
                                             maxHeaderSize: StorageUnit = 8192.bytes,
-                                            engine: Option[() => ssl.Engine] = None) {
+                                            sslCtx: Option[SslContext] = None) {
 
   def withReadTimeout(readTimeout: Duration) = copy[T](readTimeout = readTimeout)
 
@@ -48,7 +50,10 @@ final case class HttpCodec[T <: HttpObject](compressionLevel: Int = -1,
 
   def withMaxHeaderSize(maxHeaderSize: StorageUnit) = copy[T](maxHeaderSize = maxHeaderSize)
 
-  def withTls(engine: () => ssl.Engine) = copy[T](engine = Some(engine))
+  def withTls(sslCtx: SslContext) = copy[T](sslCtx = Some(sslCtx))
 
-  def withInsecureTls() = copy[T](engine = Some(() => ssl.Ssl.clientWithoutCertificateValidation()))
+  def withInsecureTls() = {
+    val ctx = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build()
+    copy[T](sslCtx = Some(ctx))
+  }
 }

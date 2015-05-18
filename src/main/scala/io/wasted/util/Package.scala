@@ -1,9 +1,12 @@
 package io.wasted
 
-import java.io.{ PrintWriter, StringWriter }
+import java.io.{ InputStream, PrintWriter, StringWriter }
+import java.security.KeyStore
+import javax.net.ssl.{ KeyManagerFactory, KeyManager }
 
 import com.twitter.util.{ Duration => TD }
 import io.netty.channel.{ ChannelFuture, ChannelFutureListener }
+import io.netty.handler.ssl.SslContextBuilder
 
 import scala.concurrent.duration.{ Duration => SD }
 
@@ -32,6 +35,24 @@ package object util {
   implicit val channelFutureListener: (ChannelFuture => Any) => ChannelFutureListener = { pf =>
     new ChannelFutureListener {
       override def operationComplete(f: ChannelFuture): Unit = pf(f)
+    }
+  }
+
+  object KeyStoreType extends Enumeration {
+    val P12 = Value("PKCS12")
+    val JKS = Value("JKS")
+  }
+
+  implicit class OurSslBuilder(val builder: SslContextBuilder) extends AnyVal {
+    def keyManager(store: InputStream, secret: String, keyStoreType: KeyStoreType.Value): SslContextBuilder = {
+      val secretArray = secret.toCharArray
+      val ks = KeyStore.getInstance(keyStoreType.toString)
+      ks.load(store, secretArray)
+
+      val kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm)
+      kmf.init(ks, secretArray)
+
+      builder.keyManager(kmf)
     }
   }
 }

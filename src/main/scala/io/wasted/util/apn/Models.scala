@@ -1,10 +1,13 @@
 package io.wasted.util.apn
 
 import java.nio.ByteOrder
+import java.security.KeyStore
 
 import io.netty.buffer._
+import io.netty.handler.ssl.SslContextBuilder
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory
 import io.netty.util.CharsetUtil
-import io.wasted.util.ssl.{ KeyStoreType, Ssl }
+import io.wasted.util.KeyStoreType
 
 /**
  * Apple Push Notification Message.
@@ -64,11 +67,8 @@ case class Message(deviceToken: String, payload: String, prio: Int, ident: Int =
  * @param timeout Connection timeout, default shouldb e fine
  */
 case class Params(name: String, p12: java.io.InputStream, secret: String, sandbox: Boolean = false, timeout: Int = 5) {
-  private lazy val context = Ssl.context(p12, secret, KeyStoreType.P12)
-  def createSSLEngine(host: String, port: Int) = {
-    val engine = context.createSSLEngine(host, port)
-    engine.setNeedClientAuth(true)
-    engine.setUseClientMode(true)
-    engine
-  }
+  lazy val sslCtx = SslContextBuilder.forClient
+    .trustManager(InsecureTrustManagerFactory.INSTANCE)
+    .keyManager(p12, secret, KeyStoreType.P12)
+    .build()
 }
