@@ -7,13 +7,13 @@
 
 ```
   resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
-  libraryDependencies += "io.wasted" %% "wasted-util" % "0.9.0"
+  libraryDependencies += "io.wasted" %% "wasted-util" % "0.9.5"
 ```
 
 ## License
 
 ```
-  Copyright 2012, 2013, 2014 wasted.io Ltd <really@wasted.io>
+  Copyright 2012, 2013, 2014, 2015 wasted.io Ltd <really@wasted.io>
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
