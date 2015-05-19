@@ -2,6 +2,8 @@
 
 =======
 
+## [API Documentation](https://wasted.github.io/scala-util/latest/api/#io.wasted.util.package)
+
 ### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/scala-util/blob/master/CONTRIBUTING.md).
 
 
