@@ -2,7 +2,7 @@
 
 =======
 
-### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/netflow/blob/master/CONTRIBUTING.md).
+### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/scala-util/blob/master/CONTRIBUTING.md).
 
 
 ```
