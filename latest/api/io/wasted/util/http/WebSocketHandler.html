@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>PushService - io.wasted.util.apn.PushService</title>
-          <meta name="description" content="PushService - io.wasted.util.apn.PushService" />
-          <meta name="keywords" content="PushService io.wasted.util.apn.PushService" />
+          <title>WebSocketHandler - io.wasted.util.http.WebSocketHandler</title>
+          <meta name="description" content="WebSocketHandler - io.wasted.util.http.WebSocketHandler" />
+          <meta name="keywords" content="WebSocketHandler io.wasted.util.http.WebSocketHandler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
-            var hash = 'io.wasted.util.apn.PushService';
+            var hash = 'io.wasted.util.http.WebSocketHandler';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,11 +29,11 @@
         <body class="type">
       <div id="definition">
         <img src="../../../../lib/class_big.png" />
-        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.apn">apn</a></p>
-        <h1>PushService</h1><h3><span class="morelinks"><div>Related Doc:
-            <a href="package.html" class="extype" name="io.wasted.util.apn">package apn</a>
+        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.http">http</a></p>
+        <h1>WebSocketHandler</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="io.wasted.util.http">package http</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -42,20 +42,19 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">PushService</span><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <span class="name">WebSocketHandler</span><span class="tparams">[<span name="Req">Req &lt;: <span class="extype" name="io.netty.handler.codec.http.HttpRequest">HttpRequest</span></span>]</span><span class="params">(<span name="corsOrigin">corsOrigin: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;*&quot;</span></span>, <span name="handshakerHeaders">handshakerHeaders: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="connect">connect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(p) =&gt; ()</span></span>, <span name="disconnect">disconnect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(p) =&gt; ()</span></span>, <span name="httpHandler">httpHandler: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]] = <span class="symbol">None</span></span>, <span name="handle">handle: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]]] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Apple Push Notification Push class which will handle all delivery
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a></dd><dt>Annotations</dt><dd>
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</dd><dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>], <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelInboundHandler">ChannelInboundHandler</span>, <span class="extype" name="io.netty.channel.ChannelHandlerAdapter">ChannelHandlerAdapter</span>, <span class="extype" name="io.netty.channel.ChannelHandler">ChannelHandler</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -73,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.apn.PushService"><span>PushService</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="io.netty.channel.SimpleChannelInboundHandler"><span>SimpleChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelInboundHandlerAdapter"><span>ChannelInboundHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelInboundHandler"><span>ChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelHandlerAdapter"><span>ChannelHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelHandler"><span>ChannelHandler</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.http.WebSocketHandler"><span>WebSocketHandler</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="io.netty.channel.SimpleChannelInboundHandler"><span>SimpleChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelInboundHandlerAdapter"><span>ChannelInboundHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelInboundHandler"><span>ChannelInboundHandler</span></li><li class="in" name="io.netty.channel.ChannelHandlerAdapter"><span>ChannelHandlerAdapter</span></li><li class="in" name="io.netty.channel.ChannelHandler"><span>ChannelHandler</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -93,24 +92,23 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="io.wasted.util.apn.PushService#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(params:io.wasted.util.apn.Params,eventLoop:io.netty.channel.EventLoopGroup)(implicitwheelTimer:io.wasted.util.WheelTimer):io.wasted.util.apn.PushService"></a>
-      <a id="&lt;init&gt;:PushService"></a>
+              <ol><li name="io.wasted.util.http.WebSocketHandler#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(corsOrigin:String,handshakerHeaders:Map[String,String],connect:io.netty.channel.Channel=&gt;Unit,disconnect:io.netty.channel.Channel=&gt;Unit,httpHandler:Option[(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]],handle:Option[(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]]):io.wasted.util.http.WebSocketHandler[Req]"></a>
+      <a id="&lt;init&gt;:WebSocketHandler[Req]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">PushService</span><span class="params">(<span name="params">params: <a href="Params.html" class="extype" name="io.wasted.util.apn.Params">Params</a></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wheelTimer">wheelTimer: <a href="../WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span>
+        <span class="name">WebSocketHandler</span><span class="params">(<span name="corsOrigin">corsOrigin: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;*&quot;</span></span>, <span name="handshakerHeaders">handshakerHeaders: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="connect">connect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(p) =&gt; ()</span></span>, <span name="disconnect">disconnect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(p) =&gt; ()</span></span>, <span name="httpHandler">httpHandler: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]] = <span class="symbol">None</span></span>, <span name="handle">handle: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]]] = <span class="symbol">None</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@&lt;init&gt;(params:io.wasted.util.apn.Params,eventLoop:io.netty.channel.EventLoopGroup)(implicitwheelTimer:io.wasted.util.WheelTimer):io.wasted.util.apn.PushService" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@&lt;init&gt;(corsOrigin:String,handshakerHeaders:Map[String,String],connect:io.netty.channel.Channel=&gt;Unit,disconnect:io.netty.channel.Channel=&gt;Unit,httpHandler:Option[(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]],handle:Option[(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]]):io.wasted.util.http.WebSocketHandler[Req]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">params</dt><dd class="cmt"><p>Connection Parameters</p></dd><dt class="param">eventLoop</dt><dd class="cmt"><p>Optional custom event loop for proxy applications</p></dd><dt class="param">wheelTimer</dt><dd class="cmt"><p>WheelTimer for scheduling
-</p></dd></dl></div>
+      
     </li></ol>
             </div>
 
@@ -132,7 +130,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -149,7 +147,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@##():Int" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@##():Int" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -166,7 +164,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -183,7 +181,7 @@
         <span class="name">acceptInboundMessage</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@acceptInboundMessage(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@acceptInboundMessage(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -194,23 +192,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#addr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addr:java.net.InetSocketAddress"></a>
-      <a id="addr:InetSocketAddress"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addr</span><span class="result">: <span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@addr:java.net.InetSocketAddress" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -223,13 +204,13 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#channelActive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="channelActive(ctx:io.netty.channel.ChannelHandlerContext):Unit"></a>
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelActive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="channelActive(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelActive(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -237,16 +218,22 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">channelActive</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">channelActive</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelActive(ctx:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelActive(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#channelInactive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="channelInactive(ctx:io.netty.channel.ChannelHandlerContext):Unit"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelInactive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="channelInactive(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelInactive(ChannelHandlerContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -254,14 +241,20 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">channelInactive</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">channelInactive</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelInactive(ctx:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelInactive(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelInboundHandlerAdapter → ChannelInboundHandler</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="io.netty.channel.SimpleChannelInboundHandler#channelRead" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelRead(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit"></a>
       <a id="channelRead(ChannelHandlerContext,Any):Unit"></a>
@@ -274,7 +267,7 @@
         <span class="name">channelRead</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelRead(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelRead(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -285,23 +278,23 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#channelRead0" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="channelRead0(ctx:io.netty.channel.ChannelHandlerContext,buffer:io.netty.buffer.ByteBuf):Unit"></a>
-      <a id="channelRead0(ChannelHandlerContext,ByteBuf):Unit"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#channelRead0" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="channelRead0(ctx:io.netty.channel.ChannelHandlerContext,msg:io.netty.handler.codec.http.websocketx.WebSocketFrame):Unit"></a>
+      <a id="channelRead0(ChannelHandlerContext,WebSocketFrame):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">channelRead0</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="buffer">buffer: <span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">channelRead0</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="msg">msg: <span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelRead0(ctx:io.netty.channel.ChannelHandlerContext,buffer:io.netty.buffer.ByteBuf):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelRead0(ctx:io.netty.channel.ChannelHandlerContext,msg:io.netty.handler.codec.http.websocketx.WebSocketFrame):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a> → SimpleChannelInboundHandler</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a> → SimpleChannelInboundHandler</dd></dl></div>
     </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#channelReadComplete" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelReadComplete(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="channelReadComplete(ChannelHandlerContext):Unit"></a>
@@ -314,7 +307,7 @@
         <span class="name">channelReadComplete</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelReadComplete(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelReadComplete(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -337,7 +330,7 @@
         <span class="name">channelRegistered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelRegistered(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelRegistered(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -360,7 +353,7 @@
         <span class="name">channelUnregistered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelUnregistered(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelUnregistered(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -383,7 +376,7 @@
         <span class="name">channelWritabilityChanged</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@channelWritabilityChanged(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@channelWritabilityChanged(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -406,7 +399,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@clone():Object" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@clone():Object" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -417,77 +410,74 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#connect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="connect():Unit"></a>
-      <a id="connect():Unit"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#connect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="connect:io.netty.channel.Channel=&gt;Unit"></a>
+      <a id="connect:(Channel)⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">connect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">connect</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@connect():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Connects to the Apple Push Servers
-</p>
-    </li><li name="io.wasted.util.apn.PushService#connectionState" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="connectionState:io.wasted.util.apn.ConnectionState.Value"></a>
-      <a id="connectionState:ConnectionState.Value"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">connectionState</span><span class="result">: <a href="ConnectionState$.html#ValueextendsOrdered[Enumeration.this.Value]withSerializable" class="extmbr" name="io.wasted.util.apn.ConnectionState.Value">ConnectionState.Value</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@connectionState:io.wasted.util.apn.ConnectionState.Value" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@connect:io.netty.channel.Channel=&gt;Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="debug(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="debug(⇒String,Any*):Unit"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#corsOrigin" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="corsOrigin:String"></a>
+      <a id="corsOrigin:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">corsOrigin</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@corsOrigin:String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#disconnect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="disconnect:io.netty.channel.Channel=&gt;Unit"></a>
+      <a id="disconnect:(Channel)⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">disconnect</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@disconnect:io.netty.channel.Channel=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#dispatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dispatch(channel:io.netty.channel.Channel,freq:com.twitter.util.Future[Req]):com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]"></a>
+      <a id="dispatch(Channel,Future[Req]):Future[HttpResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">dispatch</span><span class="params">(<span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>, <span name="freq">freq: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@debug(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@dispatch(channel:io.netty.channel.Channel,freq:com.twitter.util.Future[Req]):com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#disconnect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="disconnect():Unit"></a>
-      <a id="disconnect():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">disconnect</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@disconnect():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Disconnects from the Apple Push Server
-</p>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -500,47 +490,12 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="error(⇒String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@error(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prints a message on error.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on error.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#exceptionCaught" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketHandler#exceptionCaught" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="exceptionCaught(ctx:io.netty.channel.ChannelHandlerContext,cause:Throwable):Unit"></a>
       <a id="exceptionCaught(ChannelHandlerContext,Throwable):Unit"></a>
       <h4 class="signature">
@@ -552,11 +507,11 @@
         <span class="name">exceptionCaught</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@exceptionCaught(ctx:io.netty.channel.ChannelHandlerContext,cause:Throwable):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@exceptionCaught(ctx:io.netty.channel.ChannelHandlerContext,cause:Throwable):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler → ChannelHandlerAdapter → ChannelHandler</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a> → ChannelInboundHandlerAdapter → ChannelInboundHandler → ChannelHandlerAdapter → ChannelHandler</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -569,7 +524,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -592,11 +547,45 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.http.WebSocketHandler#handle" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handle:Option[(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]]"></a>
+      <a id="handle:Option[(Channel,Future[WebSocketFrame])⇒Option[Future[WebSocketFrame]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handle</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@handle:Option[(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#handler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]):io.wasted.util.http.WebSocketHandler[Req]"></a>
+      <a id="handler((Channel,Future[WebSocketFrame])⇒Option[Future[WebSocketFrame]]):WebSocketHandler[Req]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handler</span><span class="params">(<span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Option[com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame]]):io.wasted.util.http.WebSocketHandler[Req]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="io.netty.channel.ChannelHandlerAdapter#handlerAdded" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handlerAdded(x$1:io.netty.channel.ChannelHandlerContext):Unit"></a>
       <a id="handlerAdded(ChannelHandlerContext):Unit"></a>
@@ -609,7 +598,7 @@
         <span class="name">handlerAdded</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@handlerAdded(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@handlerAdded(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -632,7 +621,7 @@
         <span class="name">handlerRemoved</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@handlerRemoved(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@handlerRemoved(x$1:io.netty.channel.ChannelHandlerContext):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -643,41 +632,57 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#handshakerHeaders" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handshakerHeaders:Map[String,String]"></a>
+      <a id="handshakerHeaders:Map[String,String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">handshakerHeaders</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@handshakerHeaders:Map[String,String]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="info(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="info(⇒String,Any*):Unit"></a>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#headerParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="headerParser:io.wasted.util.http.Headers"></a>
+      <a id="headerParser:Headers"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">headerParser</span><span class="result">: <a href="Headers.html" class="extype" name="io.wasted.util.http.Headers">Headers</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@info(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@headerParser:io.wasted.util.http.Headers" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Prints a message on info.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on info.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#httpHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="httpHandler:Option[(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]]"></a>
+      <a id="httpHandler:Option[(Channel,Future[Req])⇒Future[HttpResponse]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">httpHandler</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@httpHandler:Option[(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -690,7 +695,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -707,29 +712,11 @@
         <span class="name">isSharable</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@isSharable():Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@isSharable():Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ChannelHandlerAdapter</dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#loggerName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="loggerName:String"></a>
-      <a id="loggerName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">loggerName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@loggerName:String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Override this to give your class a custom Logger name.</p><div class="fullcomment"><div class="comment cmt"><p>Override this to give your class a custom Logger name.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.apn.PushService">PushService</a> → <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -742,7 +729,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -759,7 +746,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@notify():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -776,63 +763,45 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#send" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="send(message:io.wasted.util.apn.Message):Boolean"></a>
-      <a id="send(Message):Boolean"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#onConnect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onConnect(connect:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.WebSocketHandler[Req]"></a>
+      <a id="onConnect((Channel)⇒Unit):WebSocketHandler[Req]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">send</span><span class="params">(<span name="message">message: <a href="Message.html" class="extype" name="io.wasted.util.apn.Message">Message</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">onConnect</span><span class="params">(<span name="connect">connect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@send(message:io.wasted.util.apn.Message):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@onConnect(connect:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.WebSocketHandler[Req]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.apn.PushService#sentMessages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sentMessages:Long"></a>
-      <a id="sentMessages:Long"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#onDisconnect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onDisconnect(disconnect:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.WebSocketHandler[Req]"></a>
+      <a id="onDisconnect((Channel)⇒Unit):WebSocketHandler[Req]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sentMessages</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+        <span class="name">onDisconnect</span><span class="params">(<span name="disconnect">disconnect: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@sentMessages:Long" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@onDisconnect(disconnect:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.WebSocketHandler[Req]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="submitException(trace:String):Unit"></a>
-      <a id="submitException(String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">submitException</span><span class="params">(<span name="trace">trace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@submitException(trace:String):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Implement this method to get your exceptions handled the way you want.</p><div class="fullcomment"><div class="comment cmt"><p>Implement this method to get your exceptions handled the way you want.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -845,28 +814,11 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@toString():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.netty.channel.ChannelInboundHandlerAdapter#userEventTriggered" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="userEventTriggered(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit"></a>
       <a id="userEventTriggered(ChannelHandlerContext,Any):Unit"></a>
@@ -879,7 +831,7 @@
         <span class="name">userEventTriggered</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@userEventTriggered(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@userEventTriggered(x$1:io.netty.channel.ChannelHandlerContext,x$2:Any):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -902,7 +854,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@wait():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -925,7 +877,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -948,7 +900,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -959,42 +911,57 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="warn(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="warn(⇒String,Any*):Unit"></a>
+    </li><li name="io.wasted.util.http.WebSocketHandler#withHandshakerHeaders" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withHandshakerHeaders(handshakerHeaders:Map[String,String]):io.wasted.util.http.WebSocketHandler[Req]"></a>
+      <a id="withHandshakerHeaders(Map[String,String]):WebSocketHandler[Req]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">withHandshakerHeaders</span><span class="params">(<span name="handshakerHeaders">handshakerHeaders: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.wasted.util.http.WebSocketHandler.Req">Req</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@warn(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@withHandshakerHeaders(handshakerHeaders:Map[String,String]):io.wasted.util.http.WebSocketHandler[Req]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
-    </li><li name="io.wasted.util.apn.PushService#wheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="wheelTimer:io.wasted.util.WheelTimer"></a>
-      <a id="wheelTimer:WheelTimer"></a>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#withHttpHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withHttpHandler(httpHandler:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.FullHttpRequest])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.WebSocketHandler[io.netty.handler.codec.http.FullHttpRequest]"></a>
+      <a id="withHttpHandler((Channel,Future[FullHttpRequest])⇒Future[HttpResponse]):WebSocketHandler[FullHttpRequest]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
+        <span class="modifier"></span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wheelTimer</span><span class="result">: <a href="../WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>
+        <span class="name">withHttpHandler</span><span class="params">(<span name="httpHandler">httpHandler: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketHandler">WebSocketHandler</a>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.apn.PushService@wheelTimer:io.wasted.util.WheelTimer" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@withHttpHandler(httpHandler:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.FullHttpRequest])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.WebSocketHandler[io.netty.handler.codec.http.FullHttpRequest]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">WheelTimer for scheduling
-</p>
+      
+    </li><li name="io.wasted.util.http.WebSocketHandler#wsHandshakerHeaders" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="wsHandshakerHeaders:io.netty.handler.codec.http.HttpHeaders"></a>
+      <a id="wsHandshakerHeaders:HttpHeaders"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wsHandshakerHeaders</span><span class="result">: <span class="extype" name="io.netty.handler.codec.http.HttpHeaders">HttpHeaders</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketHandler@wsHandshakerHeaders:io.netty.handler.codec.http.HttpHeaders" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 
@@ -1004,10 +971,16 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="io.wasted.util.Logger">
-              <h3>Inherited from <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
             </div><div class="parent" name="io.netty.channel.SimpleChannelInboundHandler">
-              <h3>Inherited from <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>]</h3>
+              <h3>Inherited from <span class="extype" name="io.netty.channel.SimpleChannelInboundHandler">SimpleChannelInboundHandler</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]</h3>
             </div><div class="parent" name="io.netty.channel.ChannelInboundHandlerAdapter">
               <h3>Inherited from <span class="extype" name="io.netty.channel.ChannelInboundHandlerAdapter">ChannelInboundHandlerAdapter</span></h3>
             </div><div class="parent" name="io.netty.channel.ChannelInboundHandler">

@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>HttpClient - io.wasted.util.http.HttpClient</title>
-          <meta name="description" content="HttpClient - io.wasted.util.http.HttpClient" />
-          <meta name="keywords" content="HttpClient io.wasted.util.http.HttpClient" />
+          <title>WebSocketClient - io.wasted.util.http.WebSocketClient</title>
+          <meta name="description" content="WebSocketClient - io.wasted.util.http.WebSocketClient" />
+          <meta name="keywords" content="WebSocketClient io.wasted.util.http.WebSocketClient" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
-            var hash = 'io.wasted.util.http.HttpClient';
+            var hash = 'io.wasted.util.http.WebSocketClient';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,14 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="HttpClient$.html" title="See companion object"><img src="../../../../lib/class_to_object_big.png" /></a>
+        <img src="../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a>.<a href="package.html" class="extype" name="io.wasted.util.http">http</a></p>
-        <h1><a href="HttpClient$.html" title="See companion object">HttpClient</a></h1><h3><span class="morelinks"><div>
-            Related Docs:
-            <a href="HttpClient$.html" title="See companion object">object HttpClient</a>
-            | <a href="package.html" class="extype" name="io.wasted.util.http">package http</a>
+        <h1>WebSocketClient</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="io.wasted.util.http">package http</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -47,7 +45,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="io.netty.handler.codec.http.HttpObject">HttpObject</span></span>]</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>] = <span class="symbol">HttpCodec[T]()</span></span>, <span name="remote">remote: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>)] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">WebSocketClient</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>] = <span class="symbol">HttpCodec()</span></span>, <span name="subprotocols">subprotocols: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="allowExtensions">allowExtensions: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="remote">remote: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URI">URI</span>] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(c, f) =&gt; f.map(_.release)</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wheelTimer">wheelTimer: <a href="../WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -72,7 +70,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.http.HttpClient"><span>HttpClient</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.http.WebSocketClient"><span>WebSocketClient</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -92,19 +90,19 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="io.wasted.util.http.HttpClient#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[T],remote:Option[(String,Int)],tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="&lt;init&gt;:HttpClient[T]"></a>
+              <ol><li name="io.wasted.util.http.WebSocketClient#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest],subprotocols:String,allowExtensions:Boolean,remote:Option[java.net.URI],tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit,eventLoop:io.netty.channel.EventLoopGroup)(implicitwheelTimer:io.wasted.util.WheelTimer):io.wasted.util.http.WebSocketClient"></a>
+      <a id="&lt;init&gt;:WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpClient</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>] = <span class="symbol">HttpCodec[T]()</span></span>, <span name="remote">remote: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>)] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>)</span>
+        <span class="name">WebSocketClient</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>] = <span class="symbol">HttpCodec()</span></span>, <span name="subprotocols">subprotocols: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="allowExtensions">allowExtensions: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="remote">remote: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URI">URI</span>] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(c, f) =&gt; f.map(_.release)</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wheelTimer">wheelTimer: <a href="../WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[T],remote:Option[(String,Int)],tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest],subprotocols:String,allowExtensions:Boolean,remote:Option[java.net.URI],tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit,eventLoop:io.netty.channel.EventLoopGroup)(implicitwheelTimer:io.wasted.util.WheelTimer):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -113,7 +111,27 @@
     </li></ol>
             </div>
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="io.wasted.util.http.WebSocketClient.Client" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ClientextendsProductwithSerializable"></a>
+      <a id="Client:Client"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketClient$Client.html"><span class="name">Client</span></a><span class="params">(<span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@ClientextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -131,7 +149,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -148,7 +166,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@##():Int" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@##():Int" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -165,11 +183,28 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.http.WebSocketClient#allowExtensions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allowExtensions:Boolean"></a>
+      <a id="allowExtensions:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allowExtensions</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@allowExtensions:Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -182,7 +217,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -199,7 +234,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@clone():Object" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@clone():Object" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -210,36 +245,53 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="codec:io.wasted.util.http.HttpCodec[T]"></a>
-      <a id="codec:HttpCodec[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest]"></a>
+      <a id="codec:HttpCodec[FullHttpRequest]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">codec</span><span class="result">: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">codec</span><span class="result">: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@codec:io.wasted.util.http.HttpCodec[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Http Codec</p>
-    </li><li name="io.wasted.util.http.HttpClient#connectTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="connectTo(host:String,port:Int):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="connectTo(String,Int):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#connectTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="connectTo(uri:String):io.wasted.util.http.WebSocketClient"></a>
+      <a id="connectTo(String):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">connectTo</span><span class="params">(<span name="host">host: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">connectTo</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@connectTo(host:String,port:Int):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@connectTo(uri:String):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http.WebSocketClient#connectTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="connectTo(uri:java.net.URI):io.wasted.util.http.WebSocketClient"></a>
+      <a id="connectTo(URI):WebSocketClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">connectTo</span><span class="params">(<span name="uri">uri: <span class="extype" name="java.net.URI">URI</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@connectTo(uri:java.net.URI):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -256,12 +308,12 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#eventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#eventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="eventLoop:io.netty.channel.EventLoopGroup"></a>
       <a id="eventLoop:EventLoopGroup"></a>
       <h4 class="signature">
@@ -273,7 +325,7 @@
         <span class="name">eventLoop</span><span class="result">: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@eventLoop:io.netty.channel.EventLoopGroup" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@eventLoop:io.netty.channel.EventLoopGroup" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -291,7 +343,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -302,25 +354,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="get(url:java.net.URI,headers:Map[String,String]):com.twitter.util.Future[T]"></a>
-      <a id="get(URI,Map[String,String]):Future[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">get</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URI">URI</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@get(url:java.net.URI,headers:Map[String,String]):com.twitter.util.Future[T]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Run a GET-Request on the given URI.</p><div class="fullcomment"><div class="comment cmt"><p>Run a GET-Request on the given URI.
-</p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>What could this be?</p></dd><dt class="param">headers</dt><dd class="cmt"><p>The mysteries keep piling up!
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -333,11 +366,45 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.http.WebSocketClient#handle" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit"></a>
+      <a id="handle:(Channel,Future[WebSocketFrame])⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handle</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http.WebSocketClient#handler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit):io.wasted.util.http.WebSocketClient"></a>
+      <a id="handler((Channel,Future[WebSocketFrame])⇒Unit):WebSocketClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handler</span><span class="params">(<span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.websocketx.WebSocketFrame">WebSocketFrame</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[io.netty.handler.codec.http.websocketx.WebSocketFrame])=&gt;Unit):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -350,7 +417,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -367,7 +434,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -384,7 +451,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@notify():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -401,48 +468,46 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#post" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="post(url:java.net.URI,mime:String,body:Seq[Byte],headers:Map[String,String],method:io.netty.handler.codec.http.HttpMethod):com.twitter.util.Future[T]"></a>
-      <a id="post(URI,String,Seq[Byte],Map[String,String],HttpMethod):Future[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#open" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="open():com.twitter.util.Future[WebSocketClient.this.Client]"></a>
+      <a id="open():Future[Client]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">post</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URI">URI</span></span>, <span name="mime">mime: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="body">body: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Byte">Byte</span>] = <span class="symbol">Seq()</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map()</span></span>, <span name="method">method: <span class="extype" name="io.netty.handler.codec.http.HttpMethod">HttpMethod</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">open</span><span class="params">()</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<a href="WebSocketClient$Client.html" class="extype" name="io.wasted.util.http.WebSocketClient.Client">Client</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@post(url:java.net.URI,mime:String,body:Seq[Byte],headers:Map[String,String],method:io.netty.handler.codec.http.HttpMethod):com.twitter.util.Future[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@open():com.twitter.util.Future[WebSocketClient.this.Client]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Send a PUT/POST-Request on the given URI with body.</p><div class="fullcomment"><div class="comment cmt"><p>Send a PUT/POST-Request on the given URI with body.
-</p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>This is getting weird..</p></dd><dt class="param">mime</dt><dd class="cmt"><p>The MIME type of the request</p></dd><dt class="param">body</dt><dd class="cmt"><p>ByteArray to be send</p></dd><dt class="param">headers</dt><dd class="cmt"><p>I don't like to explain trivial stuff</p></dd><dt class="param">method</dt><dd class="cmt"><p>HTTP Method to be used
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#remote" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="remote:Option[(String,Int)]"></a>
-      <a id="remote:Option[(String,Int)]"></a>
+      
+    </li><li name="io.wasted.util.http.WebSocketClient#remote" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="remote:Option[java.net.URI]"></a>
+      <a id="remote:Option[URI]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">remote</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>)]</span>
+        <span class="name">remote</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URI">URI</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@remote:Option[(String,Int)]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@remote:Option[java.net.URI]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Remote Host and Port</p>
-    </li><li name="io.wasted.util.http.HttpClient#reuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#reuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="reuseAddr:Boolean"></a>
       <a id="reuseAddr:Boolean"></a>
       <h4 class="signature">
@@ -454,12 +519,12 @@
         <span class="name">reuseAddr</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@reuseAddr:Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@reuseAddr:Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Reuse-Address</p>
-    </li><li name="io.wasted.util.http.HttpClient#soLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#soLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="soLinger:Int"></a>
       <a id="soLinger:Int"></a>
       <h4 class="signature">
@@ -471,11 +536,28 @@
         <span class="name">soLinger</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@soLinger:Int" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@soLinger:Int" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">soLinger</p>
+    </li><li name="io.wasted.util.http.WebSocketClient#subprotocols" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="subprotocols:String"></a>
+      <a id="subprotocols:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">subprotocols</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@subprotocols:String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -488,12 +570,12 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#tcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#tcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tcpConnectTimeout:com.twitter.util.Duration"></a>
       <a id="tcpConnectTimeout:Duration"></a>
       <h4 class="signature">
@@ -505,12 +587,12 @@
         <span class="name">tcpConnectTimeout</span><span class="result">: <span class="extype" name="com.twitter.util.Duration">Duration</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@tcpConnectTimeout:com.twitter.util.Duration" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@tcpConnectTimeout:com.twitter.util.Duration" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">TCP Connect Timeout</p>
-    </li><li name="io.wasted.util.http.HttpClient#tcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#tcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tcpKeepAlive:Boolean"></a>
       <a id="tcpKeepAlive:Boolean"></a>
       <h4 class="signature">
@@ -522,12 +604,12 @@
         <span class="name">tcpKeepAlive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@tcpKeepAlive:Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@tcpKeepAlive:Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">TCP KeepAlive</p>
-    </li><li name="io.wasted.util.http.HttpClient#tcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.WebSocketClient#tcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tcpNoDelay:Boolean"></a>
       <a id="tcpNoDelay:Boolean"></a>
       <h4 class="signature">
@@ -539,30 +621,11 @@
         <span class="name">tcpNoDelay</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@tcpNoDelay:Boolean" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@tcpNoDelay:Boolean" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">TCP No-Delay</p>
-    </li><li name="io.wasted.util.http.HttpClient#thruput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="thruput(url:java.net.URI,auth:java.util.UUID,sign:java.util.UUID,payload:String):com.twitter.util.Future[T]"></a>
-      <a id="thruput(URI,UUID,UUID,String):Future[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">thruput</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URI">URI</span></span>, <span name="auth">auth: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="sign">sign: <span class="extype" name="java.util.UUID">UUID</span></span>, <span name="payload">payload: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@thruput(url:java.net.URI,auth:java.util.UUID,sign:java.util.UUID,payload:String):com.twitter.util.Future[T]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Send a message to thruput.io endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Send a message to thruput.io endpoint.
-</p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>thruput.io Endpoint</p></dd><dt class="param">auth</dt><dd class="cmt"><p>Authentication Key for thruput.io platform</p></dd><dt class="param">sign</dt><dd class="cmt"><p>Signing Key for thruput.io platform</p></dd><dt class="param">payload</dt><dd class="cmt"><p>Payload to be sent
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -575,7 +638,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@wait():Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -598,7 +661,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -621,7 +684,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -632,148 +695,159 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpClient#withEventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withEventLoop(EventLoopGroup):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withEventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withEventLoop(EventLoopGroup):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withEventLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withEventLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withReuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withReuseAddr(Boolean):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withExtensions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withExtensions(allowExtensions:Boolean):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withExtensions(Boolean):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withReuseAddr</span><span class="params">(<span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withExtensions</span><span class="params">(<span name="allowExtensions">allowExtensions: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withExtensions(allowExtensions:Boolean):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withSoLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withSoLinger(soLinger:Int):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withSoLinger(Int):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withReuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withReuseAddr(Boolean):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withSoLinger</span><span class="params">(<span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withReuseAddr</span><span class="params">(<span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withSoLinger(soLinger:Int):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withSpecifics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withSpecifics(codec:io.wasted.util.http.HttpCodec[T]):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withSpecifics(HttpCodec[T]):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withSoLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withSoLinger(soLinger:Int):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withSoLinger(Int):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withSpecifics</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withSoLinger</span><span class="params">(<span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withSpecifics(codec:io.wasted.util.http.HttpCodec[T]):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withSoLinger(soLinger:Int):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withTcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withTcpConnectTimeout(Duration):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withSpecifics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withSpecifics(codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest]):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withSpecifics(HttpCodec[FullHttpRequest]):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpConnectTimeout</span><span class="params">(<span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withSpecifics</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.netty.handler.codec.http.FullHttpRequest">FullHttpRequest</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withSpecifics(codec:io.wasted.util.http.HttpCodec[io.netty.handler.codec.http.FullHttpRequest]):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withTcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withTcpKeepAlive(Boolean):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withSubprotocols" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withSubprotocols(subprotocols:String):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withSubprotocols(String):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpKeepAlive</span><span class="params">(<span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withSubprotocols</span><span class="params">(<span name="subprotocols">subprotocols: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withSubprotocols(subprotocols:String):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#withTcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpClient[T]"></a>
-      <a id="withTcpNoDelay(Boolean):HttpClient[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withTcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withTcpConnectTimeout(Duration):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpNoDelay</span><span class="params">(<span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withTcpConnectTimeout</span><span class="params">(<span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpClient[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="io.wasted.util.http.HttpClient#write" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="write(url:java.net.URI,req:()=&gt;io.netty.handler.codec.http.HttpRequest):com.twitter.util.Future[T]"></a>
-      <a id="write(URI,()⇒HttpRequest):Future[T]"></a>
+    </li><li name="io.wasted.util.http.WebSocketClient#withTcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withTcpKeepAlive(Boolean):WebSocketClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">write</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URI">URI</span></span>, <span name="req">req: () ⇒ <span class="extype" name="io.netty.handler.codec.http.HttpRequest">HttpRequest</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpClient.T">T</span>]</span>
+        <span class="name">withTcpKeepAlive</span><span class="params">(<span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpClient@write(url:java.net.URI,req:()=&gt;io.netty.handler.codec.http.HttpRequest):com.twitter.util.Future[T]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Write a Netty HttpRequest directly through to the given URI.</p><div class="fullcomment"><div class="comment cmt"><p>Write a Netty HttpRequest directly through to the given URI.
-The request to generate the response should be used to prepare
-the request only once the connection is established.
-This reduces the context-switching for allocation/deallocation
-on failed connects.
-</p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>What could this be?</p></dd><dt class="param">req</dt><dd class="cmt"><p>Netty FullHttpRequest
-</p></dd></dl></div>
+      
+    </li><li name="io.wasted.util.http.WebSocketClient#withTcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.WebSocketClient"></a>
+      <a id="withTcpNoDelay(Boolean):WebSocketClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withTcpNoDelay</span><span class="params">(<span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.WebSocketClient@withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.WebSocketClient" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 

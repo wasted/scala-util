@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>util - io.wasted.util</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a></p>
-        <h1>util</h1>
+        <h1>util</h1><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -82,7 +90,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CWDextendsProductwithSerializable"></a>
       <a id="CWD:CWD"></a>
       <h4 class="signature">
@@ -93,8 +101,13 @@
       <span class="symbol">
         <a href="CWD.html"><span class="name">CWD</span></a><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Current working directory</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CWDextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Current working directory</p><div class="fullcomment"><div class="comment cmt"><p>Current working directory</p></div><dl class="paramcmts block"><dt class="param">file</dt><dd class="cmt"><p>File object representing the directory
+</p></dd></dl></div>
     </li><li name="io.wasted.util.CryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CryptoCipherextendsProductwithSerializable"></a>
       <a id="CryptoCipher:CryptoCipher"></a>
@@ -106,7 +119,11 @@
       <span class="symbol">
         <a href="CryptoCipher.html"><span class="name">CryptoCipher</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;AES&quot;</span></span>, <span name="jce">jce: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CryptoCipherextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.HashingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HashingAlgoextendsProductwithSerializable"></a>
@@ -119,7 +136,11 @@
       <span class="symbol">
         <a href="HashingAlgo.html"><span class="name">HashingAlgo</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;HmacSHA256&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HashingAlgoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.HexingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HexingAlgoextendsProductwithSerializable"></a>
@@ -132,9 +153,13 @@
       <span class="symbol">
         <a href="HexingAlgo.html"><span class="name">HexingAlgo</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HexingAlgoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.Inet4Prefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.Inet4Prefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Inet4PrefixextendsInetPrefix"></a>
       <a id="Inet4Prefix:Inet4Prefix"></a>
       <h4 class="signature">
@@ -145,9 +170,14 @@
       <span class="symbol">
         <a href="Inet4Prefix.html"><span class="name">Inet4Prefix</span></a><span class="result"> extends <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Inet4Prefix object to hold information about an IPv4 Prefix.</p>
-    </li><li name="io.wasted.util.Inet6Prefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Inet4PrefixextendsInetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Inet4Prefix object to hold information about an IPv4 Prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Inet4Prefix object to hold information about an IPv4 Prefix.</p><p>Currently only containment checks are implemented.
+</p></div></div>
+    </li><li name="io.wasted.util.Inet6Prefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Inet6PrefixextendsInetPrefix"></a>
       <a id="Inet6Prefix:Inet6Prefix"></a>
       <h4 class="signature">
@@ -158,8 +188,13 @@
       <span class="symbol">
         <a href="Inet6Prefix.html"><span class="name">Inet6Prefix</span></a><span class="result"> extends <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Inet6Prefix object to hold information about an IPv6 Prefix.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Inet6PrefixextendsInetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Inet6Prefix object to hold information about an IPv6 Prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Inet6Prefix object to hold information about an IPv6 Prefix.</p><p>Currently only containment checks are implemented.
+</p></div></div>
     </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="InetPrefixextendsLogger"></a>
       <a id="InetPrefix:InetPrefix"></a>
@@ -171,8 +206,29 @@
       <span class="symbol">
         <a href="InetPrefix.html"><span class="name">InetPrefix</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Common Interface for both protocol types.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@InetPrefixextendsLogger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Common Interface for both protocol types.</p>
+    </li><li name="io.wasted.util.KeyHolder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyHolder[K]extendsProductwithSerializable"></a>
+      <a id="KeyHolder[K]:KeyHolder[K]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="KeyHolder.html"><span class="name">KeyHolder</span></a><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="io.wasted.util.KeyHolder.K">K</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@KeyHolder[K]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="io.wasted.util.Logger" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LoggerextendsAnyRef"></a>
       <a id="Logger:Logger"></a>
@@ -184,8 +240,12 @@
       <span class="symbol">
         <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">This trait enables classes to do easy logging.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LoggerextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait enables classes to do easy logging.</p>
     </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LruMap[K,V]extendsAnyRef"></a>
       <a id="LruMap[K,V]:LruMap[K,V]"></a>
@@ -197,24 +257,31 @@
       <span class="symbol">
         <a href="LruMap.html"><span class="name">LruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">LruMap Wrapper for Guava's Cache
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LruMap[K,V]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">LruMap Wrapper for Guava's Cache
 </p>
-    </li><li name="io.wasted.util.PooledResource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PooledResource[T]extendsAnyRef"></a>
-      <a id="PooledResource[T]:PooledResource[T]"></a>
+    </li><li name="io.wasted.util.OurSslBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="OurSslBuilderextendsAnyVal"></a>
+      <a id="OurSslBuilder:OurSslBuilder"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">implicit final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PooledResource.html"><span class="name">PooledResource</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="package$$OurSslBuilder.html"><span class="name">OurSslBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Resource Pooling Class
-</p>
-    </li><li name="io.wasted.util.ShellOperation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@OurSslBuilderextendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.ShellOperation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ShellOperationextendsProductwithSerializable"></a>
       <a id="ShellOperation:ShellOperation"></a>
       <h4 class="signature">
@@ -225,8 +292,30 @@
       <span class="symbol">
         <a href="ShellOperation.html"><span class="name">ShellOperation</span></a><span class="params">(<span name="lines">lines: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="exitValue">exitValue: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Result of a Shell Operation</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@ShellOperationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Result of a Shell Operation</p><div class="fullcomment"><div class="comment cmt"><p>Result of a Shell Operation</p></div><dl class="paramcmts block"><dt class="param">lines</dt><dd class="cmt"><p>Output lines from the operation</p></dd><dt class="param">exitValue</dt><dd class="cmt"><p>Explains itself
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.ValueHolder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ValueHolder[V]extendsProductwithSerializable"></a>
+      <a id="ValueHolder[V]:ValueHolder[V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ValueHolder.html"><span class="name">ValueHolder</span></a><span class="tparams">[<span name="V">V</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="io.wasted.util.ValueHolder.V">V</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@ValueHolder[V]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="io.wasted.util.Wactor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="WactorextendsWactor.AddresswithRunnablewithLogger"></a>
       <a id="Wactor:Wactor"></a>
@@ -238,8 +327,12 @@
       <span class="symbol">
         <a href="Wactor.html"><span class="name">Wactor</span></a><span class="result"> extends <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a> with <span class="extype" name="java.lang.Runnable">Runnable</span> with <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WactorextendsWactor.AddresswithRunnablewithLogger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).</p>
     </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WheelTimerextendsHashedWheelTimer"></a>
       <a id="WheelTimer:WheelTimer"></a>
@@ -251,7 +344,11 @@
       <span class="symbol">
         <a href="WheelTimer.html"><span class="name">WheelTimer</span></a><span class="result"> extends <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WheelTimerextendsHashedWheelTimer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -271,7 +368,11 @@
       <span class="symbol">
         <a href="Base64$.html"><span class="name">Base64</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Base64" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CWD"></a>
@@ -284,10 +385,14 @@
       <span class="symbol">
         <a href="CWD$.html"><span class="name">CWD</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Companion for the current working directory
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CWD" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Companion for the current working directory
 </p>
-    </li><li name="io.wasted.util.Config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.Config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Config"></a>
       <a id="Config:Config"></a>
       <h4 class="signature">
@@ -298,8 +403,14 @@
       <span class="symbol">
         <a href="Config$.html"><span class="name">Config</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Config" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.
+Cache results in vals as i expect most of these operations to be expensive at some point or another.
+</p></div></div>
     </li><li name="io.wasted.util.Crypto" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Crypto"></a>
       <a id="Crypto:Crypto"></a>
@@ -311,8 +422,12 @@
       <span class="symbol">
         <a href="Crypto$.html"><span class="name">Crypto</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper methods for en-/decrypting strings.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Crypto" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper methods for en-/decrypting strings.</p>
     </li><li name="io.wasted.util.Hashing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Hashing"></a>
       <a id="Hashing:Hashing"></a>
@@ -324,8 +439,12 @@
       <span class="symbol">
         <a href="Hashing$.html"><span class="name">Hashing</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper Object for hashing different Strings and Files.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Hashing" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper Object for hashing different Strings and Files.</p>
     </li><li name="io.wasted.util.HostInformation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HostInformation"></a>
       <a id="HostInformation:HostInformation"></a>
@@ -337,7 +456,11 @@
       <span class="symbol">
         <a href="HostInformation$.html"><span class="name">HostInformation</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HostInformation" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="InetPrefix"></a>
@@ -350,8 +473,29 @@
       <span class="symbol">
         <a href="InetPrefix$.html"><span class="name">InetPrefix</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper Object for creating InetPrefix-objects.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@InetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper Object for creating InetPrefix-objects.</p>
+    </li><li name="io.wasted.util.KeyStoreType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyStoreType"></a>
+      <a id="KeyStoreType:KeyStoreType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$KeyStoreType$.html"><span class="name">KeyStoreType</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@KeyStoreType" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="io.wasted.util.Logger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Logger"></a>
       <a id="Logger:Logger"></a>
@@ -363,8 +507,12 @@
       <span class="symbol">
         <a href="Logger$.html"><span class="name">Logger</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper to create stand-alone loggers with fixed names.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Logger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper to create stand-alone loggers with fixed names.</p>
     </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LruMap"></a>
       <a id="LruMap:LruMap"></a>
@@ -376,8 +524,12 @@
       <span class="symbol">
         <a href="LruMap$.html"><span class="name">LruMap</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">LruMap Companion to make creation easier
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LruMap" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">LruMap Companion to make creation easier
 </p>
     </li><li name="io.wasted.util.Schedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Schedule"></a>
@@ -390,8 +542,12 @@
       <span class="symbol">
         <a href="Schedule$.html"><span class="name">Schedule</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Wasted Scheduler based on Netty's HashedWheelTimer
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Schedule" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted Scheduler based on Netty's HashedWheelTimer
 </p>
     </li><li name="io.wasted.util.Shell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Shell"></a>
@@ -404,8 +560,12 @@
       <span class="symbol">
         <a href="Shell$.html"><span class="name">Shell</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Shell companion object
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Shell" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Shell companion object
 </p>
     </li><li name="io.wasted.util.Tryo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Tryo"></a>
@@ -418,8 +578,12 @@
       <span class="symbol">
         <a href="Tryo$.html"><span class="name">Tryo</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">This is a simple try/catch wrapped in an Option.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Tryo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is a simple try/catch wrapped in an Option.</p>
     </li><li name="io.wasted.util.Wactor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Wactor"></a>
       <a id="Wactor:Wactor"></a>
@@ -429,10 +593,14 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Wactor$.html"><span class="name">Wactor</span></a>
+        <a href="Wactor$.html"><span class="name">Wactor</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Wasted lightweight Actor companion
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Wactor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted lightweight Actor companion
 </p>
     </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WheelTimer"></a>
@@ -445,7 +613,11 @@
       <span class="symbol">
         <a href="WheelTimer$.html"><span class="name">WheelTimer</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WheelTimer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.apn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="apn"></a>
@@ -458,7 +630,11 @@
       <span class="symbol">
         <a href="apn/package.html"><span class="name">apn</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@apn" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.build" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="build"></a>
@@ -471,9 +647,30 @@
       <span class="symbol">
         <a href="build/package.html"><span class="name">build</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@build" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.package#cryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util#channelFutureListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="channelFutureListener:(io.netty.channel.ChannelFuture=&gt;Any)=&gt;io.netty.channel.ChannelFutureListener"></a>
+      <a id="channelFutureListener:((ChannelFuture)⇒Any)⇒ChannelFutureListener"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">channelFutureListener</span><span class="result">: ((<span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span>) ⇒ <span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="io.netty.channel.ChannelFutureListener">ChannelFutureListener</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@channelFutureListener:(io.netty.channel.ChannelFuture=&gt;Any)=&gt;io.netty.channel.ChannelFutureListener" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#cryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="cryptoCipher:io.wasted.util.CryptoCipher"></a>
       <a id="cryptoCipher:CryptoCipher"></a>
       <h4 class="signature">
@@ -484,9 +681,47 @@
       <span class="symbol">
         <span class="name">cryptoCipher</span><span class="result">: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@cryptoCipher:io.wasted.util.CryptoCipher" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.package#hashingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util#durationScala2Twitter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="durationScala2Twitter:scala.concurrent.duration.Duration=&gt;com.twitter.util.Duration"></a>
+      <a id="durationScala2Twitter:(Duration)⇒Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">durationScala2Twitter</span><span class="result">: (<span class="extype" name="scala.concurrent.duration.Duration">Duration</span>) ⇒ <span class="extype" name="com.twitter.util.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@durationScala2Twitter:scala.concurrent.duration.Duration=&gt;com.twitter.util.Duration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#durationTwitter2Scala" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="durationTwitter2Scala:com.twitter.util.Duration=&gt;scala.concurrent.duration.Duration"></a>
+      <a id="durationTwitter2Scala:(Duration)⇒Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">durationTwitter2Scala</span><span class="result">: (<span class="extype" name="com.twitter.util.Duration">Duration</span>) ⇒ <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@durationTwitter2Scala:com.twitter.util.Duration=&gt;scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#hashingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="hashingAlgo:io.wasted.util.HashingAlgo"></a>
       <a id="hashingAlgo:HashingAlgo"></a>
       <h4 class="signature">
@@ -497,9 +732,13 @@
       <span class="symbol">
         <span class="name">hashingAlgo</span><span class="result">: <a href="HashingAlgo.html" class="extype" name="io.wasted.util.HashingAlgo">HashingAlgo</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@hashingAlgo:io.wasted.util.HashingAlgo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.package#hexingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util#hexingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="hexingAlgo:io.wasted.util.HexingAlgo"></a>
       <a id="hexingAlgo:HexingAlgo"></a>
       <h4 class="signature">
@@ -510,7 +749,11 @@
       <span class="symbol">
         <span class="name">hexingAlgo</span><span class="result">: <a href="HexingAlgo.html" class="extype" name="io.wasted.util.HexingAlgo">HexingAlgo</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@hexingAlgo:io.wasted.util.HexingAlgo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="io.wasted.util.http" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="http"></a>
@@ -523,9 +766,13 @@
       <span class="symbol">
         <a href="http/package.html"><span class="name">http</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@http" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.package#implicitStackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util#implicitStackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="implicitStackTraceToString:Throwable=&gt;String"></a>
       <a id="implicitStackTraceToString:(Throwable)⇒String"></a>
       <h4 class="signature">
@@ -536,22 +783,13 @@
       <span class="symbol">
         <span class="name">implicitStackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@implicitStackTraceToString:Throwable=&gt;String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="io.wasted.util.ssl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ssl"></a>
-      <a id="ssl:ssl"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="ssl/package.html"><span class="name">ssl</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="io.wasted.util.package#stackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util#stackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="stackTraceToString(throwable:Throwable):String"></a>
       <a id="stackTraceToString(Throwable):String"></a>
       <h4 class="signature">
@@ -562,7 +800,11 @@
       <span class="symbol">
         <span class="name">stackTraceToString</span><span class="params">(<span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@stackTraceToString(throwable:Throwable):String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Transforms StackTraces into a String using StringWriter.</p>
     </li></ol>
             </div>
@@ -593,6 +835,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>
