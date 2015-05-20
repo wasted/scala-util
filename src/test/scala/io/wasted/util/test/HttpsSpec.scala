@@ -34,15 +34,15 @@ class HttpsSpec extends WordSpec with ScalaFutures with AsyncAssertions with Bef
   }
 
   val client1 = HttpClient(NettyHttpCodec[HttpRequest, FullHttpResponse]().withInsecureTls())
-  val resp1: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://anycast.io:443/")), 5.seconds)
-  val resp2: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://anycast.io:443/")), 5.seconds)
 
   "2 GET Request to https://anycast.io" should {
     "contain the phrase \"anycast\" somewhere" in {
+      val resp1: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://anycast.io:443/")), 5.seconds)
       assert(resp1.content.toString(CharsetUtil.UTF_8).contains("anycast"))
       resp1.content.release()
     }
     "another phrase of \"anycast\" somewhere" in {
+      val resp2: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://anycast.io:443/")), 5.seconds)
       assert(resp2.content.toString(CharsetUtil.UTF_8).contains("anycast"))
       resp2.content.release()
     }

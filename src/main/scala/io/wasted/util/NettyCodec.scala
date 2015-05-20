@@ -23,7 +23,7 @@ trait NettyCodec[Req, Resp] {
    * Gets called once the TCP Connection has been established
    * with this being the API Client connecting to a Server
    * @param channel Channel we're connected to
-   * @param request Request object we want to send
+   * @param request Request object we want to use
    * @return Future Response
    */
   def clientConnected(channel: Channel, request: Req): Future[Resp]

@@ -75,6 +75,38 @@ trait NettyClientBuilder[Req, Resp] {
   }
 
   /**
+   * Open a connection to the given URI.
+   * The request to generate the response should be used to prepare
+   * the request only once the connection is established.
+   * This reduces the context-switching for allocation/deallocation
+   * on failed connects.
+   *
+   * @param uri What could this be?
+   * @return Future Channel
+   */
+  def open(uri: java.net.URI, req: Req): Future[Resp] = {
+    // we start at -1 for the first and not-retried-request
+    val counter = new AtomicInteger()
+
+    def run(): Future[Resp] = {
+      val count = counter.incrementAndGet()
+      val result = getConnection(uri).flatMap { chan =>
+        val resp = codec.clientConnected(chan, req)
+        requestTimeout.map(resp.raiseWithin).getOrElse(resp)
+      }
+
+      if (count <= retries + 1) result.rescue {
+        case t: Throwable => run()
+      }
+      else result
+    }
+
+    val result = run()
+
+    globalTimeout.map(result.raiseWithin).getOrElse(result)
+  }
+
+  /**
    * Write a Request directly through to the given URI.
    * The request to generate the response should be used to prepare
    * the request only once the connection is established.

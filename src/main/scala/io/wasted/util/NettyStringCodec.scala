@@ -19,15 +19,23 @@ import io.wasted.util.http.HttpClient.Handlers
  * @param channel Netty Channel
  */
 final case class NettyStringChannel(out: Broker[String], in: Offer[String], private val channel: Channel) {
-  def close(implicit timer: Timer): Future[Unit] = {
+  def close(): Future[Unit] = {
     val closed = Promise[Unit]()
     channel.closeFuture().addListener(new ChannelFutureListener {
       override def operationComplete(f: ChannelFuture): Unit = {
         closed.setDone()
       }
     })
-    closed.raiseWithin(Duration(2, TimeUnit.SECONDS))
+    closed.raiseWithin(Duration(2, TimeUnit.SECONDS))(WheelTimer.twitter)
   }
+
+  val onDisconnect = Promise[Unit]()
+  channel.closeFuture().addListener(new ChannelFutureListener {
+    override def operationComplete(f: ChannelFuture): Unit = onDisconnect.setDone()
+  })
+
+  def !(s: String): Unit = out ! s
+  def foreach(run: String => Unit) = in.foreach(run)
 }
 
 /**
@@ -114,7 +122,7 @@ final case class NettyStringCodec(readTimeout: Option[Duration] = None,
 
     // we wire the outbound broker to send to the channel
     outBroker.recv.foreach(buf => channel.writeAndFlush(buf))
-    outBroker ! request
+    Option(request).map(outBroker ! _)
 
     result
   }
