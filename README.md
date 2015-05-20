@@ -2,14 +2,12 @@
 
 =======
 
-## [API Documentation](https://wasted.github.io/scala-util/latest/api/#io.wasted.util.package)
-
 ### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/scala-util/blob/master/CONTRIBUTING.md).
 
 
 ```
   resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
-  libraryDependencies += "io.wasted" %% "wasted-util" % "0.9.5"
+  libraryDependencies += "io.wasted" %% "wasted-util" % "0.10.0"
 ```
 
 ## License

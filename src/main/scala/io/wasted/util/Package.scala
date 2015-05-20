@@ -2,7 +2,7 @@ package io.wasted
 
 import java.io.{ InputStream, PrintWriter, StringWriter }
 import java.security.KeyStore
-import javax.net.ssl.{ KeyManagerFactory, KeyManager }
+import javax.net.ssl.KeyManagerFactory
 
 import com.twitter.util.{ Duration => TD }
 import io.netty.channel.{ ChannelFuture, ChannelFutureListener }

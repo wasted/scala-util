@@ -1,7 +1,6 @@
 package io.wasted.util.apn
 
 import java.nio.ByteOrder
-import java.security.KeyStore
 
 import io.netty.buffer._
 import io.netty.handler.ssl.SslContextBuilder

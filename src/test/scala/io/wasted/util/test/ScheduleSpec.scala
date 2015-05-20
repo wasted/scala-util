@@ -7,7 +7,7 @@ import org.scalatest.time.SpanSugar._
 
 class ScheduleSpec extends WordSpec with AsyncAssertions {
   val w = new Waiter
-  implicit val wheel = WheelTimer()
+  implicit val wheel = WheelTimer
 
   var result2 = false
   var result3 = false

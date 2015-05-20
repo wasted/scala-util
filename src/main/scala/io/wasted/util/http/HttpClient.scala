@@ -1,14 +1,11 @@
 package io.wasted.util.http
 
-import com.twitter.conversions.time._
-import com.twitter.util.{ Duration, Future, Promise }
-import io.netty.bootstrap._
+import java.net.{ InetAddress, InetSocketAddress }
+
+import com.twitter.util.{ Duration, Future }
 import io.netty.buffer._
 import io.netty.channel._
-import io.netty.channel.socket.SocketChannel
-import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
-import io.netty.handler.timeout._
 import io.wasted.util._
 
 object HttpClient {
@@ -21,7 +18,8 @@ object HttpClient {
     val codec = "codec"
     val aggregator = "aggregator"
     val decompressor = "decompressor"
-    val timeout = "timeout"
+    val readTimeout = "readTimeout"
+    val writeTimeout = "writeTimeout"
     val handler = "handler"
   }
 }
@@ -30,116 +28,53 @@ object HttpClient {
  * wasted.io Scala Http Client
  * @param codec Http Codec
  * @param remote Remote Host and Port
+ * @param hostConnectionLimit Number of open connections for this client. Defaults to 1
+ * @param hostConnectionCoreSize Number of connections to keep open for this client. Defaults to 0
+ * @param globalTimeout Global Timeout for the completion of a request
  * @param tcpConnectTimeout TCP Connect Timeout
- * @param tcpKeepAlive TCP KeepAlive
- * @param reuseAddr Reuse-Address
- * @param tcpNoDelay TCP No-Delay
- * @param soLinger soLinger
+ * @param connectTimeout Timeout for establishing the Service
+ * @param requestTimeout Timeout for each request
+ * @param tcpKeepAlive TCP KeepAlive. Defaults to false
+ * @param reuseAddr Reuse-Address. Defaults to true
+ * @param tcpNoDelay TCP No-Delay. Defaults to true
+ * @param soLinger soLinger. Defaults to 0
+ * @param retries On connection or timeouts, how often should we retry? Defaults to 0
  * @param eventLoop Netty Event-Loop
  */
-final case class HttpClient[T <: HttpObject](codec: HttpCodec[T] = HttpCodec[T](),
-                                             remote: Option[(String, Int)] = None,
-                                             tcpConnectTimeout: Duration = 5.seconds,
-                                             tcpKeepAlive: Boolean = false,
-                                             reuseAddr: Boolean = true,
-                                             tcpNoDelay: Boolean = true,
-                                             soLinger: Int = 0,
-                                             eventLoop: EventLoopGroup = Netty.eventLoop) {
-  def withSpecifics(codec: HttpCodec[T]) = copy[T](codec = codec)
+case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = NettyHttpCodec[HttpRequest, T](),
+                                       remote: List[InetSocketAddress] = List.empty,
+                                       hostConnectionLimit: Int = 1,
+                                       hostConnectionCoreSize: Int = 0,
+                                       globalTimeout: Option[Duration] = None,
+                                       tcpConnectTimeout: Option[Duration] = None,
+                                       connectTimeout: Option[Duration] = None,
+                                       requestTimeout: Option[Duration] = None,
+                                       tcpKeepAlive: Boolean = false,
+                                       reuseAddr: Boolean = true,
+                                       tcpNoDelay: Boolean = true,
+                                       soLinger: Int = 0,
+                                       retries: Int = 0,
+                                       eventLoop: EventLoopGroup = Netty.eventLoop) extends NettyClientBuilder[HttpRequest, T] {
+  def withSpecifics(codec: NettyHttpCodec[HttpRequest, T]) = copy[T](codec = codec)
   def withSoLinger(soLinger: Int) = copy[T](soLinger = soLinger)
   def withTcpNoDelay(tcpNoDelay: Boolean) = copy[T](tcpNoDelay = tcpNoDelay)
   def withTcpKeepAlive(tcpKeepAlive: Boolean) = copy[T](tcpKeepAlive = tcpKeepAlive)
   def withReuseAddr(reuseAddr: Boolean) = copy[T](reuseAddr = reuseAddr)
-  def withTcpConnectTimeout(tcpConnectTimeout: Duration) = copy[T](tcpConnectTimeout = tcpConnectTimeout)
-
+  def withGlobalTimeout(globalTimeout: Duration) = copy[T](globalTimeout = Some(globalTimeout))
+  def withTcpConnectTimeout(tcpConnectTimeout: Duration) = copy[T](tcpConnectTimeout = Some(tcpConnectTimeout))
+  def withConnectTimeout(connectTimeout: Duration) = copy[T](connectTimeout = Some(connectTimeout))
+  def withRequestTimeout(requestTimeout: Duration) = copy[T](requestTimeout = Some(requestTimeout))
+  def withHostConnectionLimit(limit: Int) = copy[T](hostConnectionLimit = limit)
+  def withHostConnectionCoresize(coreSize: Int) = copy[T](hostConnectionCoreSize = coreSize)
+  def withRetries(retries: Int) = copy[T](retries = retries)
   def withEventLoop(eventLoop: EventLoopGroup) = copy[T](eventLoop = eventLoop)
-  def connectTo(host: String, port: Int) = copy[T](remote = Some(host, port))
+  def connectTo(host: String, port: Int) = copy[T](remote = List(new InetSocketAddress(InetAddress.getByName(host), port)))
+  def connectTo(hosts: List[InetSocketAddress]) = copy[T](remote = hosts)
 
-  private lazy val srv = new Bootstrap
-  private lazy val bootstrap = {
-    val handler = new ChannelInitializer[SocketChannel] {
-      override def initChannel(ch: SocketChannel) {
-        val p = ch.pipeline()
-        codec.sslCtx.foreach(e => p.addLast(HttpServer.Handlers.ssl, e.newHandler(ch.alloc())))
-        val maxInitialBytes = codec.maxInitialLineLength.inBytes.toInt
-        val maxHeaderBytes = codec.maxHeaderSize.inBytes.toInt
-        val maxChunkSize = codec.maxChunkSize.inBytes.toInt
-        p.addLast(HttpClient.Handlers.codec, new HttpClientCodec(maxInitialBytes, maxHeaderBytes, maxChunkSize))
-        if (codec.chunking && !codec.chunked) {
-          p.addLast(HttpClient.Handlers.aggregator, new HttpObjectAggregator(codec.maxChunkSize.inBytes.toInt))
-        }
-        if (codec.decompression) {
-          p.addLast(HttpClient.Handlers.decompressor, new HttpContentDecompressor())
-        }
-      }
-    }
-    srv.group(eventLoop)
-      .channel(classOf[NioSocketChannel])
-      .option[java.lang.Boolean](ChannelOption.TCP_NODELAY, tcpNoDelay)
-      .option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, tcpKeepAlive)
-      .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, reuseAddr)
-      .option[java.lang.Integer](ChannelOption.SO_LINGER, soLinger)
-      .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, tcpConnectTimeout.inMillis.toInt)
-      .handler(handler)
-  }
-
-  private def getPortString(url: java.net.URI): String = if (url.getPort == -1) "" else ":" + url.getPort
-  private def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else url.getScheme match {
+  protected def getPortString(url: java.net.URI): String = if (url.getPort == -1) "" else ":" + url.getPort
+  protected def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else url.getScheme match {
     case "http" => 80
     case "https" => 443
-  }
-
-  /**
-   * Write a Netty HttpRequest directly through to the given URI.
-   * The request to generate the response should be used to prepare
-   * the request only once the connection is established.
-   * This reduces the context-switching for allocation/deallocation
-   * on failed connects.
-   *
-   * @param url What could this be?
-   * @param req Netty FullHttpRequest
-   */
-  def write(url: java.net.URI, req: () => HttpRequest): Future[T] = {
-    val promise = Promise[T]()
-
-    val connected = remote match {
-      case Some((host, port)) => bootstrap.connect(host, port)
-      case _ => bootstrap.clone().connect(url.getHost, getPort(url))
-    }
-    connected.addListener { cf: ChannelFuture =>
-      if (!cf.isSuccess) promise.setException(cf.cause())
-      else {
-        cf.channel.pipeline.addFirst(HttpClient.Handlers.timeout, new ReadTimeoutHandler(codec.readTimeout.inMillis.toInt) {
-          override def readTimedOut(ctx: ChannelHandlerContext) {
-            ctx.channel.close
-            promise.setException(new IllegalStateException("Read timed out"))
-          }
-        })
-        cf.channel.pipeline.addLast(HttpClient.Handlers.handler, new SimpleChannelInboundHandler[T] {
-          override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-            ExceptionHandler(ctx, cause)
-            promise.setException(cause)
-            ctx.channel.close
-          }
-
-          def channelRead0(ctx: ChannelHandlerContext, msg: T) {
-            msg match {
-              case msg: ByteBufHolder => msg.content.retain()
-              case _ =>
-            }
-            promise.setValue(msg)
-          }
-        })
-
-        val request = req()
-        val ka = if (tcpKeepAlive && HttpHeaders.isKeepAlive(request))
-          HttpHeaders.Values.KEEP_ALIVE else HttpHeaders.Values.CLOSE
-        request.headers().set(HttpHeaders.Names.CONNECTION, ka)
-
-        cf.channel.writeAndFlush(request)
-      }
-    }
-    promise
   }
 
   /**

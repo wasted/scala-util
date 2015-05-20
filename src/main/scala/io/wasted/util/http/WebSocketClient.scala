@@ -22,7 +22,7 @@ import io.wasted.util._
  * @param soLinger soLinger
  * @param eventLoop Netty Event-Loop
  */
-final case class WebSocketClient(codec: HttpCodec[FullHttpRequest] = HttpCodec(),
+final case class WebSocketClient(codec: NettyHttpCodec[FullHttpRequest, HttpResponse] = NettyHttpCodec(),
                                  subprotocols: String = null,
                                  allowExtensions: Boolean = true,
                                  remote: Option[java.net.URI] = None,
@@ -37,7 +37,7 @@ final case class WebSocketClient(codec: HttpCodec[FullHttpRequest] = HttpCodec()
   def withExtensions(allowExtensions: Boolean) = copy(allowExtensions = allowExtensions)
 
   def withSubprotocols(subprotocols: String) = copy(subprotocols = subprotocols)
-  def withSpecifics(codec: HttpCodec[FullHttpRequest]) = copy(codec = codec)
+  def withSpecifics(codec: NettyHttpCodec[FullHttpRequest, HttpResponse]) = copy(codec = codec)
 
   def withSoLinger(soLinger: Int) = copy(soLinger = soLinger)
 

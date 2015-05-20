@@ -2,15 +2,17 @@ package io.wasted.util
 
 import java.util.concurrent.{ ConcurrentHashMap, TimeUnit }
 
+import com.twitter.util.JavaTimer
 import io.netty.util.{ Timeout, TimerTask }
 
 import scala.concurrent.duration.Duration
 
-class WheelTimer(timerMillis: Int = 100, wheelSize: Int = 512) extends io.netty.util.HashedWheelTimer(timerMillis.toLong, TimeUnit.MILLISECONDS, wheelSize)
-
-object WheelTimer {
-  def apply() = new WheelTimer()
+class WheelTimer(timerMillis: Int, wheelSize: Int)
+  extends io.netty.util.HashedWheelTimer(timerMillis.toLong, TimeUnit.MILLISECONDS, wheelSize) {
+  lazy val twitter = new JavaTimer()
 }
+
+object WheelTimer extends WheelTimer(100, 512)
 
 /**
  * Wasted Scheduler based on Netty's HashedWheelTimer
