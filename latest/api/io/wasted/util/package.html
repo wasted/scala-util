@@ -264,6 +264,167 @@
     </span>
       <p class="shortcomment cmt">LruMap Wrapper for Guava's Cache
 </p>
+    </li><li name="io.wasted.util.NettyByteArrayChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyByteArrayChannelextendsProductwithSerializable"></a>
+      <a id="NettyByteArrayChannel:NettyByteArrayChannel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyByteArrayChannel.html"><span class="name">NettyByteArrayChannel</span></a><span class="params">(<span name="out">out: <span class="extype" name="com.twitter.concurrent.Broker">Broker</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>]</span>, <span name="in">in: <span class="extype" name="com.twitter.concurrent.Offer">Offer</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>]</span>, <span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyByteArrayChannelextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">ByteArray Channel</p><div class="fullcomment"><div class="comment cmt"><p>ByteArray Channel</p></div><dl class="paramcmts block"><dt class="param">out</dt><dd class="cmt"><p>Outbound Broker</p></dd><dt class="param">in</dt><dd class="cmt"><p>Inbound Offer</p></dd><dt class="param">channel</dt><dd class="cmt"><p>Netty Channel
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyByteArrayCodec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyByteArrayCodecextendsNettyCodec[io.netty.buffer.ByteBuf,io.wasted.util.NettyByteArrayChannel]withProductwithSerializable"></a>
+      <a id="NettyByteArrayCodec:NettyByteArrayCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyByteArrayCodec.html"><span class="name">NettyByteArrayCodec</span></a><span class="params">(<span name="readTimeout">readTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="writeTimeout">writeTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="sslCtx">sslCtx: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.ssl.SslContext">SslContext</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>, <a href="NettyByteArrayChannel.html" class="extype" name="io.wasted.util.NettyByteArrayChannel">NettyByteArrayChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyByteArrayCodecextendsNettyCodec[io.netty.buffer.ByteBuf,io.wasted.util.NettyByteArrayChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala ByteArray Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala ByteArray Codec</p><p>For composition you may use ByteArrayCodec().withTls(..)
+</p></div><dl class="paramcmts block"><dt class="param">readTimeout</dt><dd class="cmt"><p>Channel Read Timeout</p></dd><dt class="param">writeTimeout</dt><dd class="cmt"><p>Channel Write Timeout</p></dd><dt class="param">sslCtx</dt><dd class="cmt"><p>Netty SSL Context
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyClientBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyClientBuilder[Req,Resp]extendsAnyRef"></a>
+      <a id="NettyClientBuilder[Req,Resp]:NettyClientBuilder[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyClientBuilder.html"><span class="name">NettyClientBuilder</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyClientBuilder[Req,Resp]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyCodec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyCodec[Req,Resp]extendsAnyRef"></a>
+      <a id="NettyCodec[Req,Resp]:NettyCodec[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyCodec.html"><span class="name">NettyCodec</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyCodec[Req,Resp]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyServerBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyServerBuilder[T,Req,Resp]extendsLogger"></a>
+      <a id="NettyServerBuilder[T,Req,Resp]:NettyServerBuilder[T,Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyServerBuilder.html"><span class="name">NettyServerBuilder</span></a><span class="tparams">[<span name="T">T</span>, <span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyServerBuilder[T,Req,Resp]extendsLogger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyStringChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyStringChannelextendsProductwithSerializable"></a>
+      <a id="NettyStringChannel:NettyStringChannel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyStringChannel.html"><span class="name">NettyStringChannel</span></a><span class="params">(<span name="out">out: <span class="extype" name="com.twitter.concurrent.Broker">Broker</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="in">in: <span class="extype" name="com.twitter.concurrent.Offer">Offer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyStringChannelextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">String Channel</p><div class="fullcomment"><div class="comment cmt"><p>String Channel</p></div><dl class="paramcmts block"><dt class="param">out</dt><dd class="cmt"><p>Outbound Broker</p></dd><dt class="param">in</dt><dd class="cmt"><p>Inbound Offer</p></dd><dt class="param">channel</dt><dd class="cmt"><p>Netty Channel
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyStringCodec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyStringCodecextendsNettyCodec[String,io.wasted.util.NettyStringChannel]withProductwithSerializable"></a>
+      <a id="NettyStringCodec:NettyStringCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyStringCodec.html"><span class="name">NettyStringCodec</span></a><span class="params">(<span name="readTimeout">readTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="writeTimeout">writeTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="sslCtx">sslCtx: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.ssl.SslContext">SslContext</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="scala.Predef.String">String</span>, <a href="NettyStringChannel.html" class="extype" name="io.wasted.util.NettyStringChannel">NettyStringChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyStringCodecextendsNettyCodec[String,io.wasted.util.NettyStringChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala String Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala String Codec</p><p>For composition you may use StringCodec().withTls(..)
+</p></div><dl class="paramcmts block"><dt class="param">readTimeout</dt><dd class="cmt"><p>Channel Read Timeout</p></dd><dt class="param">writeTimeout</dt><dd class="cmt"><p>Channel Write Timeout</p></dd><dt class="param">sslCtx</dt><dd class="cmt"><p>Netty SSL Context
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyTcpClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyTcpClient[Req,Resp]extendsNettyClientBuilder[Req,Resp]withProductwithSerializable"></a>
+      <a id="NettyTcpClient[Req,Resp]:NettyTcpClient[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpClient.html"><span class="name">NettyTcpClient</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpClient.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpClient.Resp">Resp</span>]</span>, <span name="remote">remote: <span class="extype" name="scala.List">List</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>] = <span class="symbol">List.empty</span></span>, <span name="hostConnectionLimit">hostConnectionLimit: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="hostConnectionCoreSize">hostConnectionCoreSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="globalTimeout">globalTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="connectTimeout">connectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="requestTimeout">requestTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="retries">retries: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>)</span><span class="result"> extends <a href="NettyClientBuilder.html" class="extype" name="io.wasted.util.NettyClientBuilder">NettyClientBuilder</a>[<span class="extype" name="io.wasted.util.NettyTcpClient.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpClient.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpClient[Req,Resp]extendsNettyClientBuilder[Req,Resp]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Netty TCP Client</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Netty TCP Client</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Codec</p></dd><dt class="param">remote</dt><dd class="cmt"><p>Remote Host and Port</p></dd><dt class="param">hostConnectionLimit</dt><dd class="cmt"><p>Number of open connections for this client. Defaults to 1</p></dd><dt class="param">hostConnectionCoreSize</dt><dd class="cmt"><p>Number of connections to keep open for this client. Defaults to 0</p></dd><dt class="param">globalTimeout</dt><dd class="cmt"><p>Global Timeout for the completion of a request</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">connectTimeout</dt><dd class="cmt"><p>Timeout for establishing the Service</p></dd><dt class="param">requestTimeout</dt><dd class="cmt"><p>Timeout for each request</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive. Defaults to false</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address. Defaults to true</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay. Defaults to true</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger. Defaults to 0</p></dd><dt class="param">retries</dt><dd class="cmt"><p>On connection or timeouts, how often should we retry? Defaults to 0</p></dd><dt class="param">eventLoop</dt><dd class="cmt"><p>Netty Event-Loop</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyTcpServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyTcpServer[Req,Resp]extendsNettyServerBuilder[io.wasted.util.NettyTcpServer[Req,Resp],Req,Resp]withProductwithSerializable"></a>
+      <a id="NettyTcpServer[Req,Resp]:NettyTcpServer[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpServer.html"><span class="name">NettyTcpServer</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>]</span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="NettyTcpServer$.html">NettyTcpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="NettyTcpServer.html" class="extype" name="io.wasted.util.NettyTcpServer">NettyTcpServer</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpServer[Req,Resp]extendsNettyServerBuilder[io.wasted.util.NettyTcpServer[Req,Resp],Req,Resp]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Server</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Server</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests
+</p></dd></dl></div>
     </li><li name="io.wasted.util.OurSslBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OurSslBuilderextendsAnyVal"></a>
       <a id="OurSslBuilder:OurSslBuilder"></a>
@@ -531,6 +692,23 @@ Cache results in vals as i expect most of these operations to be expensive at so
     </span>
       <p class="shortcomment cmt">LruMap Companion to make creation easier
 </p>
+    </li><li name="io.wasted.util.NettyTcpServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NettyTcpServer"></a>
+      <a id="NettyTcpServer:NettyTcpServer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpServer$.html"><span class="name">NettyTcpServer</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpServer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="io.wasted.util.Schedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Schedule"></a>
       <a id="Schedule:Schedule"></a>
@@ -611,7 +789,7 @@ Cache results in vals as i expect most of these operations to be expensive at so
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="WheelTimer$.html"><span class="name">WheelTimer</span></a>
+        <a href="WheelTimer$.html"><span class="name">WheelTimer</span></a><span class="result"> extends <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.wasted.util.package@WheelTimer" title="Permalink" target="_top">

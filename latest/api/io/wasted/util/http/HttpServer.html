@@ -47,14 +47,14 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpServer</span><span class="tparams">[<span name="Req">Req &lt;: <span class="extype" name="io.netty.handler.codec.http.HttpMessage">HttpMessage</span></span>]</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>] = <span class="symbol">HttpCodec[Req]()</span></span>, <span name="httpValidateHeaders">httpValidateHeaders: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.ChannelPipeline">ChannelPipeline</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>] = <span class="symbol"><span class="name"><a href="HttpServer$.html">HttpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">HttpServer</span><span class="tparams">[<span name="Req">Req &lt;: <span class="extype" name="io.netty.handler.codec.http.HttpMessage">HttpMessage</span></span>, <span name="Resp">Resp &lt;: <span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span></span>]</span><span class="params">(<span name="codec">codec: <a href="NettyHttpCodec.html" class="extype" name="io.wasted.util.http.NettyHttpCodec">NettyHttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>] = <span class="symbol">NettyHttpCodec[Req, Resp]()</span></span>, <span name="httpValidateHeaders">httpValidateHeaders: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="customPipeline">customPipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="HttpServer$.html">HttpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>] with <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>wasted.io Scala Http Server</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">httpValidateHeaders</dt><dd class="cmt"><p>Validate HTTP Headers</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>wasted.io Scala Http Server</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">httpValidateHeaders</dt><dd class="cmt"><p>Validate HTTP Headers</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">customPipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>], <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -72,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.http.HttpServer"><span>HttpServer</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.http.HttpServer"><span>HttpServer</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="io.wasted.util.NettyServerBuilder"><span>NettyServerBuilder</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -93,22 +93,22 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="io.wasted.util.http.HttpServer#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[Req],httpValidateHeaders:Boolean,tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,sendAllocator:io.netty.buffer.ByteBufAllocator,recvAllocator:io.netty.channel.RecvByteBufAllocator,parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup,pipeline:io.netty.channel.ChannelPipeline=&gt;Unit,handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="&lt;init&gt;:HttpServer[Req]"></a>
+      <a id="&lt;init&gt;(codec:io.wasted.util.http.NettyHttpCodec[Req,Resp],httpValidateHeaders:Boolean,tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,sendAllocator:io.netty.buffer.ByteBufAllocator,recvAllocator:io.netty.channel.RecvByteBufAllocator,parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup,customPipeline:io.netty.channel.Channel=&gt;Unit,handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="&lt;init&gt;:HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpServer</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>] = <span class="symbol">HttpCodec[Req]()</span></span>, <span name="httpValidateHeaders">httpValidateHeaders: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.ChannelPipeline">ChannelPipeline</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>] = <span class="symbol"><span class="name"><a href="HttpServer$.html">HttpServer.defaultHandler</a></span></span></span>)</span>
+        <span class="name">HttpServer</span><span class="params">(<span name="codec">codec: <a href="NettyHttpCodec.html" class="extype" name="io.wasted.util.http.NettyHttpCodec">NettyHttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>] = <span class="symbol">NettyHttpCodec[Req, Resp]()</span></span>, <span name="httpValidateHeaders">httpValidateHeaders: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol"><span class="name"><a href="../../../package.html">Netty.eventLoop</a></span></span></span>, <span name="customPipeline">customPipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="HttpServer$.html">HttpServer.defaultHandler</a></span></span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@&lt;init&gt;(codec:io.wasted.util.http.HttpCodec[Req],httpValidateHeaders:Boolean,tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,sendAllocator:io.netty.buffer.ByteBufAllocator,recvAllocator:io.netty.channel.RecvByteBufAllocator,parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup,pipeline:io.netty.channel.ChannelPipeline=&gt;Unit,handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@&lt;init&gt;(codec:io.wasted.util.http.NettyHttpCodec[Req,Resp],httpValidateHeaders:Boolean,tcpConnectTimeout:com.twitter.util.Duration,tcpKeepAlive:Boolean,reuseAddr:Boolean,tcpNoDelay:Boolean,soLinger:Int,sendAllocator:io.netty.buffer.ByteBufAllocator,recvAllocator:io.netty.channel.RecvByteBufAllocator,parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup,customPipeline:io.netty.channel.Channel=&gt;Unit,handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">httpValidateHeaders</dt><dd class="cmt"><p>Validate HTTP Headers</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">httpValidateHeaders</dt><dd class="cmt"><p>Validate HTTP Headers</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">customPipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -187,25 +187,42 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#bind" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="bind(addr:java.net.InetSocketAddress):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="bind(InetSocketAddress):HttpServer[Req]"></a>
+    </li><li name="io.wasted.util.NettyServerBuilder#bind" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bind(addr:java.net.InetSocketAddress):T"></a>
+      <a id="bind(InetSocketAddress):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">bind</span><span class="params">(<span name="addr">addr: <span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">bind</span><span class="params">(<span name="addr">addr: <span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@bind(addr:java.net.InetSocketAddress):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@bind(addr:java.net.InetSocketAddress):T" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Bind synchronous onto the given Socket Address</p><div class="fullcomment"><div class="comment cmt"><p>Bind synchronous onto the given Socket Address</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>Inet Socket Address to listen on</p></dd><dt>returns</dt><dd class="cmt"><p>this HttpServer for chained calling
-</p></dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#childLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.NettyServerBuilder#chan" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="chan:io.netty.bootstrap.ServerBootstrap"></a>
+      <a id="chan:ServerBootstrap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">chan</span><span class="result">: <span class="extype" name="io.netty.bootstrap.ServerBootstrap">ServerBootstrap</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@chan:io.netty.bootstrap.ServerBootstrap" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd><dt>Definition Classes</dt><dd><a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#childLoop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="childLoop:io.netty.channel.EventLoopGroup"></a>
       <a id="childLoop:EventLoopGroup"></a>
       <h4 class="signature">
@@ -221,7 +238,7 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Netty Event-Loop for Children</p>
+      <p class="shortcomment cmt">Netty Event-Loop for Children</p><div class="fullcomment"><div class="comment cmt"><p>Netty Event-Loop for Children</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -245,23 +262,40 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="codec:io.wasted.util.http.HttpCodec[Req]"></a>
-      <a id="codec:HttpCodec[Req]"></a>
+    </li><li name="io.wasted.util.http.HttpServer#codec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="codec:io.wasted.util.http.NettyHttpCodec[Req,Resp]"></a>
+      <a id="codec:NettyHttpCodec[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">codec</span><span class="result">: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">codec</span><span class="result">: <a href="NettyHttpCodec.html" class="extype" name="io.wasted.util.http.NettyHttpCodec">NettyHttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@codec:io.wasted.util.http.HttpCodec[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@codec:io.wasted.util.http.NettyHttpCodec[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Http Codec</p>
+      <p class="shortcomment cmt">Http Codec</p><div class="fullcomment"><div class="comment cmt"><p>Http Codec</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#customPipeline" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="customPipeline:io.netty.channel.Channel=&gt;Unit"></a>
+      <a id="customPipeline:(Channel)⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">customPipeline</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@customPipeline:io.netty.channel.Channel=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Setup extra handlers on the Netty Pipeline</p>
     </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="debug(msg:=&gt;String,x:Any*):Unit"></a>
       <a id="debug(⇒String,Any*):Unit"></a>
@@ -355,37 +389,38 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#handle" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]"></a>
-      <a id="handle:(Channel,Future[Req])⇒Future[HttpResponse]"></a>
+    </li><li name="io.wasted.util.http.HttpServer#handle" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]"></a>
+      <a id="handle:(Channel,Future[Req])⇒Future[Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">handle</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]</span>
+        <span class="name">handle</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Service to handle HttpRequests
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Service to handle HttpRequests
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
     </li><li name="io.wasted.util.http.HttpServer#handler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="handler((Channel,Future[Req])⇒Future[HttpResponse]):HttpServer[Req]"></a>
+      <a id="handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="handler((Channel,Future[Req])⇒Future[Resp]):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">handler</span><span class="params">(<span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.netty.handler.codec.http.HttpResponse">HttpResponse</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">handler</span><span class="params">(<span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[io.netty.handler.codec.http.HttpResponse]):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@handler(handle:(io.netty.channel.Channel,com.twitter.util.Future[Req])=&gt;com.twitter.util.Future[Resp]):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -511,7 +546,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#parentLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.HttpServer#parentLoop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="parentLoop:io.netty.channel.EventLoopGroup"></a>
       <a id="parentLoop:EventLoopGroup"></a>
       <h4 class="signature">
@@ -527,25 +562,25 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Netty Event-Loop for Parents</p>
-    </li><li name="io.wasted.util.http.HttpServer#pipeline" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="pipeline:io.netty.channel.ChannelPipeline=&gt;Unit"></a>
-      <a id="pipeline:(ChannelPipeline)⇒Unit"></a>
+      <p class="shortcomment cmt">Netty Event-Loop for Parents</p><div class="fullcomment"><div class="comment cmt"><p>Netty Event-Loop for Parents</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#pipeline" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipeline:io.netty.channel.Channel=&gt;Unit"></a>
+      <a id="pipeline:(Channel)⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">pipeline</span><span class="result">: (<span class="extype" name="io.netty.channel.ChannelPipeline">ChannelPipeline</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">pipeline</span><span class="result">: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@pipeline:io.netty.channel.ChannelPipeline=&gt;Unit" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@pipeline:io.netty.channel.Channel=&gt;Unit" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Setup extra handlers on the Netty Pipeline</p>
-    </li><li name="io.wasted.util.http.HttpServer#recvAllocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#recvAllocator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="recvAllocator:io.netty.channel.RecvByteBufAllocator"></a>
       <a id="recvAllocator:RecvByteBufAllocator"></a>
       <h4 class="signature">
@@ -561,8 +596,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">ByteBuf recv Allocator</p>
-    </li><li name="io.wasted.util.http.HttpServer#reuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">ByteBuf recv Allocator</p><div class="fullcomment"><div class="comment cmt"><p>ByteBuf recv Allocator</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#reuseAddr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reuseAddr:Boolean"></a>
       <a id="reuseAddr:Boolean"></a>
       <h4 class="signature">
@@ -578,8 +613,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Reuse-Address</p>
-    </li><li name="io.wasted.util.http.HttpServer#sendAllocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Reuse-Address</p><div class="fullcomment"><div class="comment cmt"><p>Reuse-Address</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#sendAllocator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sendAllocator:io.netty.buffer.ByteBufAllocator"></a>
       <a id="sendAllocator:ByteBufAllocator"></a>
       <h4 class="signature">
@@ -595,8 +630,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">ByteBuf send Allocator</p>
-    </li><li name="io.wasted.util.http.HttpServer#shutdown" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">ByteBuf send Allocator</p><div class="fullcomment"><div class="comment cmt"><p>ByteBuf send Allocator</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.NettyServerBuilder#shutdown" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shutdown():Unit"></a>
       <a id="shutdown():Unit"></a>
       <h4 class="signature">
@@ -613,8 +648,9 @@
       </a>
     </span>
       <p class="shortcomment cmt">Shutdown this server and unbind all listeners
-</p>
-    </li><li name="io.wasted.util.http.HttpServer#soLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+</p><div class="fullcomment"><div class="comment cmt"><p>Shutdown this server and unbind all listeners
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#soLinger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="soLinger:Int"></a>
       <a id="soLinger:Int"></a>
       <h4 class="signature">
@@ -630,7 +666,24 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">soLinger</p>
+      <p class="shortcomment cmt">soLinger</p><div class="fullcomment"><div class="comment cmt"><p>soLinger</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.NettyServerBuilder#srv" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="srv:io.netty.bootstrap.ServerBootstrap"></a>
+      <a id="srv:ServerBootstrap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">srv</span><span class="result">: <span class="extype" name="io.netty.bootstrap.ServerBootstrap">ServerBootstrap</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@srv:io.netty.bootstrap.ServerBootstrap" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd><dt>Definition Classes</dt><dd><a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
     </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="submitException(trace:String):Unit"></a>
       <a id="submitException(String):Unit"></a>
@@ -666,7 +719,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.wasted.util.http.HttpServer#tcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.wasted.util.http.HttpServer#tcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="tcpConnectTimeout:com.twitter.util.Duration"></a>
       <a id="tcpConnectTimeout:Duration"></a>
       <h4 class="signature">
@@ -682,8 +735,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">TCP Connect Timeout</p>
-    </li><li name="io.wasted.util.http.HttpServer#tcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">TCP Connect Timeout</p><div class="fullcomment"><div class="comment cmt"><p>TCP Connect Timeout</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#tcpKeepAlive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="tcpKeepAlive:Boolean"></a>
       <a id="tcpKeepAlive:Boolean"></a>
       <h4 class="signature">
@@ -699,8 +752,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">TCP KeepAlive</p>
-    </li><li name="io.wasted.util.http.HttpServer#tcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">TCP KeepAlive</p><div class="fullcomment"><div class="comment cmt"><p>TCP KeepAlive</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.http.HttpServer#tcpNoDelay" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="tcpNoDelay:Boolean"></a>
       <a id="tcpNoDelay:Boolean"></a>
       <h4 class="signature">
@@ -716,25 +769,25 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">TCP No-Delay</p>
-    </li><li name="io.wasted.util.http.HttpServer#unbind" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unbind(addr:java.net.InetSocketAddress):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="unbind(InetSocketAddress):HttpServer[Req]"></a>
+      <p class="shortcomment cmt">TCP No-Delay</p><div class="fullcomment"><div class="comment cmt"><p>TCP No-Delay</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a> → <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
+    </li><li name="io.wasted.util.NettyServerBuilder#unbind" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="unbind(addr:java.net.InetSocketAddress):T"></a>
+      <a id="unbind(InetSocketAddress):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unbind</span><span class="params">(<span name="addr">addr: <span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">unbind</span><span class="params">(<span name="addr">addr: <span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@unbind(addr:java.net.InetSocketAddress):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@unbind(addr:java.net.InetSocketAddress):T" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Unbind synchronous from the given Socket Address</p><div class="fullcomment"><div class="comment cmt"><p>Unbind synchronous from the given Socket Address</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>Inet Socket Address to unbind from</p></dd><dt>returns</dt><dd class="cmt"><p>this HttpServer for chained calling
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -823,188 +876,171 @@
       <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="io.wasted.util.http.HttpServer#withChildLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withChildLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withChildLoop(EventLoopGroup):HttpServer[Req]"></a>
+      <a id="withChildLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withChildLoop(EventLoopGroup):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withChildLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withChildLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withChildLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withChildLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withEventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withEventLoop(parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withEventLoop(EventLoopGroup,EventLoopGroup):HttpServer[Req]"></a>
+      <a id="withEventLoop(parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withEventLoop(EventLoopGroup,EventLoopGroup):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withEventLoop</span><span class="params">(<span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withEventLoop</span><span class="params">(<span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withEventLoop(parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withEventLoop(parentLoop:io.netty.channel.EventLoopGroup,childLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withEventLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withEventLoop(EventLoopGroup):HttpServer[Req]"></a>
+      <a id="withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withEventLoop(EventLoopGroup):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withEventLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withEventLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withEventLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withParentLoop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withParentLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withParentLoop(EventLoopGroup):HttpServer[Req]"></a>
+      <a id="withParentLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withParentLoop(EventLoopGroup):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withParentLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withParentLoop</span><span class="params">(<span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withParentLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withParentLoop(eventLoop:io.netty.channel.EventLoopGroup):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withPipeline" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withPipeline(pipeline:io.netty.channel.ChannelPipeline=&gt;Unit):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withPipeline((ChannelPipeline)⇒Unit):HttpServer[Req]"></a>
+      <a id="withPipeline(pipeline:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withPipeline((Channel)⇒Unit):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withPipeline</span><span class="params">(<span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.ChannelPipeline">ChannelPipeline</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withPipeline</span><span class="params">(<span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withPipeline(pipeline:io.netty.channel.ChannelPipeline=&gt;Unit):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withPipeline(pipeline:io.netty.channel.Channel=&gt;Unit):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withReuseAddr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withReuseAddr(Boolean):HttpServer[Req]"></a>
+      <a id="withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withReuseAddr(Boolean):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withReuseAddr</span><span class="params">(<span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withReuseAddr</span><span class="params">(<span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withReuseAddr(reuseAddr:Boolean):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withSoLinger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withSoLinger(soLinger:Int):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withSoLinger(Int):HttpServer[Req]"></a>
+      <a id="withSoLinger(soLinger:Int):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withSoLinger(Int):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withSoLinger</span><span class="params">(<span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withSoLinger</span><span class="params">(<span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withSoLinger(soLinger:Int):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="io.wasted.util.http.HttpServer#withSpecifics" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withSpecifics(codec:io.wasted.util.http.HttpCodec[Req]):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withSpecifics(HttpCodec[Req]):HttpServer[Req]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">withSpecifics</span><span class="params">(<span name="codec">codec: <a href="HttpCodec.html" class="extype" name="io.wasted.util.http.HttpCodec">HttpCodec</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withSpecifics(codec:io.wasted.util.http.HttpCodec[Req]):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withSoLinger(soLinger:Int):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withTcpConnectTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withTcpConnectTimeout(Duration):HttpServer[Req]"></a>
+      <a id="withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withTcpConnectTimeout(Duration):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpConnectTimeout</span><span class="params">(<span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withTcpConnectTimeout</span><span class="params">(<span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpConnectTimeout(tcpConnectTimeout:com.twitter.util.Duration):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withTcpKeepAlive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withTcpKeepAlive(Boolean):HttpServer[Req]"></a>
+      <a id="withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withTcpKeepAlive(Boolean):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpKeepAlive</span><span class="params">(<span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withTcpKeepAlive</span><span class="params">(<span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpKeepAlive(tcpKeepAlive:Boolean):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="io.wasted.util.http.HttpServer#withTcpNoDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpServer[Req]"></a>
-      <a id="withTcpNoDelay(Boolean):HttpServer[Req]"></a>
+      <a id="withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpServer[Req,Resp]"></a>
+      <a id="withTcpNoDelay(Boolean):HttpServer[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withTcpNoDelay</span><span class="params">(<span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>]</span>
+        <span class="name">withTcpNoDelay</span><span class="params">(<span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpServer[Req]" title="Permalink" target="_top">
+      <a href="../../../../index.html#io.wasted.util.http.HttpServer@withTcpNoDelay(tcpNoDelay:Boolean):io.wasted.util.http.HttpServer[Req,Resp]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -1026,6 +1062,8 @@
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="io.wasted.util.NettyServerBuilder">
+              <h3>Inherited from <a href="../NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="" class="extype" name="io.wasted.util.http.HttpServer">HttpServer</a>[<span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.http.HttpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.http.HttpServer.Resp">Resp</span>]</h3>
             </div><div class="parent" name="io.wasted.util.Logger">
               <h3>Inherited from <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
             </div><div class="parent" name="scala.AnyRef">

@@ -47,13 +47,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">WheelTimer</span>
+        <span class="name">WheelTimer</span><span class="result"> extends <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a>, <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span>, <span class="extype" name="io.netty.util.Timer">Timer</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -71,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.WheelTimer"><span>WheelTimer</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.WheelTimer"><span>WheelTimer</span></li><li class="in" name="io.wasted.util.WheelTimer"><span>WheelTimer</span></li><li class="in" name="io.netty.util.HashedWheelTimer"><span>HashedWheelTimer</span></li><li class="in" name="io.netty.util.Timer"><span>Timer</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -148,23 +148,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.WheelTimer#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply():io.wasted.util.WheelTimer"></a>
-      <a id="apply():WheelTimer"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer$@apply():io.wasted.util.WheelTimer" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -330,6 +313,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.netty.util.HashedWheelTimer#newTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newTimeout(x$1:io.netty.util.TimerTask,x$2:Long,x$3:java.util.concurrent.TimeUnit):io.netty.util.Timeout"></a>
+      <a id="newTimeout(TimerTask,Long,TimeUnit):Timeout"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newTimeout</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.util.TimerTask">TimerTask</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg2">arg2: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <span class="extype" name="io.netty.util.Timeout">Timeout</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.WheelTimer$@newTimeout(x$1:io.netty.util.TimerTask,x$2:Long,x$3:java.util.concurrent.TimeUnit):io.netty.util.Timeout" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer → Timer</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -364,6 +364,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.netty.util.HashedWheelTimer#start" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="start():Unit"></a>
+      <a id="start():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">start</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.WheelTimer$@start():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer</dd></dl></div>
+    </li><li name="io.netty.util.HashedWheelTimer#stop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stop():java.util.Set[io.netty.util.Timeout]"></a>
+      <a id="stop():Set[Timeout]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stop</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.Set">Set</span>[<span class="extype" name="io.netty.util.Timeout">Timeout</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.WheelTimer$@stop():java.util.Set[io.netty.util.Timeout]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer → Timer</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -398,6 +432,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.wasted.util.WheelTimer#twitter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="twitter:com.twitter.util.JavaTimer"></a>
+      <a id="twitter:JavaTimer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">twitter</span><span class="result">: <span class="extype" name="com.twitter.util.JavaTimer">JavaTimer</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.WheelTimer$@twitter:com.twitter.util.JavaTimer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -476,7 +527,13 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="io.wasted.util.WheelTimer">
+              <h3>Inherited from <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></h3>
+            </div><div class="parent" name="io.netty.util.HashedWheelTimer">
+              <h3>Inherited from <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></h3>
+            </div><div class="parent" name="io.netty.util.Timer">
+              <h3>Inherited from <span class="extype" name="io.netty.util.Timer">Timer</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>WheelTimer - io.wasted.util.WheelTimer</title>
-          <meta name="description" content="WheelTimer - io.wasted.util.WheelTimer" />
-          <meta name="keywords" content="WheelTimer io.wasted.util.WheelTimer" />
+          <title>NettyCodec - io.wasted.util.NettyCodec</title>
+          <meta name="description" content="NettyCodec - io.wasted.util.NettyCodec" />
+          <meta name="keywords" content="NettyCodec io.wasted.util.NettyCodec" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'io.wasted.util.WheelTimer';
+            var hash = 'io.wasted.util.NettyCodec';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,14 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="WheelTimer$.html" title="See companion object"><img src="../../../lib/class_to_object_big.png" /></a>
+        <img src="../../../lib/trait_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a>.<a href="package.html" class="extype" name="io.wasted.util">util</a></p>
-        <h1><a href="WheelTimer$.html" title="See companion object">WheelTimer</a></h1><h3><span class="morelinks"><div>
-            Related Docs:
-            <a href="WheelTimer$.html" title="See companion object">object WheelTimer</a>
-            | <a href="package.html" class="extype" name="io.wasted.util">package util</a>
+        <h1>NettyCodec</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="io.wasted.util">package util</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -44,19 +42,19 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">WheelTimer</span><span class="result"> extends <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></span>
+        <span class="name">NettyCodec</span><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span>, <span class="extype" name="io.netty.util.Timer">Timer</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="WheelTimer$.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></div>
+            <div class="subClasses hiddenContent"><a href="NettyByteArrayCodec.html" class="extype" name="io.wasted.util.NettyByteArrayCodec">NettyByteArrayCodec</a>, <a href="http/NettyHttpCodec.html" class="extype" name="io.wasted.util.http.NettyHttpCodec">NettyHttpCodec</a>, <a href="NettyStringCodec.html" class="extype" name="io.wasted.util.NettyStringCodec">NettyStringCodec</a>, <a href="http/NettyWebSocketCodec.html" class="extype" name="io.wasted.util.http.NettyWebSocketCodec">NettyWebSocketCodec</a></div>
           </div></div>
         
 
@@ -74,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.WheelTimer"><span>WheelTimer</span></li><li class="in" name="io.netty.util.HashedWheelTimer"><span>HashedWheelTimer</span></li><li class="in" name="io.netty.util.Timer"><span>Timer</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.NettyCodec"><span>NettyCodec</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -92,21 +90,98 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="io.wasted.util.WheelTimer#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(timerMillis:Int,wheelSize:Int):io.wasted.util.WheelTimer"></a>
-      <a id="&lt;init&gt;:WheelTimer"></a>
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="io.wasted.util.NettyCodec#clientConnected" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="clientConnected(channel:io.netty.channel.Channel,request:Req):com.twitter.util.Future[Resp]"></a>
+      <a id="clientConnected(Channel,Req):Future[Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">WheelTimer</span><span class="params">(<span name="timerMillis">timerMillis: <span class="extype" name="scala.Int">Int</span></span>, <span name="wheelSize">wheelSize: <span class="extype" name="scala.Int">Int</span></span>)</span>
+        <span class="name">clientConnected</span><span class="params">(<span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>, <span name="request">request: <span class="extype" name="io.wasted.util.NettyCodec.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyCodec.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@&lt;init&gt;(timerMillis:Int,wheelSize:Int):io.wasted.util.WheelTimer" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@clientConnected(channel:io.netty.channel.Channel,request:Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Gets called once the TCP Connection has been established
+with this being the API Client connecting to a Server</p><div class="fullcomment"><div class="comment cmt"><p>Gets called once the TCP Connection has been established
+with this being the API Client connecting to a Server</p></div><dl class="paramcmts block"><dt class="param">channel</dt><dd class="cmt"><p>Channel we're connected to</p></dd><dt class="param">request</dt><dd class="cmt"><p>Request object we want to use</p></dd><dt>returns</dt><dd class="cmt"><p>Future Response
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyCodec#clientPipeline" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="clientPipeline(channel:io.netty.channel.Channel):Unit"></a>
+      <a id="clientPipeline(Channel):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clientPipeline</span><span class="params">(<span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@clientPipeline(channel:io.netty.channel.Channel):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets up basic Client-Pipeline for this Codec</p><div class="fullcomment"><div class="comment cmt"><p>Sets up basic Client-Pipeline for this Codec</p></div><dl class="paramcmts block"><dt class="param">channel</dt><dd class="cmt"><p>Channel to apply the Pipeline to
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyCodec#readTimeout" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="readTimeout:Option[com.twitter.util.Duration]"></a>
+      <a id="readTimeout:Option[Duration]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readTimeout</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@readTimeout:Option[com.twitter.util.Duration]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyCodec#serverPipeline" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="serverPipeline(channel:io.netty.channel.Channel):Unit"></a>
+      <a id="serverPipeline(Channel):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">serverPipeline</span><span class="params">(<span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@serverPipeline(channel:io.netty.channel.Channel):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets up basic Server-Pipeline for this Codec</p><div class="fullcomment"><div class="comment cmt"><p>Sets up basic Server-Pipeline for this Codec</p></div><dl class="paramcmts block"><dt class="param">channel</dt><dd class="cmt"><p>Channel to apply the Pipeline to
+</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyCodec#writeTimeout" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="writeTimeout:Option[com.twitter.util.Duration]"></a>
+      <a id="writeTimeout:Option[Duration]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeTimeout</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@writeTimeout:Option[com.twitter.util.Duration]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -114,12 +189,8 @@
     </li></ol>
             </div>
 
-        
-
-        
-
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
@@ -132,7 +203,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -149,7 +220,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@##():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@##():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -166,7 +237,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -183,7 +254,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -200,7 +271,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@clone():Object" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@clone():Object" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -223,7 +294,7 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -240,7 +311,7 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -257,7 +328,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -280,7 +351,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -297,7 +368,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -314,7 +385,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -331,28 +402,11 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.netty.util.HashedWheelTimer#newTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="newTimeout(x$1:io.netty.util.TimerTask,x$2:Long,x$3:java.util.concurrent.TimeUnit):io.netty.util.Timeout"></a>
-      <a id="newTimeout(TimerTask,Long,TimeUnit):Timeout"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">newTimeout</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.netty.util.TimerTask">TimerTask</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg2">arg2: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <span class="extype" name="io.netty.util.Timeout">Timeout</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@newTimeout(x$1:io.netty.util.TimerTask,x$2:Long,x$3:java.util.concurrent.TimeUnit):io.netty.util.Timeout" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer → Timer</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -365,7 +419,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@notify():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -382,45 +436,11 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="io.netty.util.HashedWheelTimer#start" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="start():Unit"></a>
-      <a id="start():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">start</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@start():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer</dd></dl></div>
-    </li><li name="io.netty.util.HashedWheelTimer#stop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stop():java.util.Set[io.netty.util.Timeout]"></a>
-      <a id="stop():Set[Timeout]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">stop</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.Set">Set</span>[<span class="extype" name="io.netty.util.Timeout">Timeout</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@stop():java.util.Set[io.netty.util.Timeout]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HashedWheelTimer → Timer</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -433,7 +453,7 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -450,28 +470,11 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@toString():String" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@toString():String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.WheelTimer#twitter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="twitter:com.twitter.util.JavaTimer"></a>
-      <a id="twitter:JavaTimer"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">twitter</span><span class="result">: <span class="extype" name="com.twitter.util.JavaTimer">JavaTimer</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@twitter:com.twitter.util.JavaTimer" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -484,7 +487,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@wait():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -507,7 +510,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -530,7 +533,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.WheelTimer@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyCodec@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -550,11 +553,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="io.netty.util.HashedWheelTimer">
-              <h3>Inherited from <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></h3>
-            </div><div class="parent" name="io.netty.util.Timer">
-              <h3>Inherited from <span class="extype" name="io.netty.util.Timer">Timer</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
