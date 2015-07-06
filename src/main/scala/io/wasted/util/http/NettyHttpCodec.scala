@@ -136,7 +136,7 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
           case msg: ByteBufHolder => msg.content.retain()
           case _ =>
         }
-        result.setValue(msg)
+        if (!result.isDefined) result.setValue(msg)
         if (keepAlive && HttpHeaders.isKeepAlive(request)) {} else channel.close()
       }
     })
