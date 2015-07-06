@@ -84,7 +84,19 @@ trait NettyClientBuilder[Req, Resp] {
    * @param uri What could this be?
    * @return Future Channel
    */
-  def open(uri: java.net.URI, req: Req): Future[Resp] = {
+  def open(uri: java.net.URI, req: Req): Future[Resp] = open(uri.toString, req)
+
+  /**
+   * Open a connection to the given URI.
+   * The request to generate the response should be used to prepare
+   * the request only once the connection is established.
+   * This reduces the context-switching for allocation/deallocation
+   * on failed connects.
+   *
+   * @param uri What could this be?
+   * @return Future Channel
+   */
+  def open(uri: String, req: Req): Future[Resp] = {
     // we start at -1 for the first and not-retried-request
     val counter = new AtomicInteger()
 
@@ -117,7 +129,20 @@ trait NettyClientBuilder[Req, Resp] {
    * @param req Request object
    * @return Future Resp
    */
-  def write(uri: java.net.URI, req: () => Req): Future[Resp] = {
+  def write(uri: java.net.URI, req: () => Req): Future[Resp] = write(uri.toString, req)
+
+  /**
+   * Write a Request directly through to the given URI.
+   * The request to generate the response should be used to prepare
+   * the request only once the connection is established.
+   * This reduces the context-switching for allocation/deallocation
+   * on failed connects.
+   *
+   * @param uri What could this be?
+   * @param req Request object
+   * @return Future Resp
+   */
+  def write(uri: String, req: () => Req): Future[Resp] = {
     // we start at -1 for the first and not-retried-request
     val counter = new AtomicInteger()
     val request = req()
@@ -147,7 +172,7 @@ trait NettyClientBuilder[Req, Resp] {
    * @param counter Request counter
    * @return Future Resp
    */
-  protected[this] def run(uri: java.net.URI, req: Req, counter: AtomicInteger): Future[Resp] = {
+  protected[this] def run(uri: String, req: Req, counter: AtomicInteger): Future[Resp] = {
     // If it's a bytebuffer, retain it for the outbound handler
     req match {
       case bb: ByteBuf => bb.retain()
@@ -173,7 +198,7 @@ trait NettyClientBuilder[Req, Resp] {
    * @param uri URI we want to connect to
    * @return Future Channel
    */
-  protected[this] def getConnection(uri: java.net.URI): Future[Channel] = {
+  protected[this] def getConnection(uri: String): Future[Channel] = {
     // TODO this is not implemented yet, looking for a nice way to keep track of connections
     connect(uri)
   }
@@ -183,11 +208,13 @@ trait NettyClientBuilder[Req, Resp] {
    * @param uri URI we want to connect to
    * @return Future Channel
    */
-  protected[this] def connect(uri: java.net.URI): Future[Channel] = {
+  protected[this] def connect(uri: String): Future[Channel] = {
     val connectPromise = Promise[Channel]()
 
+    val safeUri = new java.net.URI(uri.split("/", 4).take(3).mkString("/"))
+
     val connected = remote match {
-      case Nil => bootstrap.clone().connect(uri.getHost, getPort(uri))
+      case Nil => bootstrap.clone().connect(safeUri.getHost, getPort(safeUri))
       case hosts =>
         // round robin connection
         val sock = hosts((requestCounter.incrementAndGet() % hosts.length).toInt)
