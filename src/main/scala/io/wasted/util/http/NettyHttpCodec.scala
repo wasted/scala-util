@@ -71,12 +71,13 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
     sslCtx.foreach(e => p.addLast(HttpServer.Handlers.ssl, e.newHandler(channel.alloc())))
     val maxInitialBytes = maxInitialLineLength.inBytes.toInt
     val maxHeaderBytes = maxHeaderSize.inBytes.toInt
+    val maxContentLength = this.maxResponseSize.inBytes.toInt
     p.addLast(HttpServer.Handlers.codec, new HttpServerCodec(maxInitialBytes, maxHeaderBytes, maxChunkSize.inBytes.toInt))
     if (compressionLevel > 0) {
       p.addLast(HttpServer.Handlers.compressor, new HttpContentCompressor(compressionLevel))
     }
     if (chunking && !chunked) {
-      p.addLast(HttpServer.Handlers.dechunker, new HttpObjectAggregator(maxChunkSize.inBytes.toInt))
+      p.addLast(HttpServer.Handlers.dechunker, new HttpObjectAggregator(maxContentLength))
     }
   }
 
@@ -90,9 +91,10 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
     val maxInitialBytes = this.maxInitialLineLength.inBytes.toInt
     val maxHeaderBytes = this.maxHeaderSize.inBytes.toInt
     val maxChunkSize = this.maxChunkSize.inBytes.toInt
+    val maxContentLength = this.maxResponseSize.inBytes.toInt
     pipeline.addLast(HttpClient.Handlers.codec, new HttpClientCodec(maxInitialBytes, maxHeaderBytes, maxChunkSize))
     if (chunking && !chunked) {
-      pipeline.addLast(HttpClient.Handlers.aggregator, new HttpObjectAggregator(maxChunkSize))
+      pipeline.addLast(HttpClient.Handlers.aggregator, new HttpObjectAggregator(maxContentLength))
     }
     if (decompression) {
       pipeline.addLast(HttpClient.Handlers.decompressor, new HttpContentDecompressor())
