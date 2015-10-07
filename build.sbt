@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.2.1",
   "commons-codec" % "commons-codec" % "1.10",
   "com.google.guava" % "guava" % "18.0",
-  "io.netty" % "netty-all" % "4.0.31.Final",
+  "io.netty" % "netty-all" % "4.0.32.Final",
   "org.javassist" % "javassist" % "3.18.2-GA",
   "com.google.code.findbugs" % "jsr305" % "1.3.+",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value
