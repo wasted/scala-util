@@ -8,17 +8,16 @@ version := scala.io.Source.fromFile("version").mkString.trim
 
 scalaVersion := "2.11.7"
 
-crossScalaVersions := Seq("2.10.5", "2.11.7")
+crossScalaVersions := Seq("2.10.6", "2.11.7")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-language:postfixOps", "-language:implicitConversions")
 
 libraryDependencies ++= Seq(
-  "com.twitter" %% "util-core" % "6.23.0",
+  "com.twitter" %% "util-core" % "6.30.0",
   "ch.qos.logback" % "logback-classic" % "1.1.2",
   "com.typesafe" % "config" % "1.2.1",
-  "commons-codec" % "commons-codec" % "1.10",
   "com.google.guava" % "guava" % "18.0",
-  "io.netty" % "netty-all" % "4.0.32.Final",
+  "io.netty" % "netty-all" % "4.0.33.Final",
   "org.javassist" % "javassist" % "3.18.2-GA",
   "com.google.code.findbugs" % "jsr305" % "1.3.+",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value
@@ -62,3 +61,5 @@ resolvers ++= Seq(
   "Typesafe Maven Repo" at "http://repo.typesafe.com/typesafe/releases/",
   "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 )
+
+isSnapshot := true

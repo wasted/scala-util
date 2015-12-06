@@ -1,18 +1,20 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 root=$(
 	cd $(dirname $(readlink $0 || echo $0))/..
 	pwd
 )
 
-sbtver=0.13.8
-sbtjar=sbt-launch.jar
-sbtsum=00672c01d5beea62928e33cdeae7b46b
+sbtver=0.13.9
+sbtjar=sbt/bin/sbt-launch.jar
+sbtsum=767d963ed266459aa8bf32184599786d
+
+mkdir -p target
 
 function download {
-	echo "downloading ${sbtjar}" 1>&2
-	wget -q "http://dl.bintray.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${sbtver}/jars/${sbtjar}"
-	mkdir -p target/ && mv ${sbtjar} target/${sbtjar}
+	echo "downloading sbt $sbtver" 1>&2
+	curl -L -o target/sbt-${sbtver}.tgz "https://dl.bintray.com/sbt/native-packages/sbt/${sbtver}/sbt-${sbtver}.tgz"
+	tar -zxpf target/sbt-${sbtver}.tgz -C target/
 }
 
 function sbtjar_md5 {
@@ -28,8 +30,6 @@ test -f "target/${sbtjar}" || exit 1
 jarmd5=$(sbtjar_md5)
 if [ "${jarmd5}" != "${sbtsum}" ]; then
 	echo "Bad MD5 checksum on ${sbtjar}!" 1>&2
-	echo "Moving current sbt-launch.jar to sbt-launch.jar.old!" 1>&2
-	mv "target/${sbtjar}" "target/${sbtjar}.old"
 	download
 
 	jarmd5=$(sbtjar_md5)
@@ -39,14 +39,18 @@ if [ "${jarmd5}" != "${sbtsum}" ]; then
 	fi
 fi
 
-SBT_OPTS="-Xms128M -Xmx1G"
-SBT_CMD=$@
+test -f ~/.sbtconfig && . ~/.sbtconfig
 
-java -ea -server -Xmx512M						\
-	-XX:+AggressiveOpts						\
-	-XX:+OptimizeStringConcat					\
-	-XX:+UseConcMarkSweepGC						\
-	-XX:+CMSParallelRemarkEnabled					\
-	-XX:+CMSClassUnloadingEnabled					\
-	-jar target/${sbtjar} $@
+if [ -f /usr/jrebel/jrebel.jar ]; then
+	JREBEL="-noverify -javaagent:/usr/jrebel/jrebel.jar -Drebel.lift_plugin=true"
+fi
+
+java -ea -server $SBT_OPTS $JAVA_OPTS $JREBEL		\
+	-XX:+AggressiveOpts             		\
+	-XX:+OptimizeStringConcat			\
+	-XX:+UseConcMarkSweepGC               		\
+	-Xms128M					\
+	-Xmx2G						\
+	-Djava.net.preferIPv4Stack=true                 \
+	-jar target/$sbtjar "$@"
 
