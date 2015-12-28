@@ -1,6 +1,6 @@
 package io.wasted.util.http
 
-import java.net.{ InetAddress, InetSocketAddress }
+import java.net.{URI, InetAddress, InetSocketAddress}
 
 import com.twitter.util.{ Duration, Future }
 import io.netty.buffer._
@@ -113,6 +113,21 @@ case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = N
       headers.foreach(f => req.headers.set(f._1, f._2))
       req
     })
+  }
+
+  /**
+    * Allow for sending raw http requests
+    * @param req big mystery
+    * @param hostAndPort optional host and port to send to
+    */
+  def raw(req: HttpRequest, hostAndPort: Option[(String, Int)]): Future[T] = {
+    assert(remote.nonEmpty || hostAndPort.isDefined, "Either remotes need to be specified on creation or hostAndPort needs to be given")
+    val whereTo = hostAndPort.getOrElse {
+      val r = remote.head
+      r.getHostName -> r.getPort
+    }
+    val proto = if (codec.sslCtx.isDefined) "https" else "http"
+    write(new URI(proto + "://" + whereTo._1 + ":" + whereTo._2), () => req)
   }
 
   /**
