@@ -120,7 +120,7 @@ case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = N
     * @param req big mystery
     * @param hostAndPort optional host and port to send to
     */
-  def raw(req: HttpRequest, hostAndPort: Option[(String, Int)]): Future[T] = {
+  def raw(req: HttpRequest, hostAndPort: Option[(String, Int)] = None): Future[T] = {
     assert(remote.nonEmpty || hostAndPort.isDefined, "Either remotes need to be specified on creation or hostAndPort needs to be given")
     val whereTo = hostAndPort.getOrElse {
       val r = remote.head
