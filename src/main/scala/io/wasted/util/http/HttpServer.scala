@@ -54,8 +54,8 @@ final case class HttpServer[Req <: HttpMessage, Resp <: HttpResponse](codec: Net
                                                                       reuseAddr: Boolean = true,
                                                                       tcpNoDelay: Boolean = true,
                                                                       soLinger: Int = 0,
-                                                                      sendAllocator: ByteBufAllocator = UnpooledByteBufAllocator.DEFAULT,
-                                                                      recvAllocator: RecvByteBufAllocator = AdaptiveRecvByteBufAllocator.DEFAULT,
+                                                                      sendAllocator: ByteBufAllocator = PooledByteBufAllocator.DEFAULT,
+                                                                      recvAllocator: RecvByteBufAllocator = new AdaptiveRecvByteBufAllocator,
                                                                       parentLoop: EventLoopGroup = Netty.eventLoop,
                                                                       childLoop: EventLoopGroup = Netty.eventLoop,
                                                                       customPipeline: Channel => Unit = p => (),
@@ -98,12 +98,12 @@ final case class HttpServer[Req <: HttpMessage, Resp <: HttpResponse](codec: Net
         }.map {
           case resp: HttpResponse =>
             val ka = {
-              if (HttpHeaders.isKeepAlive(req)) HttpHeaders.Values.KEEP_ALIVE
-              else HttpHeaders.Values.CLOSE
+              if (HttpUtil.isKeepAlive(req)) HttpHeaderValues.KEEP_ALIVE
+              else HttpHeaderValues.CLOSE
             }
-            resp.headers().set(HttpHeaders.Names.CONNECTION, ka)
+            resp.headers().set(HttpHeaderNames.CONNECTION, ka)
             val written = ctx.channel().writeAndFlush(resp)
-            if (!HttpHeaders.isKeepAlive(req)) written.addListener(HttpServer.closeListener)
+            if (!HttpUtil.isKeepAlive(req)) written.addListener(HttpServer.closeListener)
           case resp => ctx.channel().writeAndFlush(resp)
         } ensure (req match {
           case holder: ByteBufHolder => holder.release()

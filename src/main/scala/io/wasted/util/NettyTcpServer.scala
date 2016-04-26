@@ -2,7 +2,7 @@ package io.wasted.util
 
 import com.twitter.conversions.time._
 import com.twitter.util.{ Duration, Future }
-import io.netty.buffer.{ ByteBuf, ByteBufAllocator, UnpooledByteBufAllocator }
+import io.netty.buffer.{ PooledByteBufAllocator, ByteBuf, ByteBufAllocator }
 import io.netty.channel._
 
 object NettyTcpServer {
@@ -32,8 +32,8 @@ case class NettyTcpServer[Req, Resp](codec: NettyCodec[Req, Resp],
                                      reuseAddr: Boolean = true,
                                      tcpNoDelay: Boolean = true,
                                      soLinger: Int = 0,
-                                     sendAllocator: ByteBufAllocator = UnpooledByteBufAllocator.DEFAULT,
-                                     recvAllocator: RecvByteBufAllocator = AdaptiveRecvByteBufAllocator.DEFAULT,
+                                     sendAllocator: ByteBufAllocator = PooledByteBufAllocator.DEFAULT,
+                                     recvAllocator: RecvByteBufAllocator = new AdaptiveRecvByteBufAllocator,
                                      parentLoop: EventLoopGroup = Netty.eventLoop,
                                      childLoop: EventLoopGroup = Netty.eventLoop,
                                      pipeline: Channel => Unit = p => (),

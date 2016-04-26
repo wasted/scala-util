@@ -140,7 +140,7 @@ final case class NettyWebSocketCodec(compressionLevel: Int = -1,
       channel.pipeline.addFirst(HttpClient.Handlers.readTimeout, new ReadTimeoutHandler(readTimeout.inMillis.toInt) {
         override def readTimedOut(ctx: ChannelHandlerContext) {
           ctx.channel.close
-          result.setException(new IllegalStateException("Read timed out"))
+          if (!result.isDefined) result.setException(new IllegalStateException("Read timed out"))
         }
       })
     }
@@ -148,13 +148,14 @@ final case class NettyWebSocketCodec(compressionLevel: Int = -1,
       channel.pipeline.addFirst(HttpClient.Handlers.writeTimeout, new WriteTimeoutHandler(writeTimeout.inMillis.toInt) {
         override def writeTimedOut(ctx: ChannelHandlerContext) {
           ctx.channel.close
-          result.setException(new IllegalStateException("Write timed out"))
+          if (!result.isDefined) result.setException(new IllegalStateException("Write timed out"))
         }
       })
     }
 
+    val headers = new DefaultHttpHeaders()
     val handshaker = WebSocketClientHandshakerFactory.newHandshaker(
-      uri, WebSocketVersion.V13, subprotocols, true, new DefaultHttpHeaders())
+      uri, WebSocketVersion.V13, subprotocols, true, headers)
 
     channel.pipeline().addLast(new SimpleChannelInboundHandler[FullHttpResponse] {
       override def channelRead0(ctx: ChannelHandlerContext, msg: FullHttpResponse) {
@@ -191,7 +192,7 @@ final case class NettyWebSocketCodec(compressionLevel: Int = -1,
           // we wire the outbound broker to send to the channel
           outBroker.recv.foreach(buf => channel.writeAndFlush(buf))
           // return the future
-          result.setValue(NettyWebSocketChannel(outBroker, inBroker.recv, channel))
+          if (!result.isDefined) result.setValue(NettyWebSocketChannel(outBroker, inBroker.recv, channel))
         }, 100.millis)
       }
     })

@@ -4,7 +4,7 @@ import java.net.InetSocketAddress
 import java.util.concurrent.atomic.AtomicReference
 
 import com.twitter.conversions.time._
-import com.twitter.util.Await
+import com.twitter.util.{ Promise, Await }
 import io.netty.buffer.{ ByteBufHolder, Unpooled }
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
@@ -22,53 +22,51 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
 
   before {
     val socket1 = WebSocketHandler().onConnect { chan =>
-      println("client connected")
+      info("client connected")
     }.onDisconnect { chan =>
-      println("client disconnected")
+      info("client disconnected")
     }.handler {
       case (ctx, f) => println(f); Some(f.map(_.retain()))
     }.withHttpHandler {
       case (ctx, req) =>
         req.map { req =>
-          val resp = if (req.getUri == "/bad_gw") HttpResponseStatus.BAD_GATEWAY else HttpResponseStatus.ACCEPTED
+          val resp = if (req.uri == "/bad_gw") HttpResponseStatus.BAD_GATEWAY else HttpResponseStatus.ACCEPTED
           responder(resp)
         }
     }
     server.set(HttpServer(NettyHttpCodec[FullHttpRequest, HttpResponse]())
-      .handler(socket1.dispatch).bind(new InetSocketAddress(8886)))
+      .handler(socket1.dispatch).bind(new InetSocketAddress(8890)))
   }
 
-  var stringT = "worked"
-  var string = ""
+  val stringT = "worked"
+  val string = new Promise[String]
   val bytesT: Array[Byte] = stringT.getBytes(CharsetUtil.UTF_8)
-  var bytes = ""
+  val bytes = new Promise[String]
 
-  val headers = Map(HttpHeaders.Names.UPGRADE -> HttpHeaders.Values.WEBSOCKET)
-  val uri = new java.net.URI("http://localhost:8886/")
+  val uri = new java.net.URI("http://localhost:8890/")
 
   "GET Request to embedded WebSocket Server" should {
     "open connection and send some data, close after" in {
-      val client1 = Await.result(WebSocketClient().connectTo("127.0.0.1", 8886).open(uri, uri), 5.seconds)
+      val client1 = Await.result(WebSocketClient().connectTo("127.0.0.1", 8890).open(uri, uri), 5.seconds)
       client1.foreach {
         case text: TextWebSocketFrame =>
-          string = text.text()
+          string.setValue(text.text())
           text.release()
         case binary: BinaryWebSocketFrame =>
-          bytes = binary.content().toString(CharsetUtil.UTF_8)
+          bytes.setValue(binary.content().toString(CharsetUtil.UTF_8))
           binary.release()
         case bbh: ByteBufHolder => bbh.release()
-        case x => println("got " + x)
+        case x => error("got " + x)
       }
       client1 ! new TextWebSocketFrame(stringT)
       client1 ! new BinaryWebSocketFrame(Unpooled.wrappedBuffer(bytesT).slice())
-      Thread.sleep(500)
-      //client1.close()
+      Thread.sleep(5000)
     }
     "returns the same string as sent" in {
-      assert(string equals stringT)
+      assert(Await.result(string, 2.seconds) equals stringT)
     }
     "returns the same string as sent in bytes" in {
-      assert(bytes equals stringT)
+      assert(Await.result(bytes, 2.seconds) equals stringT)
     }
   }
 
@@ -77,12 +75,12 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
   "GET Request to embedded Http Server" should {
     "returns status code ACCEPTED" in {
       val resp2: FullHttpResponse = Await.result(client2.get(uri), 5.seconds)
-      assert(resp2.getStatus equals HttpResponseStatus.ACCEPTED)
+      assert(resp2.status() equals HttpResponseStatus.ACCEPTED)
       resp2.content.release()
     }
     "returns status code BAD_GATEWAY" in {
-      val resp3: FullHttpResponse = Await.result(client2.get(new java.net.URI("http://localhost:8886/bad_gw")), 5.seconds)
-      assert(resp3.getStatus equals HttpResponseStatus.BAD_GATEWAY)
+      val resp3: FullHttpResponse = Await.result(client2.get(new java.net.URI("http://localhost:8890/bad_gw")), 5.seconds)
+      assert(resp3.status() equals HttpResponseStatus.BAD_GATEWAY)
       resp3.content.release()
     }
   }

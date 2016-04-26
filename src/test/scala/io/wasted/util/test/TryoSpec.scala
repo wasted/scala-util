@@ -12,7 +12,7 @@ class TryoSpec extends WordSpec {
   }
 
   "Tryo(\"success!\")" should {
-    "have also a result containing 'success!'" in { assert(tryoSuccess == Some("success!")) }
+    "have also a result containing 'success!'" in { assert(tryoSuccess.contains("success!")) }
   }
 }
 

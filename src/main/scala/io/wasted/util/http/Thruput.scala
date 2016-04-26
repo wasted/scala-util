@@ -190,7 +190,7 @@ class Thruput(
    * Connect this Thruput Client Socket.
    */
   def connect() {
-    if (channel != None) return
+    if (channel.isDefined) return
     TP !! Connect
   }
 
@@ -247,7 +247,7 @@ class ThruputResponseAdapter(uri: URI, client: Thruput) extends SimpleChannelInb
         client.info("WebSocket Client connected!")
         client.handshakeFuture.setSuccess()
       case response: FullHttpResponse =>
-        throw new Exception("Unexpected FullHttpResponse (status=" + response.getStatus + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
+        throw new Exception("Unexpected FullHttpResponse (status=" + response.status() + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ")")
       case frame: BinaryWebSocketFrame =>
         client.debug("WebSocket BinaryFrame received message")
         client.callback(frame.retain)

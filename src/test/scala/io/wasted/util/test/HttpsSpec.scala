@@ -27,7 +27,7 @@ class HttpsSpec extends WordSpec with ScalaFutures with AsyncAssertions with Bef
       .handler {
         case (ctx, req) =>
           req.map { req =>
-            val resp = if (req.getUri == "/bad_gw") HttpResponseStatus.BAD_GATEWAY else HttpResponseStatus.ACCEPTED
+            val resp = if (req.uri() == "/bad_gw") HttpResponseStatus.BAD_GATEWAY else HttpResponseStatus.ACCEPTED
             responder(resp)
           }
       }.bind(new InetSocketAddress(8889)))
@@ -51,12 +51,12 @@ class HttpsSpec extends WordSpec with ScalaFutures with AsyncAssertions with Bef
   "GET Request to embedded Http Server" should {
     "returns status code ACCEPTED" in {
       val resp3: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://localhost:8889/")), 5.seconds)
-      assert(resp3.getStatus equals HttpResponseStatus.ACCEPTED)
+      assert(resp3.status() equals HttpResponseStatus.ACCEPTED)
       resp3.content.release()
     }
     "returns status code BAD_GATEWAY" in {
       val resp4: FullHttpResponse = Await.result(client1.get(new java.net.URI("https://localhost:8889/bad_gw")), 5.seconds)
-      assert(resp4.getStatus equals HttpResponseStatus.BAD_GATEWAY)
+      assert(resp4.status() equals HttpResponseStatus.BAD_GATEWAY)
       resp4.content.release()
     }
   }

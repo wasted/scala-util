@@ -22,8 +22,8 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
     server.set(HttpServer[FullHttpRequest, HttpResponse](NettyHttpCodec()).handler {
       case (ctx, req) =>
         req.map { req =>
-          if (req.getUri == "/sleep") Thread.sleep(50)
-          if (req.getUri == "/retry") {
+          if (req.uri() == "/sleep") Thread.sleep(50)
+          if (req.uri() == "/retry") {
             val reqCount = counter.incrementAndGet()
             println("at " + reqCount)
             if (reqCount <= retries) Thread.sleep(50)
@@ -54,7 +54,7 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
     client1.withGlobalTimeout(Duration(90, TimeUnit.MILLISECONDS))
       .get(new java.net.URI("http://localhost:8887/sleep")).map { resp =>
         w {
-          resp.getStatus.code() should equal(200)
+          resp.status().code() should equal(200)
         }
         resp.release()
         w.dismiss()
@@ -69,7 +69,7 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
       .withGlobalTimeout(Duration(190, TimeUnit.MILLISECONDS))
       .get(new java.net.URI("http://localhost:8887/retry")).map { resp =>
         w {
-          resp.getStatus.code() should equal(200)
+          resp.status().code() should equal(200)
         }
         resp.release()
         w.dismiss()

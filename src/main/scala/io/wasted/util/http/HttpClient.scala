@@ -86,8 +86,8 @@ case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = N
   def get(url: java.net.URI, headers: Map[String, String] = Map()): Future[T] = {
     val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
     val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, path)
-    req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
-    req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
+    req.headers.set(HttpHeaderNames.HOST, url.getHost + getPortString(url))
+    req.headers.set(HttpHeaderNames.CONNECTION, HttpHeaderValues.CLOSE)
     headers.foreach(f => req.headers.set(f._1, f._2))
     write(url, () => req)
   }
@@ -106,10 +106,10 @@ case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = N
       val content = Unpooled.wrappedBuffer(body.toArray)
       val path = if (url.getQuery == null) url.getPath else url.getPath + "?" + url.getQuery
       val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, path, content)
-      req.headers.set(HttpHeaders.Names.HOST, url.getHost + getPortString(url))
-      req.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-      req.headers.set(HttpHeaders.Names.CONTENT_TYPE, mime)
-      req.headers.set(HttpHeaders.Names.CONTENT_LENGTH, content.readableBytes)
+      req.headers.set(HttpHeaderNames.HOST, url.getHost + getPortString(url))
+      req.headers.set(HttpHeaderNames.CONNECTION, HttpHeaderValues.CLOSE)
+      req.headers.set(HttpHeaderNames.CONTENT_TYPE, mime)
+      req.headers.set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes)
       headers.foreach(f => req.headers.set(f._1, f._2))
       req
     })

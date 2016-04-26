@@ -5,7 +5,7 @@ import java.net.{ InetAddress, InetSocketAddress, UnknownHostException }
 /**
  * Helper Object for creating InetPrefix-objects.
  */
-object InetPrefix {
+object InetPrefix extends Logger {
   def apply(prefix: InetAddress, prefixLen: Int): InetPrefix = {
     if (prefix.getAddress.length == 16)
       new Inet6Prefix(prefix, prefixLen)
@@ -37,7 +37,7 @@ object InetPrefix {
 /**
  * Common Interface for both protocol types.
  */
-trait InetPrefix extends Logger {
+trait InetPrefix {
 
   /**
    * Base IP-Address of the Prefix.
@@ -81,7 +81,7 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
     var netmask: Array[Byte] = Array.fill(16)(0xff.toByte)
     val maskBytes: Int = prefixLen / 8
     if (maskBytes < 16) netmask(maskBytes) = (0xff.toByte << 8 - (prefixLen % 8)).toByte
-    for (i <- maskBytes + 1 to (128 / 8) - 1) netmask(i) = 0
+    for (i <- maskBytes + 1 until 128 / 8) netmask(i) = 0
     netmask
   }
 
@@ -90,12 +90,12 @@ class Inet6Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
    */
   def contains(addr: InetAddress): Boolean = {
     if (addr.getAddress.length != 16) {
-      debug("Inet6Prefix cannot check against Inet4Address")
+      InetPrefix.debug("Inet6Prefix cannot check against Inet4Address")
       return false
     }
 
     val candidate = addr.getAddress
-    for (i <- 0 to netmask.length - 1)
+    for (i <- netmask.indices)
       if ((candidate(i) & netmask(i)) != (network(i) & netmask(i))) return false
     true
   }
@@ -124,7 +124,7 @@ class Inet4Prefix(val prefix: InetAddress, val prefixLen: Int) extends InetPrefi
    */
   def contains(addr: InetAddress): Boolean = {
     if (addr.getAddress.length != 4) {
-      debug("Inet4Prefix cannot check against Inet6Address")
+      InetPrefix.debug("Inet4Prefix cannot check against Inet6Address")
       return false
     }
 

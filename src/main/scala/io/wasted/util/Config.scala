@@ -131,7 +131,7 @@ object Config {
    * @return Seq of Strings
    */
   def getStringList(name: String): Option[Seq[String]] = Tryo(conf.getStringList(name).asScala.toList) match {
-    case Some(l: List[String] @unchecked) if l.length > 0 => Some(l)
+    case Some(l: List[String] @unchecked) if l.nonEmpty => Some(l)
     case _ => None
   }
 
@@ -160,7 +160,7 @@ object Config {
    */
   def getInetAddrList(name: String): Option[Seq[InetSocketAddress]] = {
     val valid = Tryo(conf.getStringList(name).asScala.toList) getOrElse List() flatMap InetPrefix.stringToInetAddr
-    if (valid.length > 0) Some(valid) else None
+    if (valid.nonEmpty) Some(valid) else None
   }
 
   /**

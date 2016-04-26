@@ -46,16 +46,16 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
   def dispatch(channel: Channel, freq: Future[Req]): Future[HttpResponse] = freq.flatMap { req =>
     val headers = headerParser.get(req)
     // WebSocket Handshake needed?
-    if (headers.get(HttpHeaders.Names.UPGRADE).exists(_.toLowerCase == HttpHeaders.Values.WEBSOCKET.toLowerCase)) {
-      val securityProto = headers.get(HttpHeaders.Names.SEC_WEBSOCKET_PROTOCOL).orNull
+    if (headers.get(HttpHeaderNames.UPGRADE).exists(_.toLowerCase == HttpHeaderValues.WEBSOCKET.toLowerCase.toString)) {
+      val securityProto = headers.get(HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL).orNull
       val proto = if (channel.pipeline.get(HttpServer.Handlers.ssl) != null) "wss" else "ws"
       // Handshake
-      val location = proto + "://" + req.headers.get(HttpHeaders.Names.HOST) + "/"
+      val location = proto + "://" + req.headers.get(HttpHeaderNames.HOST) + "/"
       val factory = new WebSocketServerHandshakerFactory(location, securityProto, false)
       val handshaker: WebSocketServerHandshaker = factory.newHandshaker(req)
       if (handshaker == null) {
         val resp = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.UPGRADE_REQUIRED)
-        resp.headers().set(HttpHeaders.Names.SEC_WEBSOCKET_VERSION, WebSocketVersion.V13.toHttpHeaderValue)
+        resp.headers().set(HttpHeaderNames.SEC_WEBSOCKET_VERSION, WebSocketVersion.V13.toHttpHeaderValue)
         Future.value(resp)
       } else {
         val promise = channel.newPromise()
@@ -64,7 +64,7 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
         handshaker.handshake(channel, req, wsHandshakerHeaders, promise)
         Future.value(null)
       }
-    } else if (req.getMethod == HttpMethod.OPTIONS) {
+    } else if (req.method() == HttpMethod.OPTIONS) {
       // Handles WebSocket and CORS OPTIONS requests
       val resp = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
       headers.cors.foreach {

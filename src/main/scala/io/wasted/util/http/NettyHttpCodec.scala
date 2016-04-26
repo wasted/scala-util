@@ -139,12 +139,12 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
           case _ =>
         }
         if (!result.isDefined) result.setValue(msg)
-        if (keepAlive && HttpHeaders.isKeepAlive(request)) {} else channel.close()
+        if (keepAlive && HttpUtil.isKeepAlive(request)) {} else channel.close()
       }
     })
-    val ka = if (keepAlive && HttpHeaders.isKeepAlive(request))
-      HttpHeaders.Values.KEEP_ALIVE else HttpHeaders.Values.CLOSE
-    request.headers().set(HttpHeaders.Names.CONNECTION, ka)
+    val ka = if (keepAlive && HttpUtil.isKeepAlive(request))
+      HttpHeaderValues.KEEP_ALIVE else HttpHeaderValues.CLOSE
+    request.headers().set(HttpHeaderNames.CONNECTION, ka)
 
     channel.writeAndFlush(request)
     result

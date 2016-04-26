@@ -1,7 +1,6 @@
 package io.wasted.util.apn
 
 import java.net.InetSocketAddress
-import java.nio.ByteOrder
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.atomic.AtomicReference
 
@@ -148,8 +147,7 @@ class PushService(params: Params, eventLoop: EventLoopGroup = Netty.eventLoop)(i
     if (!queued.isEmpty) write(channel)
   }
 
-  override def channelRead0(ctx: ChannelHandlerContext, buffer: ByteBuf) {
-    val buf = buffer.order(ByteOrder.BIG_ENDIAN)
+  override def channelRead0(ctx: ChannelHandlerContext, buf: ByteBuf) {
     val readable = buf.readableBytes
     val cmd = buf.getByte(0).toInt
     if (readable == 6 && cmd == 8) {

@@ -1,7 +1,5 @@
 package io.wasted.util.apn
 
-import java.nio.ByteOrder
-
 import io.netty.buffer._
 import io.netty.handler.ssl.SslContextBuilder
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
@@ -22,7 +20,7 @@ case class Message(deviceToken: String, payload: String, prio: Int, ident: Int =
     val deviceTokenA: Array[Byte] = deviceToken.grouped(2).map(Integer.valueOf(_, 16).toByte).toArray
 
     // take 5 times the max-message length
-    val bufData = Unpooled.buffer(5 * (3 + 32 + 256 + 4 + 4 + 1)).order(ByteOrder.BIG_ENDIAN)
+    val bufData = PooledByteBufAllocator.DEFAULT.buffer(5 * (3 + 32 + 256 + 4 + 4 + 1))
 
     // frame data
     bufData.writeByte(1.toByte)
@@ -46,7 +44,7 @@ case class Message(deviceToken: String, payload: String, prio: Int, ident: Int =
     bufData.writeByte(prio.toByte) // prio
 
     // 5 bytes for the header
-    val bufHeader = Unpooled.buffer(55).order(ByteOrder.BIG_ENDIAN)
+    val bufHeader = PooledByteBufAllocator.DEFAULT.buffer(55)
     bufHeader.writeByte(2.toByte) // Command set version 2
     bufHeader.writeInt(bufData.readableBytes)
 
