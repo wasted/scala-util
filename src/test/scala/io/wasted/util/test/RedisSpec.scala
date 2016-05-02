@@ -122,9 +122,9 @@ class RedisSpec extends WordSpec with Logger {
       assert(Await.result(client.hLen("hash")) == 3L, "hash count is wrong")
     }
 
-    "hStrLen" in {
+    /*"hStrLen" in {
       assert(Await.result(client.hStrLen("hash", "key1")) == 6L, "hash string length is wrong")
-    }
+    }*/
 
     "hSetNx" in {
       assert(Await.result(client.hSetNx("hash", "key1", "value2")) == false, "hash set nx should not have set")
@@ -139,6 +139,78 @@ class RedisSpec extends WordSpec with Logger {
     "hDel" in {
       assert(Await.result(client.hDel("hash", "nx")) == false, "Should not be able to delete key2")
       assert(Await.result(client.hDel("hash", "key1")), "Should be able to delete key1")
+    }
+
+    "mSetNx" in {
+      assert(Await.result(client.mSetNx(Map("mset1" -> "shit", "int" -> "5"))) == false, "Should not have set because of int!")
+    }
+
+    "mSet" in {
+      Await.result(client.mSet(Map("mset1" -> "shit", "mset2" -> "shit")))
+    }
+
+    "mGet" in {
+      assert(Await.result(client.mGet("mset1", "mset2")) == Map("mset1" -> "shit", "mset2" -> "shit"), "Should have returned our Map")
+    }
+
+    "sAdd" in {
+      assert(Await.result(client.sAdd("set1", "member1", "member2", "member3")) == 3, "wrong number of members added")
+      assert(Await.result(client.sAdd("set2", "member1", "member2")) == 2, "wrong number of members added")
+
+    }
+
+    "sCard" in {
+      assert(Await.result(client.sCard("set1")) == 3, "wrong number of members counted")
+      assert(Await.result(client.sCard("set2")) == 2, "wrong number of members counted")
+    }
+
+    "sDiff" in {
+      assert(Await.result(client.sDiff("set1", "set2")) == List("member3"), "wrong number of members diff'd")
+    }
+
+    "sDiffStore" in {
+      assert(Await.result(client.sDiffStore("setDiff", "set1", "set2")) == 1, "wrong number of members diff'd")
+    }
+
+    "sInter" in {
+      assert(Await.result(client.sInter("set1", "set2")) == List("member2", "member1"), "wrong number of members inter'd")
+    }
+
+    "sInterStore" in {
+      assert(Await.result(client.sInterStore("setInter", "set1", "set2")) == 2, "wrong number of members inter'd")
+    }
+
+    "sIsMember" in {
+      assert(Await.result(client.sIsMember("set1", "member3")), "member3 not member of set1")
+      assert(Await.result(client.sIsMember("set2", "member3")) == false, "member3 is member of set2")
+    }
+
+    "sMembers" in {
+      assert(Await.result(client.sMembers("setInter")) == List("member2", "member1"), "wrong members inter'd")
+    }
+
+    "sMove" in {
+      assert(Await.result(client.sMove("set1", "set2", "member3")), "did not move member3")
+    }
+
+    "sPop" in {
+      assert(Await.result(client.sPop("set1")).startsWith("member"), "wrong member pop'd")
+    }
+
+    "sRandMember" in {
+      assert(Await.result(client.sRandMember("setInter")).startsWith("member"), "wrong members rand'd")
+    }
+
+    "sRem" in {
+      assert(Await.result(client.sRem("set2", "member3")) == 1, "other than 1 member rm'd")
+    }
+
+    "sUnion" in {
+      assert(Await.result(client.sUnion("set1", "set2")) == List("member2", "member1"), "wrong number of members union'd")
+    }
+
+    "sUnionInter" in {
+      assert(Await.result(client.sUnionStore("setInter", "set1", "set2")) == 2, "wrong number of members union'd")
     }
 
     "flushDB" in {
