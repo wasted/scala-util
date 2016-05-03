@@ -112,6 +112,10 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def del(key: String): Future[Long] = int(send("del", key))
   def del(key: Seq[String]): Future[Long] = int(send("del", key))
 
+  def setEx(key: String, value: String, ttl: Long): Future[Unit] = unit(send("setex", Seq(key, ttl.toString, value)))
+  def setNx(key: String, value: String): Future[Boolean] = int2bool(send("setnx", key, value))
+  def getSet(key: String, value: String): Future[String] = bstr(send("getset", key, value))
+
   def multi(key: String): Future[Unit] = unit(send("multi", key))
   def discard(key: String): Future[Unit] = unit(send("discard", key))
 
@@ -258,12 +262,9 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
 
 
   def setBit(key: String, value: String): Future[IntegerRedisMessage] = send("setbit", key, value)
-  def setEx(key: String, value: String): Future[IntegerRedisMessage] = send("setex", key, value)
-  def setNx(key: String, value: String): Future[IntegerRedisMessage] = send("setnx", key, value)
   def setRange(key: String, value: String): Future[IntegerRedisMessage] = send("setrange", key, value)
   def getBit(key: String, value: String): Future[IntegerRedisMessage] = send("getbit", key, value)
   def getRange(key: String, value: String): Future[IntegerRedisMessage] = send("getrange", key, value)
-  def getSet(key: String, value: String): Future[IntegerRedisMessage] = send("getset", key, value)
 
   def info(key: String, value: String): Future[IntegerRedisMessage] = send("info", key, value)
   def keys(key: String, value: String): Future[IntegerRedisMessage] = send("keys", key, value)

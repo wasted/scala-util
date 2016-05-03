@@ -210,6 +210,18 @@ class RedisSpec extends WordSpec with Logger {
       assert(Await.result(client.sUnionStore("setInter", "set1" :: "set2" :: Nil)) == 2, "wrong number of members union'd")
     }
 
+    "setEx" in {
+      Await.result(client.setEx("setInter", "new", 5))
+    }
+
+    "setNx" in {
+      assert(Await.result(client.setNx("setInter", "evennever")) == false, "was able to update setInter")
+    }
+
+    "getSet" in {
+      assert(Await.result(client.getSet("setInter", "evennewer")) == "new", "getSet is weird")
+    }
+
     "flushDB" in {
       Await.result(client.flushDB())
     }

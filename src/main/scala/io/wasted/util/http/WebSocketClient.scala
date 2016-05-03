@@ -3,7 +3,7 @@ package http
 
 import java.net.{ InetAddress, InetSocketAddress }
 
-import com.twitter.util.Duration
+import com.twitter.util.{ Duration, Future }
 import io.netty.channel._
 
 /**
@@ -49,6 +49,14 @@ final case class WebSocketClient(codec: NettyWebSocketCodec = NettyWebSocketCode
   def withRetries(retries: Int) = copy(retries = retries)
   def connectTo(host: String, port: Int) = copy(remote = List(new InetSocketAddress(InetAddress.getByName(host), port)))
   def connectTo(hosts: List[InetSocketAddress]) = copy(remote = hosts)
+
+  def open(): Future[NettyWebSocketChannel] = {
+    val rand = scala.util.Random.nextInt(remote.length)
+    val host = remote(rand)
+    val proto = if (codec.sslCtx.isEmpty) "ws" else "wss"
+    val uri = new java.net.URI(proto + "://" + host.getHostString + ":" + host.getPort)
+    open(uri, uri)
+  }
 
   protected def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else url.getScheme match {
     case "http" => 80

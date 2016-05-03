@@ -51,7 +51,7 @@ final case class RedisClient(codec: NettyRedisCodec = NettyRedisCodec(),
   def open(): Future[NettyRedisChannel] = {
     val rand = scala.util.Random.nextInt(remote.length)
     val host = remote(rand)
-    val uri = new java.net.URI("proto://" + host.getHostString + ":" + host.getPort)
+    val uri = new java.net.URI("redis://" + host.getHostString + ":" + host.getPort)
     open(uri, uri)
   }
 }
