@@ -4,16 +4,21 @@
 
 ### We do allow pull requests, but please follow the [contribution guidelines](https://github.com/wasted/scala-util/blob/master/CONTRIBUTING.md).
 
+## Using our repository
 
 ```
   resolvers += "wasted.io/repo" at "http://repo.wasted.io/mvn"
   libraryDependencies += "io.wasted" %% "wasted-util" % "0.12.1"
 ```
 
+## [API Docs](http://wasted.github.com/scala-util/latest/api/#io.wasted.util.package)
+
+## [Examples](https://github.com/wasted/scala-util/tree/master/src/test/scala/io/wasted/util/test)
+
 ## License
 
 ```
-  Copyright 2012, 2013, 2014, 2015 wasted.io Ltd <really@wasted.io>
+  Copyright 2012-2016, wasted.io Ltd <really@wasted.io>
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
