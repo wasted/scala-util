@@ -3,6 +3,7 @@
 *#
 *.sw[op]
 ._*
+README.md.old
 
 # sbt
 sbt-launch.jar*

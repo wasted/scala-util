@@ -4,11 +4,11 @@ package http
 import com.twitter.conversions.storage._
 import com.twitter.util._
 import io.netty.buffer.ByteBufHolder
-import io.netty.channel.{ Channel, ChannelHandlerContext, SimpleChannelInboundHandler }
+import io.netty.channel.{Channel, ChannelHandlerContext, SimpleChannelInboundHandler}
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
-import io.netty.handler.ssl.{ SslContext, SslContextBuilder }
-import io.netty.handler.timeout.{ ReadTimeoutHandler, WriteTimeoutHandler }
+import io.netty.handler.ssl.{SslContext, SslContextBuilder}
+import io.netty.handler.timeout.{ReadTimeoutHandler, WriteTimeoutHandler}
 
 /**
  * wasted.io Scala Http Codec

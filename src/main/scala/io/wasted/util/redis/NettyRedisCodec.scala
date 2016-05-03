@@ -4,10 +4,9 @@ package redis
 import java.util.concurrent.TimeUnit
 
 import com.twitter.concurrent.{Broker, Offer}
-import com.twitter.conversions.storage._
 import com.twitter.conversions.time._
 import com.twitter.util._
-import io.netty.buffer.{ByteBuf, ByteBufUtil}
+import io.netty.buffer.ByteBufUtil
 import io.netty.channel._
 import io.netty.handler.codec.redis._
 import io.netty.util.{CharsetUtil, ReferenceCountUtil}
@@ -111,6 +110,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def set(key: String, value: String): Future[Unit] = unit(send("set", key, value))
   def get(key: String): Future[String] = bstr(send[FullBulkStringRedisMessage]("get", key))
   def del(key: String): Future[Long] = int(send("del", key))
+  def del(key: Seq[String]): Future[Long] = int(send("del", key))
 
   def multi(key: String): Future[Unit] = unit(send("multi", key))
   def discard(key: String): Future[Unit] = unit(send("discard", key))
@@ -140,7 +140,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   //def dump(key: String): Future[Array[Byte]] = send("dump", key)
   def echo(key: String): Future[String] = bstr(send("echo", key))
 
-  def eval(script: String, numKeys: Int, more: String*): Future[IntegerRedisMessage] = send(Seq("eval", script, numKeys.toString) ++ more: _*)
+  def eval(script: String, numKeys: Int, more: Seq[String]): Future[IntegerRedisMessage] = send(Seq("eval", script, numKeys.toString) ++ more: _*)
   //def evalsha(key: String, value: String): Future[IntegerRedisMessage] = send("evalsha", key, value)
   //def exec(key: String, value: String): Future[IntegerRedisMessage] = send("exec", key, value)
   def exists(key: String): Future[Boolean] = int2bool(send("exists", key))
@@ -155,14 +155,15 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def flushDB(): Future[Unit] = unit(send("flushdb"))
 
   def hMSet(key: String, values: Map[String, String]): Future[Unit] = unit(send("hmset", Seq(key)++ values.flatMap(x => List(x._1, x._2))))
-  def hMGet(key: String, fields: String*): Future[Map[String, String]] = bstrarrmap(fields, send("hmget", Seq(key) ++ fields))
+  def hMGet(key: String, fields: Seq[String]): Future[Map[String, String]] = bstrarrmap(fields, send("hmget", Seq(key) ++ fields))
 
   def hSet(key: String, field: String, value: String): Future[Boolean] = int2bool(send("hset", key, field, value))
   def hGet(key: String, field: String): Future[String] = bstr(send("hget", key, field))
   def hGetAll(key: String): Future[Map[String, String]] = bstrmap(send("hgetall", key))
   def hKeys(key: String): Future[Seq[String]] = barray(send("hkeys", key))
   def hVals(key: String): Future[Seq[String]] = barray(send("hvals", key))
-  def hDel(key: String, field: String): Future[Boolean] = int2bool(send("hdel", key, field))
+  def hDel(key: String, field: String): Future[Boolean] = int2bool(send("hdel", Seq(key, field)))
+  def hDel(key: String, fields: Seq[String]): Future[Boolean] = int2bool(send("hdel", Seq(key) ++ fields))
   def hExists(key: String, field: String): Future[Boolean] = int2bool(send("hexists", key, field))
   def hIncrBy(key: String, field: String, value: Long): Future[Long] = int(send("hincrby", key, field, value.toString))
   def hIncrByFloat(key: String, field: String, value: Float): Future[Float] = bstr2float(send("hincrbyfloat", key, field, value.toString))
@@ -171,25 +172,27 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def hStrLen(key: String, field: String): Future[Long] = int(send("hstrlen", key, field))
   //def hScan(key: String, value: String): Future[IntegerRedisMessage] = send("hscan", key, value)
 
-  def mGet(keys: String*): Future[Map[String, String]] = bstrarrmap(keys, send("mget", keys))
+  def mGet(keys: Seq[String]): Future[Map[String, String]] = bstrarrmap(keys, send("mget", keys))
   def mSet(map: Map[String, String]): Future[Unit] = unit(send("mset", map.flatMap(x => List(x._1, x._2)).toSeq))
   def mSetNx(map: Map[String, String]): Future[Boolean] = int2bool(send("msetnx", map.flatMap(x => List(x._1, x._2)).toSeq))
 
-
-  def sAdd(key: String, members: String*): Future[Int] = int(send("sadd", Seq(key) ++ members)).map(_.toInt)
+  def sAdd(key: String, members: Seq[String]): Future[Int] = int(send("sadd", Seq(key) ++ members)).map(_.toInt)
   def sCard(key: String): Future[Long] = int(send("scard", key))
-  def sDiff(key: String, keys: String*): Future[Seq[String]] = barray(send("sdiff", Seq(key) ++ keys))
-  def sDiffStore(destination: String, key: String, keys: String*): Future[Long] = int(send("sdiffstore", Seq(destination, key) ++ keys))
-  def sInter(key: String, keys: String*): Future[Seq[String]] = barray(send("sinter", Seq(key) ++ keys))
-  def sInterStore(destination: String, key: String, keys: String*): Future[Long] = int(send("sinterstore", Seq(destination, key) ++ keys))
+  def sDiff(key: String, key2: String): Future[Seq[String]] = barray(send("sdiff", Seq(key, key2)))
+  def sDiff(key: String, keys: Seq[String]): Future[Seq[String]] = barray(send("sdiff", Seq(key) ++ keys))
+  def sDiffStore(destination: String, key: String, keys: Seq[String]): Future[Long] = int(send("sdiffstore", Seq(destination, key) ++ keys))
+  def sInter(key: String, key2: String): Future[Seq[String]] = barray(send("sinter", Seq(key, key2)))
+  def sInter(key: String, keys: Seq[String]): Future[Seq[String]] = barray(send("sinter", Seq(key) ++ keys))
+  def sInterStore(destination: String, key: String, keys: Seq[String]): Future[Long] = int(send("sinterstore", Seq(destination, key) ++ keys))
   def sIsMember(key: String, member: String): Future[Boolean] = int2bool(send("sismember", key, member))
   def sMembers(key: String): Future[Seq[String]] = barray(send("smembers", key))
   def sMove(source: String, destination: String, key: String): Future[Boolean] = int2bool(send("smove", source, destination, key))
   def sPop(key: String): Future[String] = bstr(send("spop", key))
   def sRandMember(key: String): Future[String] = bstr(send("srandmember", key))
-  def sRem(key: String, members: String*): Future[Int] = int(send("srem", Seq(key) ++ members)).map(_.toInt)
-  def sUnion(key: String, keys: String*): Future[Seq[String]] = barray(send("sunion", Seq(key) ++ keys))
-  def sUnionStore(destination: String, keys: String*): Future[Long] = int(send("sunionstore", Seq(destination) ++ keys))
+  def sRem(key: String, members: Seq[String]): Future[Int] = int(send("srem", Seq(key) ++ members)).map(_.toInt)
+  def sUnion(key: String, keys: Seq[String]): Future[Seq[String]] = barray(send("sunion", Seq(key) ++ keys))
+  def sUnion(key: String, key2: String): Future[Seq[String]] = barray(send("sunion", Seq(key, key2)))
+  def sUnionStore(destination: String, keys: Seq[String]): Future[Long] = int(send("sunionstore", Seq(destination) ++ keys))
   //def sScan(key: String, value: String): Future[IntegerRedisMessage] = send("sscan", key, value)
 
 
@@ -272,7 +275,6 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def persist(key: String, value: String): Future[IntegerRedisMessage] = send("persist", key, value)
   def pubsub(key: String, value: String): Future[IntegerRedisMessage] = send("pubsub", key, value)
   def publish(key: String, value: String): Future[IntegerRedisMessage] = send("publish", key, value)
-  def quit(key: String, value: String): Future[IntegerRedisMessage] = send("quit", key, value)
   def randomKey(key: String, value: String): Future[IntegerRedisMessage] = send("randomkey", key, value)
   def readOnly(key: String, value: String): Future[IntegerRedisMessage] = send("readonly", key, value)
   def readWrite(key: String, value: String): Future[IntegerRedisMessage] = send("readwrite", key, value)

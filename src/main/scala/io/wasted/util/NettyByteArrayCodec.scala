@@ -3,7 +3,7 @@ package io.wasted.util
 import java.util.concurrent.TimeUnit
 
 import com.twitter.concurrent.{ Broker, Offer }
-import com.twitter.util.{ Duration, Future, Promise, Timer }
+import com.twitter.util.{ Duration, Future, Promise }
 import io.netty.buffer.ByteBuf
 import io.netty.channel._
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory

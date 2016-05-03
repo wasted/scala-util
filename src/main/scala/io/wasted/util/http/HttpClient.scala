@@ -1,8 +1,8 @@
 package io.wasted.util.http
 
-import java.net.{URI, InetAddress, InetSocketAddress}
+import java.net.{InetAddress, InetSocketAddress, URI}
 
-import com.twitter.util.{ Duration, Future }
+import com.twitter.util.{Duration, Future}
 import io.netty.buffer._
 import io.netty.channel._
 import io.netty.handler.codec.http._

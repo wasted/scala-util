@@ -3,7 +3,7 @@ package redis
 
 import java.net.{ InetAddress, InetSocketAddress }
 
-import com.twitter.util.Duration
+import com.twitter.util.{ Duration, Future }
 import io.netty.channel._
 
 /**
@@ -47,4 +47,11 @@ final case class RedisClient(codec: NettyRedisCodec = NettyRedisCodec(),
   def connectTo(hosts: List[InetSocketAddress]) = copy(remote = hosts)
 
   protected def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else 6379
+
+  def open(): Future[NettyRedisChannel] = {
+    val rand = scala.util.Random.nextInt(remote.length)
+    val host = remote(rand)
+    val uri = new java.net.URI("proto://" + host.getHostString + ":" + host.getPort)
+    open(uri, uri)
+  }
 }

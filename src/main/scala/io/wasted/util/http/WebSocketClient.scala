@@ -54,4 +54,5 @@ final case class WebSocketClient(codec: NettyWebSocketCodec = NettyWebSocketCode
     case "http" => 80
     case "https" => 443
   }
+
 }

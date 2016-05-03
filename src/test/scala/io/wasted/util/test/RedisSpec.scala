@@ -1,17 +1,14 @@
 package io.wasted.util.test
 
-import java.net.URI
-
 import com.twitter.util.Await
-import io.netty.util.{ CharsetUtil, ReferenceCountUtil }
+import io.netty.util.CharsetUtil
 import io.wasted.util.Logger
 import io.wasted.util.redis._
 import org.scalatest._
 
 class RedisSpec extends WordSpec with Logger {
 
-  val uri = new URI("redis://localhost:6379")
-  val clientF = RedisClient().connectTo("localhost", 6379).open(uri, uri)
+  val clientF = RedisClient().connectTo("localhost", 6379).open()
 
   val baseKey = "mytest"
   val baseStr = "myval"
@@ -87,7 +84,7 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "hMGet" in {
-      assert(Await.result(client.hMGet("hashmap", "key2", "key1")) == Map("key2" -> "value2", "key1" -> "value1"))
+      assert(Await.result(client.hMGet("hashmap", "key2" :: "key1" :: Nil)) == Map("key2" -> "value2", "key1" -> "value1"))
     }
 
     "hSet" in {
@@ -150,12 +147,12 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "mGet" in {
-      assert(Await.result(client.mGet("mset1", "mset2")) == Map("mset1" -> "shit", "mset2" -> "shit"), "Should have returned our Map")
+      assert(Await.result(client.mGet("mset1" :: "mset2" :: Nil)) == Map("mset1" -> "shit", "mset2" -> "shit"), "Should have returned our Map")
     }
 
     "sAdd" in {
-      assert(Await.result(client.sAdd("set1", "member1", "member2", "member3")) == 3, "wrong number of members added")
-      assert(Await.result(client.sAdd("set2", "member1", "member2")) == 2, "wrong number of members added")
+      assert(Await.result(client.sAdd("set1", "member1" :: "member2" :: "member3" :: Nil)) == 3, "wrong number of members added")
+      assert(Await.result(client.sAdd("set2", "member1" :: "member2" :: Nil)) == 2, "wrong number of members added")
 
     }
 
@@ -169,15 +166,15 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "sDiffStore" in {
-      assert(Await.result(client.sDiffStore("setDiff", "set1", "set2")) == 1, "wrong number of members diff'd")
+      assert(Await.result(client.sDiffStore("setDiff", "set1", "set2" :: Nil)) == 1, "wrong number of members diff'd")
     }
 
     "sInter" in {
-      assert(Await.result(client.sInter("set1", "set2")) == List("member2", "member1"), "wrong number of members inter'd")
+      assert(Await.result(client.sInter("set1", "set2")) == List("member1", "member2"), "wrong number of members inter'd")
     }
 
     "sInterStore" in {
-      assert(Await.result(client.sInterStore("setInter", "set1", "set2")) == 2, "wrong number of members inter'd")
+      assert(Await.result(client.sInterStore("setInter", "set1", "set2" :: Nil)) == 2, "wrong number of members inter'd")
     }
 
     "sIsMember" in {
@@ -186,7 +183,7 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "sMembers" in {
-      assert(Await.result(client.sMembers("setInter")) == List("member2", "member1"), "wrong members inter'd")
+      assert(Await.result(client.sMembers("setInter")) == List("member1", "member2"), "wrong members inter'd")
     }
 
     "sMove" in {
@@ -202,15 +199,15 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "sRem" in {
-      assert(Await.result(client.sRem("set2", "member3")) == 1, "other than 1 member rm'd")
+      assert(Await.result(client.sRem("set2", "member3" :: Nil)) == 1, "other than 1 member rm'd")
     }
 
     "sUnion" in {
-      assert(Await.result(client.sUnion("set1", "set2")) == List("member2", "member1"), "wrong number of members union'd")
+      assert(Await.result(client.sUnion("set1", "set2")) == List("member1", "member2"), "wrong number of members union'd")
     }
 
     "sUnionInter" in {
-      assert(Await.result(client.sUnionStore("setInter", "set1", "set2")) == 2, "wrong number of members union'd")
+      assert(Await.result(client.sUnionStore("setInter", "set1" :: "set2" :: Nil)) == 2, "wrong number of members union'd")
     }
 
     "flushDB" in {

@@ -1,7 +1,6 @@
 package io.wasted.util.http
 
 import io.netty.buffer._
-import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.HttpVersion._
 import io.netty.handler.codec.http._
 import io.netty.util.CharsetUtil

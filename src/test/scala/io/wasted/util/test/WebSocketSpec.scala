@@ -4,7 +4,7 @@ import java.net.InetSocketAddress
 import java.util.concurrent.atomic.AtomicReference
 
 import com.twitter.conversions.time._
-import com.twitter.util.{ Promise, Await }
+import com.twitter.util.{ Await, Promise }
 import io.netty.buffer.{ ByteBufHolder, Unpooled }
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
