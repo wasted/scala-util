@@ -113,6 +113,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def del(key: Seq[String]): Future[Long] = int(send("del", key))
 
   def setEx(key: String, value: String, ttl: Long): Future[Unit] = unit(send("setex", Seq(key, ttl.toString, value)))
+  def setEx(key: String, ttl: Long, value: String): Future[Unit] = unit(send("setex", Seq(key, ttl.toString, value)))
   def setNx(key: String, value: String): Future[Boolean] = int2bool(send("setnx", key, value))
   def getSet(key: String, value: String): Future[String] = bstr(send("getset", key, value))
 

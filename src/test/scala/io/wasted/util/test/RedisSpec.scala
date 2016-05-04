@@ -219,7 +219,9 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "getSet" in {
-      assert(Await.result(client.getSet("setInter", "evennewer")) == "new", "getSet is weird")
+      assert(Await.result(client.getSet("setInter", "evennewer")) == "new", "getSet is weir" +
+        "" +
+        "")
     }
 
     "flushDB" in {
