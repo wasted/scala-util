@@ -155,7 +155,7 @@ final case class NettyWebSocketCodec(compressionLevel: Int = -1,
 
     val headers = new DefaultHttpHeaders()
     val handshaker = WebSocketClientHandshakerFactory.newHandshaker(
-      uri, WebSocketVersion.V13, subprotocols, true, headers)
+      uri, WebSocketVersion.V13, subprotocols, allowExtensions, headers)
 
     channel.pipeline().addLast(new SimpleChannelInboundHandler[FullHttpResponse] {
       override def channelRead0(ctx: ChannelHandlerContext, msg: FullHttpResponse) {
