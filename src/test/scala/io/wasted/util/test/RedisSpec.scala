@@ -31,7 +31,7 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "client list" in {
-      Await.result(client.clientList().map(x => warn(x.content().toString(CharsetUtil.UTF_8))))
+      Await.result(client.clientList().map(x => warn(x)))
     }
 
     "dbSize" in {
@@ -76,7 +76,6 @@ class RedisSpec extends WordSpec with Logger {
 
     "ttl" in {
       assert(Await.result(client.ttl("int")) == 5L, "expire did not set correctly to 5")
-      assert(Await.result(client.ttl(baseKey)) >= 9, "expireAt did not set correctly to 10")
     }
 
     "hMSet" in {

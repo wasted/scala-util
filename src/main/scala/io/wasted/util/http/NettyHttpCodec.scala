@@ -9,6 +9,7 @@ import io.netty.handler.codec.http._
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
 import io.netty.handler.ssl.{SslContext, SslContextBuilder}
 import io.netty.handler.timeout.{ReadTimeoutHandler, WriteTimeoutHandler}
+import io.netty.util.ReferenceCountUtil
 
 /**
  * wasted.io Scala Http Codec
@@ -134,11 +135,7 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
       }
 
       def channelRead0(ctx: ChannelHandlerContext, msg: Resp) {
-        msg match {
-          case msg: ByteBufHolder => msg.content.retain()
-          case _ =>
-        }
-        if (!result.isDefined) result.setValue(msg)
+        if (!result.isDefined) result.setValue(ReferenceCountUtil.retain(msg))
         if (keepAlive && HttpUtil.isKeepAlive(request)) {} else channel.close()
       }
     })

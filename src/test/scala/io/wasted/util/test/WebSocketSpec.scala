@@ -8,13 +8,13 @@ import com.twitter.util.{ Await, Promise }
 import io.netty.buffer.{ ByteBufHolder, Unpooled }
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
-import io.netty.util.CharsetUtil
-import io.wasted.util.WheelTimer
+import io.netty.util.{ CharsetUtil, ReferenceCountUtil }
+import io.wasted.util.{ Logger, WheelTimer }
 import io.wasted.util.http._
 import org.scalatest._
 import org.scalatest.concurrent._
 
-class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter {
+class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with BeforeAndAfter with Logger {
   implicit val wheelTimer = WheelTimer
 
   val responder = new HttpResponder("wasted-ws")
@@ -55,8 +55,9 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
         case binary: BinaryWebSocketFrame =>
           bytes.setValue(binary.content().toString(CharsetUtil.UTF_8))
           binary.release()
-        case bbh: ByteBufHolder => bbh.release()
-        case x => error("got " + x)
+        case x =>
+          ReferenceCountUtil.release(x)
+          error("got " + x)
       }
       client1 ! new TextWebSocketFrame(stringT)
       client1 ! new BinaryWebSocketFrame(Unpooled.wrappedBuffer(bytesT).slice())

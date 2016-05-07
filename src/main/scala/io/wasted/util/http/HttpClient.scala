@@ -6,6 +6,7 @@ import com.twitter.util.{Duration, Future}
 import io.netty.buffer._
 import io.netty.channel._
 import io.netty.handler.codec.http._
+import io.netty.util.ReferenceCountUtil
 import io.wasted.util._
 
 object HttpClient {
@@ -122,6 +123,7 @@ case class HttpClient[T <: HttpObject](codec: NettyHttpCodec[HttpRequest, T] = N
     */
   def raw(req: HttpRequest, hostAndPort: Option[(String, Int)] = None): Future[T] = {
     assert(remote.nonEmpty || hostAndPort.isDefined, "Either remotes need to be specified on creation or hostAndPort needs to be given")
+    ReferenceCountUtil.retain(req)
     val whereTo = hostAndPort.getOrElse {
       val r = remote.head
       r.getHostName -> r.getPort

@@ -5,6 +5,7 @@ import com.twitter.util._
 import io.netty.buffer._
 import io.netty.channel._
 import io.netty.handler.codec.http._
+import io.netty.util.ReferenceCountUtil
 import io.wasted.util._
 
 object HttpServer {
@@ -85,10 +86,7 @@ final case class HttpServer[Req <: HttpMessage, Resp <: HttpResponse](codec: Net
       }
 
       def channelRead0(ctx: ChannelHandlerContext, req: Req) {
-        req match {
-          case msg: ByteBufHolder => msg.content.retain()
-          case _ =>
-        }
+        ReferenceCountUtil.retain(req)
         handle(ctx.channel(), Future.value(req)).rescue {
           case t =>
             error(t.getMessage)
@@ -105,9 +103,7 @@ final case class HttpServer[Req <: HttpMessage, Resp <: HttpResponse](codec: Net
             val written = ctx.channel().writeAndFlush(resp)
             if (!HttpUtil.isKeepAlive(req)) written.addListener(HttpServer.closeListener)
           case resp => ctx.channel().writeAndFlush(resp)
-        } ensure (req match {
-          case holder: ByteBufHolder => holder.release()
-        })
+        } ensure (ReferenceCountUtil.release(req))
       }
     })
   }

@@ -6,12 +6,13 @@ import java.util.concurrent.atomic.{ AtomicInteger, AtomicReference }
 
 import com.twitter.util.{ Duration, Future }
 import io.netty.handler.codec.http.{ FullHttpRequest, FullHttpResponse, HttpResponse, HttpResponseStatus }
+import io.wasted.util.Logger
 import io.wasted.util.http._
 import org.scalatest._
 import org.scalatest.concurrent._
 import org.scalatest.time.Span
 
-class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions with BeforeAndAfter {
+class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions with BeforeAndAfter with Logger {
 
   val responder = new HttpResponder("wasted-http")
   val retries = 2
@@ -25,7 +26,7 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
           if (req.uri() == "/sleep") Thread.sleep(50)
           if (req.uri() == "/retry") {
             val reqCount = counter.incrementAndGet()
-            println("at " + reqCount)
+            warn("at " + reqCount)
             if (reqCount <= retries) Thread.sleep(50)
           }
           responder(HttpResponseStatus.OK)
@@ -65,8 +66,8 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
   test("Retry") {
     val w = new Waiter // Do this in the main test thread
     client1.withRetries(retries)
-      .withRequestTimeout(Duration(49, TimeUnit.MILLISECONDS))
-      .withGlobalTimeout(Duration(190, TimeUnit.MILLISECONDS))
+      .withRequestTimeout(Duration(40, TimeUnit.MILLISECONDS))
+      .withGlobalTimeout(Duration(150, TimeUnit.MILLISECONDS))
       .get(new java.net.URI("http://localhost:8887/retry")).map { resp =>
         w {
           resp.status().code() should equal(200)
@@ -74,7 +75,7 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
         resp.release()
         w.dismiss()
       }
-    w.await(timeout(Span(600, org.scalatest.time.Millis)))
+    w.await(timeout(Span(2, org.scalatest.time.Seconds)))
   }
 
   after(server.get.shutdown())

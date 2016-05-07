@@ -14,12 +14,12 @@ import io.netty.util.{CharsetUtil, ReferenceCountUtil}
 import scala.collection.JavaConverters._
 
 /**
- * String Channel
+  * String Channel
   *
   * @param out Outbound Broker
- * @param in Inbound Offer
- * @param channel Netty Channel
- */
+  * @param in Inbound Offer
+  * @param channel Netty Channel
+  */
 final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMessage], private val channel: Channel) extends Logger {
   def close(): Future[Unit] = {
     val closed = Promise[Unit]()
@@ -32,6 +32,20 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
     closed.raiseWithin(Duration(5, TimeUnit.SECONDS))(WheelTimer.twitter)
   }
 
+  private val queue = new Wactor() {
+    override protected def receive: PartialFunction[Any, Any] = {
+      case (p: Promise[RedisMessage], msg: ArrayRedisMessage) =>
+        out ! msg
+        try {
+          val recv = in.syncWait()
+          p.setValue(recv)
+        } catch {
+          case t: Throwable => p.setException(t)
+        }
+      case x => warn("Got unwanted " + x.getClass)
+    }
+  }
+
   val onDisconnect = Promise[Unit]()
   channel.closeFuture().addListener(new ChannelFutureListener {
     override def operationComplete(f: ChannelFuture): Unit = onDisconnect.setDone()
@@ -41,74 +55,84 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   def send[R <: RedisMessage](str: String*): Future[R] = {
     val cmds = str.map(s => new FullBulkStringRedisMessage(ByteBufUtil.writeUtf8(channel.alloc(), s)).asInstanceOf[RedisMessage])
     val msg = new ArrayRedisMessage(cmds.toList.asJava)
-    out ! msg
-    in.sync().flatMap {
-        case a: ErrorRedisMessage =>
-          val f = Future.exception(new Exception(a.toString))
-          ReferenceCountUtil.release(a)
-          f
-        case o: RedisMessage if o.isInstanceOf[R] =>
-          Future.value(ReferenceCountUtil.retain(o.asInstanceOf[R]))
-        case o =>
-          ReferenceCountUtil.release(o)
-          Future.exception(new Exception("Response of type mismatch, got %s.".format(o.getClass.getSimpleName)))
+    val p = Promise[R]
+    queue ! p -> msg
+    p.flatMap {
+      case a: ErrorRedisMessage =>
+        val f = Future.exception(new Exception(a.toString))
+        ReferenceCountUtil.release(a)
+        f
+      case o: RedisMessage if o.isInstanceOf[R] =>
+        Future.value(o.asInstanceOf[R])
+      case o =>
+        ReferenceCountUtil.release(o)
+        Future.exception(new Exception("Response of type mismatch, got %s.".format(o.getClass.getSimpleName)))
     }
   }
 
   // admin commands
-  def clientList(): Future[FullBulkStringRedisMessage] = send("client", "list")
+  def clientList(): Future[String] = bstr(send("client", "list"))
 
 
-  private def int(f: Future[IntegerRedisMessage]): Future[Long] = f.map(_.value())
-  private def int2bool(f: Future[IntegerRedisMessage]): Future[Boolean] = f.map(_.value() > 0)
+  private def int(f: Future[IntegerRedisMessage]): Future[Long] = {
+    f.map(_.value())
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
-  private def str(f: Future[SimpleStringRedisMessage]): Future[String] = f.map(_.content())
+  private def int2bool(f: Future[IntegerRedisMessage]): Future[Boolean] = {
+      f.map(_.value() > 0)
+    }.ensure(f.map(ReferenceCountUtil.release(_)))
 
-  private def unit(f: Future[SimpleStringRedisMessage]): Future[Unit] = f.flatMap(x => Future.Done)
+  private def str(f: Future[SimpleStringRedisMessage]): Future[String] = {
+      f.map(_.content())
+    }.ensure(f.map(ReferenceCountUtil.release(_)))
+
+  private def unit(f: Future[SimpleStringRedisMessage]): Future[Unit] = f.flatMap { x =>
+    ReferenceCountUtil.release(x)
+    Future.Done
+  }
 
   private def bstrarrmap(keys: Seq[String], f: Future[ArrayRedisMessage]): Future[Map[String, String]] = f.map { arm =>
     keys.zipWithIndex.map { case (key, index) =>
       val value = arm.children().get(index).asInstanceOf[FullBulkStringRedisMessage]
-        val e = key -> value.content().toString(CharsetUtil.UTF_8)
+      val e = key -> value.content().toString(CharsetUtil.UTF_8)
       value.release()
-        e
+      e
     }.toMap
-  }
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
   private def bstrmap(f: Future[ArrayRedisMessage]): Future[Map[String, String]] = f.map { arm =>
     arm.children().asScala.grouped(2).map { group =>
       val key = group(0).asInstanceOf[FullBulkStringRedisMessage]
       val value = group(1).asInstanceOf[FullBulkStringRedisMessage]
-        val e = key.content().toString(CharsetUtil.UTF_8) -> value.content().toString(CharsetUtil.UTF_8)
+      val e = key.content().toString(CharsetUtil.UTF_8) -> value.content().toString(CharsetUtil.UTF_8)
       value.release()
       key.release()
-        e
+      e
     }.toMap
-  }
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
   private def barray(f: Future[ArrayRedisMessage]): Future[Seq[String]] = f.map { arm =>
     arm.children().asScala.map { strM =>
-    val value = strM.asInstanceOf[FullBulkStringRedisMessage]
+      val value = strM.asInstanceOf[FullBulkStringRedisMessage]
       val s = value.content().toString(CharsetUtil.UTF_8)
-    value.release()
+      value.release()
       s
     }
-  }
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
   private def bstr(f: Future[FullBulkStringRedisMessage]): Future[String] = f.map { fbsrm =>
-    val s = fbsrm.content().toString(CharsetUtil.UTF_8)
-    fbsrm.release()
-    s
-  }
+    fbsrm.content().toString(CharsetUtil.UTF_8)
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
   private def bstr2float(f: Future[FullBulkStringRedisMessage]): Future[Float] = f.map { fbsrm =>
-    val s = fbsrm.content().toString(CharsetUtil.UTF_8)
-    fbsrm.release()
-    s.toFloat
-  }
+    fbsrm.content().toString(CharsetUtil.UTF_8).toFloat
+  }.ensure(f.map(ReferenceCountUtil.release(_)))
 
   def set(key: String, value: String): Future[Unit] = unit(send("set", key, value))
-  def get(key: String): Future[String] = bstr(send[FullBulkStringRedisMessage]("get", key))
+  def get(key: String): Future[String] = bstr(send[FullBulkStringRedisMessage]("get", key)).flatMap {
+    case res if res.nonEmpty => Future.value(res)
+    case res => Future.exception(throw new IllegalArgumentException("Key does not exist"))
+  }
   def del(key: String): Future[Long] = int(send("del", key))
   def del(key: Seq[String]): Future[Long] = int(send("del", key))
 
@@ -126,12 +150,12 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   //def bgrewriteaof(key: String, value: String): Future[IntegerRedisMessage] = send("bgrewriteaof", key, value)
   //def bgsave(key: String, value: String): Future[IntegerRedisMessage] = send("bgsave", key, value)
   //def bitcount(key: String, value: String): Future[IntegerRedisMessage] = send("bitcount", key, value)
-//def bitop(key: String, value: String): Future[IntegerRedisMessage] = send("bitop", key, value)
-//def bitpos(key: String, value: String): Future[IntegerRedisMessage] = send("bitpos", key, value)
-//def blpop(key: String, value: String): Future[IntegerRedisMessage] = send("blpop", key, value)
-//def brpop(key: String, value: String): Future[IntegerRedisMessage] = send("brpop", key, value)
-//def brpoplpush(key: String, value: String): Future[IntegerRedisMessage] = send("brpoplpush", key, value)
-//def command(key: String, value: String): Future[IntegerRedisMessage] = send("command", key, value)
+  //def bitop(key: String, value: String): Future[IntegerRedisMessage] = send("bitop", key, value)
+  //def bitpos(key: String, value: String): Future[IntegerRedisMessage] = send("bitpos", key, value)
+  //def blpop(key: String, value: String): Future[IntegerRedisMessage] = send("blpop", key, value)
+  //def brpop(key: String, value: String): Future[IntegerRedisMessage] = send("brpop", key, value)
+  //def brpoplpush(key: String, value: String): Future[IntegerRedisMessage] = send("brpoplpush", key, value)
+  //def command(key: String, value: String): Future[IntegerRedisMessage] = send("command", key, value)
   def dbSize(): Future[Long] = int(send("dbsize"))
 
 
@@ -304,27 +328,27 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
 }
 
 /**
- * wasted.io Scala Redis Codec
- *
- * For composition you may use NettyRedisCodec()...
- */
+  * wasted.io Scala Redis Codec
+  *
+  * For composition you may use NettyRedisCodec()...
+  */
 final case class NettyRedisCodec()
   extends NettyCodec[java.net.URI, NettyRedisChannel] {
   val readTimeout: Option[Duration] = None
   val writeTimeout: Option[Duration] = None
 
   /**
-   * Sets up basic Server-Pipeline for this Codec
+    * Sets up basic Server-Pipeline for this Codec
     *
     * @param channel Channel to apply the Pipeline to
-   */
+    */
   def serverPipeline(channel: Channel): Unit = throw new NotImplementedError("Redis Server Codec not implemented")
 
   /**
-   * Sets up basic Redis Pipeline
+    * Sets up basic Redis Pipeline
     *
     * @param channel Channel to apply the Pipeline to
-   */
+    */
   def clientPipeline(channel: Channel): Unit = {
     val p = channel.pipeline()
     p.addLast(new RedisDecoder())
@@ -334,12 +358,12 @@ final case class NettyRedisCodec()
   }
 
   /**
-   * Handle the connected channel and send the request
+    * Handle the connected channel and send the request
     *
     * @param channel Channel we're connected to
-   * @param uri URI We want to use
-   * @return
-   */
+    * @param uri URI We want to use
+    * @return
+    */
   def clientConnected(channel: Channel, uri: java.net.URI): Future[NettyRedisChannel] = {
     val inBroker = new Broker[RedisMessage]
     val outBroker = new Broker[RedisMessage]
@@ -347,7 +371,11 @@ final case class NettyRedisCodec()
     channel.pipeline().addLast("redisHandler", new SimpleChannelInboundHandler[RedisMessage] {
       override def channelRead0(ctx: ChannelHandlerContext, msg: RedisMessage): Unit = {
         // we wire the inbound packet to the Broker
-        inBroker ! msg
+        inBroker ! ReferenceCountUtil.retain(msg)
+      }
+
+      override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable): Unit = {
+        cause.printStackTrace()
       }
     })
 

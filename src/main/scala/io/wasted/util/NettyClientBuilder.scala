@@ -9,6 +9,7 @@ import io.netty.buffer.{ ByteBuf, ByteBufHolder }
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
+import io.netty.util.ReferenceCountUtil
 
 trait NettyClientBuilder[Req, Resp] {
   def codec: NettyCodec[Req, Resp]
@@ -108,7 +109,9 @@ trait NettyClientBuilder[Req, Resp] {
       }
 
       if (count <= retries + 1) result.rescue {
-        case t: Throwable => run()
+        case t: Throwable =>
+          ReferenceCountUtil.retain(req)
+          run()
       }
       else result
     }
@@ -146,23 +149,9 @@ trait NettyClientBuilder[Req, Resp] {
     // we start at -1 for the first and not-retried-request
     val counter = new AtomicInteger()
     val request = req()
-    // If it's a bytebuffer, we save it for later use
-    req match {
-      case bb: ByteBuf => bb.retain()
-      case bbh: ByteBufHolder => bbh.retain()
-      case _ =>
-    }
-
     val result = run(uri, request, counter)
 
-    globalTimeout.map(result.raiseWithin).getOrElse(result).ensure {
-      // release the buffer after we're done
-      request match {
-        case bb: ByteBuf => bb.release()
-        case bbh: ByteBufHolder => bbh.release()
-        case _ =>
-      }
-    }
+    globalTimeout.map(result.raiseWithin).getOrElse(result)
   }
 
   /**
@@ -173,13 +162,6 @@ trait NettyClientBuilder[Req, Resp] {
    * @return Future Resp
    */
   protected[this] def run(uri: String, req: Req, counter: AtomicInteger): Future[Resp] = {
-    // If it's a bytebuffer, retain it for the outbound handler
-    req match {
-      case bb: ByteBuf => bb.retain()
-      case bbh: ByteBufHolder => bbh.retain()
-      case _ =>
-    }
-
     val count = counter.incrementAndGet()
     val result = getConnection(uri).flatMap { chan =>
       val resp = codec.clientConnected(chan, req)
@@ -188,6 +170,7 @@ trait NettyClientBuilder[Req, Resp] {
 
     if (count <= retries + 1) result.rescue {
       case t: Throwable =>
+        ReferenceCountUtil.retain(req)
         run(uri, req, counter)
     }
     else result

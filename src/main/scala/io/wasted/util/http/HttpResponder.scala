@@ -35,6 +35,6 @@ class HttpResponder(token: String, allocator: ByteBufAllocator = PooledByteBufAl
     headers.foreach { h => res.headers.set(h._1, h._2) }
 
     res.headers.set(HttpHeaderNames.CONNECTION, if (!keepAlive) HttpHeaderValues.CLOSE else HttpHeaderValues.KEEP_ALIVE)
-    res
+    res.retain()
   }
 }
