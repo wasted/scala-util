@@ -1,0 +1,1027 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>util - io.wasted.util</title>
+          <meta name="description" content="util - io.wasted.util" />
+          <meta name="keywords" content="util io.wasted.util" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'io.wasted.util.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../lib/package_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="io">io</a>.<a href="../package.html" class="extype" name="io.wasted">wasted</a></p>
+        <h1>util</h1><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">util</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helpers
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="io.wasted.util"><span>util</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CWDextendsProductwithSerializable"></a>
+      <a id="CWD:CWD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CWD.html"><span class="name">CWD</span></a><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CWDextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Current working directory</p><div class="fullcomment"><div class="comment cmt"><p>Current working directory</p></div><dl class="paramcmts block"><dt class="param">file</dt><dd class="cmt"><p>File object representing the directory</p></dd></dl></div>
+    </li><li name="io.wasted.util.CryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CryptoCipherextendsProductwithSerializable"></a>
+      <a id="CryptoCipher:CryptoCipher"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CryptoCipher.html"><span class="name">CryptoCipher</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;AES&quot;</span></span>, <span name="jce">jce: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CryptoCipherextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.HashingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HashingAlgoextendsProductwithSerializable"></a>
+      <a id="HashingAlgo:HashingAlgo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HashingAlgo.html"><span class="name">HashingAlgo</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;HmacSHA256&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HashingAlgoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.HexingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HexingAlgoextendsProductwithSerializable"></a>
+      <a id="HexingAlgo:HexingAlgo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HexingAlgo.html"><span class="name">HexingAlgo</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;SHA&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HexingAlgoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.Inet4Prefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Inet4PrefixextendsInetPrefix"></a>
+      <a id="Inet4Prefix:Inet4Prefix"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Inet4Prefix.html"><span class="name">Inet4Prefix</span></a><span class="result"> extends <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Inet4PrefixextendsInetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Inet4Prefix object to hold information about an IPv4 Prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Inet4Prefix object to hold information about an IPv4 Prefix.</p><p>Currently only containment checks are implemented.
+</p></div></div>
+    </li><li name="io.wasted.util.Inet6Prefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Inet6PrefixextendsInetPrefix"></a>
+      <a id="Inet6Prefix:Inet6Prefix"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Inet6Prefix.html"><span class="name">Inet6Prefix</span></a><span class="result"> extends <a href="InetPrefix.html" class="extype" name="io.wasted.util.InetPrefix">InetPrefix</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Inet6PrefixextendsInetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Inet6Prefix object to hold information about an IPv6 Prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Inet6Prefix object to hold information about an IPv6 Prefix.</p><p>Currently only containment checks are implemented.
+</p></div></div>
+    </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="InetPrefixextendsAnyRef"></a>
+      <a id="InetPrefix:InetPrefix"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="InetPrefix.html"><span class="name">InetPrefix</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@InetPrefixextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Common Interface for both protocol types.</p>
+    </li><li name="io.wasted.util.KeyHolder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyHolder[K]extendsProductwithSerializable"></a>
+      <a id="KeyHolder[K]:KeyHolder[K]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="KeyHolder.html"><span class="name">KeyHolder</span></a><span class="tparams">[<span name="K">K</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="io.wasted.util.KeyHolder.K">K</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@KeyHolder[K]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.Logger" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggerextendsAnyRef"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LoggerextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait enables classes to do easy logging.</p>
+    </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LruMap[K,V]extendsAnyRef"></a>
+      <a id="LruMap[K,V]:LruMap[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LruMap.html"><span class="name">LruMap</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LruMap[K,V]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">LruMap Wrapper for Guava's Cache
+</p>
+    </li><li name="io.wasted.util.NettyByteArrayChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyByteArrayChannelextendsProductwithSerializable"></a>
+      <a id="NettyByteArrayChannel:NettyByteArrayChannel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyByteArrayChannel.html"><span class="name">NettyByteArrayChannel</span></a><span class="params">(<span name="out">out: <span class="extype" name="com.twitter.concurrent.Broker">Broker</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>]</span>, <span name="in">in: <span class="extype" name="com.twitter.concurrent.Offer">Offer</span>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>]</span>, <span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyByteArrayChannelextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">ByteArray Channel</p><div class="fullcomment"><div class="comment cmt"><p>ByteArray Channel</p></div><dl class="paramcmts block"><dt class="param">out</dt><dd class="cmt"><p>Outbound Broker</p></dd><dt class="param">in</dt><dd class="cmt"><p>Inbound Offer</p></dd><dt class="param">channel</dt><dd class="cmt"><p>Netty Channel</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyByteArrayCodec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyByteArrayCodecextendsNettyCodec[io.netty.buffer.ByteBuf,io.wasted.util.NettyByteArrayChannel]withProductwithSerializable"></a>
+      <a id="NettyByteArrayCodec:NettyByteArrayCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyByteArrayCodec.html"><span class="name">NettyByteArrayCodec</span></a><span class="params">(<span name="readTimeout">readTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="writeTimeout">writeTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="sslCtx">sslCtx: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.ssl.SslContext">SslContext</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.netty.buffer.ByteBuf">ByteBuf</span>, <a href="NettyByteArrayChannel.html" class="extype" name="io.wasted.util.NettyByteArrayChannel">NettyByteArrayChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyByteArrayCodecextendsNettyCodec[io.netty.buffer.ByteBuf,io.wasted.util.NettyByteArrayChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala ByteArray Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala ByteArray Codec</p><p>For composition you may use ByteArrayCodec().withTls(..)
+</p></div><dl class="paramcmts block"><dt class="param">readTimeout</dt><dd class="cmt"><p>Channel Read Timeout</p></dd><dt class="param">writeTimeout</dt><dd class="cmt"><p>Channel Write Timeout</p></dd><dt class="param">sslCtx</dt><dd class="cmt"><p>Netty SSL Context</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyClientBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyClientBuilder[Req,Resp]extendsAnyRef"></a>
+      <a id="NettyClientBuilder[Req,Resp]:NettyClientBuilder[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyClientBuilder.html"><span class="name">NettyClientBuilder</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyClientBuilder[Req,Resp]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyCodec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyCodec[Req,Resp]extendsAnyRef"></a>
+      <a id="NettyCodec[Req,Resp]:NettyCodec[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyCodec.html"><span class="name">NettyCodec</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyCodec[Req,Resp]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyServerBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NettyServerBuilder[T,Req,Resp]extendsLogger"></a>
+      <a id="NettyServerBuilder[T,Req,Resp]:NettyServerBuilder[T,Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyServerBuilder.html"><span class="name">NettyServerBuilder</span></a><span class="tparams">[<span name="T">T</span>, <span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyServerBuilder[T,Req,Resp]extendsLogger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.NettyStringChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyStringChannelextendsProductwithSerializable"></a>
+      <a id="NettyStringChannel:NettyStringChannel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyStringChannel.html"><span class="name">NettyStringChannel</span></a><span class="params">(<span name="out">out: <span class="extype" name="com.twitter.concurrent.Broker">Broker</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="in">in: <span class="extype" name="com.twitter.concurrent.Offer">Offer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyStringChannelextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">String Channel</p><div class="fullcomment"><div class="comment cmt"><p>String Channel</p></div><dl class="paramcmts block"><dt class="param">out</dt><dd class="cmt"><p>Outbound Broker</p></dd><dt class="param">in</dt><dd class="cmt"><p>Inbound Offer</p></dd><dt class="param">channel</dt><dd class="cmt"><p>Netty Channel</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyStringCodec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyStringCodecextendsNettyCodec[String,io.wasted.util.NettyStringChannel]withProductwithSerializable"></a>
+      <a id="NettyStringCodec:NettyStringCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyStringCodec.html"><span class="name">NettyStringCodec</span></a><span class="params">(<span name="readTimeout">readTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="writeTimeout">writeTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="sslCtx">sslCtx: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.netty.handler.ssl.SslContext">SslContext</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="scala.Predef.String">String</span>, <a href="NettyStringChannel.html" class="extype" name="io.wasted.util.NettyStringChannel">NettyStringChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyStringCodecextendsNettyCodec[String,io.wasted.util.NettyStringChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala String Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala String Codec</p><p>For composition you may use StringCodec().withTls(..)
+</p></div><dl class="paramcmts block"><dt class="param">readTimeout</dt><dd class="cmt"><p>Channel Read Timeout</p></dd><dt class="param">writeTimeout</dt><dd class="cmt"><p>Channel Write Timeout</p></dd><dt class="param">sslCtx</dt><dd class="cmt"><p>Netty SSL Context</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyTcpClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyTcpClient[Req,Resp]extendsNettyClientBuilder[Req,Resp]withProductwithSerializable"></a>
+      <a id="NettyTcpClient[Req,Resp]:NettyTcpClient[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpClient.html"><span class="name">NettyTcpClient</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpClient.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpClient.Resp">Resp</span>]</span>, <span name="remote">remote: <span class="extype" name="scala.List">List</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>] = <span class="symbol">List.empty</span></span>, <span name="hostConnectionLimit">hostConnectionLimit: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="hostConnectionCoreSize">hostConnectionCoreSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="globalTimeout">globalTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="connectTimeout">connectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="requestTimeout">requestTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="retries">retries: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>)</span><span class="result"> extends <a href="NettyClientBuilder.html" class="extype" name="io.wasted.util.NettyClientBuilder">NettyClientBuilder</a>[<span class="extype" name="io.wasted.util.NettyTcpClient.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpClient.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpClient[Req,Resp]extendsNettyClientBuilder[Req,Resp]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Netty TCP Client</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Netty TCP Client</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Codec</p></dd><dt class="param">remote</dt><dd class="cmt"><p>Remote Host and Port</p></dd><dt class="param">hostConnectionLimit</dt><dd class="cmt"><p>Number of open connections for this client. Defaults to 1</p></dd><dt class="param">hostConnectionCoreSize</dt><dd class="cmt"><p>Number of connections to keep open for this client. Defaults to 0</p></dd><dt class="param">globalTimeout</dt><dd class="cmt"><p>Global Timeout for the completion of a request</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">connectTimeout</dt><dd class="cmt"><p>Timeout for establishing the Service</p></dd><dt class="param">requestTimeout</dt><dd class="cmt"><p>Timeout for each request</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive. Defaults to false</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address. Defaults to true</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay. Defaults to true</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger. Defaults to 0</p></dd><dt class="param">retries</dt><dd class="cmt"><p>On connection or timeouts, how often should we retry? Defaults to 0</p></dd><dt class="param">eventLoop</dt><dd class="cmt"><p>Netty Event-Loop</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyTcpServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyTcpServer[Req,Resp]extendsNettyServerBuilder[io.wasted.util.NettyTcpServer[Req,Resp],Req,Resp]withProductwithSerializable"></a>
+      <a id="NettyTcpServer[Req,Resp]:NettyTcpServer[Req,Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpServer.html"><span class="name">NettyTcpServer</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>]</span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">PooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">new AdaptiveRecvByteBufAllocator</a></span></span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="NettyTcpServer$.html">NettyTcpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="NettyTcpServer.html" class="extype" name="io.wasted.util.NettyTcpServer">NettyTcpServer</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpServer[Req,Resp]extendsNettyServerBuilder[io.wasted.util.NettyTcpServer[Req,Resp],Req,Resp]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Server</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Server</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Http Codec</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger</p></dd><dt class="param">sendAllocator</dt><dd class="cmt"><p>ByteBuf send Allocator</p></dd><dt class="param">recvAllocator</dt><dd class="cmt"><p>ByteBuf recv Allocator</p></dd><dt class="param">parentLoop</dt><dd class="cmt"><p>Netty Event-Loop for Parents</p></dd><dt class="param">childLoop</dt><dd class="cmt"><p>Netty Event-Loop for Children</p></dd><dt class="param">pipeline</dt><dd class="cmt"><p>Setup extra handlers on the Netty Pipeline</p></dd><dt class="param">handle</dt><dd class="cmt"><p>Service to handle HttpRequests</p></dd></dl></div>
+    </li><li name="io.wasted.util.OurSslBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="OurSslBuilderextendsAnyVal"></a>
+      <a id="OurSslBuilder:OurSslBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$OurSslBuilder.html"><span class="name">OurSslBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@OurSslBuilderextendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.ShellOperation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ShellOperationextendsProductwithSerializable"></a>
+      <a id="ShellOperation:ShellOperation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ShellOperation.html"><span class="name">ShellOperation</span></a><span class="params">(<span name="lines">lines: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="exitValue">exitValue: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@ShellOperationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Result of a Shell Operation</p><div class="fullcomment"><div class="comment cmt"><p>Result of a Shell Operation</p></div><dl class="paramcmts block"><dt class="param">lines</dt><dd class="cmt"><p>Output lines from the operation</p></dd><dt class="param">exitValue</dt><dd class="cmt"><p>Explains itself</p></dd></dl></div>
+    </li><li name="io.wasted.util.ValueHolder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ValueHolder[V]extendsProductwithSerializable"></a>
+      <a id="ValueHolder[V]:ValueHolder[V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ValueHolder.html"><span class="name">ValueHolder</span></a><span class="tparams">[<span name="V">V</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="io.wasted.util.ValueHolder.V">V</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@ValueHolder[V]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.Wactor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WactorextendsWactor.AddresswithRunnablewithLogger"></a>
+      <a id="Wactor:Wactor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Wactor.html"><span class="name">Wactor</span></a><span class="result"> extends <a href="Wactor$$Address.html" class="extype" name="io.wasted.util.Wactor.Address">Address</a> with <span class="extype" name="java.lang.Runnable">Runnable</span> with <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WactorextendsWactor.AddresswithRunnablewithLogger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).</p>
+    </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WheelTimerextendsHashedWheelTimer"></a>
+      <a id="WheelTimer:WheelTimer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="WheelTimer.html"><span class="name">WheelTimer</span></a><span class="result"> extends <span class="extype" name="io.netty.util.HashedWheelTimer">HashedWheelTimer</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WheelTimerextendsHashedWheelTimer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="io.wasted.util.Base64" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Base64"></a>
+      <a id="Base64:Base64"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Base64$.html"><span class="name">Base64</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Base64" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.CWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CWD"></a>
+      <a id="CWD:CWD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CWD$.html"><span class="name">CWD</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@CWD" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Companion for the current working directory
+</p>
+    </li><li name="io.wasted.util.Config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Config"></a>
+      <a id="Config:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Config$.html"><span class="name">Config</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Config" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Wrapper around Typesafe <a href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/ConfigFactory.html" target="_blank">ConfigFactory</a>.
+Cache results in vals as i expect most of these operations to be expensive at some point or another.
+</p></div></div>
+    </li><li name="io.wasted.util.Crypto" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Crypto"></a>
+      <a id="Crypto:Crypto"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Crypto$.html"><span class="name">Crypto</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Crypto" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper methods for en-/decrypting strings.</p>
+    </li><li name="io.wasted.util.Hashing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Hashing"></a>
+      <a id="Hashing:Hashing"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Hashing$.html"><span class="name">Hashing</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Hashing" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper Object for hashing different Strings and Files.</p>
+    </li><li name="io.wasted.util.HostInformation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HostInformation"></a>
+      <a id="HostInformation:HostInformation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HostInformation$.html"><span class="name">HostInformation</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@HostInformation" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InetPrefix"></a>
+      <a id="InetPrefix:InetPrefix"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="InetPrefix$.html"><span class="name">InetPrefix</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@InetPrefix" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper Object for creating InetPrefix-objects.</p>
+    </li><li name="io.wasted.util.KeyStoreType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyStoreType"></a>
+      <a id="KeyStoreType:KeyStoreType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$KeyStoreType$.html"><span class="name">KeyStoreType</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@KeyStoreType" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.Logger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Logger"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger$.html"><span class="name">Logger</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Logger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper to create stand-alone loggers with fixed names.</p>
+    </li><li name="io.wasted.util.LruMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LruMap"></a>
+      <a id="LruMap:LruMap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LruMap$.html"><span class="name">LruMap</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@LruMap" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">LruMap Companion to make creation easier
+</p>
+    </li><li name="io.wasted.util.NettyTcpServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NettyTcpServer"></a>
+      <a id="NettyTcpServer:NettyTcpServer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyTcpServer$.html"><span class="name">NettyTcpServer</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@NettyTcpServer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.Schedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Schedule"></a>
+      <a id="Schedule:Schedule"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Schedule$.html"><span class="name">Schedule</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Schedule" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted Scheduler based on Netty's HashedWheelTimer
+</p>
+    </li><li name="io.wasted.util.Shell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Shell"></a>
+      <a id="Shell:Shell"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Shell$.html"><span class="name">Shell</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Shell" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Shell companion object
+</p>
+    </li><li name="io.wasted.util.Tryo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Tryo"></a>
+      <a id="Tryo:Tryo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Tryo$.html"><span class="name">Tryo</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Tryo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is a simple try/catch wrapped in an Option.</p>
+    </li><li name="io.wasted.util.Wactor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Wactor"></a>
+      <a id="Wactor:Wactor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Wactor$.html"><span class="name">Wactor</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@Wactor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wasted lightweight Actor companion
+</p>
+    </li><li name="io.wasted.util.WheelTimer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WheelTimer"></a>
+      <a id="WheelTimer:WheelTimer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WheelTimer$.html"><span class="name">WheelTimer</span></a><span class="result"> extends <a href="WheelTimer.html" class="extype" name="io.wasted.util.WheelTimer">WheelTimer</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@WheelTimer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.apn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apn"></a>
+      <a id="apn:apn"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="apn/package.html"><span class="name">apn</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@apn" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.build" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="build"></a>
+      <a id="build:build"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="build/package.html"><span class="name">build</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@build" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#channelFutureListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="channelFutureListener:(io.netty.channel.ChannelFuture=&gt;Any)=&gt;io.netty.channel.ChannelFutureListener"></a>
+      <a id="channelFutureListener:((ChannelFuture)⇒Any)⇒ChannelFutureListener"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">channelFutureListener</span><span class="result">: ((<span class="extype" name="io.netty.channel.ChannelFuture">ChannelFuture</span>) ⇒ <span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="io.netty.channel.ChannelFutureListener">ChannelFutureListener</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@channelFutureListener:(io.netty.channel.ChannelFuture=&gt;Any)=&gt;io.netty.channel.ChannelFutureListener" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#cryptoCipher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="cryptoCipher:io.wasted.util.CryptoCipher"></a>
+      <a id="cryptoCipher:CryptoCipher"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cryptoCipher</span><span class="result">: <a href="CryptoCipher.html" class="extype" name="io.wasted.util.CryptoCipher">CryptoCipher</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@cryptoCipher:io.wasted.util.CryptoCipher" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#durationScala2Twitter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="durationScala2Twitter:scala.concurrent.duration.Duration=&gt;com.twitter.util.Duration"></a>
+      <a id="durationScala2Twitter:(Duration)⇒Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">durationScala2Twitter</span><span class="result">: (<span class="extype" name="scala.concurrent.duration.Duration">Duration</span>) ⇒ <span class="extype" name="com.twitter.util.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@durationScala2Twitter:scala.concurrent.duration.Duration=&gt;com.twitter.util.Duration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#durationTwitter2Scala" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="durationTwitter2Scala:com.twitter.util.Duration=&gt;scala.concurrent.duration.Duration"></a>
+      <a id="durationTwitter2Scala:(Duration)⇒Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">durationTwitter2Scala</span><span class="result">: (<span class="extype" name="com.twitter.util.Duration">Duration</span>) ⇒ <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@durationTwitter2Scala:com.twitter.util.Duration=&gt;scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#hashingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="hashingAlgo:io.wasted.util.HashingAlgo"></a>
+      <a id="hashingAlgo:HashingAlgo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashingAlgo</span><span class="result">: <a href="HashingAlgo.html" class="extype" name="io.wasted.util.HashingAlgo">HashingAlgo</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@hashingAlgo:io.wasted.util.HashingAlgo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#hexingAlgo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="hexingAlgo:io.wasted.util.HexingAlgo"></a>
+      <a id="hexingAlgo:HexingAlgo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hexingAlgo</span><span class="result">: <a href="HexingAlgo.html" class="extype" name="io.wasted.util.HexingAlgo">HexingAlgo</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@hexingAlgo:io.wasted.util.HexingAlgo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.http" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="http"></a>
+      <a id="http:http"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="http/package.html"><span class="name">http</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@http" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#implicitStackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="implicitStackTraceToString:Throwable=&gt;String"></a>
+      <a id="implicitStackTraceToString:(Throwable)⇒String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">implicitStackTraceToString</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@implicitStackTraceToString:Throwable=&gt;String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util.redis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="redis"></a>
+      <a id="redis:redis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="redis/package.html"><span class="name">redis</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@redis" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="io.wasted.util#stackTraceToString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="stackTraceToString(throwable:Throwable):String"></a>
+      <a id="stackTraceToString(Throwable):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stackTraceToString</span><span class="params">(<span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.package@stackTraceToString(throwable:Throwable):String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Transforms StackTraces into a String using StringWriter.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

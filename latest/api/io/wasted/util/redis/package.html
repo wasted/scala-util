@@ -1,0 +1,155 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>redis - io.wasted.util.redis</title>
+          <meta name="description" content="redis - io.wasted.util.redis" />
+          <meta name="keywords" content="redis io.wasted.util.redis" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'io.wasted.util.redis.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="io">io</a>.<a href="../../package.html" class="extype" name="io.wasted">wasted</a>.<a href="../package.html" class="extype" name="io.wasted.util">util</a></p>
+        <h1>redis</h1><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.redis.package" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">redis</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="io.wasted.util.redis.NettyRedisChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyRedisChannelextendsLoggerwithProductwithSerializable"></a>
+      <a id="NettyRedisChannel:NettyRedisChannel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyRedisChannel.html"><span class="name">NettyRedisChannel</span></a><span class="params">(<span name="out">out: <span class="extype" name="com.twitter.concurrent.Broker">Broker</span>[<span class="extype" name="io.netty.handler.codec.redis.RedisMessage">RedisMessage</span>]</span>, <span name="in">in: <span class="extype" name="com.twitter.concurrent.Offer">Offer</span>[<span class="extype" name="io.netty.handler.codec.redis.RedisMessage">RedisMessage</span>]</span>, <span name="channel">channel: <span class="extype" name="io.netty.channel.Channel">Channel</span></span>)</span><span class="result"> extends <a href="../Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.redis.package@NettyRedisChannelextendsLoggerwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">String Channel
+</p><div class="fullcomment"><div class="comment cmt"><p>String Channel
+</p></div><dl class="paramcmts block"><dt class="param">out</dt><dd class="cmt"><p>Outbound Broker</p></dd><dt class="param">in</dt><dd class="cmt"><p>Inbound Offer</p></dd><dt class="param">channel</dt><dd class="cmt"><p>Netty Channel</p></dd></dl></div>
+    </li><li name="io.wasted.util.redis.NettyRedisCodec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NettyRedisCodecextendsNettyCodec[java.net.URI,io.wasted.util.redis.NettyRedisChannel]withProductwithSerializable"></a>
+      <a id="NettyRedisCodec:NettyRedisCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NettyRedisCodec.html"><span class="name">NettyRedisCodec</span></a><span class="params">()</span><span class="result"> extends <a href="../NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="java.net.URI">URI</span>, <a href="NettyRedisChannel.html" class="extype" name="io.wasted.util.redis.NettyRedisChannel">NettyRedisChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.redis.package@NettyRedisCodecextendsNettyCodec[java.net.URI,io.wasted.util.redis.NettyRedisChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Redis Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Redis Codec</p><p>For composition you may use NettyRedisCodec()...
+</p></div></div>
+    </li><li name="io.wasted.util.redis.RedisClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RedisClientextendsNettyClientBuilder[java.net.URI,io.wasted.util.redis.NettyRedisChannel]withProductwithSerializable"></a>
+      <a id="RedisClient:RedisClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RedisClient.html"><span class="name">RedisClient</span></a><span class="params">(<span name="codec">codec: <a href="NettyRedisCodec.html" class="extype" name="io.wasted.util.redis.NettyRedisCodec">NettyRedisCodec</a> = <span class="symbol">NettyRedisCodec()</span></span>, <span name="remote">remote: <span class="extype" name="scala.List">List</span>[<span class="extype" name="java.net.InetSocketAddress">InetSocketAddress</span>] = <span class="symbol">List.empty</span></span>, <span name="globalTimeout">globalTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="connectTimeout">connectTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="requestTimeout">requestTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.twitter.util.Duration">Duration</span>] = <span class="symbol">None</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="retries">retries: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="eventLoop">eventLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>)</span><span class="result"> extends <a href="../NettyClientBuilder.html" class="extype" name="io.wasted.util.NettyClientBuilder">NettyClientBuilder</a>[<span class="extype" name="java.net.URI">URI</span>, <a href="NettyRedisChannel.html" class="extype" name="io.wasted.util.redis.NettyRedisChannel">NettyRedisChannel</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#io.wasted.util.redis.package@RedisClientextendsNettyClientBuilder[java.net.URI,io.wasted.util.redis.NettyRedisChannel]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">wasted.io Scala Redis Client</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala Redis Client</p></div><dl class="paramcmts block"><dt class="param">codec</dt><dd class="cmt"><p>Redis Codec</p></dd><dt class="param">remote</dt><dd class="cmt"><p>Remote Host and Port</p></dd><dt class="param">globalTimeout</dt><dd class="cmt"><p>Global Timeout for the completion of a request</p></dd><dt class="param">tcpConnectTimeout</dt><dd class="cmt"><p>TCP Connect Timeout</p></dd><dt class="param">connectTimeout</dt><dd class="cmt"><p>Timeout for establishing the Service</p></dd><dt class="param">requestTimeout</dt><dd class="cmt"><p>Timeout for each request</p></dd><dt class="param">tcpKeepAlive</dt><dd class="cmt"><p>TCP KeepAlive. Defaults to false</p></dd><dt class="param">reuseAddr</dt><dd class="cmt"><p>Reuse-Address. Defaults to true</p></dd><dt class="param">tcpNoDelay</dt><dd class="cmt"><p>TCP No-Delay. Defaults to true</p></dd><dt class="param">soLinger</dt><dd class="cmt"><p>soLinger. Defaults to 0</p></dd><dt class="param">retries</dt><dd class="cmt"><p>On connection or timeouts, how often should we retry? Defaults to 0</p></dd><dt class="param">eventLoop</dt><dd class="cmt"><p>Netty Event-Loop</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
