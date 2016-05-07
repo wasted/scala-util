@@ -17,7 +17,7 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.1.2",
   "com.typesafe" % "config" % "1.2.1",
   "com.google.guava" % "guava" % "18.0",
-  "io.netty" % "netty-all" % "4.1.0.CR7",
+  "io.netty" % "netty-all" % "4.1.0.Final-SNAPSHOT",
   "org.javassist" % "javassist" % "3.18.2-GA",
   "com.google.code.findbugs" % "jsr305" % "1.3.+",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value

@@ -75,7 +75,7 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
         resp.release()
         w.dismiss()
       }
-    w.await(timeout(Span(2, org.scalatest.time.Seconds)))
+    w.await(timeout(Span(5, org.scalatest.time.Seconds)))
   }
 
   after(server.get.shutdown())

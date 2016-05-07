@@ -98,7 +98,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
       value.release()
       e
     }.toMap
-  }.ensure(f.map(ReferenceCountUtil.release(_)))
+  }
 
   private def bstrmap(f: Future[ArrayRedisMessage]): Future[Map[String, String]] = f.map { arm =>
     arm.children().asScala.grouped(2).map { group =>
@@ -109,7 +109,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
       key.release()
       e
     }.toMap
-  }.ensure(f.map(ReferenceCountUtil.release(_)))
+  }
 
   private def barray(f: Future[ArrayRedisMessage]): Future[Seq[String]] = f.map { arm =>
     arm.children().asScala.map { strM =>
@@ -118,7 +118,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
       value.release()
       s
     }
-  }.ensure(f.map(ReferenceCountUtil.release(_)))
+  }
 
   private def bstr(f: Future[FullBulkStringRedisMessage]): Future[String] = f.map { fbsrm =>
     fbsrm.content().toString(CharsetUtil.UTF_8)

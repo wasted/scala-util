@@ -6,6 +6,7 @@ import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.http.websocketx._
+import io.netty.util.ReferenceCountUtil
 
 @Sharable
 case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
@@ -36,11 +37,14 @@ case class WebSocketHandler[Req <: HttpRequest](corsOrigin: String = "*",
   }
 
   override def channelRead0(ctx: ChannelHandlerContext, msg: WebSocketFrame): Unit = {
-    handle.flatMap { serverF =>
-      serverF(ctx.channel(), Future.value(msg.retain)).map { resultF =>
-        resultF.map(ctx.channel().writeAndFlush).ensure(msg.release())
-      }
-    }.getOrElse(msg.release())
+    ReferenceCountUtil.retain(msg)
+    Future {
+      handle.flatMap { serverF =>
+        serverF(ctx.channel(), Future.value(msg)).map { resultF =>
+          resultF.map(ctx.channel().writeAndFlush).ensure(msg.release())
+        }
+      }.getOrElse(msg.release())
+    }
   }
 
   def dispatch(channel: Channel, freq: Future[Req]): Future[HttpResponse] = freq.flatMap { req =>
