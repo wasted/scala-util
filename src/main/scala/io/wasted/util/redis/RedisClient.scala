@@ -10,6 +10,7 @@ import io.netty.channel._
  * wasted.io Scala Redis Client
  * @param codec Redis Codec
  * @param remote Remote Host and Port
+ * @param hostConnectionLimit Number of open connections for this client. Defaults to 1
  * @param globalTimeout Global Timeout for the completion of a request
  * @param tcpConnectTimeout TCP Connect Timeout
  * @param connectTimeout Timeout for establishing the Service
@@ -23,6 +24,7 @@ import io.netty.channel._
  */
 final case class RedisClient(codec: NettyRedisCodec = NettyRedisCodec(),
                              remote: List[InetSocketAddress] = List.empty,
+                             hostConnectionLimit: Int = 1,
                              globalTimeout: Option[Duration] = None,
                              tcpConnectTimeout: Option[Duration] = None,
                              connectTimeout: Option[Duration] = None,
@@ -40,18 +42,28 @@ final case class RedisClient(codec: NettyRedisCodec = NettyRedisCodec(),
   def withTcpNoDelay(tcpNoDelay: Boolean) = copy(tcpNoDelay = tcpNoDelay)
   def withTcpKeepAlive(tcpKeepAlive: Boolean) = copy(tcpKeepAlive = tcpKeepAlive)
   def withReuseAddr(reuseAddr: Boolean) = copy(reuseAddr = reuseAddr)
+  def withGlobalTimeout(globalTimeout: Duration) = copy(globalTimeout = Some(globalTimeout))
   def withTcpConnectTimeout(tcpConnectTimeout: Duration) = copy(tcpConnectTimeout = Some(tcpConnectTimeout))
+  def withConnectTimeout(connectTimeout: Duration) = copy(connectTimeout = Some(connectTimeout))
+  def withRequestTimeout(requestTimeout: Duration) = copy(requestTimeout = Some(requestTimeout))
+  def withHostConnectionLimit(limit: Int) = copy(hostConnectionLimit = limit)
   def withEventLoop(eventLoop: EventLoopGroup) = copy(eventLoop = eventLoop)
-  def withRetries(retries: Int) = copy(retries = retries)
   def connectTo(host: String, port: Int) = copy(remote = List(new InetSocketAddress(InetAddress.getByName(host), port)))
   def connectTo(hosts: List[InetSocketAddress]) = copy(remote = hosts)
 
   protected def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else 6379
 
-  def open(): Future[NettyRedisChannel] = {
+  private[redis] def connect(): Future[NettyRedisChannel] = {
     val rand = scala.util.Random.nextInt(remote.length)
     val host = remote(rand)
     val uri = new java.net.URI("redis://" + host.getHostString + ":" + host.getPort)
     open(uri, uri)
+  }
+
+  def open(): Future[NettyRedisChannel] = {
+    connect().map { redisChannel =>
+      redisChannel.setClient(this)
+      redisChannel
+    }
   }
 }

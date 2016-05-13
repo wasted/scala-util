@@ -23,7 +23,7 @@ class RedisSpec extends WordSpec with Logger {
       Await.result(client.set(baseKey, baseStr))
     }
     "simple get key/value" in {
-      assert(Await.result(client.get(baseKey)) == baseStr, "did not match our value")
+      assert(Await.result(client.get(baseKey)).contains(baseStr), "did not match our value")
     }
 
     "simple append key/value" in {
@@ -218,9 +218,19 @@ class RedisSpec extends WordSpec with Logger {
     }
 
     "getSet" in {
-      assert(Await.result(client.getSet("setInter", "evennewer")) == "new", "getSet is weir" +
-        "" +
-        "")
+      assert(Await.result(client.getSet("setInter", "evennewer")) == "new", "getSet is weird")
+    }
+
+    "lPush" in {
+      Await.result(client.lPush("mylist", "bar" :: "baz" :: Nil))
+    }
+
+    "lRange" in {
+      assert(Await.result(client.lRange("mylist", 1, 1)) == List("bar"), "lRange is weird")
+    }
+
+    "lTrim" in {
+      Await.result(client.lTrim("mylist", 1, 1))
     }
 
     "flushDB" in {
