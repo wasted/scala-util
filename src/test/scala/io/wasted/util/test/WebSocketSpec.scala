@@ -4,13 +4,13 @@ import java.net.InetSocketAddress
 import java.util.concurrent.atomic.AtomicReference
 
 import com.twitter.conversions.time._
-import com.twitter.util.{ Await, Promise }
-import io.netty.buffer.{ ByteBufHolder, Unpooled }
+import com.twitter.util.{Await, Promise}
+import io.netty.buffer.Unpooled
 import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
-import io.netty.util.{ CharsetUtil, ReferenceCountUtil }
-import io.wasted.util.{ Logger, WheelTimer }
+import io.netty.handler.codec.http.websocketx.{BinaryWebSocketFrame, TextWebSocketFrame}
+import io.netty.util.{CharsetUtil, ReferenceCountUtil}
 import io.wasted.util.http._
+import io.wasted.util.{Logger, WheelTimer}
 import org.scalatest._
 import org.scalatest.concurrent._
 
@@ -47,7 +47,7 @@ class WebSocketSpec extends WordSpec with ScalaFutures with AsyncAssertions with
 
   "GET Request to embedded WebSocket Server" should {
     "open connection and send some data, close after" in {
-      val client1 = Await.result(WebSocketClient().connectTo("127.0.0.1", 8890).open(uri, uri), 5.seconds)
+      val client1 = Await.result(WebSocketClient().connectTo("127.0.0.1", 8890).open(), 5.seconds)
       client1.foreach {
         case text: TextWebSocketFrame =>
           string.setValue(text.text())

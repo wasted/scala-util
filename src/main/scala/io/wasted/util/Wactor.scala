@@ -1,10 +1,10 @@
 package io.wasted.util
 
 import java.util.concurrent.atomic.AtomicInteger
-import java.util.concurrent.{ ConcurrentLinkedQueue, Executor, Executors, ForkJoinPool }
+import java.util.concurrent.{ConcurrentLinkedQueue, Executor, Executors, ForkJoinPool}
 
 import scala.concurrent.duration.Duration
-import scala.util.{ Failure, Success, Try }
+import scala.util.{Failure, Success, Try}
 
 /**
  * Wasted lightweight Actor implementation based on Viktor Klang's mini-Actor (https://gist.github.com/2362563).

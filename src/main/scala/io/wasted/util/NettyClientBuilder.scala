@@ -1,17 +1,16 @@
 package io.wasted.util
 
 import java.net.InetSocketAddress
-import java.util.concurrent.atomic.{ AtomicInteger, AtomicLong }
+import java.util.concurrent.atomic.AtomicLong
 
 import com.twitter.util._
 import io.netty.bootstrap.Bootstrap
-import io.netty.buffer.{ ByteBuf, ByteBufHolder }
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.util.ReferenceCountUtil
 
-trait NettyClientBuilder[Req, Resp] {
+trait NettyClientBuilder[Req, Resp] extends Logger {
   def codec: NettyCodec[Req, Resp]
   def remote: List[InetSocketAddress]
   //def hostConnectionLimit: Int
@@ -76,50 +75,17 @@ trait NettyClientBuilder[Req, Resp] {
   }
 
   /**
-   * Open a connection to the given URI.
+   * Write a Request directly through to the given URI.
    * The request to generate the response should be used to prepare
    * the request only once the connection is established.
    * This reduces the context-switching for allocation/deallocation
    * on failed connects.
    *
    * @param uri What could this be?
-   * @return Future Channel
+   * @param req Request object
+   * @return Future Resp
    */
-  def open(uri: java.net.URI, req: Req): Future[Resp] = open(uri.toString, req)
-
-  /**
-   * Open a connection to the given URI.
-   * The request to generate the response should be used to prepare
-   * the request only once the connection is established.
-   * This reduces the context-switching for allocation/deallocation
-   * on failed connects.
-   *
-   * @param uri What could this be?
-   * @return Future Channel
-   */
-  def open(uri: String, req: Req): Future[Resp] = {
-    // we start at -1 for the first and not-retried-request
-    val counter = new AtomicInteger()
-
-    def run(): Future[Resp] = {
-      val count = counter.incrementAndGet()
-      val result = getConnection(uri).flatMap { chan =>
-        val resp = codec.clientConnected(chan, req)
-        requestTimeout.map(resp.raiseWithin).getOrElse(resp)
-      }
-
-      if (count <= retries + 1) result.rescue {
-        case t: Throwable =>
-          ReferenceCountUtil.retain(req)
-          run()
-      }
-      else result
-    }
-
-    val result = run()
-
-    globalTimeout.map(result.raiseWithin).getOrElse(result)
-  }
+  def write(uri: java.net.URI, req: Req): Future[Resp] = write(uri.toString, req)
 
   /**
    * Write a Request directly through to the given URI.
@@ -132,25 +98,8 @@ trait NettyClientBuilder[Req, Resp] {
    * @param req Request object
    * @return Future Resp
    */
-  def write(uri: java.net.URI, req: () => Req): Future[Resp] = write(uri.toString, req)
-
-  /**
-   * Write a Request directly through to the given URI.
-   * The request to generate the response should be used to prepare
-   * the request only once the connection is established.
-   * This reduces the context-switching for allocation/deallocation
-   * on failed connects.
-   *
-   * @param uri What could this be?
-   * @param req Request object
-   * @return Future Resp
-   */
-  def write(uri: String, req: () => Req): Future[Resp] = {
-    // we start at -1 for the first and not-retried-request
-    val counter = new AtomicInteger()
-    val request = req()
-    val result = run(uri, request, counter)
-
+  def write(uri: String, req: Req): Future[Resp] = {
+    val result = run(uri, req)
     globalTimeout.map(result.raiseWithin).getOrElse(result)
   }
 
@@ -161,19 +110,22 @@ trait NettyClientBuilder[Req, Resp] {
    * @param counter Request counter
    * @return Future Resp
    */
-  protected[this] def run(uri: String, req: Req, counter: AtomicInteger): Future[Resp] = {
-    val count = counter.incrementAndGet()
-    val result = getConnection(uri).flatMap { chan =>
+  protected[this] def run(uri: String, req: Req, counter: Int = 0): Future[Resp] = {
+    // if it is the first time fire this request, we retain it twice for retries
+    ReferenceCountUtil.retain(req, if (counter == 0) 1 else 2)
+    getConnection(uri).flatMap { chan =>
       val resp = codec.clientConnected(chan, req)
-      requestTimeout.map(resp.raiseWithin).getOrElse(resp)
+      requestTimeout.map(resp.raiseWithin).getOrElse(resp).onFailure {
+        case t: Throwable => resp.map(ReferenceCountUtil.release(_)) // release on failure
+      }
+    }.rescue {
+      case t: Throwable if counter <= retries =>
+        run(uri, req, counter + 1)
+      case t: Throwable => Future.exception(t)
+    }.ensure {
+      // clean up the old retain
+      if (counter == 0) ReferenceCountUtil.release(req)
     }
-
-    if (count <= retries + 1) result.rescue {
-      case t: Throwable =>
-        ReferenceCountUtil.retain(req)
-        run(uri, req, counter)
-    }
-    else result
   }
 
   /**

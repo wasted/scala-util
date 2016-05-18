@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import java.net.{ InetAddress, InetSocketAddress }
+import java.net.{InetAddress, InetSocketAddress}
 
 import com.twitter.util.Duration
 import io.netty.channel._

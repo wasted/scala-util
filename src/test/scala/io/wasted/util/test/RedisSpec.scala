@@ -1,11 +1,10 @@
 package io.wasted.util.test
 
+import com.twitter.conversions.time._
 import com.twitter.util.Await
-import io.netty.util.CharsetUtil
 import io.wasted.util.Logger
 import io.wasted.util.redis._
 import org.scalatest._
-import com.twitter.conversions.time._
 
 class RedisSpec extends WordSpec with Logger {
 

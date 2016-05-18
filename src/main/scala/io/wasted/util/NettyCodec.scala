@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import com.twitter.util.{ Duration, Future }
+import com.twitter.util.{Duration, Future}
 import io.netty.channel.Channel
 
 trait NettyCodec[Req, Resp] {

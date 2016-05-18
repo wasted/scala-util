@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicReference
 import com.twitter.conversions.time._
 import com.twitter.util.Await
 import io.netty.handler.codec.http._
-import io.netty.util.{ CharsetUtil, ReferenceCountUtil }
+import io.netty.util.CharsetUtil
 import io.wasted.util.http._
 import org.scalatest._
 import org.scalatest.concurrent._

@@ -1,9 +1,9 @@
 package io.wasted.util
 package redis
 
-import java.net.{ InetAddress, InetSocketAddress }
+import java.net.{InetAddress, InetSocketAddress}
 
-import com.twitter.util.{ Duration, Future }
+import com.twitter.util.{Duration, Future}
 import io.netty.channel._
 
 /**
@@ -57,7 +57,7 @@ final case class RedisClient(codec: NettyRedisCodec = NettyRedisCodec(),
     val rand = scala.util.Random.nextInt(remote.length)
     val host = remote(rand)
     val uri = new java.net.URI("redis://" + host.getHostString + ":" + host.getPort)
-    open(uri, uri)
+    write(uri, uri)
   }
 
   def open(): Future[NettyRedisChannel] = {

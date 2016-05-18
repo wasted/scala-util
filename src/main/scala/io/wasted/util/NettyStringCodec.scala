@@ -2,13 +2,13 @@ package io.wasted.util
 
 import java.util.concurrent.TimeUnit
 
-import com.twitter.concurrent.{ Broker, Offer }
-import com.twitter.util.{ Duration, Future, Promise }
+import com.twitter.concurrent.{Broker, Offer}
+import com.twitter.util.{Duration, Future, Promise}
 import io.netty.channel._
-import io.netty.handler.codec.string.{ StringDecoder, StringEncoder }
+import io.netty.handler.codec.string.{StringDecoder, StringEncoder}
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
-import io.netty.handler.ssl.{ SslContext, SslContextBuilder }
-import io.netty.handler.timeout.{ ReadTimeoutHandler, WriteTimeoutHandler }
+import io.netty.handler.ssl.{SslContext, SslContextBuilder}
+import io.netty.handler.timeout.{ReadTimeoutHandler, WriteTimeoutHandler}
 import io.netty.util.CharsetUtil
 import io.wasted.util.http.HttpClient.Handlers
 

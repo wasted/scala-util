@@ -1,6 +1,6 @@
 package io.wasted.util
 
-import java.net.{ InetAddress, InetSocketAddress, UnknownHostException }
+import java.net.{InetAddress, InetSocketAddress, UnknownHostException}
 
 /**
  * Helper Object for creating InetPrefix-objects.

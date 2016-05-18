@@ -1,9 +1,9 @@
 package io.wasted.util
 package http
 
-import java.net.{ InetAddress, InetSocketAddress }
+import java.net.{InetAddress, InetSocketAddress}
 
-import com.twitter.util.{ Duration, Future }
+import com.twitter.util.{Duration, Future}
 import io.netty.channel._
 
 /**
@@ -50,12 +50,16 @@ final case class WebSocketClient(codec: NettyWebSocketCodec = NettyWebSocketCode
   def connectTo(host: String, port: Int) = copy(remote = List(new InetSocketAddress(InetAddress.getByName(host), port)))
   def connectTo(hosts: List[InetSocketAddress]) = copy(remote = hosts)
 
-  def open(): Future[NettyWebSocketChannel] = {
+  private[this] def connect(): Future[NettyWebSocketChannel] = {
     val rand = scala.util.Random.nextInt(remote.length)
     val host = remote(rand)
     val proto = if (codec.sslCtx.isEmpty) "ws" else "wss"
     val uri = new java.net.URI(proto + "://" + host.getHostString + ":" + host.getPort)
-    open(uri, uri)
+    write(uri, uri)
+  }
+
+  def open(): Future[NettyWebSocketChannel] = {
+    connect()
   }
 
   protected def getPort(url: java.net.URI): Int = if (url.getPort > 0) url.getPort else url.getScheme match {

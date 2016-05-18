@@ -3,7 +3,6 @@ package http
 
 import com.twitter.conversions.storage._
 import com.twitter.util._
-import io.netty.buffer.ByteBufHolder
 import io.netty.channel.{Channel, ChannelHandlerContext, SimpleChannelInboundHandler}
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
@@ -135,7 +134,7 @@ final case class NettyHttpCodec[Req <: HttpMessage, Resp <: HttpObject](compress
       }
 
       def channelRead0(ctx: ChannelHandlerContext, msg: Resp) {
-        if (!result.isDefined) result.setValue(ReferenceCountUtil.retain(msg))
+        if (!result.isDefined && result.isInterrupted.isEmpty) result.setValue(ReferenceCountUtil.retain(msg))
         if (keepAlive && HttpUtil.isKeepAlive(request)) {} else channel.close()
       }
     })

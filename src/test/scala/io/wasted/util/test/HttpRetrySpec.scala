@@ -2,10 +2,10 @@ package io.wasted.util.test
 
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.{ AtomicInteger, AtomicReference }
+import java.util.concurrent.atomic.{AtomicInteger, AtomicReference}
 
-import com.twitter.util.{ Duration, Future }
-import io.netty.handler.codec.http.{ FullHttpRequest, FullHttpResponse, HttpResponse, HttpResponseStatus }
+import com.twitter.util.{Duration, Future}
+import io.netty.handler.codec.http.{FullHttpRequest, FullHttpResponse, HttpResponse, HttpResponseStatus}
 import io.wasted.util.Logger
 import io.wasted.util.http._
 import org.scalatest._
@@ -23,11 +23,14 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
     server.set(HttpServer[FullHttpRequest, HttpResponse](NettyHttpCodec()).handler {
       case (ctx, req) =>
         req.map { req =>
-          if (req.uri() == "/sleep") Thread.sleep(50)
+          if (req.uri() == "/sleep") {
+            warn("at sleeper")
+            Thread.sleep(50)
+          }
           if (req.uri() == "/retry") {
             val reqCount = counter.incrementAndGet()
             warn("at " + reqCount)
-            if (reqCount <= retries) Thread.sleep(50)
+            if (reqCount <= retries) Thread.sleep(100)
           }
           responder(HttpResponseStatus.OK)
         }
@@ -52,7 +55,10 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
 
   test("Working Timeout") {
     val w = new Waiter // Do this in the main test thread
-    client1.withGlobalTimeout(Duration(90, TimeUnit.MILLISECONDS))
+    client1.withRetries(0)
+      .withTcpConnectTimeout(Duration(10, TimeUnit.MILLISECONDS))
+      .withRequestTimeout(Duration(90, TimeUnit.MILLISECONDS))
+      .withGlobalTimeout(Duration(100, TimeUnit.MILLISECONDS))
       .get(new java.net.URI("http://localhost:8887/sleep")).map { resp =>
         w {
           resp.status().code() should equal(200)
@@ -60,14 +66,15 @@ class HttpRetrySpec extends FunSuite with ShouldMatchers with AsyncAssertions wi
         resp.release()
         w.dismiss()
       }
-    w.await()
+    w.await(PatienceConfiguration.Timeout((Span(1, org.scalatest.time.Seconds))))
   }
 
   test("Retry") {
     val w = new Waiter // Do this in the main test thread
     client1.withRetries(retries)
-      .withRequestTimeout(Duration(40, TimeUnit.MILLISECONDS))
-      .withGlobalTimeout(Duration(150, TimeUnit.MILLISECONDS))
+      .withTcpConnectTimeout(Duration(10, TimeUnit.MILLISECONDS))
+      .withRequestTimeout(Duration(30, TimeUnit.MILLISECONDS))
+      .withGlobalTimeout(Duration(500, TimeUnit.MILLISECONDS))
       .get(new java.net.URI("http://localhost:8887/retry")).map { resp =>
         w {
           resp.status().code() should equal(200)
