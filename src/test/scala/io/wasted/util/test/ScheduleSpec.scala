@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util.{Schedule, WheelTimer}
+import io.wasted.util.{ Schedule, WheelTimer }
 import org.scalatest._
 import org.scalatest.concurrent.AsyncAssertions
 import org.scalatest.time.SpanSugar._

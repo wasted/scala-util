@@ -2,10 +2,10 @@ package io.wasted.util.test
 
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.{AtomicInteger, AtomicReference}
+import java.util.concurrent.atomic.{ AtomicInteger, AtomicReference }
 
-import com.twitter.util.{Duration, Future}
-import io.netty.handler.codec.http.{FullHttpRequest, FullHttpResponse, HttpResponse, HttpResponseStatus}
+import com.twitter.util.{ Duration, Future }
+import io.netty.handler.codec.http.{ FullHttpRequest, FullHttpResponse, HttpResponse, HttpResponseStatus }
 import io.wasted.util.Logger
 import io.wasted.util.http._
 import org.scalatest._

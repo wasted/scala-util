@@ -1,6 +1,6 @@
 package io.wasted.util.http
 
-import java.net.{InetSocketAddress, URI}
+import java.net.{ InetSocketAddress, URI }
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicReference
 import javax.net.ssl.SSLEngine
@@ -16,7 +16,7 @@ import io.netty.handler.ssl.SslHandler
 import io.netty.util.CharsetUtil
 import io.wasted.util._
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 object Thruput {
   object State extends Enumeration {

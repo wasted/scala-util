@@ -1,9 +1,9 @@
 package io.wasted.util
 
-import java.util.concurrent.{ConcurrentHashMap, TimeUnit}
+import java.util.concurrent.{ ConcurrentHashMap, TimeUnit }
 
 import com.twitter.util.JavaTimer
-import io.netty.util.{Timeout, TimerTask}
+import io.netty.util.{ Timeout, TimerTask }
 
 import scala.concurrent.duration.Duration
 

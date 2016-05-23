@@ -3,17 +3,17 @@ package http
 
 import java.util.concurrent.TimeUnit
 
-import com.twitter.concurrent.{Broker, Offer}
+import com.twitter.concurrent.{ Broker, Offer }
 import com.twitter.conversions.storage._
 import com.twitter.conversions.time._
 import com.twitter.util._
 import io.netty.buffer.ByteBuf
 import io.netty.channel._
 import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.websocketx.{BinaryWebSocketFrame, WebSocketClientHandshakerFactory, WebSocketFrame, WebSocketVersion}
+import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, WebSocketClientHandshakerFactory, WebSocketFrame, WebSocketVersion }
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory
-import io.netty.handler.ssl.{SslContext, SslContextBuilder}
-import io.netty.handler.timeout.{ReadTimeoutHandler, WriteTimeoutHandler}
+import io.netty.handler.ssl.{ SslContext, SslContextBuilder }
+import io.netty.handler.timeout.{ ReadTimeoutHandler, WriteTimeoutHandler }
 
 /**
  * String Channel

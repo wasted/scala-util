@@ -1,6 +1,6 @@
 package io.wasted.util.test
 
-import io.wasted.util.{Hashing, HashingAlgo, HexingAlgo}
+import io.wasted.util.{ Hashing, HashingAlgo, HexingAlgo }
 import org.scalatest._
 
 class HashingSpec extends WordSpec {

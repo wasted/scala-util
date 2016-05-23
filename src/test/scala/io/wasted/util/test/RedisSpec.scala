@@ -1,7 +1,7 @@
 package io.wasted.util.test
 
 import com.twitter.conversions.time._
-import com.twitter.util.Await
+import com.twitter.util.{ Await, Future }
 import io.wasted.util.Logger
 import io.wasted.util.redis._
 import org.scalatest._
@@ -505,6 +505,24 @@ class RedisSpec extends WordSpec with Logger {
       Await.result(client.select(1), 1.second)
       assert(Await.result(client.move("key1", 0), 5.second), "could not move Sicily to database 0")
       Await.result(client.select(0), 1.second)
+    }
+
+    "Counted Rate Limiter" in {
+      val limiter = CounterBasedRateLimiter(client, 5.seconds, 10)
+      val f = (0 until 10).toList.map { x =>
+        Thread.sleep(x * 5)
+        limiter("test2")
+      }
+      Await.result(Future.collect(f))
+      try {
+        Await.result(limiter("test2"))
+        throw new IllegalStateException("This should not happen! Over limit")
+      } catch {
+        case t: OverRateLimitException => // yay sucess
+        case t: Throwable => throw t
+      }
+      Thread.sleep(5000)
+      Await.result(limiter("test2"))
     }
 
     "flushDB" in {

@@ -1,8 +1,8 @@
 package io.wasted.util
 
 import com.twitter.conversions.time._
-import com.twitter.util.{Duration, Future}
-import io.netty.buffer.{ByteBuf, ByteBufAllocator, PooledByteBufAllocator}
+import com.twitter.util.{ Duration, Future }
+import io.netty.buffer.{ ByteBuf, ByteBufAllocator, PooledByteBufAllocator }
 import io.netty.channel._
 
 object NettyTcpServer {

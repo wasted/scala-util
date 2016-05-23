@@ -1,9 +1,9 @@
 package io.wasted.util
 package redis
 
-import java.net.{InetAddress, InetSocketAddress}
+import java.net.{ InetAddress, InetSocketAddress }
 
-import com.twitter.util.{Duration, Future}
+import com.twitter.util.{ Duration, Future }
 import io.netty.channel._
 
 /**

@@ -1,14 +1,14 @@
 package io.wasted
 
-import java.io.{InputStream, PrintWriter, StringWriter}
+import java.io.{ InputStream, PrintWriter, StringWriter }
 import java.security.KeyStore
 import javax.net.ssl.KeyManagerFactory
 
-import com.twitter.util.{Duration => TD}
-import io.netty.channel.{ChannelFuture, ChannelFutureListener}
+import com.twitter.util.{ Duration => TD }
+import io.netty.channel.{ ChannelFuture, ChannelFutureListener }
 import io.netty.handler.ssl.SslContextBuilder
 
-import scala.concurrent.duration.{Duration => SD}
+import scala.concurrent.duration.{ Duration => SD }
 
 /**
  * Helpers

@@ -4,13 +4,13 @@ import java.net.InetSocketAddress
 import java.util.concurrent.atomic.AtomicReference
 
 import com.twitter.conversions.time._
-import com.twitter.util.{Await, Promise}
+import com.twitter.util.{ Await, Promise }
 import io.netty.buffer.Unpooled
 import io.netty.handler.codec.http._
-import io.netty.handler.codec.http.websocketx.{BinaryWebSocketFrame, TextWebSocketFrame}
-import io.netty.util.{CharsetUtil, ReferenceCountUtil}
+import io.netty.handler.codec.http.websocketx.{ BinaryWebSocketFrame, TextWebSocketFrame }
+import io.netty.util.{ CharsetUtil, ReferenceCountUtil }
 import io.wasted.util.http._
-import io.wasted.util.{Logger, WheelTimer}
+import io.wasted.util.{ Logger, WheelTimer }
 import org.scalatest._
 import org.scalatest.concurrent._
 

@@ -61,14 +61,14 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
     })).getOrElse(closed.setDone())
     closed.raiseWithin(Duration(5, TimeUnit.SECONDS))(WheelTimer.twitter)
   }
+  def timeout = client.flatMap(_.requestTimeout).getOrElse(5.seconds)
 
   private lazy val queue = new Wactor() {
     override protected def receive: PartialFunction[Any, Any] = {
       case RedisAction(p: Promise[RedisMessage], msg: ArrayRedisMessage) if isConnected() =>
         out ! msg
         try {
-          val recv = in.syncWait()
-          p.setValue(recv)
+          p.setValue(Await.result(in.sync(), timeout))
         } catch {
           case t: Throwable => p.setException(t)
         }
