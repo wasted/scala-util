@@ -3,7 +3,7 @@ package redis
 
 import com.twitter.util.{ Duration, Future }
 
-class OverRateLimitException(name: String, window: Duration, limit: Long, prefix: Option[String])
+class OverRateLimitException(val name: String, val window: Duration, val limit: Long, val prefix: Option[String])
   extends Exception("Rate-Limit " + prefix.map("at " + _ + " ").getOrElse("") + "for " + name + " with Limit of " + limit + " in " + window.inSeconds + " seconds")
   with scala.util.control.NoStackTrace
 
