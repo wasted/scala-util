@@ -63,29 +63,13 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
   }
   def timeout = client.flatMap(_.requestTimeout).getOrElse(5.seconds)
 
-  private lazy val queue = new Wactor() {
-    override protected def receive: PartialFunction[Any, Any] = {
-      case RedisAction(p: Promise[RedisMessage], msg: ArrayRedisMessage) if isConnected() =>
-        out ! msg
-        try {
-          p.setValue(Await.result(in.sync(), timeout))
-        } catch {
-          case t: Throwable => p.setException(t)
-        }
-      case redisAction: RedisAction[_] =>
-        Schedule.once(() => this ! redisAction, 1.second)
-      case x => warn("Got unwanted " + x.getClass)
-    }
-  }
-
 
   def send[R <: RedisMessage](key: String, values: Seq[String]): Future[R] = send(List(key) ++ values: _*)
-  def send[R <: RedisMessage](str: String*): Future[R] = {
+  def send[R <: RedisMessage](str: String*): Future[R] = synchronized {
     val cmds = str.map(s => new FullBulkStringRedisMessage(ByteBufUtil.writeUtf8(allocator, s)).asInstanceOf[RedisMessage])
     val msg = new ArrayRedisMessage(cmds.toList.asJava)
-    val p = Promise[R]
-    queue ! RedisAction(p, msg)
-    p.flatMap {
+    out ! msg
+    in.sync().flatMap {
       case a: ErrorRedisMessage =>
         val f = Future.exception(new Exception(a.toString))
         ReferenceCountUtil.release(a)
