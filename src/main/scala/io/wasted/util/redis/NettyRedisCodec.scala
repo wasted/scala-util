@@ -158,7 +158,7 @@ final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMes
     str(send("ping")).filter(_ == "PONG").map(_ => ())
   }
   def ping(message: String): Future[Unit] = {
-    unit(send("ping", message)).filter(_ == message).map(_ => ())
+    str(send("ping", message)).filter(_ == message).map(_ => ())
   }
 
   def keys(pattern: String): Future[Seq[String]] = {
