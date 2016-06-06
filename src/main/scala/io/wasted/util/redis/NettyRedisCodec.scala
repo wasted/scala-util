@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import com.twitter.concurrent.{Broker, Offer}
 import com.twitter.conversions.time._
 import com.twitter.util._
-import io.netty.buffer.{ByteBufUtil, PooledByteBufAllocator}
+import io.netty.buffer.{ByteBufUtil, PooledByteBufAllocator, UnpooledByteBufAllocator}
 import io.netty.channel._
 import io.netty.handler.codec.redis._
 import io.netty.util.{CharsetUtil, ReferenceCountUtil}
@@ -26,7 +26,7 @@ private[redis] final case class RedisAction[R <: RedisMessage](p: Promise[R], ms
 final case class NettyRedisChannel(out: Broker[RedisMessage], in: Offer[RedisMessage], private val codec: NettyRedisCodec) extends Logger {
   private[this] val stopping = new AtomicBoolean(false)
 
-  private[this] val allocator = PooledByteBufAllocator.DEFAULT
+  private[this] val allocator = UnpooledByteBufAllocator.DEFAULT
   private[this] var channel: Option[Channel] = None
   private[this] var client: Option[RedisClient] = None
 
