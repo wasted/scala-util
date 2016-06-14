@@ -194,7 +194,7 @@
       <p class="shortcomment cmt">Inet6Prefix object to hold information about an IPv6 Prefix.</p><div class="fullcomment"><div class="comment cmt"><p>Inet6Prefix object to hold information about an IPv6 Prefix.</p><p>Currently only containment checks are implemented.
 </p></div></div>
     </li><li name="io.wasted.util.InetPrefix" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="InetPrefixextendsAnyRef"></a>
+      <a id="InetPrefixextendsLogger"></a>
       <a id="InetPrefix:InetPrefix"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -202,10 +202,10 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="InetPrefix.html"><span class="name">InetPrefix</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="InetPrefix.html"><span class="name">InetPrefix</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.package@InetPrefixextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.package@InetPrefixextendsLogger" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -298,7 +298,7 @@
       <p class="shortcomment cmt">wasted.io Scala ByteArray Codec</p><div class="fullcomment"><div class="comment cmt"><p>wasted.io Scala ByteArray Codec</p><p>For composition you may use ByteArrayCodec().withTls(..)
 </p></div><dl class="paramcmts block"><dt class="param">readTimeout</dt><dd class="cmt"><p>Channel Read Timeout</p></dd><dt class="param">writeTimeout</dt><dd class="cmt"><p>Channel Write Timeout</p></dd><dt class="param">sslCtx</dt><dd class="cmt"><p>Netty SSL Context</p></dd></dl></div>
     </li><li name="io.wasted.util.NettyClientBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="NettyClientBuilder[Req,Resp]extendsLogger"></a>
+      <a id="NettyClientBuilder[Req,Resp]extendsAnyRef"></a>
       <a id="NettyClientBuilder[Req,Resp]:NettyClientBuilder[Req,Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -306,10 +306,10 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="NettyClientBuilder.html"><span class="name">NettyClientBuilder</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="NettyClientBuilder.html"><span class="name">NettyClientBuilder</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.package@NettyClientBuilder[Req,Resp]extendsLogger" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.package@NettyClientBuilder[Req,Resp]extendsAnyRef" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -409,7 +409,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="NettyTcpServer.html"><span class="name">NettyTcpServer</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>]</span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">PooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">new AdaptiveRecvByteBufAllocator</a></span></span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="NettyTcpServer$.html">NettyTcpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="NettyTcpServer.html" class="extype" name="io.wasted.util.NettyTcpServer">NettyTcpServer</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="NettyTcpServer.html"><span class="name">NettyTcpServer</span></a><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="params">(<span name="codec">codec: <a href="NettyCodec.html" class="extype" name="io.wasted.util.NettyCodec">NettyCodec</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>]</span>, <span name="tcpConnectTimeout">tcpConnectTimeout: <span class="extype" name="com.twitter.util.Duration">Duration</span> = <span class="symbol">5.seconds</span></span>, <span name="tcpKeepAlive">tcpKeepAlive: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="reuseAddr">reuseAddr: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="tcpNoDelay">tcpNoDelay: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="soLinger">soLinger: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="sendAllocator">sendAllocator: <span class="extype" name="io.netty.buffer.ByteBufAllocator">ByteBufAllocator</span> = <span class="symbol"><span class="name"><a href="../../package.html">UnpooledByteBufAllocator.DEFAULT</a></span></span></span>, <span name="recvAllocator">recvAllocator: <span class="extype" name="io.netty.channel.RecvByteBufAllocator">RecvByteBufAllocator</span> = <span class="defval" name='<span class="name"><a href="../../package.html">AdaptiveRecvByteBufAllocator.DEFAULT</a></span>'>...</span></span>, <span name="parentLoop">parentLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="childLoop">childLoop: <span class="extype" name="io.netty.channel.EventLoopGroup">EventLoopGroup</span> = <span class="symbol">Netty.eventLoop</span></span>, <span name="pipeline">pipeline: (<span class="extype" name="io.netty.channel.Channel">Channel</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">p =&gt; ()</span></span>, <span name="handle">handle: (<span class="extype" name="io.netty.channel.Channel">Channel</span>, <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>]) ⇒ <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] = <span class="symbol"><span class="name"><a href="NettyTcpServer$.html">NettyTcpServer.defaultHandler</a></span></span></span>)</span><span class="result"> extends <a href="NettyServerBuilder.html" class="extype" name="io.wasted.util.NettyServerBuilder">NettyServerBuilder</a>[<a href="NettyTcpServer.html" class="extype" name="io.wasted.util.NettyTcpServer">NettyTcpServer</a>[<span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>], <span class="extype" name="io.wasted.util.NettyTcpServer.Req">Req</span>, <span class="extype" name="io.wasted.util.NettyTcpServer.Resp">Resp</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.wasted.util.package@NettyTcpServer[Req,Resp]extendsNettyServerBuilder[io.wasted.util.NettyTcpServer[Req,Resp],Req,Resp]withProductwithSerializable" title="Permalink" target="_top">
@@ -623,7 +623,7 @@ Cache results in vals as i expect most of these operations to be expensive at so
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="InetPrefix$.html"><span class="name">InetPrefix</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <a href="InetPrefix$.html"><span class="name">InetPrefix</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.wasted.util.package@InetPrefix" title="Permalink" target="_top">
@@ -954,23 +954,6 @@ Cache results in vals as i expect most of these operations to be expensive at so
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#io.wasted.util.package@implicitStackTraceToString:Throwable=&gt;String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="io.wasted.util.redis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="redis"></a>
-      <a id="redis:redis"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="redis/package.html"><span class="name">redis</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.package@redis" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

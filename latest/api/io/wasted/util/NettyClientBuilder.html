@@ -45,16 +45,16 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">NettyClientBuilder</span><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></span>
+        <span class="name">NettyClientBuilder</span><span class="tparams">[<span name="Req">Req</span>, <span name="Resp">Resp</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="http/HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>, <a href="NettyTcpClient.html" class="extype" name="io.wasted.util.NettyTcpClient">NettyTcpClient</a>, <a href="redis/RedisClient.html" class="extype" name="io.wasted.util.redis.RedisClient">RedisClient</a>, <a href="http/WebSocketClient.html" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></div>
+            <div class="subClasses hiddenContent"><a href="http/HttpClient.html" class="extype" name="io.wasted.util.http.HttpClient">HttpClient</a>, <a href="NettyTcpClient.html" class="extype" name="io.wasted.util.NettyTcpClient">NettyTcpClient</a>, <a href="http/WebSocketClient.html" class="extype" name="io.wasted.util.http.WebSocketClient">WebSocketClient</a></div>
           </div></div>
         
 
@@ -72,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="io.wasted.util.NettyClientBuilder"><span>NettyClientBuilder</span></li><li class="in" name="io.wasted.util.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="io.wasted.util.NettyClientBuilder"><span>NettyClientBuilder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -463,24 +463,6 @@
       </a>
     </span>
       <p class="shortcomment cmt">Connects to the given URI and returns a Channel using a round-robin remote selection</p><div class="fullcomment"><div class="comment cmt"><p>Connects to the given URI and returns a Channel using a round-robin remote selection</p></div><dl class="paramcmts block"><dt class="param">uri</dt><dd class="cmt"><p>URI we want to connect to</p></dd><dt>returns</dt><dd class="cmt"><p>Future Channel</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="debug(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="debug(⇒String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@debug(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prints a message on debug.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on debug.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -515,24 +497,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="error(⇒String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@error(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prints a message on error.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on error.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -607,24 +571,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="info(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="info(⇒String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@info(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prints a message on info.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on info.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -642,24 +588,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.wasted.util.Logger#loggerName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="loggerName:String"></a>
-      <a id="loggerName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">loggerName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@loggerName:String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Override this to give your class a custom Logger name.</p><div class="fullcomment"><div class="comment cmt"><p>Override this to give your class a custom Logger name.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -711,6 +639,50 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="io.wasted.util.NettyClientBuilder#open" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="open(uri:String,req:Req):com.twitter.util.Future[Resp]"></a>
+      <a id="open(String,Req):Future[Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">open</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@open(uri:String,req:Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Open a connection to the given URI.</p><div class="fullcomment"><div class="comment cmt"><p>Open a connection to the given URI.
+The request to generate the response should be used to prepare
+the request only once the connection is established.
+This reduces the context-switching for allocation/deallocation
+on failed connects.
+</p></div><dl class="paramcmts block"><dt class="param">uri</dt><dd class="cmt"><p>What could this be?</p></dd><dt>returns</dt><dd class="cmt"><p>Future Channel</p></dd></dl></div>
+    </li><li name="io.wasted.util.NettyClientBuilder#open" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="open(uri:java.net.URI,req:Req):com.twitter.util.Future[Resp]"></a>
+      <a id="open(URI,Req):Future[Resp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">open</span><span class="params">(<span name="uri">uri: <span class="extype" name="java.net.URI">URI</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@open(uri:java.net.URI,req:Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Open a connection to the given URI.</p><div class="fullcomment"><div class="comment cmt"><p>Open a connection to the given URI.
+The request to generate the response should be used to prepare
+the request only once the connection is established.
+This reduces the context-switching for allocation/deallocation
+on failed connects.
+</p></div><dl class="paramcmts block"><dt class="param">uri</dt><dd class="cmt"><p>What could this be?</p></dd><dt>returns</dt><dd class="cmt"><p>Future Channel</p></dd></dl></div>
     </li><li name="io.wasted.util.NettyClientBuilder#requestCounter" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="requestCounter:java.util.concurrent.atomic.AtomicLong"></a>
       <a id="requestCounter:AtomicLong"></a>
@@ -729,40 +701,22 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="io.wasted.util.NettyClientBuilder#run" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run(uri:String,req:Req,counter:Int):com.twitter.util.Future[Resp]"></a>
-      <a id="run(String,Req,Int):Future[Resp]"></a>
+      <a id="run(uri:String,req:Req,counter:java.util.concurrent.atomic.AtomicInteger):com.twitter.util.Future[Resp]"></a>
+      <a id="run(String,Req,AtomicInteger):Future[Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>, <span name="counter">counter: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
+        <span class="name">run</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>, <span name="counter">counter: <span class="extype" name="java.util.concurrent.atomic.AtomicInteger">AtomicInteger</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@run(uri:String,req:Req,counter:Int):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@run(uri:String,req:Req,counter:java.util.concurrent.atomic.AtomicInteger):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Run the request against one of the specified remotes</p><div class="fullcomment"><div class="comment cmt"><p>Run the request against one of the specified remotes</p></div><dl class="paramcmts block"><dt class="param">uri</dt><dd class="cmt"><p>What could this be?</p></dd><dt class="param">req</dt><dd class="cmt"><p>Request object</p></dd><dt class="param">counter</dt><dd class="cmt"><p>Request counter</p></dd><dt>returns</dt><dd class="cmt"><p>Future Resp</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#submitException" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="submitException(trace:String):Unit"></a>
-      <a id="submitException(String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">submitException</span><span class="params">(<span name="trace">trace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@submitException(trace:String):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Implement this method to get your exceptions handled the way you want.</p><div class="fullcomment"><div class="comment cmt"><p>Implement this method to get your exceptions handled the way you want.
-</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -883,37 +837,19 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.wasted.util.Logger#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="warn(msg:=&gt;String,x:Any*):Unit"></a>
-      <a id="warn(⇒String,Any*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="x">x: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@warn(msg:=&gt;String,x:Any*):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prints a message on warn.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a message on warn.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></dd></dl></div>
     </li><li name="io.wasted.util.NettyClientBuilder#write" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="write(uri:String,req:Req):com.twitter.util.Future[Resp]"></a>
-      <a id="write(String,Req):Future[Resp]"></a>
+      <a id="write(uri:String,req:()=&gt;Req):com.twitter.util.Future[Resp]"></a>
+      <a id="write(String,()⇒Req):Future[Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">write</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
+        <span class="name">write</span><span class="params">(<span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="req">req: () ⇒ <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@write(uri:String,req:Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@write(uri:String,req:()=&gt;Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -924,18 +860,18 @@ This reduces the context-switching for allocation/deallocation
 on failed connects.
 </p></div><dl class="paramcmts block"><dt class="param">uri</dt><dd class="cmt"><p>What could this be?</p></dd><dt class="param">req</dt><dd class="cmt"><p>Request object</p></dd><dt>returns</dt><dd class="cmt"><p>Future Resp</p></dd></dl></div>
     </li><li name="io.wasted.util.NettyClientBuilder#write" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="write(uri:java.net.URI,req:Req):com.twitter.util.Future[Resp]"></a>
-      <a id="write(URI,Req):Future[Resp]"></a>
+      <a id="write(uri:java.net.URI,req:()=&gt;Req):com.twitter.util.Future[Resp]"></a>
+      <a id="write(URI,()⇒Req):Future[Resp]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">write</span><span class="params">(<span name="uri">uri: <span class="extype" name="java.net.URI">URI</span></span>, <span name="req">req: <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
+        <span class="name">write</span><span class="params">(<span name="uri">uri: <span class="extype" name="java.net.URI">URI</span></span>, <span name="req">req: () ⇒ <span class="extype" name="io.wasted.util.NettyClientBuilder.Req">Req</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.util.Future">Future</span>[<span class="extype" name="io.wasted.util.NettyClientBuilder.Resp">Resp</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@write(uri:java.net.URI,req:Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
+      <a href="../../../index.html#io.wasted.util.NettyClientBuilder@write(uri:java.net.URI,req:()=&gt;Req):com.twitter.util.Future[Resp]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -954,9 +890,7 @@ on failed connects.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="io.wasted.util.Logger">
-              <h3>Inherited from <a href="Logger.html" class="extype" name="io.wasted.util.Logger">Logger</a></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
