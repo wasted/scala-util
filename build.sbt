@@ -19,7 +19,7 @@ libraryDependencies ++= Seq(
   "com.google.guava" % "guava" % "18.0",
   "io.netty" % "netty-all" % "4.0.37.Final",
   "org.javassist" % "javassist" % "3.18.2-GA",
-  "com.google.code.findbugs" % "jsr305" % "1.3.+",
+//  "com.google.code.findbugs" % "jsr305" % "1.3.+",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value
 )
 
